@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Edumark</title>
+    <title>Sobat Learning</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,17 +13,17 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/themify-icons.css">
-    <link rel="stylesheet" href="css/nice-select.css">
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/gijgo.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/slicknav.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/bootstrap.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/owl.carousel.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/magnific-popup.css">
+    <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/themify-icons.css">
+    <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/nice-select.css">
+    <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/flaticon.css">
+    <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/gijgo.css">
+    <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/animate.css">
+    <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/slicknav.css">
+    <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
 </head>
 
@@ -41,7 +41,7 @@
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo-img">
                                 <a href="<?= base_url(); ?>">
-                                    <img src="img/logo.png" alt="">
+                                    <img src="<?= base_url('assets/user/'); ?>img/logo_sobatkode.png" alt="">
                                 </a>
                             </div>
                         </div>
