@@ -3,6 +3,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Pages extends CI_Controller
 {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('form_validation');
+        $this->load->model('Event_model');
+        $this->load->model('Modul_model');
+        $this->load->model('Topik_model');
+        $this->load->model('User_model');
+        $this->load->model('Rule_topik_model');
+        $this->load->model('Soal_model');
+        $this->load->model('Kerjakan_model');
+        $this->load->model('Hasil_tes_model', 'hasil');
+    }
+
     public function testimoni()
     {
         $data['judul'] = 'Try Out Online | Testimoni';
@@ -136,6 +151,7 @@ class Pages extends CI_Controller
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
 
         $data['event'] = $this->Event_model->getAllEvent();
+        $data['topup'] = $this->db->get('topup')->result_array();
 
         $this->load->view('User/templates/header_topup', $data);
         $this->load->view('User/topup', $data);
