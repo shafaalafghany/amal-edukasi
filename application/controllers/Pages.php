@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Welcome extends CI_Controller
+class Pages extends CI_Controller
 {
     public function testimoni()
     {
@@ -140,5 +140,12 @@ class Welcome extends CI_Controller
         $this->load->view('User/templates/header_topup', $data);
         $this->load->view('User/topup', $data);
         $this->load->view('User/templates/footer');
+    }
+
+    public function pembelajaran()
+    {
+        $this->load->view('User/header/header_pembelajaran');
+        $this->load->view('User/pembelajaran/pembelajaran');
+        $this->load->view('User/footer/footer');
     }
 }
