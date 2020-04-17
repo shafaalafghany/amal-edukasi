@@ -40,7 +40,7 @@
                     <div class="row align-items-center no-gutters">
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo-img">
-                                <a href="index.html">
+                                <a href="<?= base_url(); ?>">
                                     <img src="<?= base_url('assets/user/'); ?>img/logo_sobatkode.png" alt="">
                                 </a>
                             </div>
@@ -49,25 +49,25 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="index.html">home</a></li>
-                                        <li><a href="<?= base_url('Home'); ?>">Pembelajaran</a></li>
+                                        <li><a class="active" href="<?= base_url(); ?>">home</a></li>
+                                        <li><a href="<?= base_url('Pages/pembelajaran'); ?>">Pembelajaran</a></li>
                                         <li><a href="#">Try Out <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="course_details.html">Paket CPNS</a></li>
-                                                <li><a href="course_details.html">Paket Regular STAN</a></li>
-                                                <li><a href="course_details.html">Paket D3K STAN</a></li>
-                                                <li><a href="course_details.html">Paket D4K STAN</a></li>
-                                                <li><a href="elements.html">elements</a></li>
+                                                <li><a href="#">Paket CPNS</a></li>
+                                                <li><a href="#">Paket Regular STAN</a></li>
+                                                <li><a href="#">Paket D3K STAN</a></li>
+                                                <li><a href="#">Paket D4K STAN</a></li>
+                                                <li><a href="#">elements</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="about.html">About</a></li>
+                                        <li><a href="#">About</a></li>
                                         <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="blog.html">blog</a></li>
-                                                <li><a href="single-blog.html">single-blog</a></li>
+                                                <li><a href="#">blog</a></li>
+                                                <li><a href="#">single-blog</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li><a href="#">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>
