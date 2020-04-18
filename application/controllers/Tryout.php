@@ -17,7 +17,7 @@ class tryout extends CI_Controller
         $this->load->model('Hasil_tes_model', 'hasil');
     }
 
-    public function tryout()
+    public function index()
     {
         $data['judul'] = 'Try Out Online | Tryout';
 
