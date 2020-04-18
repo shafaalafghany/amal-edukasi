@@ -78,7 +78,7 @@
                                             </div>
                                             <div class="courses_info">
                                                 <span>Photoshop</span>
-                                                <h3><a href="<?= base_url('detail/pembelajaran_detail'); ?>">Mobile App design step by step <br>
+                                                <h3><a href="<?= base_url('pembelajaran_detail'); ?>">Mobile App design step by step <br>
                                                         from beginner</a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">

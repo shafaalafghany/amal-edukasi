@@ -57,7 +57,6 @@
                                                 <li><a href="#">Paket Regular STAN</a></li>
                                                 <li><a href="#">Paket D3K STAN</a></li>
                                                 <li><a href="#">Paket D4K STAN</a></li>
-                                                <li><a href="#">elements</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="<?= base_url('contact'); ?>">Contact</a></li>
