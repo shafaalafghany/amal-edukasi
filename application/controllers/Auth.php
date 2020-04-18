@@ -20,15 +20,15 @@ class auth extends CI_Controller
     public function login()
     {
         //Membuat rules untuk form
-        $this->form_validation->set_rules('username', 'Username', 'required|trim', [
-            'required' => 'Username tidak boleh kosong!'
+        $this->form_validation->set_rules('email', 'Email', 'required|trim', [
+            'required' => 'Email tidak boleh kosong!'
         ]);
         $this->form_validation->set_rules('password', 'Password', 'required|trim', [
             'required' => 'Password tidak boleh kosong!'
         ]);
 
         if ($this->form_validation->run() == false) {
-            $data['judul'] = 'Try Out Online | Login';
+            $data['judul'] = 'Try Out Online';
 
             $this->load->view('Home', $data);
         } else {
@@ -39,10 +39,10 @@ class auth extends CI_Controller
     private function _login()
     {
         //cek inputan
-        $username = $this->input->post('username');
+        $email = $this->input->post('email');
         $password = $this->input->post('password');
 
-        $user = $this->db->get_where('user', ['username' => $username])->row_array();
+        $user = $this->db->get_where('user', ['email' => $email])->row_array();
 
         if ($user) {
             //jika user active
@@ -50,33 +50,33 @@ class auth extends CI_Controller
                 //cek password
                 if (password_verify($password, $user['password'])) {
                     $data = [
-                        'username' => $user['username'],
+                        'email' => $user['email'],
                         'role_id' => $user['role_id'],
                     ];
                     $this->session->set_userdata($data);
                     //cek role_id
                     if ($user['role_id'] < 3) {
-                        redirect('Administrator');
+                        // redirect('Administrator');
                     } else {
                         redirect('Home');
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf password yang dimasukkan salah!</div>');
-                    redirect('Auth/login');
+                    redirect('Home');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf email belum terverifikasi! Silahkan cek email anda untuk verifikasi.</div>');
-                redirect('Auth/login');
+                redirect('Home');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf akun belum terdaftar!</div>');
-            redirect('Auth/login');
+            redirect('Home');
         }
     }
 
     public function logout()
     {
-        $this->session->unset_userdata('username');
+        $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
         redirect('Home');
     }
@@ -84,10 +84,6 @@ class auth extends CI_Controller
     public function registration()
     {
         //Membuat rules untuk form
-        $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]', [
-            'is_unique' => 'Username sudah terdaftar'
-
-        ]);
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[user.email]', [
             'is_unique' => 'Email sudah terdaftar'
@@ -100,13 +96,12 @@ class auth extends CI_Controller
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
         if ($this->form_validation->run() == false) {
-            $data['judul'] = 'Try Out Online | Register';
-            $this->load->view('Auth/registration', $data);
+            $data['judul'] = 'Try Out Online';
+            $this->load->view('Home', $data);
         } else {
             //Ambil data dari form input
             $email = $this->input->post('email', true);
             $datauser = [
-                'username' => htmlspecialchars($this->input->post('username', true)),
                 'name' => htmlspecialchars($this->input->post('name', true)),
                 'email' => htmlspecialchars($email),
                 'image' => 'default.png',
@@ -138,7 +133,7 @@ class auth extends CI_Controller
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun berhasil dibuat! Silahkan cek email anda untuk verifikasi akun. Jika tidak ada pada inbox anda coba cek pada spam. Jika dalam 1 jam tidak ada email verifikasi akun silahkan kontak admin dengan menyertakan email anda.</div>');
             }
 
-            redirect('Auth/login');
+            redirect('Home');
         }
     }
 
@@ -204,21 +199,21 @@ class auth extends CI_Controller
 
                     $this->db->delete('user_token', ['email' => $email]);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Email ' . $email . ' telah aktif! Silahkan login</div>');
-                    redirect('Auth/login');
+                    redirect('Home');
                 } else {
                     $this->db->delete('user', ['email' => $email]);
                     $this->db->delete('user_token', ['email' => $email]);
 
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf aktifasi akun gagal! Token user kadaluarsa. Silahkan daftarkan kembali akun anda.</div>');
-                    redirect('Auth/login');
+                    redirect('Home');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf aktifasi akun gagal! Token user salah.</div>');
-                redirect('Auth/login');
+                redirect('Home');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf aktifasi akun gagal! Email salah.</div>');
-            redirect('Auth/login');
+            redirect('Home');
         }
     }
 
