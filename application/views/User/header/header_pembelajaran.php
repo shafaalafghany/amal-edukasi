@@ -50,10 +50,13 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="<?= base_url(); ?>">home</a></li>
-                                        <li><a class="active" href="#">Courses</a></li>
-                                        <li><a href="#">pages <i class="ti-angle-down"></i></a>
+                                        <li><a class="active" href="<?= base_url('Pages/pembelajaran'); ?>">Pembelajaran</a></li>
+                                        <li><a href="#">Try Out <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="#">course details</a></li>
+                                                <li><a href="#">Paket CPNS</a></li>
+                                                <li><a href="#">Paket Regular STAN</a></li>
+                                                <li><a href="#">Paket D3K STAN</a></li>
+                                                <li><a href="#">Paket D4K STAN</a></li>
                                                 <li><a href="#">elements</a></li>
                                             </ul>
                                         </li>
