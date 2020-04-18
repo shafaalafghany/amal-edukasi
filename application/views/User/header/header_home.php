@@ -50,7 +50,7 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="active" href="<?= base_url(); ?>">home</a></li>
-                                        <li><a href="<?= base_url('pages/pembelajaran'); ?>">Pembelajaran</a></li>
+                                        <li><a href="<?= base_url('pembelajaran'); ?>">Pembelajaran</a></li>
                                         <li><a href="#">Try Out <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="#">Paket CPNS</a></li>
