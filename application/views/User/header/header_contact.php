@@ -49,7 +49,7 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="<?= base_url(); ?>">home</a></li>
+                                        <li><a href="<?= base_url(); ?>">home</a></li>
                                         <li><a href="<?= base_url('pembelajaran'); ?>">Pembelajaran</a></li>
                                         <li><a href="#">Try Out <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
@@ -60,7 +60,7 @@
                                                 <li><a href="#">elements</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="<?= base_url('contact'); ?>">Contact</a></li>
+                                        <li><a class="active" href="<?= base_url('contact'); ?>">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>

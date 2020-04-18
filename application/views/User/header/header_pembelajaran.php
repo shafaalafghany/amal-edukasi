@@ -4,12 +4,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Sobat Learning</title>
+    <title>Amal Edukasi</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- <link rel="manifest" href="site.webmanifest"> -->
-    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets/user/'); ?>img/favicon.ico">
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
@@ -41,7 +41,7 @@
                         <div class="col-xl-2 col-lg-2">
                             <div class="logo-img">
                                 <a href="<?= base_url(); ?>">
-                                    <img src="<?= base_url('assets/user/'); ?>img/logo_sobatkode.png" alt="">
+                                    <img src="<?= base_url('assets/user/'); ?>img/logo.png" alt="">
                                 </a>
                             </div>
                         </div>
@@ -60,14 +60,7 @@
                                                 <li><a href="#">elements</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="#">About</a></li>
-                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <li><a href="#">blog</a></li>
-                                                <li><a href="#">single-blog</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#">Contact</a></li>
+                                        <li><a href="<?= base_url('contact'); ?>">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>

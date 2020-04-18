@@ -3,8 +3,21 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class pages extends CI_Controller
 {
+    public function pembelajaran()
+    {
+        $this->load->view('User/header/header_pembelajaran');
+        $this->load->view('User/pembelajaran/pembelajaran');
+        $this->load->view('User/footer/footer');
+    }
 
-    public function __construct()
+    public function contact()
+    {
+        $this->load->view('User/header/header_contact');
+        $this->load->view('User/contact');
+        $this->load->view('User/footer/footer');
+    }
+    
+    /* public function __construct()
     {
         parent::__construct();
         $this->load->library('form_validation');
@@ -156,12 +169,5 @@ class pages extends CI_Controller
         $this->load->view('User/templates/header_topup', $data);
         $this->load->view('User/topup', $data);
         $this->load->view('User/templates/footer');
-    }
-
-    public function pembelajaran()
-    {
-        $this->load->view('User/header/header_pembelajaran');
-        $this->load->view('User/pembelajaran/pembelajaran');
-        $this->load->view('User/footer/footer');
-    }
+    } */
 }

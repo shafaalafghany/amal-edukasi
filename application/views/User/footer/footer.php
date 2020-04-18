@@ -7,7 +7,7 @@
                         <div class="footer_widget">
                             <div class="footer_logo">
                                 <a href="#">
-                                    <img src="<?= base_url('assets/user/'); ?>img/logo_sobatkode.png" alt="">
+                                    <img src="<?= base_url('assets/user/'); ?>img/logo.png" alt="">
                                 </a>
                             </div>
                             <p>
