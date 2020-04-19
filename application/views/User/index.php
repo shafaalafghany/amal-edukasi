@@ -5,7 +5,7 @@
                 <div class="row align-items-center justify-content-center">
                     <div class="col-xl-6 col-md-6">
                         <div class="illastrator_png">
-                            <img src="<?= base_url('assets/user/'); ?>img/banner/test.png" alt="">
+                            <img src="<?= base_url('assets/user/'); ?>img/banner/index.png" alt="">
                         </div>
                     </div>
                     <div class="col-xl-6 col-md-6">
@@ -29,10 +29,12 @@
                     <div class="single_about_info">
                         <h3>Kenapa Harus <br>
                             Amal Edukasi?</h3>
-                        <p>Our set he for firmament morning sixth subdue darkness creeping gathered divide our let god
-                            moving. Moving in fourth air night bring upon you’re it beast let you dominion likeness open
-                            place day great wherein heaven sixth lesser subdue fowl </p>
-                        <a href="#" class="boxed_btn">Enroll a Course</a>
+                        <p>
+                            Amal Edukasi merupakan try out online CPNS dan PKN STAN nomor satu diseluruh Indonesia,
+                            dengan soal-soal terbaik dan belum pernah ada sebelumnya.
+                            Try out ini dilengkapi dengan video pembelajaran yang sangat mudah dipahami,
+                            jadi tidak perlu repot-repot membeli bukunya, cukup buka amaledukasi.com belajar jadi lebih mudah!!
+                        </p>
                     </div>
                 </div>
                 <div class="col-xl-6 offset-xl-1 col-lg-6">
@@ -77,8 +79,7 @@
                 <div class="col-xl-12">
                     <div class="section_title text-center mb-100">
                         <h3>Video Pembelajaran</h3>
-                        <p>Your domain control panel is designed for ease-of-use and <br> allows for all aspects of your
-                            domains.</p>
+                        <p>Lihat video pembelajaran kami yukk!! <br> Banyak trik-trik jitu didalamnya.</p>
                     </div>
                 </div>
             </div>

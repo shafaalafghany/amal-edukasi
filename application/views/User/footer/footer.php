@@ -95,7 +95,7 @@
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;<script>
                             document.write(new Date().getFullYear());
-                        </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </script> All rights reserved | Website ini dibuat dengan penuh <i class="fa fa-heart-o" aria-hidden="true"></i> oleh <a href="https://sobatkode.com" target="_blank">Sobat Kode</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
@@ -105,105 +105,14 @@
 </footer>
 <!-- footer -->
 
+<!-- login -->
+<?php include APPPATH.'views/auth/login.php';?>
 
-<!-- form itself end-->
-<div id="test-form" class="white-popup-block mfp-hide">
-    <div class="popup_box ">
-        <div class="popup_inner">
-            <div class="logo text-center">
-                <a href="#">
-                    <img src="<?= base_url('assets/user/'); ?>img/auth/login.png" alt="">
-                </a>
-            </div>
-            <h3 class="text-center">Log In</h3>
-            <form action="<?= base_url('auth/login'); ?>" method="POST">
-                <div class="row">
-                    <div class="col-xl-12 col-md-12">
-                        <input type="text" placeholder="Enter email" name="email" id="email">
-                    </div>
-                    <div class="col-xl-12 col-md-12">
-                        <input type="password" placeholder="Password" name="password" id="password">
-                    </div>
-                    <div class="col-xl-12">
-                        <button type="submit" class="genric-btn info circle">Sign in</button>
-                    </div>
-                </div>
-            </form>
-            <p class="doen_have_acc">Belum punya akun? <a class="dont-hav-acc" href="#test-form2">Registrasi</a>
-            </p>
-            <p class="doen_have_acc" style="margin-top: -15px;"><a class="dont-hav-acc" href="#test-form3">Anda lupa password? Lupa Password</a>
-            </p>
-        </div>
-    </div>
-</div>
-<!-- form itself end -->
+<!-- registrasi -->
+<?php include APPPATH.'views/auth/registrasi.php';?>
 
-<!-- form itself end-->
-<div id="test-form2" class="white-popup-block mfp-hide">
-    <div class="popup_box ">
-        <div class="popup_inner">
-            <br><br><br><br><br><br><br><br><br><br>
-            <div class="logo text-center">
-                <a href="#">
-                    <img src="<?= base_url('assets/user/'); ?>img/auth/registrasi.png" alt="">
-                </a>
-            </div>
-            <h3 class="text-center">Registrasi</h3>
-            <form action="#">
-                <div class="row">
-                    <div class="col-xl-12 col-md-12">
-                        <input type="text" placeholder="Masukkan Email" name="email" id="email">
-                    </div>
-                    <div class="col-xl-12 col-md-12">
-                        <input type="text" placeholder="Masukkan Nama" name="name" id="name">
-                    </div>
-                    <div class="col-xl-12 col-md-12">
-                        <input type="number" placeholder="Masukkan No. Telepon" name="telepon" id="telepon">
-                    </div>
-                    <div class="col-xl-12 col-md-12">
-                        <input type="password" placeholder="Password" name="password1" id="password1">
-                    </div>
-                    <div class="col-xl-12 col-md-12">
-                        <input type="Password" placeholder="Konfirmasi Password" name="password2" id="password2">
-                    </div>
-                    <div class="col-xl-12">
-                        <button type="submit" class="genric-btn primary circle">Daftar</button>
-                    </div>
-                </div>
-            </form>
-            <p class="doen_have_acc">Sudah punya akun? <a class="dont-hav-acc" href="#test-form">Kembali ke login</a>
-            </p>
-        </div>
-    </div>
-</div>
-<!-- form itself end -->
-
-<!-- form itself end-->
-<div id="test-form3" class="white-popup-block mfp-hide">
-    <div class="popup_box ">
-        <div class="popup_inner">
-            <div class="logo text-center">
-                <a href="#">
-                    <img src="<?= base_url('assets/user/'); ?>img/auth/forgot.png" alt="">
-                </a>
-            </div>
-            <h3 class="text-center">Lupa Password</h3>
-            <form action="#">
-                <div class="row">
-                    <div class="col-xl-12 col-md-12">
-                        <input type="text" placeholder="Masukkan Email" name="email" id="email">
-                    </div>
-                    <div class="col-xl-12">
-                        <button type="submit" class="genric-btn primary circle">Cek Email</button>
-                    </div>
-                </div>
-            </form>
-            <p class="doen_have_acc">Sudah ingat password? <a class="dont-hav-acc" href="#test-form">Kembali ke login</a>
-            </p>
-        </div>
-    </div>
-</div>
-<!-- form itself end -->
+<!-- lupa_password -->
+<?php include APPPATH.'views/auth/lupa_password.php';?>
 
 
 <!-- JS here -->

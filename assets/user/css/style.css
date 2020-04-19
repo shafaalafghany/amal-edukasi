@@ -2315,6 +2315,12 @@ h3 {
   }
 }
 
+@media (min-width: 768px) {
+  #logo-registrasi {
+    display: none;
+  }
+}
+
 /* line 204, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_bradcam.scss */
 #test-form button.mfp-close,
 #test-form2 button.mfp-close,
