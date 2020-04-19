@@ -50,7 +50,6 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a href="<?= base_url(); ?>">home</a></li>
-                                        <li><a class="active" href="<?= base_url('pembelajaran'); ?>">Pembelajaran</a></li>
                                         <li><a href="#">Try Out <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="#">Paket CPNS</a></li>
@@ -59,6 +58,7 @@
                                                 <li><a href="#">Paket D4K STAN</a></li>
                                             </ul>
                                         </li>
+                                        <li><a class="active" href="<?= base_url('pembelajaran'); ?>">Modul</a></li>
                                         <li><a href="<?= base_url('contact'); ?>">Contact</a></li>
                                         <li id="login_popup">
                                             <a href="#test-form" class="login popup-with-form">

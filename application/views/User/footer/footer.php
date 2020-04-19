@@ -11,9 +11,8 @@
                             </a>
                         </div>
                         <p>
-                            Firmament morning sixth subdue darkness creeping gathered divide our let god moving.
-                            Moving in fourth air night bring upon it beast let you dominion likeness open place day
-                            great.
+                            Amal Edukasi merupakan try out online CPNS dan PKN STAN nomor satu diseluruh Indonesia,
+                            dengan soal-soal terbaik dan dilengkapi dengan video pembelajaran yang sangat mudah dipahami.
                         </p>
                         <div class="socail_links">
                             <ul>
@@ -95,7 +94,7 @@
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;<script>
                             document.write(new Date().getFullYear());
-                        </script> All rights reserved | Website ini dibuat dengan penuh <i class="fa fa-heart-o" aria-hidden="true"></i> oleh <a href="https://sobatkode.com" target="_blank">Sobat Kode</a>
+                        </script> All rights reserved | <a href="https://sobatkode.com" target="_blank">Sobat Kode</a>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
