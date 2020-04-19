@@ -198,7 +198,7 @@
                     </div>
                 </div>
             </form>
-            <p class="doen_have_acc">Sudah punya akun? <a class="dont-hav-acc" href="#test-form">Kembali ke login</a>
+            <p class="doen_have_acc">Sudah ingat password? <a class="dont-hav-acc" href="#test-form">Kembali ke login</a>
             </p>
         </div>
     </div>
