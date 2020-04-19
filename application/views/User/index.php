@@ -5,7 +5,7 @@
                 <div class="row align-items-center justify-content-center">
                     <div class="col-xl-6 col-md-6">
                         <div class="illastrator_png">
-                            <img src="<?= base_url('assets/user/'); ?>img/banner/edu_ilastration.png" alt="">
+                            <img src="<?= base_url('assets/user/'); ?>img/banner/test.png" alt="">
                         </div>
                     </div>
                     <div class="col-xl-6 col-md-6">

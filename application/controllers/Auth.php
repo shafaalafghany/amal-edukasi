@@ -30,7 +30,7 @@ class auth extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Try Out Online';
 
-            $this->load->view('Home', $data);
+            $this->load->view('home', $data);
         } else {
             $this->_login();
         }
