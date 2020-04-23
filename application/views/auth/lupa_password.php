@@ -8,7 +8,7 @@
                 </a>
             </div>
             <h3 class="text-center">Lupa Password</h3>
-            <form action="#">
+            <form action=" <?= base_url('auth/lupa_password'); ?>" method="POST">
                 <div class="row">
                     <div class="col-xl-12 col-md-12">
                         <input type="text" placeholder="Masukkan Email" name="email" id="email">

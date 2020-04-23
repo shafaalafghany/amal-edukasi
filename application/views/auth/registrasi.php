@@ -2,13 +2,14 @@
 <div id="test-form2" class="white-popup-block mfp-hide">
     <div class="popup_box ">
         <div class="popup_inner">
-            <div id="logo-registrasi" class="logo text-center">
+            <br><br><br><br><br><br><br><br><br><br>
+            <div class="logo text-center">
                 <a href="#">
                     <img src="<?= base_url('assets/user/'); ?>img/auth/registrasi.png" alt="">
                 </a>
             </div>
             <h3 class="text-center">Registrasi</h3>
-            <form action="#">
+            <form action=" <?= base_url('auth/registrasi'); ?>" method="POST">
                 <div class="row">
                     <div class="col-xl-12 col-md-12">
                         <input type="text" placeholder="Masukkan Email" name="email" id="email">

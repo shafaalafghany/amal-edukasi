@@ -8,7 +8,7 @@
                 </a>
             </div>
             <h3 class="text-center">Log In</h3>
-            <form action="<?= base_url('auth/login'); ?>" method="POST">
+            <form action=" <?= base_url('auth/login'); ?>" method="POST">
                 <div class="row">
                     <div class="col-xl-12 col-md-12">
                         <input type="text" placeholder="Enter email" name="email" id="email">
@@ -17,7 +17,7 @@
                         <input type="password" placeholder="Password" name="password" id="password">
                     </div>
                     <div class="col-xl-12">
-                        <button type="submit" class="genric-btn info circle">Sign in</button>
+                        <button type="submit" class="genric-btn info circle">Log in</button>
                     </div>
                 </div>
             </form>

@@ -28,7 +28,7 @@ class auth extends CI_Controller
         ]);
 
         if ($this->form_validation->run() == false) {
-            $data['judul'] = 'Try Out Online';
+            $data['judul'] = 'Amal Edukasi';
 
             // $this->load->view('home', $data);
             redirect('Home');
@@ -59,8 +59,8 @@ class auth extends CI_Controller
                     if ($user['role_id'] < 3) {
                         // redirect('Administrator');
                     } else {
-                        redirect('home');
-                        // echo 'Anda sudah login';
+                        // redirect('home');
+                        echo 'Anda sudah login';
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf password yang dimasukkan salah!</div>');
@@ -98,7 +98,7 @@ class auth extends CI_Controller
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 
         if ($this->form_validation->run() == false) {
-            $data['judul'] = 'Try Out Online';
+            $data['judul'] = 'Amal Edukasi';
             $this->load->view('home', $data);
         } else {
             //Ambil data dari form input
