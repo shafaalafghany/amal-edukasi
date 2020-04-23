@@ -45,7 +45,7 @@
                             <span class="contact-info__icon"><i class="ti-home"></i></span>
                             <div class="media-body">
                                 <h3>Indonesia.</h3>
-                                <p>Jl. Bahagia.</p>
+                                <p>Jakarta</p>
                             </div>
                         </div>
                         <div class="media contact-info">
