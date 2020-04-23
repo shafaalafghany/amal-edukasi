@@ -1,7 +1,7 @@
 //
 // Component: Control Sidebar
 //
-
+ 
 html.control-sidebar-animate {
   overflow-x: hidden;
 }
@@ -11,7 +11,7 @@ html.control-sidebar-animate {
   position: absolute;
   top: $main-header-height;
   z-index: $zindex-control-sidebar;
-
+  
   &,
   &::before {
     bottom: $main-footer-height;
@@ -37,21 +37,20 @@ body.text-sm {
   }
 }
 
-.main-header.text-sm~.control-sidebar {
+.main-header.text-sm ~ .control-sidebar {
   top: $main-header-height-sm;
 }
 
-.main-footer.text-sm~.control-sidebar {
+.main-footer.text-sm ~ .control-sidebar {
   bottom: $main-footer-height-sm;
 }
 
 .control-sidebar-push-slide {
-
-  .content-wrapper,
-  .main-footer {
-    @include transition(margin-right $transition-speed $transition-fn);
+    .content-wrapper,
+    .main-footer {
+      @include transition(margin-right $transition-speed $transition-fn);
+    }
   }
-}
 
 // Control sidebar open state
 .control-sidebar-open {
@@ -66,7 +65,6 @@ body.text-sm {
 
   &.control-sidebar-push,
   &.control-sidebar-push-slide {
-
     .content-wrapper,
     .main-footer {
       margin-right: $control-sidebar-width;
@@ -88,7 +86,6 @@ body.text-sm {
 
   &.control-sidebar-push,
   &.control-sidebar-push-slide {
-
     .content-wrapper,
     .main-footer {
       margin-right: $control-sidebar-width;
@@ -98,7 +95,6 @@ body.text-sm {
 
 // Dark skin
 .control-sidebar-dark {
-
   &,
   a,
   .nav-link {

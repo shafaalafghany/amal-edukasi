@@ -23,9 +23,9 @@ class admin extends CI_Controller
         $data['allUser'] = $this->User_model->getAllUser();
         $data['admin'] = $this->User_model->getAllAdmin(); */
 
+        $this->load->view('admin/templates/header_admin');
         $this->load->view('admin/index');
-        // $this->load->view('Super_Admin/index', $data);
-        // $this->load->view('Super_Admin/templates/footer_admin');
+        $this->load->view('admin/templates/footer_admin');
     }
 
     public function profil_admin()
