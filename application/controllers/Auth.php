@@ -220,7 +220,7 @@ class auth extends CI_Controller
         }
     }
 
-    public function forgot_password()
+    public function lupa_password()
     {
         $this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email');
 
@@ -244,10 +244,10 @@ class auth extends CI_Controller
                 $this->_sendEmail($token, 'forgot');
 
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil! Silahkan cek email anda untuk ganti password</div>');
-                redirect('auth/forgot_password');
+                redirect('home');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email belum verifikasi atau tidak terdaftar</div>');
-                redirect('auth/forgot_password');
+                redirect('home');
             }
         }
     }

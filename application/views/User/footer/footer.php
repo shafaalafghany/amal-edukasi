@@ -189,15 +189,16 @@
                 </a>
             </div>
             <h3 class="text-center">Lupa Password</h3>
-            <form action="#">
-                <div class="row">
-                    <div class="col-xl-12 col-md-12">
-                        <input type="text" placeholder="Masukkan Email" name="email" id="email">
-                    </div>
-                    <div class="col-xl-12">
-                        <button type="submit" class="genric-btn primary circle">Cek Email</button>
-                    </div>
+            <?= form_open_multipart('auth/lupa_password'); ?>
+            <!-- <form action="#"> -->
+            <div class="row">
+                <div class="col-xl-12 col-md-12">
+                    <input type="text" placeholder="Masukkan Email" name="email" id="email">
                 </div>
+                <div class="col-xl-12">
+                    <button type="submit" class="genric-btn primary circle">Cek Email</button>
+                </div>
+            </div>
             </form>
             <p class="doen_have_acc">Sudah ingat password? <a class="dont-hav-acc" href="#test-form">Kembali ke login</a>
             </p>
