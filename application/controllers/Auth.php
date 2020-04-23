@@ -30,7 +30,8 @@ class auth extends CI_Controller
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Try Out Online';
 
-            $this->load->view('home', $data);
+            // $this->load->view('home', $data);
+            redirect('Home');
         } else {
             $this->_login();
         }
@@ -58,19 +59,20 @@ class auth extends CI_Controller
                     if ($user['role_id'] < 3) {
                         // redirect('Administrator');
                     } else {
-                        redirect('Home');
+                        redirect('home');
+                        // echo 'Anda sudah login';
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf password yang dimasukkan salah!</div>');
-                    redirect('Home');
+                    redirect('home');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf email belum terverifikasi! Silahkan cek email anda untuk verifikasi.</div>');
-                redirect('Home');
+                redirect('home');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf akun belum terdaftar!</div>');
-            redirect('Home');
+            redirect('home');
         }
     }
 
@@ -78,10 +80,10 @@ class auth extends CI_Controller
     {
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
-        redirect('Home');
+        redirect('home');
     }
 
-    public function registration()
+    public function registrasi()
     {
         //Membuat rules untuk form
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
@@ -97,7 +99,7 @@ class auth extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Try Out Online';
-            $this->load->view('Home', $data);
+            $this->load->view('home', $data);
         } else {
             //Ambil data dari form input
             $email = $this->input->post('email', true);
@@ -133,7 +135,8 @@ class auth extends CI_Controller
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun berhasil dibuat! Silahkan cek email anda untuk verifikasi akun. Jika tidak ada pada inbox anda coba cek pada spam. Jika dalam 1 jam tidak ada email verifikasi akun silahkan kontak admin dengan menyertakan email anda.</div>');
             }
 
-            redirect('Home');
+            redirect('home');
+            // echo 'Akun berhasil didaftarkan';
         }
     }
 
@@ -199,21 +202,21 @@ class auth extends CI_Controller
 
                     $this->db->delete('user_token', ['email' => $email]);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Email ' . $email . ' telah aktif! Silahkan login</div>');
-                    redirect('Home');
+                    redirect('home');
                 } else {
                     $this->db->delete('user', ['email' => $email]);
                     $this->db->delete('user_token', ['email' => $email]);
 
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf aktifasi akun gagal! Token user kadaluarsa. Silahkan daftarkan kembali akun anda.</div>');
-                    redirect('Home');
+                    redirect('home');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf aktifasi akun gagal! Token user salah.</div>');
-                redirect('Home');
+                redirect('home');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf aktifasi akun gagal! Email salah.</div>');
-            redirect('Home');
+            redirect('home');
         }
     }
 
@@ -241,10 +244,10 @@ class auth extends CI_Controller
                 $this->_sendEmail($token, 'forgot');
 
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil! Silahkan cek email anda untuk ganti password</div>');
-                redirect('Auth/forgot_password');
+                redirect('auth/forgot_password');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email belum verifikasi atau tidak terdaftar</div>');
-                redirect('Auth/forgot_password');
+                redirect('auth/forgot_password');
             }
         }
     }
@@ -266,11 +269,11 @@ class auth extends CI_Controller
                 $this->changePassword();
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf ganti password gagal! Token user salah.</div>');
-                redirect('Auth/login');
+                redirect('auth/login');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf ganti password gagal! Email salah.</div>');
-            redirect('Auth/login');
+            redirect('auth/login');
         }
     }
 
@@ -285,7 +288,7 @@ class auth extends CI_Controller
         $this->form_validation->set_rules('password2', 'Ulangi Password', 'trim|required|min_length[8]|matches[password1]');
 
         if (!$this->session->userdata('reset_email')) {
-            redirect('Auth/login');
+            redirect('auth/login');
         }
 
         if ($this->form_validation->run() == false) {
@@ -303,7 +306,7 @@ class auth extends CI_Controller
             $this->session->unset_userdata('reset_email');
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil dirubah! Silahkan login.</div>');
-            redirect('User/login');
+            redirect('auth/login');
         }
     }
 }
