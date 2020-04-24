@@ -66,18 +66,15 @@ class auth extends CI_Controller
                     }
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf password yang dimasukkan salah!</div>');
-                    // redirect('home');
-                    echo 'pass salah';
+                    redirect('home');
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf email belum terverifikasi! Silahkan cek email anda untuk verifikasi.</div>');
-                // redirect('home');
-                echo 'email belom verif';
+                redirect('home');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf akun belum terdaftar!</div>');
-            // redirect('home');
-            echo 'akun ngawur';
+            redirect('home');
         }
     }
 
@@ -140,8 +137,8 @@ class auth extends CI_Controller
                 $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun berhasil dibuat! Silahkan cek email anda untuk verifikasi akun. Jika tidak ada pada inbox anda coba cek pada spam. Jika dalam 1 jam tidak ada email verifikasi akun silahkan kontak admin dengan menyertakan email anda.</div>');
             }
 
-            // redirect('home');
-            echo 'Akun berhasil didaftarkan';
+            redirect('home');
+            // echo 'Akun berhasil didaftarkan';
         }
     }
 
@@ -158,7 +155,7 @@ class auth extends CI_Controller
         $config['protocol'] = 'smtp';
         $config['smtp_crypto'] = 'ssl';
         $config['smtp_host'] = 'mail.sobatkode.com';
-        $config['smtp_user'] = 'shafa@sobatkode.com';
+        $config['smtp_user'] = 'admin@sobatkode.com';
         $config['smtp_pass'] = 'Iws161jy21';
         $config['smtp_port'] = 465;
         $config['mailtype'] = 'html';
@@ -167,7 +164,7 @@ class auth extends CI_Controller
         $this->email->initialize($config);
         $this->email->set_newline("\r\n");
 
-        $this->email->from('shafa@sobatkode.com', 'Sobatkode.com');
+        $this->email->from('admin@sobatkode.com', 'Sobatkode.com');
         $this->email->to($this->input->post('email'));
 
         if ($type == 'verify') {
@@ -201,16 +198,13 @@ class auth extends CI_Controller
             //Cek apakah token user valid
             if ($user_token) {
                 if (time() - $user_token['date_created'] < (60 * 60 * 24)) {
-                    //update tabel user
                     $this->db->set('is_active', 1);
                     $this->db->where('email', $email);
                     $this->db->update('user');
 
-                    //delete user_token
                     $this->db->delete('user_token', ['email' => $email]);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Email ' . $email . ' telah aktif! Silahkan login</div>');
-                    // redirect('home');
-                    echo 'Akun telah terverifikasi';
+                    redirect('home');
                 } else {
                     $this->db->delete('user', ['email' => $email]);
                     $this->db->delete('user_token', ['email' => $email]);
