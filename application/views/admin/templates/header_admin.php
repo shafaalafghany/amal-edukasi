@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?= $judul; ?></title>
+  <title>Administrator</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="text/css" href="<?= base_url('assets/User/'); ?>images/logo.ico">
@@ -88,6 +88,7 @@
             <img src="<?= base_url('assets/Admin/') ?>dist/img/LogoAorta.png" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
+            <a href="<?= base_url() ?>admin" class="d-block">AMAL EDUKASI - ADMIN</a>
             <!-- <?php if ($user['role_id'] == 1) { ?>
               <a href="<?= base_url() ?>Administrator" class="d-block">AORTASTAN - SPR ADMIN</a>
             <?php } 
