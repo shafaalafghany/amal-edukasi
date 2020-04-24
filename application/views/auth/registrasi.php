@@ -2,7 +2,6 @@
 <div id="test-form2" class="white-popup-block mfp-hide">
     <div class="popup_box ">
         <div class="popup_inner">
-            <br><br><br><br><br><br><br><br><br><br>
             <div class="logo text-center">
                 <a href="#">
                     <img src="<?= base_url('assets/user/'); ?>img/auth/registrasi.png" alt="">
