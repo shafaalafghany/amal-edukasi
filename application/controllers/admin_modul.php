@@ -50,7 +50,7 @@ class admin_modul extends CI_Controller
 
             if ($upload_file) {
                 $config['upload_path'] = './assets/file/';
-                $config['allowed_types'] = 'pdf';
+                $config['allowed_types'] = 'mp4, mkv, avi';
                 $config['max_size'] = 51200;
                 $config['overwrite'] = true;
 
