@@ -41,13 +41,13 @@
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
 						<span class="label-input100">Password Baru</span>
-						<input class="input100" type="password" name="pass1" placeholder="Masukkan Password baru">
+						<input class="input100" type="password" name="password1" id="password1" placeholder="Masukkan Password baru">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">Ulangi Password</span>
-						<input class="input100" type="password" name="pass2" placeholder="Masukkan Ulang Password">
+						<input class="input100" type="password" name="password2" id="password2" placeholder="Masukkan Ulang Password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 
