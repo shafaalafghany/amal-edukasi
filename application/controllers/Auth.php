@@ -283,7 +283,7 @@ class auth extends CI_Controller
         }
     }
 
-    public function changePassword()
+    public function ganti_password()
     {
         //Membuat rules untuk form
         $this->form_validation->set_rules('password1', 'Password', 'trim|required|min_length[8]|matches[password2]', [

@@ -61,7 +61,7 @@
                                         <li><a href="<?= base_url('pembelajaran'); ?>">Modul</a></li>
                                         <li><a href="<?= base_url('contact'); ?>">Contact</a></li>
                                         <li id="login_popup">
-                                            <a href="#test-form" class="login popup-with-form">
+                                            <a href="#test-form" class="login popup-with-form boxed_btn_orange">
                                                 <i class="flaticon-user"></i>
                                                 <span>log in</span>
                                             </a>
