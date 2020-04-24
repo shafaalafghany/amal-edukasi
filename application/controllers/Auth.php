@@ -169,10 +169,10 @@ class auth extends CI_Controller
 
         if ($type == 'verify') {
             $this->email->subject('Account Verification');
-            $this->email->message('<h3>Halo ' . $namaUserLupa . '</h3> <br> Silahkan klik link dibawah ini untuk verifikasi akun anda: <br><a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
+            $this->email->message('<h3>Halo ' . $namaUserLupa . '</h3> <br> Silahkan klik link dibawah ini untuk verifikasi akun anda: <br><a href="' . base_url() . 'auth/verifikasi_email?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
         } else if ($type == 'forgot') {
             $this->email->subject('Reset Password');
-            $this->email->message('<h3>Halo ' . $namaUserLupa . '</h3> <br> Silahkan klik link dibawah ini untuk merubah password akun anda: <br><a href="' . base_url() . 'auth/lupa_password?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
+            $this->email->message('<h3>Halo ' . $namaUserLupa . '</h3> <br> Silahkan klik link dibawah ini untuk merubah password akun anda: <br><a href="' . base_url() . 'auth/ganti_password?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
         }
 
         if ($this->email->send()) {
@@ -184,7 +184,7 @@ class auth extends CI_Controller
         }
     }
 
-    public function verify()
+    public function verifikasi_email()
     {
         //Ambil parameter dari link verifikasi
         $email = $this->input->get('email');
@@ -204,25 +204,25 @@ class auth extends CI_Controller
 
                     $this->db->delete('user_token', ['email' => $email]);
                     $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Email ' . $email . ' telah aktif! Silahkan login</div>');
-                    // redirect('home');
-                    echo 'akun telah terverifikasi';
+                    redirect('home');
+                    // echo 'akun telah terverifikasi';
                 } else {
                     $this->db->delete('user', ['email' => $email]);
                     $this->db->delete('user_token', ['email' => $email]);
 
                     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf aktifasi akun gagal! Token user kadaluarsa. Silahkan daftarkan kembali akun anda.</div>');
-                    // redirect('home');
-                    echo 'token kadaluarsa';
+                    redirect('home');
+                    // echo 'token kadaluarsa';
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf aktifasi akun gagal! Token user salah.</div>');
-                // redirect('home');
-                echo 'token ngawur';
+                redirect('home');
+                // echo 'token ngawur';
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf aktifasi akun gagal! Email salah.</div>');
-            // redirect('home');
-            echo '';
+            redirect('home');
+            // echo '';
         }
     }
 
@@ -258,7 +258,7 @@ class auth extends CI_Controller
         }
     }
 
-    public function forgotPassword()
+    public function ganti_password()
     {
         //Ambil parameter dari link verifikasi
         $email = $this->input->get('email');
@@ -272,14 +272,14 @@ class auth extends CI_Controller
             //Cek apakah token user valid
             if ($user_token) {
                 $this->session->set_userdata('reset_email', $email);
-                $this->changePassword();
+                $this->change_password();
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf ganti password gagal! Token user salah.</div>');
-                redirect('auth/login');
+                redirect('home');
             }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf ganti password gagal! Email salah.</div>');
-            redirect('auth/login');
+            redirect('home');
         }
     }
 
