@@ -17,6 +17,8 @@ class auth extends CI_Controller
         $this->load->model('Hasil_tes_model', 'hasil');
     }
 
+    //test
+
     public function login()
     {
         //Membuat rules untuk form
