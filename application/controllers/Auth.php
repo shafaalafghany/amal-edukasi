@@ -294,13 +294,13 @@ class auth extends CI_Controller
         $this->form_validation->set_rules('password2', 'Ulangi Password', 'trim|required|min_length[8]|matches[password1]');
 
         if (!$this->session->userdata('reset_email')) {
-            redirect('auth/login');
+            redirect('home');
         }
 
         if ($this->form_validation->run() == false) {
-            $data['judul'] = 'Try Out Online | Change Password';
+            $data['judul'] = 'Amal Edukasi | Merubah Password';
 
-            $this->load->view('User/change_password', $data);
+            $this->load->view('auth/ganti_password', $data);
         } else {
             $password = password_hash($this->input->post('password1'), PASSWORD_DEFAULT);
             $email = $this->session->userdata('reset_email');
@@ -312,7 +312,7 @@ class auth extends CI_Controller
             $this->session->unset_userdata('reset_email');
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil dirubah! Silahkan login.</div>');
-            redirect('auth/login');
+            redirect('home');
         }
     }
 }
