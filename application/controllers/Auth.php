@@ -312,7 +312,8 @@ class auth extends CI_Controller
             $this->session->unset_userdata('reset_email');
 
             $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil dirubah! Silahkan login.</div>');
-            redirect('home');
+            echo 'password telah diganti';
+            // redirect('home');
         }
     }
 }
