@@ -60,26 +60,55 @@
                                         </li>
                                         <li><a href="<?= base_url('pembelajaran'); ?>">Modul</a></li>
                                         <li><a href="<?= base_url('contact'); ?>">Contact</a></li>
-                                        <li id="login_popup">
-                                            <a href="#test-form" class="login popup-with-form boxed_btn_orange">
-                                                <i class="flaticon-user"></i>
-                                                <span>log in</span>
-                                            </a>
-                                        </li>
+                                        <?php if(!empty($user)){ ?>
+                                            <li class="nav-item dropdown">
+                                                <a href="#" class="nav-link" data-toggle="dropdown">
+                                                <div class="user-panel d-flex">
+                                                    <div class="image">
+                                                    <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="rounded-circle" alt="User Image" style="width: 37px; height: 37px; margin-right: 6px;">
+                                                    </div>
+                                                    <div class="info">
+                                                    <span><?= $user['name']; ?></span>
+                                                    </div>
+                                                </div>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                                <div class="dropdown-item dropdown-header">
+                                                    <div class="image" style="text-align: center;">
+                                                    <img src="<?= base_url('assets/img/profile/') . $user['image']; ?>" class="rounded-circle elevation-2" alt="User Image" style="width: 100px; height: 100px;">
+                                                    </div>
+                                                    <br>
+                                                    <p style="text-align: center;">
+                                                    <span>Selamat Datang</span>
+                                                    <br>
+                                                    <span style="font-size: 20px;"><strong><?= $user['name']; ?></strong></span>
+                                                    </p>
+                                                </div>
+                                                <div class="dropdown-divider"></div>
+                                                <div class="dropdown-item dropdown-footer" style="text-align: center;">
+                                                    <a href="<?= base_url('User/profile_saya') ?>" class="btn btn-primary">Profile Saya</a>
+                                                    <a href="<?= base_url('User/logout') ?>" class="btn btn-danger right logout">Log out</a>
+                                                </div>
+                                                </div>
+                                            </li>
+                                        <?php } else { ?>
+                                            <li id="login_popup">
+                                                <a href="#test-form" class="login popup-with-form boxed_btn_orange">
+                                                    <i class="flaticon-user"></i>
+                                                    <span>log in</span>
+                                                </a>
+                                            </li>
+                                        <?php } ?>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
                         <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                             <div class="log_chat_area d-flex align-items-center">
-                                <a href="#test-form" class="login popup-with-form">
-                                    <i class="flaticon-user"></i>
-                                    <span>log in</span>
-                                </a>
                                 <div class="live_chat_btn">
-                                    <a class="boxed_btn_orange" href="#">
-                                        <i class="fa fa-phone"></i>
-                                        <span>+10 378 467 3672</span>
+                                    <a class="login popup-with-form boxed_btn_orange" href="#test-form">
+                                        <i class="flaticon-user"></i>
+                                        <span>Log In</span>
                                     </a>
                                 </div>
                             </div>

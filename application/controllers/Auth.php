@@ -61,12 +61,12 @@ class auth extends CI_Controller
                     if ($user['role_id'] < 3) {
                         // redirect('Administrator');
                     } else {
-                        // redirect('home');
-                        echo 'Anda sudah login';
+                        $this->session->set_flashdata('success', 'Anda telah login');
+                        redirect('home');
+                        // echo 'Anda sudah login';
                     }
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf password yang dimasukkan salah!</div>');
-                    redirect('home');
+                    echo 'Maaf password salah';
                 }
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf email belum terverifikasi! Silahkan cek email anda untuk verifikasi.</div>');

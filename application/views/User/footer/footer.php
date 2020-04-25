@@ -110,6 +110,7 @@
 <?php include APPPATH . 'views/auth/registrasi.php'; ?>
 
 <!-- JS here -->
+<script src="<?= base_url('assets/user/'); ?>js/sweetalert2.all.min.js"></script>
 <script src="<?= base_url('assets/user/'); ?>js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="<?= base_url('assets/user/'); ?>js/vendor/jquery-1.12.4.min.js"></script>
 <script src="<?= base_url('assets/user/'); ?>js/popper.min.js"></script>
@@ -137,6 +138,28 @@
 <script src="<?= base_url('assets/user/'); ?>js/mail-script.js"></script>
 
 <script src="<?= base_url('assets/user/'); ?>js/main.js"></script>
+<?php if($this->session->flashdata('success')){ ?>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            const Toast = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2500,
+                timerProgressBar: true,
+                onOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            })
+
+            Toast.fire({
+                icon: 'success',
+                title: '<?= $this->session->flashdata('success') ?>'
+            })
+        });
+    </script>
+<?php } ?>
 </body>
 
 </html>
