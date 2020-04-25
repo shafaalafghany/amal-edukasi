@@ -11,10 +11,10 @@
             <form action=" <?= base_url('auth/registrasi'); ?>" method="POST">
                 <div class="row">
                     <div class="col-xl-12 col-md-12">
-                        <input type="text" placeholder="Masukkan Email" name="email" id="email">
+                        <input type="text" placeholder="Masukkan Nama" name="name" id="name">
                     </div>
                     <div class="col-xl-12 col-md-12">
-                        <input type="text" placeholder="Masukkan Nama" name="name" id="name">
+                        <input type="text" placeholder="Masukkan Email" name="email" id="email">
                     </div>
                     <div class="col-xl-12 col-md-12">
                         <input type="number" placeholder="Masukkan No. Telepon" name="telepon" id="telepon">

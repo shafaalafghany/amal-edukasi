@@ -276,11 +276,11 @@ class auth extends CI_Controller
                 $this->session->set_userdata('reset_email', $email);
                 $this->change_password();
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf ganti password gagal! Token user salah.</div>');
+                $this->session->set_flashdata('error', 'Maaf ganti password gagal! Token user salah.');
                 redirect('home');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf ganti password gagal! Email salah.</div>');
+            $this->session->set_flashdata('error', 'Maaf ganti password gagal! Email salah.');
             redirect('home');
         }
     }
@@ -313,7 +313,7 @@ class auth extends CI_Controller
 
             $this->session->unset_userdata('reset_email');
 
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Password berhasil dirubah! Silahkan login.</div>');
+            $this->session->set_flashdata('success', 'Password berhasil dirubah! Silahkan login kembali.');
             echo 'password telah diganti';
             // redirect('home');
         }

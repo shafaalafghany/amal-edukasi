@@ -2,11 +2,11 @@
 <html lang="en">
 
 <head>
-	<title>Login V4</title>
+	<title><?= $judul; ?></title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="<?= base_url('assets/auth/'); ?>images/icons/favicon.ico" />
+	<link rel="icon" type="image/png" href="<?= base_url('assets/user/'); ?>img/favicon.ico" />
 	<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="<?= base_url('assets/auth/'); ?>vendor/bootstrap/css/bootstrap.min.css">
 	<!--===============================================================================================-->
@@ -32,20 +32,23 @@
 <body>
 
 	<div class="limiter">
-		<div class="container-login100" style="background-image: url('images/bg-01.jpg');">
+		<div class="container-login100" style="background-image: url('../../../assets/auth/images/bg-01.jpg');">
 			<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
 				<form class="login100-form validate-form" action=" <?= base_url('auth/change_password'); ?>" method="POST">
-					<span class="login100-form-title p-b-49">
+					<span class="login100-form-title p-b-5">
 						Ganti Password
 					</span>
+					<h3 class="p-b-49 text-center">
+						Ganti Password
+					</h3>
 
-					<div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+					<div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
 						<span class="label-input100">Password Baru</span>
 						<input class="input100" type="password" name="password1" id="password1" placeholder="Masukkan Password baru">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate="Password is required">
+					<div class="wrap-input100 validate-input m-b-30" data-validate="Password is required">
 						<span class="label-input100">Ulangi Password</span>
 						<input class="input100" type="password" name="password2" id="password2" placeholder="Masukkan Ulang Password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
