@@ -58,8 +58,8 @@ class auth extends CI_Controller
                     ];
                     $this->session->set_userdata($data);
                     //cek role_id
-                    if ($user['role_id'] < 3) {
-                        // redirect('Administrator');
+                    if ($user['role_id'] == 1) {
+                        redirect('admin');
                     } else {
                         $this->session->set_flashdata('success', 'Anda telah login');
                         redirect('home');
