@@ -3,16 +3,35 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class pages extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('form_validation');
+        $this->load->model('Event_model');
+        $this->load->model('Modul_model');
+        $this->load->model('User_model');
+    }
+    
     public function pembelajaran()
     {
-        $this->load->view('User/header/header_pembelajaran');
+        $data['judul'] = 'Amal Edukasi | Modul Pembelajaran';
+
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+
+        $this->load->view('User/header/header_pembelajaran', $data);
         $this->load->view('User/pembelajaran/pembelajaran');
         $this->load->view('User/footer/footer');
     }
 
     public function contact()
     {
-        $this->load->view('User/header/header_contact');
+        $data['judul'] = 'Amal Edukasi | Contact';
+
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+
+        $this->load->view('User/header/header_contact', $data);
         $this->load->view('User/contact');
         $this->load->view('User/footer/footer');
     }

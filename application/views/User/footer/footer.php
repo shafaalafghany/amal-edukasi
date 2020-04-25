@@ -138,24 +138,26 @@
 <script src="<?= base_url('assets/user/'); ?>js/mail-script.js"></script>
 
 <script src="<?= base_url('assets/user/'); ?>js/main.js"></script>
+<script src="<?= base_url('assets/auth/'); ?>js/logout.js"></script>
 <?php if($this->session->flashdata('success')){ ?>
     <script type="text/javascript">
         $(document).ready(function() {
-            const Toast = Swal.mixin({
-                toast: true,
-                position: 'top-end',
-                showConfirmButton: false,
-                timer: 2500,
-                timerProgressBar: true,
-                onOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                }
-            })
-
-            Toast.fire({
+            Swal.fire({
                 icon: 'success',
-                title: '<?= $this->session->flashdata('success') ?>'
+                title: '<?= $this->session->flashdata('success') ?>',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true
+            })
+        });
+    </script>
+<?php } elseif($this->session->flashdata('error')) { ?>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '<?= $this->session->flashdata('error') ?>'
             })
         });
     </script>

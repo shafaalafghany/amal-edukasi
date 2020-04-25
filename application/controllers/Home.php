@@ -14,7 +14,7 @@ class home extends CI_Controller
 
     public function index()
     {
-        $data['judul'] = 'Amal Edukasi';
+        $data['judul'] = 'Amal Edukasi | Home';
 
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);

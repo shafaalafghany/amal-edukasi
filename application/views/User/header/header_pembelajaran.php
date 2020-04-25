@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Amal Edukasi</title>
+    <title><?= $judul ?></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -61,29 +61,96 @@
                                         <li><a class="active" href="<?= base_url('pembelajaran'); ?>">Modul</a></li>
                                         <li><a href="<?= base_url('contact'); ?>">Contact</a></li>
                                         <li id="login_popup">
-                                            <a href="#test-form" class="login popup-with-form">
-                                                <i class="flaticon-user"></i>
-                                                <span>log in</span>
-                                            </a>
+                                            <?php if(!empty($user)){ ?>
+                                                <div class="dropdown">
+                                                    <a href="#" data-toggle="dropdown">
+                                                        <div class="user-panel d-flex">
+                                                            <div class="image">
+                                                                <img src="<?= base_url('assets/avatar/') . $user['image']; ?>" class="rounded-circle" alt="User Image" style="width: 30px; height: 30px; margin-right: 8px;">
+                                                            </div>
+                                                            <div class="info">
+                                                                <span><?= $user['name']; ?></span>
+                                                        </div>
+                                                        </div>
+                                                    </a>
+                                                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                                        <div class="dropdown-item dropdown-header">
+                                                            <img src="#" class="rounded-circle elevation-2 mb-2" alt="User Image" style="width: 100px; height: 100px;">
+                                                            <p>
+                                                                <span><?= $user['name']; ?></span>
+                                                                <br>
+                                                                <span>Selamat Datang</span>
+                                                            </p>
+                                                        </div>
+                                                            <div class="dropdown-divider"></div>
+                                                            <div class="dropdown-item dropdown-footer">
+                                                            <a href="#" class="btn btn-primary">Profile Saya</a>
+                                                            <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger right logout">Log out</a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php } else { ?>
+                                                <a href="#test-form" class="login popup-with-form boxed_btn_orange">
+                                                    <i class="flaticon-user"></i>
+                                                    <span>log in</span>
+                                                </a>
+                                            <?php } ?>
                                         </li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
-                        <div class="col-xl-3 col-lg-3 d-none d-lg-block">
-                            <div class="log_chat_area d-flex align-items-center">
-                                <a href="#test-form" class="login popup-with-form">
-                                    <i class="flaticon-user"></i>
-                                    <span>log in</span>
-                                </a>
-                                <div class="live_chat_btn">
-                                    <a class="boxed_btn_orange" href="#">
-                                        <i class="fa fa-phone"></i>
-                                        <span>+10 378 467 3672</span>
-                                    </a>
+                        <?php if(!empty($user)){ ?>
+                            <div class="col-xl-2 col-lg-2 d-none d-lg-block">
+                                <div class="log_chat_area d-flex align-items-center">
+                                    <li class="dropdown">
+                                        <a href="#" data-toggle="dropdown">
+                                            <div class="user-panel">
+                                                <div class="image text-center">
+                                                    <img src="<?= base_url('assets/avatar/') . $user['image']; ?>" class="rounded-circle" alt="User Image" style="width: 45px; height: 45px; margin-right: 8px;">
+                                                </div>
+                                                <div class="info text-center">
+                                                    <span style="color: white; font-family: Poppins, sans-serif; margin-top: 10px;"><?= $user['name']; ?></span>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                            <div class="dropdown-item dropdown-header">
+                                                <div class="image" style="text-align: center;">
+                                                <img src="<?= base_url('assets/avatar/') . $user['image']; ?>" class="rounded-circle elevation-2" alt="User Image" style="width: 100px; height: 100px;">
+                                                </div>
+                                                <br>
+                                                <p style="text-align: center;">
+                                                <span style="font-family: Crimson Text, serif;">Selamat Datang</span>
+                                                <br>
+                                                <span style="font-family: Crimson Text, serif; font-size: 20px;"><strong><?= $user['name']; ?></strong></span>
+                                                </p>
+                                            </div>
+                                            <div class="dropdown-divider"></div>
+                                            <div class="dropdown-item dropdown-footer" style="text-align: center;">
+                                                <a href="#" class="btn btn-primary" style="font-family: Crimson Text, serif;">Profile Saya</a>
+                                                <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger right logout" style="font-family: Crimson Text, serif;">Log out</a>
+                                            </div>
+                                        </div>
+                                    </li>
                                 </div>
                             </div>
-                        </div>
+                        <?php } else { ?>
+                            <div class="col-xl-3 col-lg-3 d-none d-lg-block">
+                                <div class="log_chat_area d-flex align-items-center">
+                                    <a href="#test-form" class="login popup-with-form">
+                                        <i class="flaticon-user"></i>
+                                        <span>log in</span>
+                                    </a>
+                                    <div class="live_chat_btn">
+                                        <a class="boxed_btn_orange" href="#">
+                                            <i class="fa fa-phone"></i>
+                                            <span>+10 378 467 3672</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php } ?>
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>
                         </div>

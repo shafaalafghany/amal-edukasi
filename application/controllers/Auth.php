@@ -66,14 +66,15 @@ class auth extends CI_Controller
                         // echo 'Anda sudah login';
                     }
                 } else {
-                    echo 'Maaf password salah';
+                    $this->session->set_flashdata('error', 'Password anda salah');
+                    redirect('home');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf email belum terverifikasi! Silahkan cek email anda untuk verifikasi.</div>');
+                $this->session->set_flashdata('error', 'Email belum terverifikasi! Silahkan cek email anda untuk verifikasi.');
                 redirect('home');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf akun belum terdaftar!</div>');
+            $this->session->set_flashdata('error', 'Email belum terdaftar!');
             redirect('home');
         }
     }
@@ -82,6 +83,7 @@ class auth extends CI_Controller
     {
         $this->session->unset_userdata('email');
         $this->session->unset_userdata('role_id');
+        $this->session->set_flashdata('success', 'Anda telah logout');
         redirect('home');
     }
 
