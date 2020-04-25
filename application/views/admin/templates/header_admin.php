@@ -4,10 +4,10 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Administrator</title>
+  <title><?= $judul ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" type="text/css" href="<?= base_url('assets/User/'); ?>images/logo.ico">
+  <link rel="shortcut icon" type="text/css" href="<?= base_url('assets/user/'); ?>img/favicon.ico">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= base_url('assets/Admin/') ?>plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -51,18 +51,18 @@
           <a href="#" class="nav-link" data-toggle="dropdown">
             <div class="user-panel d-flex">
               <div class="image">
-                <img src="#" class="rounded-circle" alt="User Image" style="width: 37px; height: 37px;">
+                <img src="<?= base_url('assets/avatar/') . $user['image']; ?>" class="rounded-circle" alt="User Image" style="width: 37px; height: 37px;">
               </div>
               <div class="info">
-                <span>#</span>
+                <span><?= $user['name'] ?></span>
               </div>
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <div class="dropdown-item dropdown-header">
-              <img src="#" class="rounded-circle elevation-2 mb-2" alt="User Image" style="width: 100px; height: 100px;">
+              <img src="<?= base_url('assets/avatar/') . $user['image']; ?>" class="rounded-circle elevation-2 mb-2" alt="User Image" style="width: 100px; height: 100px;">
               <p>
-                <span>#</span>
+                <span><?= $user['name'] ?></span>
                 <br>
                 <span>Selamat Datang</span>
               </p>
@@ -70,7 +70,7 @@
             <div class="dropdown-divider"></div>
             <div class="dropdown-item dropdown-footer">
               <a href="<?= base_url('Administrator/profile_admin') ?>" class="btn btn-primary">Profile Saya</a>
-              <a href="<?= base_url('User/logout') ?>" class="btn btn-danger right logout">Log out</a>
+              <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger right logout">Log out</a>
             </div>
           </div>
         </li>
@@ -83,13 +83,13 @@
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="user-panel mt-3 pb-3 mb-3">
           <div class="image">
-            <img src="<?= base_url('assets/Admin/') ?>dist/img/LogoAorta.png" class="img-circle elevation-2" alt="User Image">
+            <img src="<?= base_url('assets/user/') ?>img/logo.png" class="elevation-2" alt="User Image" style="height: 50%; width: 100%;">
           </div>
-          <div class="info">
+          <!-- <div class="info">
             <a href="<?= base_url() ?>admin" class="d-block">AMAL EDUKASI - ADMIN</a>
-            <!-- <?php if ($user['role_id'] == 1) { ?>
+            <?php if ($user['role_id'] == 1) { ?>
               <a href="<?= base_url() ?>Administrator" class="d-block">AORTASTAN - SPR ADMIN</a>
             <?php } 
             elseif ($user['role_id'] == 3) {
@@ -97,7 +97,7 @@
             } 
             else { ?>
               <a href="<?= base_url() ?>Administrator" class="d-block">AORTASTAN - ADMIN</a>
-            <?php } ?> -->
+            <?php } ?>
 
-          </div>
+          </div> -->
         </div>

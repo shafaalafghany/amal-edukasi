@@ -73,7 +73,7 @@
                                                         </div>
                                                         </div>
                                                     </a>
-                                                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                                                    <div class="submenu dropdown-menu dropdown-menu-lg dropdown-menu-right">
                                                         <div class="dropdown-item dropdown-header">
                                                             <img src="#" class="rounded-circle elevation-2 mb-2" alt="User Image" style="width: 100px; height: 100px;">
                                                             <p>

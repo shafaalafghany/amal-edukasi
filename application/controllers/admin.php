@@ -16,14 +16,14 @@ class admin extends CI_Controller
     public function index()
     {
         $data['judul'] = 'Amal Edukasi | Dashboard';
-        $sessionUser = $this->session->userdata('username');
+        $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['modul'] = $this->Modul_model->getAllModul();
+        /* $data['modul'] = $this->Modul_model->getAllModul();
         $data['event'] = $this->Event_model->getAllEvent();
         $data['allUser'] = $this->User_model->getAllUser();
-        $data['admin'] = $this->User_model->getAllAdmin();
+        $data['admin'] = $this->User_model->getAllAdmin(); */
 
-        $this->load->view('admin/templates/header_admin');
+        $this->load->view('admin/templates/header_admin', $data);
         $this->load->view('admin/index');
         $this->load->view('admin/templates/footer_admin');
     }

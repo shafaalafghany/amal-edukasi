@@ -39,13 +39,13 @@
 						Ganti Password
 					</span>
 					<h3 class="p-b-49 text-center">
-						Ganti Password
+						email
 					</h3>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
 						<span class="label-input100">Password Baru</span>
 						<input class="input100" type="password" name="password1" id="password1" placeholder="Masukkan Password baru">
-						<span class="focus-input100" data-symbol="&#xf206;"></span>
+						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input m-b-30" data-validate="Password is required">

@@ -57,7 +57,7 @@
 <script src="<?= base_url('assets/admin/') ?>dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url('assets/admin/') ?>dist/js/demo.js"></script>
-<script src="<?= base_url('assets/user/'); ?>js/logout.js"></script>
+<script src="<?= base_url('assets/auth/'); ?>js/logout.js"></script>
 <script>
   $.('.custom-file-input').on('change', function() {
     let fileName = $(this).val().split('\\').pop();
