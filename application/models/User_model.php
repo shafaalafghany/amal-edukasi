@@ -11,7 +11,7 @@ class User_model extends CI_model
 
     public function sessionUserMasuk($usernameSession)
     {
-        return $this->db->get_where('user', ['username' => $usernameSession])->row_array();
+        return $this->db->get_where('user', ['email' => $usernameSession])->row_array();
     }
     // End semua data
 

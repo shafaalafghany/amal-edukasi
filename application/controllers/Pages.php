@@ -16,7 +16,7 @@ class pages extends CI_Controller
         $this->load->view('User/contact');
         $this->load->view('User/footer/footer');
     }
-    
+
     /* public function __construct()
     {
         parent::__construct();
