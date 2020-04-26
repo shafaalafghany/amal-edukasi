@@ -134,9 +134,9 @@ class auth extends CI_Controller
             $result = $this->_sendEmail($token, 'verify');
 
             if ($result) {
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun berhasil dibuat! Silahkan cek email anda untuk verifikasi akun <b>dalam 24 jam</b>. Jika tidak ada pada inbox anda coba cek pada spam.</div>');
+                $this->session->set_flashdata('success', 'Akun berhasil dibuat! Silahkan cek email anda untuk verifikasi akun <b>dalam 24 jam</b>. Jika tidak ada pada inbox anda coba cek pada spam.');
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun berhasil dibuat! Silahkan cek email anda untuk verifikasi akun. Jika tidak ada pada inbox anda coba cek pada spam. Jika dalam 1 jam tidak ada email verifikasi akun silahkan kontak admin dengan menyertakan email anda.</div>');
+                $this->session->set_flashdata('success', 'Akun berhasil dibuat! Silahkan cek email anda untuk verifikasi akun. Jika tidak ada pada inbox anda coba cek pada spam. Jika dalam 1 jam tidak ada email verifikasi akun silahkan kontak admin dengan menyertakan email anda.');
             }
 
             redirect('home');
@@ -205,24 +205,24 @@ class auth extends CI_Controller
                     $this->db->update('user');
 
                     $this->db->delete('user_token', ['email' => $email]);
-                    $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Email ' . $email . ' telah aktif! Silahkan login</div>');
+                    $this->session->set_flashdata('success', 'Email ' . $email . ' telah aktif! Silahkan login');
                     redirect('home');
                     // echo 'akun telah terverifikasi';
                 } else {
                     $this->db->delete('user', ['email' => $email]);
                     $this->db->delete('user_token', ['email' => $email]);
 
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf aktifasi akun gagal! Token user kadaluarsa. Silahkan daftarkan kembali akun anda.</div>');
+                    $this->session->set_flashdata('error', 'Maaf aktifasi akun gagal! Token user kadaluarsa. Silahkan daftarkan kembali akun anda.');
                     redirect('home');
                     // echo 'token kadaluarsa';
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf aktifasi akun gagal! Token user salah.</div>');
+                $this->session->set_flashdata('error', 'Maaf aktifasi akun gagal! Token user salah.');
                 redirect('home');
                 // echo 'token ngawur';
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Maaf aktifasi akun gagal! Email salah.</div>');
+            $this->session->set_flashdata('error', 'Maaf aktifasi akun gagal! Email salah.');
             redirect('home');
             // echo '';
         }
@@ -251,10 +251,10 @@ class auth extends CI_Controller
                 $this->db->insert('user_token', $user_token);
                 $this->_sendEmail($token, 'forgot');
 
-                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Berhasil! Silahkan cek email anda untuk ganti password</div>');
+                $this->session->set_flashdata('success', 'Silahkan cek email anda untuk ganti password');
                 redirect('home');
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Email belum verifikasi atau tidak terdaftar</div>');
+                $this->session->set_flashdata('error', 'Email belum verifikasi atau tidak terdaftar');
                 redirect('home');
             }
         }
@@ -287,17 +287,17 @@ class auth extends CI_Controller
 
     public function change_password()
     {
-        //Membuat rules untuk form
-        $this->form_validation->set_rules('password1', 'Password', 'trim|required|min_length[8]|matches[password2]', [
-            'required' => 'Password tidak boleh kosong',
-            'min_length' => 'Minimal password terdiri dari 8 karakter',
-            'matches' => 'Password tidak sama'
-        ]);
-        $this->form_validation->set_rules('password2', 'Ulangi Password', 'trim|required|min_length[8]|matches[password1]');
-
         if (!$this->session->userdata('reset_email')) {
             redirect('home');
         }
+
+        //Membuat rules untuk form
+        $this->form_validation->set_rules('password1', 'Password', 'trim|required|min_length[6]|matches[password2]', [
+            'required' => 'Password tidak boleh kosong',
+            'min_length' => 'Minimal password terdiri dari 6 karakter',
+            'matches' => 'Password tidak sama'
+        ]);
+        $this->form_validation->set_rules('password2', 'Ulangi Password', 'trim|required|min_length[6]|matches[password1]');
 
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Amal Edukasi | Merubah Password';
@@ -314,8 +314,7 @@ class auth extends CI_Controller
             $this->session->unset_userdata('reset_email');
 
             $this->session->set_flashdata('success', 'Password berhasil dirubah! Silahkan login kembali.');
-            echo 'password telah diganti';
-            // redirect('home');
+            redirect('home');
         }
     }
 }

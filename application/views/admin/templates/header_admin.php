@@ -69,7 +69,7 @@
             </div>
             <div class="dropdown-divider"></div>
             <div class="dropdown-item dropdown-footer">
-              <a href="<?= base_url('Administrator/profile_admin') ?>" class="btn btn-primary">Profile Saya</a>
+              <a href="<?= base_url('admin/profil_admin') ?>" class="btn btn-primary">Profile Saya</a>
               <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger right logout">Log out</a>
             </div>
           </div>

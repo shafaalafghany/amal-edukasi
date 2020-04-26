@@ -62,33 +62,35 @@
                                         <li><a href="<?= base_url('contact'); ?>">Contact</a></li>
                                         <li id="login_popup">
                                             <?php if(!empty($user)){ ?>
-                                                <div class="dropdown">
-                                                    <a href="#" data-toggle="dropdown">
-                                                        <div class="user-panel d-flex">
-                                                            <div class="image">
-                                                                <img src="<?= base_url('assets/avatar/') . $user['image']; ?>" class="rounded-circle" alt="User Image" style="width: 30px; height: 30px; margin-right: 8px;">
-                                                            </div>
-                                                            <div class="info">
-                                                                <span><?= $user['name']; ?></span>
+                                                <a href="#">
+                                                    <div class="user-panel d-flex">
+                                                        <div class="image">
+                                                            <img src="<?= base_url('assets/avatar/') . $user['image']; ?>" class="rounded-circle" alt="User Image" style="width: 30px; height: 30px; margin-right: 8px;">
                                                         </div>
-                                                        </div>
-                                                    </a>
-                                                    <div class="submenu dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                                                        <div class="dropdown-item dropdown-header">
-                                                            <img src="#" class="rounded-circle elevation-2 mb-2" alt="User Image" style="width: 100px; height: 100px;">
-                                                            <p>
-                                                                <span><?= $user['name']; ?></span>
-                                                                <br>
-                                                                <span>Selamat Datang</span>
-                                                            </p>
-                                                        </div>
-                                                            <div class="dropdown-divider"></div>
-                                                            <div class="dropdown-item dropdown-footer">
-                                                            <a href="#" class="btn btn-primary">Profile Saya</a>
-                                                            <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger right logout">Log out</a>
+                                                        <div class="info">
+                                                            <span><?= $user['name']; ?></span>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </a>
+                                                <ul class="submenu">
+                                                    <li>
+                                                        <div class="dropdown-menu-lg" style="text-align: center;">
+                                                            <div class="dropdown-item dropdown-header">
+                                                                <img src="<?= base_url('assets/avatar/') . $user['image']; ?>" class="rounded-circle elevation-2 mb-2" alt="User Image" style="width: 100px; height: 100px;">
+                                                                <p>
+                                                                    <span>Selamat Datang</span>
+                                                                    <br>
+                                                                    <span style="color: black;"><strong><?= $user['name']; ?></strong></span>
+                                                                </p>
+                                                            </div>
+                                                            <div class="dropdown-divider"></div>
+                                                            <div class="dropdown-item dropdown-footer d-flex" style="margin-left: 10%;">
+                                                                <a href="#" class="btn btn-primary" style="color: white;">Profile Saya</a>
+                                                                <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger right logout" style="color: white;">Log out</a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                </ul>
                                             <?php } else { ?>
                                                 <a href="#test-form" class="login popup-with-form boxed_btn_orange">
                                                     <i class="flaticon-user"></i>
@@ -123,7 +125,7 @@
                                                 <p style="text-align: center;">
                                                 <span style="font-family: Crimson Text, serif;">Selamat Datang</span>
                                                 <br>
-                                                <span style="font-family: Crimson Text, serif; font-size: 20px;"><strong><?= $user['name']; ?></strong></span>
+                                                <span style="font-family: Crimson Text, serif; font-size: 20px; color: black;"><strong><?= $user['name']; ?></strong></span>
                                                 </p>
                                             </div>
                                             <div class="dropdown-divider"></div>

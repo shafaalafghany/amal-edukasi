@@ -1,11 +1,11 @@
 <?php if (!empty($user)) { ?>
   <!-- Sidebar Menu -->
   <nav class="mt-2">
-    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+    <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
       <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
       <li class="nav-item has-treeview">
-        <a href="<?= base_url() ?>Administrator" class="nav-link">
+        <a href="<?= base_url() ?>admin" class="nav-link">
           <i class="nav-icon fas fa-tachometer-alt"></i>
           <p>
             Dashboard
@@ -200,22 +200,14 @@
             <div class="card card-primary card-outline">
               <div class="card-body box-profile">
                 <div class="text-center">
-                  <img class="profile-user-img img-fluid img-circle" src="<?= base_url('assets/img/profile/') . $user['image']; ?>" alt="User profile picture" style="width: 100px; height: 100px;">
+                  <img class="profile-user-img img-fluid img-circle" src="<?= base_url('assets/avatar/') . $user['image']; ?>" alt="User profile picture" style="width: 100px; height: 100px;">
                 </div>
 
                 <h3 class="profile-username text-center"><?= $user['name']; ?></h3>
 
-                <?php if ($user['role_id'] == 1) { ?>
-                  <p class="text-muted text-center">Ketua Administrator</p>
-                <?php } else { ?>
-                  <p class="text-muted text-center">Administrator</p>
-                <?php } ?>
-
+                <p class="text-muted text-center">Administrator</p>
 
                 <ul class="list-group list-group-unbordered mb-3">
-                  <li class="list-group-item">
-                    <b>Username</b> <a class="float-right"><?= $user['username']; ?></a>
-                  </li>
                   <li class="list-group-item">
                     <b>Email</b> <a class="float-right" style="font-size: 13px;"><?= $user['email']; ?></a>
                   </li>
@@ -285,7 +277,7 @@
                       <?php if ($user['role_id'] == 1) { ?>
                         <div class="callout callout-info">
                           <h5><i class="fas fa-info"></i> Note:</h5>
-                          Anda adalah Super Admin yang memiliki kuasa paling tinggi, anda dapat menambah modul, menambah admin,
+                          Anda adalah Administrator yang memiliki kuasa untuk mengatur sistem tryout Amal Edukasi ini, anda dapat menambah modul, menambah admin,
                           menambah event, backup data-data dan backup database.
                         </div>
                       <?php } else { ?>
@@ -318,12 +310,6 @@
                         <label for="inputName" class="col-sm-2 col-form-label">Nama*</label>
                         <div class="col-sm-10">
                           <input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>">
-                        </div>
-                      </div>
-                      <div class="form-group row">
-                        <label for="inputUsername" class="col-sm-2 col-form-label">Username*</label>
-                        <div class="col-sm-10">
-                          <input type="text" class="form-control" id="username" name="username" value="<?= $user['username']; ?>" readonly>
                         </div>
                       </div>
                       <div class="form-group row">

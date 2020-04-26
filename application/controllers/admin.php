@@ -6,6 +6,7 @@ class admin extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('form_validation');
         $this->load->model('Event_model');
         $this->load->model('User_model');
         $this->load->model('Modul_model');
@@ -18,28 +19,37 @@ class admin extends CI_Controller
         $data['judul'] = 'Amal Edukasi | Dashboard';
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
         /* $data['modul'] = $this->Modul_model->getAllModul();
         $data['event'] = $this->Event_model->getAllEvent();
         $data['allUser'] = $this->User_model->getAllUser();
         $data['admin'] = $this->User_model->getAllAdmin(); */
 
-        $this->load->view('admin/templates/header_admin', $data);
-        $this->load->view('admin/index');
-        $this->load->view('admin/templates/footer_admin');
+        if($data['user']){
+            if($user['role_id'] == 1){
+                $this->load->view('admin/templates/header_admin', $data);
+                $this->load->view('admin/index');
+                $this->load->view('admin/templates/footer_admin');
+            } else{
+                redirect('home');
+            }
+        } else{
+            redirect('home');
+        }
     }
 
     public function profil_admin()
     {
         $data['judul'] = 'Amal Edukasi | Profil Admin';
-        $sessionUser = $this->session->userdata('username');
+        $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
 
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('Super_Admin/templates/header_profile', $data);
-            $this->load->view('Super_Admin/profile_admin');
-            $this->load->view('Super_Admin/templates/footer_admin');
+            $this->load->view('admin/templates/header_profile', $data);
+            $this->load->view('admin/profile_admin');
+            $this->load->view('admin/templates/footer_admin');
         } else {
             $name = $this->input->post('name');
             $username = $this->input->post('username');

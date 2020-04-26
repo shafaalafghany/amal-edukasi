@@ -144,10 +144,8 @@
         $(document).ready(function() {
             Swal.fire({
                 icon: 'success',
-                title: '<?= $this->session->flashdata('success') ?>',
-                showConfirmButton: false,
-                timer: 2000,
-                timerProgressBar: true
+                title: 'Berhasil!!',
+                text: '<?= $this->session->flashdata('success') ?>'
             })
         });
     </script>

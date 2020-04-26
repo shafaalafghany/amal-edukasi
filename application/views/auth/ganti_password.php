@@ -39,7 +39,7 @@
 						Ganti Password
 					</span>
 					<h3 class="p-b-49 text-center">
-						email
+						<?= $this->session->userdata('reset_email'); ?>
 					</h3>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate="Username is required">
