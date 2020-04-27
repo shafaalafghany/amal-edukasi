@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?= $judul; ?></title>
+  <title><?= $judul ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="shortcut icon" type="text/css" href="<?= base_url('assets/user/'); ?>img/favicon.ico">
@@ -46,8 +46,33 @@
 
       <!-- Right navbar links -->
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger right logout">Log out</a>
+        <!-- Messages Dropdown Menu -->
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link" data-toggle="dropdown">
+            <div class="user-panel d-flex">
+              <div class="image">
+                <img src="<?= base_url('assets/avatar/') . $user['image']; ?>" class="rounded-circle" alt="User Image" style="width: 37px; height: 37px;">
+              </div>
+              <div class="info">
+                <span><?= $user['name'] ?></span>
+              </div>
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+            <div class="dropdown-item dropdown-header">
+              <img src="<?= base_url('assets/avatar/') . $user['image']; ?>" class="rounded-circle elevation-2 mb-2" alt="User Image" style="width: 100px; height: 100px;">
+              <p>
+                <span><?= $user['name'] ?></span>
+                <br>
+                <span>Selamat Datang</span>
+              </p>
+            </div>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-item dropdown-footer">
+              <a href="<?= base_url('admin/profil_admin') ?>" class="btn btn-primary">Profile Saya</a>
+              <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger right logout">Log out</a>
+            </div>
+          </div>
         </li>
       </ul>
     </nav>
@@ -82,8 +107,8 @@
           <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
-            <li class="nav-item has-treeview">
-              <a href="<?= base_url() ?>admin" class="nav-link">
+            <li class="nav-item has-treeview menu-open">
+              <a href="<?= base_url('admin') ?>" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
                   Dashboard
@@ -156,7 +181,7 @@
                 </li>
               </ul>
             </li>
-            <?php if ($user['role_id'] == 1) { ?>
+            <!-- <?php if ($user['role_id'] == 1) { ?> -->
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-user-shield"></i>
@@ -180,7 +205,9 @@
                   </li>
                 </ul>
               </li>
-            <?php } ?>
+            <!-- <?php } elseif ($user['role_id'] == 3) {
+              redirect('User/');
+            } ?> -->
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
@@ -225,7 +252,7 @@
               </ul>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="#" class="nav-link">
+                  <a href="<?= base_url('Administrator/') ?>backup" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Back Up Database</p>
                   </a>
@@ -233,8 +260,8 @@
               </ul>
             </li>
             <li class="nav-header">AKUN</li>
-            <li class="nav-item has-treeview menu-open">
-              <a href="<?= base_url() ?>Administrator/profile_admin" class="nav-link active">
+            <li class="nav-item has-treeview">
+              <a href="<?= base_url() ?>admin/profil_admin" class="nav-link">
                 <i class="nav-icon far fa-edit"></i>
                 <p>
                   Profile Saya
@@ -251,7 +278,7 @@
             </li>
           </ul>
         </nav>
-        <!-- /.sidebar-menu -->
+      <!-- /.sidebar-menu -->
       </div>
-        <!-- /.sidebar -->
+    <!-- /.sidebar -->
     </aside>

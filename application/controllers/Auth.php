@@ -175,6 +175,9 @@ class auth extends CI_Controller
         } else if ($type == 'forgot') {
             $this->email->subject('Reset Password');
             $this->email->message('<h3>Halo ' . $namaUserLupa . '</h3> <br> Silahkan klik link dibawah ini untuk merubah password akun anda: <br><a href="' . base_url() . 'auth/ganti_password?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
+        } else if ($type == 'ganti') {
+            $this->email->subject('Ganti Password');
+            $this->email->message('<h3>Halo ' . $namaUserLupa . '</h3> <br> Silahkan klik link dibawah ini untuk mengganti password akun anda: <br><a href="' . base_url() . 'auth/ganti_password?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Ganti Password</a>');
         }
 
         if ($this->email->send()) {
@@ -219,12 +222,10 @@ class auth extends CI_Controller
             } else {
                 $this->session->set_flashdata('error', 'Maaf aktifasi akun gagal! Token user salah.');
                 redirect('home');
-                // echo 'token ngawur';
             }
         } else {
             $this->session->set_flashdata('error', 'Maaf aktifasi akun gagal! Email salah.');
             redirect('home');
-            // echo '';
         }
     }
 
@@ -255,6 +256,40 @@ class auth extends CI_Controller
                 redirect('home');
             } else {
                 $this->session->set_flashdata('error', 'Email belum verifikasi atau tidak terdaftar');
+                redirect('home');
+            }
+        }
+    }
+
+    public function proses_ganti_password()
+    {
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
+
+        //Cek apakah user aktif
+        if ($user['is_active'] == 1) {
+            $token = base64_encode(random_bytes(32));
+            $user_token = [
+                'email' => $sessionUser,
+                'token' => $token,
+                'date_created' => time()
+            ];
+
+            $this->db->insert('user_token', $user_token);
+            $this->_sendEmail($token, 'ganti');
+
+            $this->session->set_flashdata('success', 'Silahkan cek email anda untuk ganti password');
+            if($user['role_id'] == 1){
+                redirect('admin');
+            } elseif($user['role_id'] == 3){
+                redirect('home');
+            }
+        } else {
+            $this->session->set_flashdata('error', 'Email belum verifikasi atau tidak terdaftar');
+            if($user['role_id'] == 1){
+                redirect('admin');
+            } elseif($user['role_id'] == 3){
                 redirect('home');
             }
         }

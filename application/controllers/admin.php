@@ -27,7 +27,7 @@ class admin extends CI_Controller
 
         if($data['user']){
             if($user['role_id'] == 1){
-                $this->load->view('admin/templates/header_admin', $data);
+                $this->load->view('admin/templates/header_home', $data);
                 $this->load->view('admin/index');
                 $this->load->view('admin/templates/footer_admin');
             } else{

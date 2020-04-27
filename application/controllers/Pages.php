@@ -36,82 +36,20 @@ class pages extends CI_Controller
         $this->load->view('User/footer/footer');
     }
 
-    /* public function __construct()
-    {
-        parent::__construct();
-        $this->load->library('form_validation');
-        $this->load->model('Event_model');
-        $this->load->model('Modul_model');
-        $this->load->model('Topik_model');
-        $this->load->model('User_model');
-        $this->load->model('Rule_topik_model');
-        $this->load->model('Soal_model');
-        $this->load->model('Kerjakan_model');
-        $this->load->model('Hasil_tes_model', 'hasil');
-    }
-
-    public function testimoni()
-    {
-        $data['judul'] = 'Try Out Online | Testimoni';
-        $sessionUser = $this->session->userdata('username');
-        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['testimoni'] = $this->Modul_model->getTestimoni();
-
-        $this->form_validation->set_rules('inputSubjek', 'InputSubjek', 'required|trim');
-        $this->form_validation->set_rules('inputPesan', 'InputPesan', 'required|trim');
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('User/templates/header_testimoni', $data);
-            $this->load->view('User/testimoni');
-            $this->load->view('User/templates/footer');
-        } else {
-            $nama = $this->input->post('name');
-            $email = $this->input->post('inputEmail');
-            $subjek = $this->input->post('inputSubjek');
-            $pesan = $this->input->post('inputPesan');
-            $tgl = time();
-            $image = $this->User_model->getImageUserByEmail($email);
-
-            $dataTestimoni = [
-                'nama_user' => $nama,
-                'email_user' => $email,
-                'subjek' => $subjek,
-                'pesan' => $pesan,
-                'date_create' => $tgl,
-                'image' => $image
-            ];
-
-            $this->db->insert('testimoni', $dataTestimoni);
-            redirect('User/testimoni');
-        }
-    }
-
-    public function contact()
-    {
-        $data['judul'] = 'Try Out Online | Contact';
-        $sessionUser = $this->session->userdata('username');
-        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-
-        $this->load->view('User/templates/header_contact', $data);
-        $this->load->view('User/contact');
-        $this->load->view('User/templates/footer');
-    }
-
     public function profil_saya()
     {
-        $data['judul'] = 'Try Out Online | Profil Saya';
-        $sessionUser = $this->session->userdata('username');
+        $data['judul'] = 'Amal Edukasi | Profil Saya';
+
+        $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-        $id_user = $this->User_model->getIdUserByUsername($sessionUser);
+        /* $id_user = $this->User_model->getIdUserByUsername($sessionUser);
         $data['transaksi'] = $this->db->get_where('transaksi_user', ['id_user' => $id_user])->result_array();
-        $data['modul'] = $this->Modul_model->getAllModul();
+        $data['modul'] = $this->Modul_model->getAllModul(); */
 
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('User/templates/header_profile', $data);
-            $this->load->view('User/profile_saya', $data);
-            $this->load->view('User/templates/footer');
+            $this->load->view('user/profil', $data);
         } else {
             $name = $this->input->post('name');
             $tentang = $this->input->post('tentang');
@@ -173,6 +111,67 @@ class pages extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-success col-md-10" style="margin-left: 8%;" role="alert"><strong>Perubahan profile berhasil disimpan</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect($this->uri->uri_string());
         }
+    }
+
+    /* public function __construct()
+    {
+        parent::__construct();
+        $this->load->library('form_validation');
+        $this->load->model('Event_model');
+        $this->load->model('Modul_model');
+        $this->load->model('Topik_model');
+        $this->load->model('User_model');
+        $this->load->model('Rule_topik_model');
+        $this->load->model('Soal_model');
+        $this->load->model('Kerjakan_model');
+        $this->load->model('Hasil_tes_model', 'hasil');
+    }
+
+    public function testimoni()
+    {
+        $data['judul'] = 'Try Out Online | Testimoni';
+        $sessionUser = $this->session->userdata('username');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $data['testimoni'] = $this->Modul_model->getTestimoni();
+
+        $this->form_validation->set_rules('inputSubjek', 'InputSubjek', 'required|trim');
+        $this->form_validation->set_rules('inputPesan', 'InputPesan', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('User/templates/header_testimoni', $data);
+            $this->load->view('User/testimoni');
+            $this->load->view('User/templates/footer');
+        } else {
+            $nama = $this->input->post('name');
+            $email = $this->input->post('inputEmail');
+            $subjek = $this->input->post('inputSubjek');
+            $pesan = $this->input->post('inputPesan');
+            $tgl = time();
+            $image = $this->User_model->getImageUserByEmail($email);
+
+            $dataTestimoni = [
+                'nama_user' => $nama,
+                'email_user' => $email,
+                'subjek' => $subjek,
+                'pesan' => $pesan,
+                'date_create' => $tgl,
+                'image' => $image
+            ];
+
+            $this->db->insert('testimoni', $dataTestimoni);
+            redirect('User/testimoni');
+        }
+    }
+
+    public function contact()
+    {
+        $data['judul'] = 'Try Out Online | Contact';
+        $sessionUser = $this->session->userdata('username');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+
+        $this->load->view('User/templates/header_contact', $data);
+        $this->load->view('User/contact');
+        $this->load->view('User/templates/footer');
     }
 
     public function topup()

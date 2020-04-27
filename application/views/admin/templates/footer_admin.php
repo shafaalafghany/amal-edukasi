@@ -64,6 +64,28 @@
     $(this).next('.custom-file-label').addClass("selected").html(fileName);
   });
 </script>
+
+<?php if($this->session->flashdata('success')){ ?>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Swal.fire({
+                icon: 'success',
+                title: 'Berhasil!!',
+                text: '<?= $this->session->flashdata('success') ?>'
+            })
+        });
+    </script>
+<?php } elseif($this->session->flashdata('error')) { ?>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: '<?= $this->session->flashdata('error') ?>'
+            })
+        });
+    </script>
+<?php } ?>
 </body>
 
 </html>
