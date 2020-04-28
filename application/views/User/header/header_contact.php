@@ -125,7 +125,7 @@
                                                 <p style="text-align: center;">
                                                 <span style="font-family: Crimson Text, serif;">Selamat Datang</span>
                                                 <br>
-                                                <span style="font-family: Crimson Text, serif; font-size: 20px;"><strong><?= $user['name']; ?></strong></span>
+                                                <span style="font-family: Crimson Text, serif; font-size: 20px; color: black;"><strong><?= $user['name']; ?></strong></span>
                                                 </p>
                                             </div>
                                             <div class="dropdown-divider"></div>

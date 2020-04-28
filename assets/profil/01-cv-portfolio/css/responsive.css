@@ -148,6 +148,15 @@
 		width: 100%;
 	}
 
+	.foto-profil {
+		display: block;
+	}
+
+	.img-profil {
+		width: 120px;
+		height: 120px;
+	}
+
 }
 
 /* Screens Resolution : 479px

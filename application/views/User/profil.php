@@ -61,138 +61,74 @@
 			</div><!-- row -->
 		</div><!-- container -->
 	</section><!-- intro-section -->
-	
-	<section class="portfolio-section section">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="heading">
-						<h3><b>Portfolio</b></h3>
-						<h6 class="font-lite-black"><b>MY WORK</b></h6>
-					</div>
-				</div><!-- col-sm-4 -->
-				<div class="col-sm-8">
-					<div class="portfolioFilter clearfix margin-b-80">
-						<a href="#" data-filter="*" class="current"><b>ALL</b></a>
-						<a href="#" data-filter=".web-design"><b>WEB DESIGN</b></a>
-						<a href="#" data-filter=".branding"><b>BRANDING</b></a>
-						<a href="#" data-filter=".graphic-design"><b>GRAPHIC DESIGN</b></a>
-					</div><!-- portfolioFilter -->
-				</div><!-- col-sm-8 -->
-			</div><!-- row -->
-		</div><!-- container -->
-		
-		<div class="portfolioContainer">
-			
-			<div class="p-item web-design">
-				<a href="images/portfolio-1-600x400.jpg" data-fluidbox>
-					<img src="<?= base_url('assets/profil/') ?>images/portfolio-1-600x400.jpg" alt=""></a>
-			</div><!-- p-item -->
-			
-			<div class="p-item branding graphic-design">
-				<a href="images/portfolio-7-600x800.jpg" data-fluidbox>
-					<img src="<?= base_url('assets/profil/') ?>images/portfolio-7-600x800.jpg" alt=""></a>
-			</div><!-- p-item -->
-			
-			<div class="p-item web-design">
-				<a href="images/portfolio-2-600x400.jpg" data-fluidbox>
-					<img src="<?= base_url('assets/profil/') ?>images/portfolio-2-600x400.jpg" alt=""></a>
-			</div><!-- p-item -->
-			
-			<div class="p-item p-item-2 graphic-design">
-				<a class="img" href="images/portfolio-8-300x400.jpg" data-fluidbox>
-					<img src="<?= base_url('assets/profil/') ?>images/portfolio-8-300x400.jpg" alt=""></a>
-				<a class="img" href="images/portfolio-9-300x400.jpg" data-fluidbox>
-					<img src="<?= base_url('assets/profil/') ?>images/portfolio-9-300x400.jpg" alt=""></a>
-			</div><!-- p-item -->
-			
-			<div class="p-item branding graphic-design">
-				<a href="images/portfolio-3-600x400.jpg" data-fluidbox>
-					<img src="<?= base_url('assets/profil/') ?>images/portfolio-3-600x400.jpg" alt=""></a>
-			</div><!-- p-item -->
-			
-			<div class="p-item graphic-design web-design">
-				<a href="images/portfolio-4-600x400.jpg" data-fluidbox>
-					<img src="<?= base_url('assets/profil/') ?>images/portfolio-4-600x400.jpg" alt=""></a>
-			</div><!-- p-item -->
-			
-			<div class="p-item  graphic-design branding">
-				<a href="images/portfolio-5-600x800.jpg" data-fluidbox>
-					<img src="<?= base_url('assets/profil/') ?>images/portfolio-5-600x800.jpg" alt=""></a>
-			</div><!-- p-item -->
-				
-			<div class="p-item web-design branding">
-				<a href="images/portfolio-6-600x800.jpg" data-fluidbox>
-					<img src="<?= base_url('assets/profil/') ?>images/portfolio-6-600x800.jpg" alt=""></a>
-			</div><!-- p-item -->
 
-			<div class="p-item p-item-2 graphic-design">
-				<a class="img" href="images/portfolio-10-300x400.jpg" data-fluidbox>
-					<img src="<?= base_url('assets/profil/') ?>images/portfolio-10-300x400.jpg" alt=""></a>
-				<a class="img" href="images/portfolio-11-300x400.jpg" data-fluidbox>
-					<img src="<?= base_url('assets/profil/') ?>images/portfolio-11-300x400.jpg" alt=""></a>
-			</div><!-- p-item -->
-		
-		</div><!-- portfolioContainer -->
-		
-	</section><!-- portfolio-section -->
-	
-	
-	<section class="about-section section">
+	<section class="about-section section" id="counter">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="heading">
-						<h3><b>About me</b></h3>
-						<h6 class="font-lite-black"><b>PROFESSIONAL PATH</b></h6>
+						<h3><b>Informasi</b></h3>
+						<h6 class="font-lite-black"><b>TRANSAKSI SAYA</b></h6>
 					</div>
 				</div><!-- col-sm-4 -->
 				<div class="col-sm-8">
-					<p class="margin-b-50">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque 
-					sit amet sodales. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-					Nulla maximus pellentes que velit, quis consequat nulla effi citur at. 
-					Maecenas sed massa tristique.Duis non volutpat arcu, eu mollis tellus. 
-					Sed finibus aliquam neque sit amet sodales. Lorem ipsum dolor sit amet, 
-					consectetur adipiscing elit. Lorem ipsum dolor sit amet, consectetur 
-					adipiscing elit. Nulla maximus pellentes que velit, quis consequat nulla 
-					effi citur at.Maecenas sed massa tristique.</p>
-					
 					<div class="row">
-						<div class="col-sm-6 col-md-6 col-lg-3">
+						<div class="col-sm-6 col-md-6 col-lg-4">
+							<div class="counter margin-b-30">
+								<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="3">0</span></b></h1>
+								<h5 class="desc"><b>Modul Dipelajari</b></h5>
+							</div><!-- counter -->
+						</div><!-- col-md-3-->
+
+						<div class="col-sm-6 col-md-6 col-lg-4">
+							<div class="counter margin-b-30">
+								<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="10">0</span></b></h1>
+								<h5 class="desc"><b>Kode Didapat</b></h5>
+							</div><!-- counter -->
+						</div><!-- col-md-3-->
+
+						<div class="col-sm-6 col-md-6 col-lg-4">
+							<div class="counter margin-b-30">
+								<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="5">0</span></b></h1>
+								<h5 class="desc"><b>Try Out Diikuti</b></h5>
+							</div><!-- counter -->
+						</div><!-- col-md-3-->
+
+						<!-- <div class="col-sm-6 col-md-6 col-lg-3">
 							<div class="radial-prog-area margin-b-30">
 								<div class="radial-progress" data-prog-percent=".97">
 									<div></div>
 									<h6 class="progress-title">HTML5 & CSS3</h6>
 								</div>
-							</div><!-- radial-prog-area-->
-						</div><!-- col-sm-6-->
+							</div> --><!-- radial-prog-area-->
+						<!-- </div> --><!-- col-sm-6-->
 					
-						<div class="col-sm-6 col-md-6 col-lg-3">
+						<!-- <div class="col-sm-6 col-md-6 col-lg-3">
 							<div class="radial-prog-area margin-b-30">
 								<div class="radial-progress" data-prog-percent=".78">
 									<div></div>
 									<h6 class="progress-title">WEB DESIGN</h6>
 								</div>
-							</div><!-- radial-prog-area-->
-						</div><!-- col-sm-6-->
+							</div> --><!-- radial-prog-area-->
+						<!-- </div> --><!-- col-sm-6-->
 						
-						<div class="col-sm-6 col-md-6 col-lg-3">
+						<!-- <div class="col-sm-6 col-md-6 col-lg-3">
 							<div class="radial-prog-area margin-b-30">
 								<div class="radial-progress" data-prog-percent=".67">
 									<div></div>
 									<h6 class="progress-title">JAVA</h6>
 								</div>
-							</div><!-- radial-prog-area-->
-						</div><!-- col-sm-6-->
+							</div> --><!-- radial-prog-area-->
+						<!-- </div> --><!-- col-sm-6-->
 						
-						<div class="col-sm-6 col-md-6 col-lg-3">
+						<!-- <div class="col-sm-6 col-md-6 col-lg-3">
 							<div class="radial-prog-area margin-b-50">
 								<div class="radial-progress" data-prog-percent=".97">
 									<div></div>
 									<h6 class="progress-title">PHP</h6>
 								</div>
-							</div><!-- radial-prog-area-->
-						</div><!-- col-sm-6-->
+							</div> --><!-- radial-prog-area-->
+						<!-- </div> --><!-- col-sm-6-->
 					
 					</div><!-- row -->
 				</div><!-- col-sm-8 -->
@@ -200,7 +136,132 @@
 		</div><!-- container -->
 	</section><!-- about-section -->
 	
-	<section class="experience-section section">
+	<section class="portfolio-section section">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="heading">
+						<h3><b>Pengaturan</b></h3>
+						<h6 class="font-lite-black"><b>PENGATURAN AKUN</b></h6>
+					</div>
+				</div><!-- col-sm-4 -->
+				<div class="col-sm-8">
+					<div class="portfolioFilter clearfix margin-b-80">
+						<a href="#" data-filter=".info-akun" class="current"><b>INFO AKUN</b></a>
+						<a href="#" data-filter=".edit-akun"><b>EDIT PROFIL</b></a>
+						<a href="#" data-filter=".ganti-password"><b>GANTI PASSWORD</b></a>
+					</div><!-- portfolioFilter -->
+				</div><!-- col-sm-8 -->
+			</div><!-- row -->
+		</div><!-- container -->
+		
+		<div class="portfolioContainer" style="margin-bottom: 10%;">
+			
+			<div class="p-item info-akun">
+				<div class="form-group">
+					<label>Nama</label>
+					<input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>" readonly>
+				</div>
+				<div class="form-group">
+					<label>Email</label>
+					<input type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>" readonly>
+				</div>
+				<div class="form-group">
+					<label>No.HP</label>
+					<input type="number" class="form-control" id="telepon" name="telepon" value="<?= $user['telepon']; ?>" readonly>
+				</div>
+				<div class="form-group">
+					<label>Tanggal Bergabung</label>
+					<input type="text" class="form-control" id="telepon" name="telepon" value="<?= $user['date_created']; ?>" readonly>
+				</div>
+				<div class="form-group">
+					<label>Level Pengguna</label>
+					<?php if ($user['role_id'] == 3){ ?>
+						<input type="text" class="form-control" id="email" name="email" value="Peserta" readonly>
+					<?php } ?>
+				</div>
+				<div class="form-group">
+					<label>Riwayat Pendidikan</label>
+					<textarea cols="5" rows="4" class="form-control" id="pendidikan" name="pendidikan" readonly><?= $user['riwayat_pendidikan']; ?></textarea>
+				</div>
+				<div class="form-group">
+					<label>Tempat Tinggal</label>
+					<textarea cols="5" rows="4" class="form-control" id="pendidikan" name="pendidikan" readonly><?= $user['lokasi']; ?></textarea>
+				</div>
+				<div class="form-group">
+					<label>Quotes Terbaik Saya</label>
+					<textarea cols="5" rows="4" class="form-control" id="pendidikan" name="pendidikan" readonly><?= $user['quotes']; ?></textarea>
+				</div>
+			</div><!-- p-item -->
+			
+			<div class="p-item edit-akun">
+				<?= form_open_multipart('User/profile_saya'); ?>
+                <!-- <form action=" //base_url('User/profile_saya'); " method="POST" enctype="multipart/form-data"> -->
+					<div class="form-group">
+						<label>Foto Diri</label>
+						<br>
+						<div class="foto-profil">
+							<img class="img-profil" src="<?= base_url('assets/avatar/') . $user['image']; ?>" style="margin-right: 40px;">
+							<div style="display: all; margin-top: 4%">
+							<label>Foto Profile sebaiknya memiliki rasio 1:1 dan tidak lebih dari 2MB.</label>
+							<br>
+							<input type="file" id="image" name="image" accept="image/*">
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label>Nama <span style="color: red">*</span></label>
+						<input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>">
+					</div>
+					<div class="form-group">
+						<label>Email <span style="color: red">*</span></label>
+						<input type="text" class="form-control" id="email" name="email" value="<?= $user['email']; ?>" readonly>
+					</div>
+					<div class="form-group">
+						<label>No. HP <span style="color: red">*</span></label>
+						<input type="number" class="form-control" id="telepon" name="telepon" value="<?= $user['telepon']; ?>">
+					</div>
+					<div class="form-group">
+						<label>Riwayat Pendidikan</label>
+						<textarea cols="5" rows="4" class="form-control" id="pendidikan" name="pendidikan"><?= $user['riwayat_pendidikan']; ?></textarea>
+					</div>
+					<div class="form-group">
+						<label>Tempat Tinggal</label>
+						<textarea cols="5" rows="4" class="form-control" id="pendidikan" name="pendidikan"><?= $user['lokasi']; ?></textarea>
+					</div>
+					<div class="form-group">
+						<label>Quotes Terbaik Saya</label>
+						<textarea cols="5" rows="4" class="form-control" id="pendidikan" name="pendidikan"><?= $user['quotes']; ?></textarea>
+					</div>
+					<div class="form-group">
+						<label style="color: red">Catatan: Form yang bertanda bintang (*) berarti wajib diisi</label>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary py-2 px-4">Simpan Perubahan</button>
+					</div>
+                </form>
+			</div><!-- p-item -->
+			
+			<div class="p-item ganti-password">
+				<?= form_open_multipart('User/profile_saya'); ?>
+                <!-- <form action=" //base_url('User/profile_saya'); " method="POST" enctype="multipart/form-data"> -->
+					<div class="form-group">
+						<label><strong>Kamu ingin ganti password?</strong></label>
+						<br>
+						<label>Untuk ganti password, kami harus mengirim konfirmasi ke email aktif kamu yaitu <?= $user['email'] ?>.
+						 Jika kamu yakin ingin ganti password silahkan klik tombol Kirim Email dibawah dan cek email kamu</label>
+					</div>
+					<div class="form-group">
+					<button type="submit" class="btn btn-primary py-2 px-4">Kirim Email</button>
+					</div>
+                </form>
+			</div><!-- p-item -->
+		
+		</div><!-- portfolioContainer -->
+		
+	</section><!-- portfolio-section -->
+	
+	<!-- <section class="experience-section section">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-4">
@@ -208,8 +269,8 @@
 						<h3><b>Work Experience</b></h3>
 						<h6 class="font-lite-black"><b>PREVIOUS JOBS</b></h6>
 					</div>
-				</div><!-- col-sm-4 -->
-				<div class="col-sm-8">
+				</div> --><!-- col-sm-4 -->
+				<!-- <div class="col-sm-8">
 				
 					<div class="experience margin-b-50">
 						<h4><b>JUNIOR PROJECT MANAGER</b></h4>
@@ -224,9 +285,9 @@
 							<li>Quis consequat nulla effi citur at.</li>
 							<li>Sed finibus aliquam neque sit.</li>
 						</ul>
-					</div><!-- experience -->
+					</div> --><!-- experience -->
 					
-					<div class="experience margin-b-50">
+					<!-- <div class="experience margin-b-50">
 						<h4><b>WEB MASTER/WEB DEVELOPER</b></h4>
 						<h5 class="font-yellow"><b>DESIGN & WEB STUDIO</b></h5>
 						<h6 class="margin-t-10">APRIL 2014 - FEBRUARY 2015</h6>
@@ -239,101 +300,18 @@
 							<li>Quis consequat nulla effi citur at.</li>
 							<li>Sed finibus aliquam neque sit.</li>
 						</ul>
-					</div><!-- experience -->
+					</div> --><!-- experience -->
 					
-				</div><!-- col-sm-8 -->
-			</div><!-- row -->
-		</div><!-- container -->
+				<!-- </div> --><!-- col-sm-8 -->
+			<!-- </div> --><!-- row -->
+		<!-- </div> --><!-- container -->
 		
-	</section><!-- experience-section -->
-	
-	<section class="education-section section">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="heading">
-						<h3><b>Education</b></h3>
-						<h6 class="font-lite-black"><b>ACADEMIC CAREER</b></h6>
-					</div>
-				</div><!-- col-sm-4 -->
-				<div class="col-sm-8">
-					<div class="education-wrapper">
-						<div class="education margin-b-50">
-							<h4><b>MASTER DEGREE IN SCIENCE</b></h4>
-							<h5 class="font-yellow"><b>UCLA - SCIENCE AND ENGINEERING</b></h5>
-							<h6 class="font-lite-black margin-t-10">GRADUATED IN MAY 2010(2 YEARS)</h6>
-							<p class="margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sodales. 
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus pellentes que velit, 
-							quis consequat nulla effi citur at. Maecenas sed massa tristique.Duis non volutpat arcu, 
-							eu mollis tellus. Sed finibus aliquam neque sit amet sodales. </p>
-						</div><!-- education -->
-						
-						<div class="education margin-b-50">
-							<h4><b>COURSE ON COMPUTER SCIENCE</b></h4>
-							<h5 class="font-yellow"><b>NEW YORK PUBLIC UNIVERSITY</b></h5>
-							<h6 class="font-lite-black margin-t-10">GRADUATED IN MAY 2009(6 MONTHS)</h6>
-							<p class="margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sodales. 
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus pellentes que velit, 
-							quis consequat nulla effi citur at. Maecenas sed massa tristique.Duis non volutpat arcu, 
-							eu mollis tellus. Sed finibus aliquam neque sit amet sodales. </p>
-						</div><!-- education -->
-						
-						<div class="education margin-b-50">
-							<h4><b>GRADUATED VALEDICTERIAN</b></h4>
-							<h5 class="font-yellow"><b>PUBLIC COLLEGE</b></h5>
-							<h6 class="font-lite-black margin-t-10">GRADUATED IN MAY 2008(4 YEARS)</h6>
-							<p class="margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sodales. 
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus pellentes que velit, 
-							quis consequat nulla effi citur at. Maecenas sed massa tristique.Duis non volutpat arcu, 
-							eu mollis tellus. Sed finibus aliquam neque sit amet sodales. </p>
-						</div><!-- education -->
-					</div><!-- education-wrapper -->
-				</div><!-- col-sm-8 -->
-			</div><!-- row -->
-		</div><!-- container -->
-		
-	</section><!-- about-section -->
-	
-	<section class="counter-section" id="counter">
-		<div class="container">
-			<div class="row">
-			
-				<div class="col-sm-6 col-md-6 col-lg-3">
-					<div class="counter margin-b-30">
-						<h1 class="title"><b><span class="counter-value" data-duration="400" data-count="3">0</span></b></h1>
-						<h5 class="desc"><b>Coder Degrees</b></h5>
-					</div><!-- counter -->
-				</div><!-- col-md-3-->
-				
-				<div class="col-sm-6 col-md-6 col-lg-3">
-					<div class="counter margin-b-30">
-						<h1 class="title"><b><span class="counter-value" data-duration="1400" data-count="25">0</span></b></h1>
-						<h5 class="desc"><b>Project Completed</b></h5>
-					</div><!-- counter -->
-				</div><!-- col-md-3-->
-				
-				<div class="col-sm-6 col-md-6 col-lg-3">
-					<div class="counter margin-b-30">
-						<h1 class="title"><b><span class="counter-value" data-duration="700" data-count="311">0</span></b></h1>
-						<h5 class="desc"><b>Satisfied Clients</b></h5>
-					</div><!-- counter -->
-				</div><!-- col-md-3-->
-				
-				<div class="col-sm-6 col-md-6 col-lg-3">
-					<div class="counter margin-b-30">
-						<h1 class="title"><b><span class="counter-value" data-duration="2000" data-count="732">0</span></b></h1>
-						<h5 class="desc"><b>Finished Projects</b></h5>
-					</div><!-- margin-b-30 -->
-				</div><!-- col-md-3-->
-				
-			</div><!-- row-->
-		</div><!-- container-->
-    </section><!-- counter-section-->
+	<!-- </section> --><!-- experience-section -->
 	
 	<footer>
 		<p class="copyright">
 			<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ion-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <a href="https://sobatkode.com" target="_blank">Sobat Kode</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 		</p>
 
