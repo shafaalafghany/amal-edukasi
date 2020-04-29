@@ -240,7 +240,7 @@
 			</div><!-- p-item -->
 
 			<div class="p-item ganti-password">
-				<?= form_open_multipart('pages/tes'); ?>
+				<?= form_open_multipart('pages/lupa_password'); ?>
 				<!-- <form action=" //base_url('User/profile_saya'); " method="POST" enctype="multipart/form-data"> -->
 				<div class="form-group">
 					<label><strong>Kamu ingin ganti password?</strong></label>
