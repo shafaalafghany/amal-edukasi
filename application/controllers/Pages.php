@@ -172,7 +172,7 @@ class pages extends CI_Controller
         $this->email->to($emailUser);
 
         $this->email->subject('Ganti Password Akun Amal Edukasi');
-        $this->email->message('<h3>Halo ' . $namaUserLupa . '</h3> <br> Silahkan klik link dibawah ini untuk mengganti password akun anda: <br><a href="' . base_url() . 'pages/ganti_password?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Ganti Password</a>');
+        $this->email->message('<h3>Halo ' . $namaUserLupa . '</h3> <br> Silahkan klik link dibawah ini untuk mengganti password akun anda: <br><a href="' . base_url() . 'pages/ganti_password?email=' . $emailUser . '&token=' . urlencode($token) . '">Ganti Password</a>');
 
         if ($this->email->send()) {
             return true;
