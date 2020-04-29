@@ -175,9 +175,6 @@ class auth extends CI_Controller
         } else if ($type == 'forgot') {
             $this->email->subject('Reset Password');
             $this->email->message('<h3>Halo ' . $namaUserLupa . '</h3> <br> Silahkan klik link dibawah ini untuk merubah password akun anda: <br><a href="' . base_url() . 'auth/ganti_password?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
-        } else if ($type == 'ganti') {
-            $this->email->subject('Ganti Password');
-            $this->email->message('<h3>Halo ' . $namaUserLupa . '</h3> <br> Silahkan klik link dibawah ini untuk mengganti password akun anda: <br><a href="' . base_url() . 'auth/ganti_password?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Ganti Password</a>');
         }
 
         if ($this->email->send()) {
@@ -280,16 +277,16 @@ class auth extends CI_Controller
             $this->_sendEmail($token, 'ganti');
 
             $this->session->set_flashdata('success', 'Silahkan cek email anda untuk ganti password');
-            if($user['role_id'] == 1){
+            if ($user['role_id'] == 1) {
                 redirect('admin');
-            } elseif($user['role_id'] == 3){
+            } elseif ($user['role_id'] == 3) {
                 redirect('home');
             }
         } else {
             $this->session->set_flashdata('error', 'Email belum verifikasi atau tidak terdaftar');
-            if($user['role_id'] == 1){
+            if ($user['role_id'] == 1) {
                 redirect('admin');
-            } elseif($user['role_id'] == 3){
+            } elseif ($user['role_id'] == 3) {
                 redirect('home');
             }
         }
