@@ -69,7 +69,7 @@
             </div>
             <div class="dropdown-divider"></div>
             <div class="dropdown-item dropdown-footer">
-              <a href="<?= base_url('admin/profil_admin') ?>" class="btn btn-primary">Profile Saya</a>
+              <a href="<?= base_url('pages/profil_saya') ?>" class="btn btn-primary">Profile Saya</a>
               <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger right logout">Log out</a>
             </div>
           </div>
@@ -87,19 +87,6 @@
           <div class="image">
             <img src="<?= base_url('assets/user/') ?>img/logo.png" class="elevation-2" alt="User Image" style="height: 50%; width: 100%;">
           </div>
-          <!-- <div class="info">
-            <a href="<?= base_url() ?>admin" class="d-block">AMAL EDUKASI - ADMIN</a>
-            <?php if ($user['role_id'] == 1) { ?>
-              <a href="<?= base_url() ?>Administrator" class="d-block">AORTASTAN - SPR ADMIN</a>
-            <?php } 
-            elseif ($user['role_id'] == 3) {
-              redirect('User/');
-            } 
-            else { ?>
-              <a href="<?= base_url() ?>Administrator" class="d-block">AORTASTAN - ADMIN</a>
-            <?php } ?>
-
-          </div> -->
         </div>
 
         <!-- Sidebar Menu -->
@@ -125,13 +112,13 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?= base_url('Administrator/') ?>daftar_modul" class="nav-link">
+                  <a href="<?= base_url('admin_modul/daftar_modul') ?>" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Daftar Modul</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="<?= base_url('Administrator/') ?>tambah_modul" class="nav-link">
+                  <a href="<?= base_url('admin_modul/tambah_modul') ?>" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Tambah Modul</p>
                   </a>
@@ -261,7 +248,7 @@
             </li>
             <li class="nav-header">AKUN</li>
             <li class="nav-item has-treeview">
-              <a href="<?= base_url() ?>admin/profil_admin" class="nav-link">
+              <a href="<?= base_url('pages/profil_saya') ?>" class="nav-link">
                 <i class="nav-icon far fa-edit"></i>
                 <p>
                   Profile Saya

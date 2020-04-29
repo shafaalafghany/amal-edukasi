@@ -49,7 +49,12 @@ class pages extends CI_Controller
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('user/profil', $data);
+            if($data['user']){
+                $this->load->view('user/profil', $data);
+            } else{
+                $this->session->set_flashdata('error', 'Maaf kamu belum login! Silahkan login dulu.');
+                redirect('home');
+            }
         } else {
             $name = $this->input->post('name');
             $tentang = $this->input->post('tentang');

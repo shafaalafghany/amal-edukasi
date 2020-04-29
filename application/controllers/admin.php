@@ -31,9 +31,11 @@ class admin extends CI_Controller
                 $this->load->view('admin/index');
                 $this->load->view('admin/templates/footer_admin');
             } else{
+                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
                 redirect('home');
             }
         } else{
+            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
             redirect('home');
         }
     }

@@ -29,7 +29,11 @@
 	
 	<header>
 		<div class="container">
-			<a class="downlad-btn" href="<?= base_url(); ?>">Kembali ke home</a>
+			<?php if($user['role_id'] == 3){ ?>
+				<a class="downlad-btn" href="<?= base_url(); ?>">Kembali ke home</a>
+			<?php } else{ ?>
+				<a class="downlad-btn" href="<?= base_url('admin'); ?>">Kembali ke admin</a>
+			<?php } ?>
 		</div><!-- container -->
 	</header>
 	
@@ -51,11 +55,23 @@
 								echo 'Tidak Aktif';
 							} ?></li>
 						</ul>
-						<ul class="social-icons">
+						<?php if ($user['quotes']){ ?>
+							<ul class="social-icons">
+								<h4 style="margin-bottom: -20px;"><b>Quotes Of The Day</b></h4><br>
+								<h4 style="color: blue;"><?= $user['quotes'] ?></h4>
+							</ul>
+						<?php } else { ?>
+							<ul class="social-icons">
+								<h4 style="margin-bottom: -20px;"><b>Quotes Of The Day</b></h4><br>
+								<li class="font-yellow">Belum ada quotes darimu.</li>
+								<li>Yuk berikan quotes terbaik kamu agar tetap semangat setiap hari!!</li>
+							</ul>
+						<?php } ?>
+						<!-- <ul class="social-icons">
 							<li><a href="#"><i class="ion-social-instagram"></i></a></li>
 							<li><a href="#"><i class="ion-social-facebook"></i></a></li>
 							<li><a href="#"><i class="ion-social-twitter"></i></a></li>
-						</ul>
+						</ul> -->
 					</div><!-- intro -->
 				</div><!-- col-sm-8 -->
 			</div><!-- row -->
@@ -68,67 +84,44 @@
 				<div class="col-sm-4">
 					<div class="heading">
 						<h3><b>Informasi</b></h3>
-						<h6 class="font-lite-black"><b>TRANSAKSI SAYA</b></h6>
+						<?php if($user['role_id'] == 3){ ?>
+							<h6 class="font-lite-black"><b>TRANSAKSI SAYA</b></h6>
+						<?php } else{ ?>
+							<h6 class="font-lite-black"><b>INFORMASI UMUM</b></h6>
+						<?php } ?>
 					</div>
 				</div><!-- col-sm-4 -->
 				<div class="col-sm-8">
 					<div class="row">
-						<div class="col-sm-6 col-md-6 col-lg-4">
-							<div class="counter margin-b-30">
-								<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="3">0</span></b></h1>
-								<h5 class="desc"><b>Modul Dipelajari</b></h5>
-							</div><!-- counter -->
-						</div><!-- col-md-3-->
+						<?php if($user['role_id'] == 3){ ?>
+							<div class="col-sm-6 col-md-6 col-lg-4">
+								<div class="counter margin-b-30">
+									<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="3">0</span></b></h1>
+									<h5 class="desc"><b>Modul Dipelajari</b></h5>
+								</div><!-- counter -->
+							</div><!-- col-md-3-->
 
-						<div class="col-sm-6 col-md-6 col-lg-4">
-							<div class="counter margin-b-30">
-								<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="10">0</span></b></h1>
-								<h5 class="desc"><b>Kode Didapat</b></h5>
-							</div><!-- counter -->
-						</div><!-- col-md-3-->
+							<div class="col-sm-6 col-md-6 col-lg-4">
+								<div class="counter margin-b-30">
+									<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="10">0</span></b></h1>
+									<h5 class="desc"><b>Kode Didapat</b></h5>
+								</div><!-- counter -->
+							</div><!-- col-md-3-->
 
-						<div class="col-sm-6 col-md-6 col-lg-4">
-							<div class="counter margin-b-30">
-								<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="5">0</span></b></h1>
-								<h5 class="desc"><b>Try Out Diikuti</b></h5>
-							</div><!-- counter -->
-						</div><!-- col-md-3-->
-
-						<!-- <div class="col-sm-6 col-md-6 col-lg-3">
-							<div class="radial-prog-area margin-b-30">
-								<div class="radial-progress" data-prog-percent=".97">
-									<div></div>
-									<h6 class="progress-title">HTML5 & CSS3</h6>
-								</div>
-							</div> --><!-- radial-prog-area-->
-						<!-- </div> --><!-- col-sm-6-->
-					
-						<!-- <div class="col-sm-6 col-md-6 col-lg-3">
-							<div class="radial-prog-area margin-b-30">
-								<div class="radial-progress" data-prog-percent=".78">
-									<div></div>
-									<h6 class="progress-title">WEB DESIGN</h6>
-								</div>
-							</div> --><!-- radial-prog-area-->
-						<!-- </div> --><!-- col-sm-6-->
-						
-						<!-- <div class="col-sm-6 col-md-6 col-lg-3">
-							<div class="radial-prog-area margin-b-30">
-								<div class="radial-progress" data-prog-percent=".67">
-									<div></div>
-									<h6 class="progress-title">JAVA</h6>
-								</div>
-							</div> --><!-- radial-prog-area-->
-						<!-- </div> --><!-- col-sm-6-->
-						
-						<!-- <div class="col-sm-6 col-md-6 col-lg-3">
-							<div class="radial-prog-area margin-b-50">
-								<div class="radial-progress" data-prog-percent=".97">
-									<div></div>
-									<h6 class="progress-title">PHP</h6>
-								</div>
-							</div> --><!-- radial-prog-area-->
-						<!-- </div> --><!-- col-sm-6-->
+							<div class="col-sm-6 col-md-6 col-lg-4">
+								<div class="counter margin-b-30">
+									<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="5">0</span></b></h1>
+									<h5 class="desc"><b>Try Out Diikuti</b></h5>
+								</div><!-- counter -->
+							</div><!-- col-md-3-->
+						<?php } else{ ?>
+							<div class="counter margin-b-30" style="border-color: yellow">
+								<h4>
+									Anda adalah <b>Administrator</b> yang memiliki kuasa untuk mengatur sistem tryout Amal Edukasi ini, anda dapat menambah modul, menambah admin,
+									menambah event, dan backup database.
+								</h4>
+							</div>
+						<?php } ?>
 					
 					</div><!-- row -->
 				</div><!-- col-sm-8 -->
@@ -178,6 +171,8 @@
 					<label>Level Pengguna</label>
 					<?php if ($user['role_id'] == 3){ ?>
 						<input type="text" class="form-control" id="email" name="email" value="Peserta" readonly>
+					<?php } else{ ?>
+						<input type="text" class="form-control" id="email" name="email" value="Administrator" readonly>
 					<?php } ?>
 				</div>
 				<div class="form-group">
@@ -260,53 +255,6 @@
 		</div><!-- portfolioContainer -->
 		
 	</section><!-- portfolio-section -->
-	
-	<!-- <section class="experience-section section">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-4">
-					<div class="heading">
-						<h3><b>Work Experience</b></h3>
-						<h6 class="font-lite-black"><b>PREVIOUS JOBS</b></h6>
-					</div>
-				</div> --><!-- col-sm-4 -->
-				<!-- <div class="col-sm-8">
-				
-					<div class="experience margin-b-50">
-						<h4><b>JUNIOR PROJECT MANAGER</b></h4>
-						<h5 class="font-yellow"><b>DESIGN STUDIO</b></h5>
-						<h6 class="margin-t-10">MARCH 2015 - PRESENT</h6>
-						<p class="font-semi-white margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sodales. 
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus pellentes que velit, 
-							quis consequat nulla effi citur at. Maecenas sed massa tristique.Duis non volutpat arcu, 
-							eu mollis tellus. Sed finibus aliquam neque sit amet sodales. </p>
-						<ul class="list margin-b-30">
-							<li>Duis non volutpat arcu, eu mollis tellus.</li>
-							<li>Quis consequat nulla effi citur at.</li>
-							<li>Sed finibus aliquam neque sit.</li>
-						</ul>
-					</div> --><!-- experience -->
-					
-					<!-- <div class="experience margin-b-50">
-						<h4><b>WEB MASTER/WEB DEVELOPER</b></h4>
-						<h5 class="font-yellow"><b>DESIGN & WEB STUDIO</b></h5>
-						<h6 class="margin-t-10">APRIL 2014 - FEBRUARY 2015</h6>
-						<p class="font-semi-white margin-tb-30">Duis non volutpat arcu, eu mollis tellus. Sed finibus aliquam neque sit amet sodales. 
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla maximus pellentes que velit, 
-							quis consequat nulla effi citur at. Maecenas sed massa tristique.Duis non volutpat arcu, 
-							eu mollis tellus. Sed finibus aliquam neque sit amet sodales. </p>
-						<ul class="list margin-b-30">
-							<li>Duis non volutpat arcu, eu mollis tellus.</li>
-							<li>Quis consequat nulla effi citur at.</li>
-							<li>Sed finibus aliquam neque sit.</li>
-						</ul>
-					</div> --><!-- experience -->
-					
-				<!-- </div> --><!-- col-sm-8 -->
-			<!-- </div> --><!-- row -->
-		<!-- </div> --><!-- container -->
-		
-	<!-- </section> --><!-- experience-section -->
 	
 	<footer>
 		<p class="copyright">

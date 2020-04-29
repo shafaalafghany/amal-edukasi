@@ -16,21 +16,21 @@ class admin_modul extends CI_Controller
         $this->load->model('Jawaban_model');
     }
 
-    public function index()
+    public function daftar_modul()
     {
-        $sessionUser = $this->session->userdata('username');
+        $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $data['modul'] = $this->Modul_model->getAllModul();
 
         $data['judul'] = 'Amal Edukasi | Daftar Modul';
-        $this->load->view('Super_Admin/templates/header_admin', $data);
-        $this->load->view('Super_Admin/modul/daftar_modul');
+        $this->load->view('admin/templates/header_modul', $data);
+        $this->load->view('admin/modul/daftar_modul');
     }
 
     public function tambah_modul()
     {
         $data['judul'] = 'AORTASTAN Try Out Online | Tambah Modul';
-        $sessionUser = $this->session->userdata('username');
+        $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $data['topik'] = $this->Topik_model->getAllTopik();
 
@@ -39,8 +39,8 @@ class admin_modul extends CI_Controller
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('Super_Admin/templates/header_admin', $data);
-            $this->load->view('Super_Admin/modul/tambah_modul', $data);
+            $this->load->view('admin/templates/header_modul', $data);
+            $this->load->view('admin/modul/tambah_modul', $data);
         } else {
             $judul = $this->input->post('judul');
             $jenisModul = $this->input->post('jenisModul');
