@@ -192,7 +192,7 @@
 			</div><!-- p-item -->
 
 			<div class="p-item edit-akun">
-				<?= form_open_multipart('User/profile_saya'); ?>
+				<?= form_open_multipart('pages/profil_saya'); ?>
 				<!-- <form action=" //base_url('User/profile_saya'); " method="POST" enctype="multipart/form-data"> -->
 				<div class="form-group">
 					<label>Foto Diri</label>
@@ -224,11 +224,11 @@
 				</div>
 				<div class="form-group">
 					<label>Tempat Tinggal</label>
-					<textarea cols="5" rows="4" class="form-control" id="pendidikan" name="pendidikan"><?= $user['lokasi']; ?></textarea>
+					<textarea cols="5" rows="4" class="form-control" id="lokasi" name="lokasi"><?= $user['lokasi']; ?></textarea>
 				</div>
 				<div class="form-group">
 					<label>Quotes Terbaik Saya</label>
-					<textarea cols="5" rows="4" class="form-control" id="pendidikan" name="pendidikan"><?= $user['quotes']; ?></textarea>
+					<textarea cols="5" rows="4" class="form-control" id="quotes" name="quotes"><?= $user['quotes']; ?></textarea>
 				</div>
 				<div class="form-group">
 					<label style="color: red">Catatan: Form yang bertanda bintang (*) berarti wajib diisi</label>
@@ -272,7 +272,8 @@
 
 
 	<!-- SCIPTS -->
-
+	<script src="<?= base_url('assets/user/'); ?>js/sweetalert2.all.min.js"></script>
+	
 	<script src="<?= base_url('assets/profil/') ?>common-js/jquery-3.2.1.min.js"></script>
 
 	<script src="<?= base_url('assets/profil/') ?>common-js/tether.min.js"></script>
@@ -288,6 +289,28 @@
 	<script src="<?= base_url('assets/profil/') ?>common-js/jquery.fluidbox.min.js"></script>
 
 	<script src="<?= base_url('assets/profil/') ?>common-js/scripts.js"></script>
+
+	<?php if($this->session->flashdata('success')){ ?>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				Swal.fire({
+					icon: 'success',
+					title: 'Berhasil!!',
+					text: '<?= $this->session->flashdata('success') ?>'
+				})
+			});
+		</script>
+	<?php } elseif($this->session->flashdata('error')) { ?>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				Swal.fire({
+					icon: 'error',
+					title: 'Oops...',
+					text: '<?= $this->session->flashdata('error') ?>'
+				})
+			});
+		</script>
+	<?php } ?>
 
 </body>
 

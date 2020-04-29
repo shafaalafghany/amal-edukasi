@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Tambah Modul</h1>
+            <h1>Tambah Modul Pembelajaran</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -20,7 +20,7 @@
             
           <div class="card card-primary">
             <div class="card-header">
-              <h3 class="card-title">Formulir Modul</h3>
+              <h3 class="card-title">Formulir Modul Pembelajaran</h3>
 
               <div class="card-tools">
                 <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
@@ -31,7 +31,7 @@
             <div class="card-body">
               <?= form_open_multipart('Administrator/tambah_modul'); ?>
               <div class="form-group">
-                <label for="judul">Judul Modul</label>
+                <label for="judul">Judul Modul Pembelajaran</label>
                 <input type="text" id="judul" name="judul" class="form-control">
               </div>
               <div class="form-group">

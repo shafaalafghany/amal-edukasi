@@ -19,11 +19,23 @@ class admin_peserta extends CI_Controller
     public function index()
     {
         $data['judul'] = 'Amal Edukasi | Daftar Peserta';
-        $sessionUser = $this->session->userdata('username');
+        $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
         $data['member'] = $this->User_model->getAllUser();
-        $this->load->view('Super_Admin/templates/header_admin', $data);
-        $this->load->view('Super_Admin/peserta/daftar_peserta', $data);
+
+        if($data['user']){
+            if($user['role_id'] == 1){
+                $this->load->view('header/header_admin', $data);
+                $this->load->view('admin/peserta/daftar_peserta', $data);
+            } else{
+                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                redirect('home');
+            }
+        } else{
+            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+            redirect('home');
+        }
     }
 
     public function hapus_peserta($id)
@@ -38,8 +50,19 @@ class admin_peserta extends CI_Controller
         $sessionUser = $this->session->userdata('username');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $data['member'] = $this->User_model->getUserById($id);
-        $this->load->view('Super_Admin/templates/header_admin', $data);
-        $this->load->view('Super_Admin/peserta/view_peserta', $data);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
+        if($data['user']){
+            if($user['role_id'] == 1){
+                $this->load->view('header/header_admin', $data);
+                $this->load->view('admin/peserta/view_peserta', $data);
+            } else{
+                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                redirect('home');
+            }
+        } else{
+            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+            redirect('home');
+        }
     }
 
     public function tambah_point($id)
@@ -48,8 +71,19 @@ class admin_peserta extends CI_Controller
         $sessionUser = $this->session->userdata('username');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $data['member'] = $this->User_model->getUserById($id);
-        $this->load->view('Super_Admin/templates/header_admin', $data);
-        $this->load->view('Super_Admin/peserta/tambah_point', $data);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
+        if($data['user']){
+            if($user['role_id'] == 1){
+                $this->load->view('header/header_admin', $data);
+                $this->load->view('admin/peserta/tambah_point', $data);
+            } else{
+                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                redirect('home');
+            }
+        } else{
+            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+            redirect('home');
+        }
     }
 
     public function point($id)
@@ -58,14 +92,25 @@ class admin_peserta extends CI_Controller
         $sessionUser = $this->session->userdata('username');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $data['member'] = $this->User_model->getUserById($id);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
 
         $this->form_validation->set_rules('inputPoint', 'InputPoint', 'required|trim', [
             'required' => 'Mohon masukkan point untuk tambah point!'
         ]);
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('Super_Admin/templates/header_admin', $data);
-            $this->load->view('Super_Admin/peserta/tambah_point');
+            if($data['user']){
+                if($user['role_id'] == 1){
+                    $this->load->view('header/header_admin', $data);
+                    $this->load->view('admin/peserta/tambah_point');
+                } else{
+                    $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                    redirect('home');
+                }
+            } else{
+                $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+                redirect('home');
+            }
         } else {
             $pointUser = $this->User_model->getPointUserById($id);
             $inputPoint = $this->input->post('inputPoint');
@@ -101,11 +146,22 @@ class admin_peserta extends CI_Controller
     public function testimoni()
     {
         $data['judul'] = 'Amal Edukasi | Daftar Peserta';
-        $sessionUser = $this->session->userdata('username');
+        $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $data['testimoni'] = $this->User_model->getAllTestimoni();
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
 
-        $this->load->view('Super_Admin/templates/header_admin', $data);
-        $this->load->view('Super_Admin/testimoni', $data);
+        if($data['user']){
+            if($user['role_id'] == 1){
+                $this->load->view('header/header_admin', $data);
+                $this->load->view('admin/testimoni', $data);
+            } else{
+                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                redirect('home');
+            }
+        } else{
+            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+            redirect('home');
+        }
     }
 }

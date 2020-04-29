@@ -21,10 +21,22 @@ class admin_modul extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $data['modul'] = $this->Modul_model->getAllModul();
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
 
         $data['judul'] = 'Amal Edukasi | Daftar Modul';
-        $this->load->view('admin/templates/header_modul', $data);
-        $this->load->view('admin/modul/daftar_modul');
+
+        if($data['user']){
+            if($user['role_id'] == 1){
+                $this->load->view('header/header_admin', $data);
+                $this->load->view('admin/modul/daftar_modul');
+            } else{
+                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                redirect('home');
+            }
+        } else{
+            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+            redirect('home');
+        }
     }
 
     public function tambah_modul()
@@ -33,14 +45,25 @@ class admin_modul extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $data['topik'] = $this->Topik_model->getAllTopik();
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
 
         $this->form_validation->set_rules('judul', 'Judul', 'required|trim');
         $this->form_validation->set_rules('jenisModul', 'JenisModul', 'required|trim');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('admin/templates/header_modul', $data);
-            $this->load->view('admin/modul/tambah_modul', $data);
+            if($data['user']){
+                if($user['role_id'] == 1){
+                    $this->load->view('header/header_admin', $data);
+                    $this->load->view('admin/modul/tambah_modul', $data);
+                } else{
+                    $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                    redirect('home');
+                }
+            } else{
+                $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+                redirect('home');
+            }
         } else {
             $judul = $this->input->post('judul');
             $jenisModul = $this->input->post('jenisModul');

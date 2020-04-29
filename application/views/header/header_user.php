@@ -49,7 +49,11 @@
                             <div class="main-menu  d-none d-lg-block">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a href="<?= base_url(); ?>">home</a></li>
+                                        <?php if(current_url() == base_url() || current_url() == base_url('home')){ ?>
+                                            <li><a class="active" href="<?= base_url(); ?>">home</a></li>
+                                        <?php } else { ?>
+                                            <li><a href="<?= base_url(); ?>">home</a></li>
+                                        <?php } ?>
                                         <li><a href="#">Try Out <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="#">Paket CPNS</a></li>
@@ -58,8 +62,21 @@
                                                 <li><a href="#">Paket D4K STAN</a></li>
                                             </ul>
                                         </li>
-                                        <li><a href="<?= base_url('pembelajaran'); ?>">Modul</a></li>
-                                        <li><a class="active" href="<?= base_url('contact'); ?>">Contact</a></li>
+                                        <?php if(current_url() == base_url('pembelajaran')){ ?>
+                                            <li><a class="active" href="<?= base_url('pembelajaran'); ?>">Modul</a></li>
+                                        <?php } else { ?>
+                                            <li><a href="<?= base_url('pembelajaran'); ?>">Modul</a></li>
+                                        <?php } ?>
+                                        <?php if(current_url() == base_url('contact')){ ?>
+                                            <li><a class="active" href="<?= base_url('contact'); ?>">Contact</a></li>
+                                        <?php } else { ?>
+                                            <li><a href="<?= base_url('contact'); ?>">Contact</a></li>
+                                        <?php } ?>
+                                        <?php if(current_url() == base_url('faq')){ ?>
+                                            <li><a class="active" href="#">FAQ</a></li>
+                                        <?php } else { ?>
+                                            <li><a href="#">FAQ</a></li>
+                                        <?php } ?>
                                         <li id="login_popup">
                                             <?php if(!empty($user)){ ?>
                                                 <a href="#">
@@ -145,9 +162,9 @@
                                         <span>log in</span>
                                     </a>
                                     <div class="live_chat_btn">
-                                        <a class="boxed_btn_orange" href="#">
+                                        <a class="boxed_btn_orange" href="https://api.whatsapp.com/send?phone=+6282278666726" target="_blank">
                                             <i class="fa fa-phone"></i>
-                                            <span>+10 378 467 3672</span>
+                                            <span>+62 822 7866 6726</span>
                                         </a>
                                     </div>
                                 </div>

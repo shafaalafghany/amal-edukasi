@@ -45,14 +45,13 @@
                 <div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
                     <div class="footer_widget">
                         <h3 class="footer_title">
-                            Courses
+                            Try Out
                         </h3>
                         <ul>
-                            <li><a href="#">Wordpress</a></li>
-                            <li><a href="#"> Photoshop</a></li>
-                            <li><a href="#">Illustrator</a></li>
-                            <li><a href="#">Adobe XD</a></li>
-                            <li><a href="#">UI/UX</a></li>
+                            <li><a href="#">Paket CPNS</a></li>
+                            <li><a href="#">Paket Regular STAN</a></li>
+                            <li><a href="#">Paket D3K STAN</a></li>
+                            <li><a href="#">Paket D4K STAN</a></li>
                         </ul>
 
                     </div>

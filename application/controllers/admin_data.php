@@ -19,12 +19,23 @@ class admin_data extends CI_Controller
     public function index()
     {
         $data['judul'] = 'Amal Edukasi | Daftar Admin';
-        $sessionUser = $this->session->userdata('username');
+        $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $data['admin'] = $this->User_model->getAllAdmin();
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
 
-        $this->load->view('Super_Admin/templates/header_admin', $data);
-        $this->load->view('Super_Admin/admin/daftar_admin', $data);
+        if($data['user']){
+            if($user['role_id'] == 1){
+                $this->load->view('header/header_admin', $data);
+                $this->load->view('admin/admin/daftar_admin', $data);
+            } else{
+                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                redirect('home');
+            }
+        } else{
+            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+            redirect('home');
+        }
     }
 
     public function lihat_admin($id)
@@ -33,16 +44,28 @@ class admin_data extends CI_Controller
         $sessionUser = $this->session->userdata('username');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $data['member'] = $this->User_model->getAdminById($id);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
 
-        $this->load->view('Super_Admin/templates/header_admin', $data);
-        $this->load->view('Super_Admin/admin/view_admin', $data);
+        if($data['user']){
+            if($user['role_id'] == 1){
+                $this->load->view('Super_Admin/templates/header_admin', $data);
+                $this->load->view('Super_Admin/admin/view_admin', $data);
+            } else{
+                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                redirect('home');
+            }
+        } else{
+            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+            redirect('home');
+        }
     }
 
     public function tambah_admin()
     {
         $this->load->library('form_validation');
-        $sessionUser = $this->session->userdata('username');
+        $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
 
         $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[user.username]', [
             'is_unique' => 'Username has already registered'
@@ -60,8 +83,18 @@ class admin_data extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['judul'] = 'Amal Edukasi | Tambah Admin';
-            $this->load->view('Super_Admin/templates/header_admin', $data);
-            $this->load->view('Super_Admin/admin/tambah_admin');
+            if($data['user']){
+                if($user['role_id'] == 1){
+                    $this->load->view('header/header_admin', $data);
+                    $this->load->view('admin/admin/tambah_admin');
+                } else{
+                    $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                    redirect('home');
+                }
+            } else{
+                $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+                redirect('home');
+            }
         } else {
             $datauser = [
                 'username' => htmlspecialchars($this->input->post('username', true)),

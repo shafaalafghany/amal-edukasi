@@ -20,16 +20,16 @@ class admin extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
-        /* $data['modul'] = $this->Modul_model->getAllModul();
+        $data['modul'] = $this->Modul_model->getAllModul();
         $data['event'] = $this->Event_model->getAllEvent();
         $data['allUser'] = $this->User_model->getAllUser();
-        $data['admin'] = $this->User_model->getAllAdmin(); */
+        $data['admin'] = $this->User_model->getAllAdmin();
 
         if($data['user']){
             if($user['role_id'] == 1){
-                $this->load->view('admin/templates/header_home', $data);
+                $this->load->view('header/header_admin', $data);
                 $this->load->view('admin/index');
-                $this->load->view('admin/templates/footer_admin');
+                $this->load->view('footer/footer_admin');
             } else{
                 $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
                 redirect('home');
@@ -40,7 +40,7 @@ class admin extends CI_Controller
         }
     }
 
-    public function profil_admin()
+    /* public function profil_admin()
     {
         $data['judul'] = 'Amal Edukasi | Profil Admin';
         $sessionUser = $this->session->userdata('email');
@@ -108,7 +108,7 @@ class admin extends CI_Controller
             $this->db->update('user');
             redirect('admin/profil_admin');
         }
-    }
+    } */
 
     public function backup_database()
     {

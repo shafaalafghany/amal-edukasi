@@ -19,9 +19,9 @@ class pages extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
 
-        $this->load->view('User/header/header_pembelajaran', $data);
-        $this->load->view('User/pembelajaran/pembelajaran');
-        $this->load->view('User/footer/footer');
+        $this->load->view('header/header_user', $data);
+        $this->load->view('user/pembelajaran/pembelajaran');
+        $this->load->view('footer/footer_user');
     }
 
     public function contact()
@@ -31,9 +31,9 @@ class pages extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
 
-        $this->load->view('User/header/header_contact', $data);
-        $this->load->view('User/contact');
-        $this->load->view('User/footer/footer');
+        $this->load->view('header/header_user', $data);
+        $this->load->view('user/contact');
+        $this->load->view('footer/footer_user');
     }
 
     public function profil_saya()
@@ -57,21 +57,22 @@ class pages extends CI_Controller
             }
         } else {
             $name = $this->input->post('name');
-            $tentang = $this->input->post('tentang');
-            $username = $this->input->post('username');
+            $telepon = $this->input->post('telepon');
+            $pendidikan = $this->input->post('pendidikan');
+            $lokasi = $this->input->post('lokasi');
+            $quotes = $this->input->post('quotes');
 
             $this->load->helper('file');
 
-            $image = $this->db->select('image')->get_where('user', ['username' => $username])->row()->image;
+            $image = $this->db->select('image')->get_where('user', ['email' => $sessionUser])->row()->image;
+            $upload_image = $_FILES['image']['name'];
 
             if ($image != "default.png") {
-                $path = './assets/img/profile/' . $image;
-                unlink($path);
-
-                $upload_image = $_FILES['image']['name'];
-
                 if ($upload_image) {
-                    $config['upload_path'] = './assets/img/profile/';
+                    $path = './assets/avatar/' . $image;
+                    unlink($path);
+
+                    $config['upload_path'] = './assets/avatar/';
                     $config['allowed_types'] = 'gif|jpg|png';
                     $config['max_size'] = 2048;
                     $config['overwrite'] = true;
@@ -82,15 +83,13 @@ class pages extends CI_Controller
                         $new_image = $this->upload->data('file_name');
                         $this->db->set('image', $new_image);
                     } else {
-                        $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-10" style="margin-left: 8%;" role="alert"><strong>Maaf gambar tidak sesuai ketentuan</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                        redirect('User/profile_saya');
+                        $this->session->set_flashdata('error', 'Maaf gambar tidak sesuai ketentuan');
+                        redirect('pages/profil_saya');
                     }
                 }
             } else {
-                $upload_image = $_FILES['image']['name'];
-
                 if ($upload_image) {
-                    $config['upload_path'] = './assets/img/profile/';
+                    $config['upload_path'] = './assets/avatar/';
                     $config['allowed_types'] = 'gif|jpg|png';
                     $config['max_size'] = 2048;
                     $config['overwrite'] = true;
@@ -101,18 +100,21 @@ class pages extends CI_Controller
                         $new_image = $this->upload->data('file_name');
                         $this->db->set('image', $new_image);
                     } else {
-                        $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-10" style="margin-left: 8%;" role="alert"><strong>Maaf gambar tidak sesuai ketentuan</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                        redirect('User/profile_saya');
+                        $this->session->set_flashdata('error', 'Maaf gambar tidak sesuai ketentuan');
+                        redirect('pages/profil_saya');
                     }
                 }
             }
             $tampung = array(
                 'name' => $name,
-                'tentang' => $tentang
+                'telepon' => $telepon,
+                'riwayat_pendidikan' => $pendidikan,
+                'lokasi' => $lokasi,
+                'quotes' => $quotes
             );
-            $this->db->where('username', $username);
+            $this->db->where('email', $sessionUser);
             $this->db->update('user', $tampung);
-            $this->session->set_flashdata('message', '<div class="alert alert-success col-md-10" style="margin-left: 8%;" role="alert"><strong>Perubahan profile berhasil disimpan</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            $this->session->set_flashdata('success', 'Perubahan profil berhasil disimpan');
             redirect($this->uri->uri_string());
         }
     }
@@ -135,10 +137,9 @@ class pages extends CI_Controller
             $this->db->insert('user_token', $user_token);
             $this->_sendEmail($token);
 
-            $this->session->set_flashdata('success', 'Silahkan cek email anda untuk ganti password');
             $this->session->unset_userdata('email');
             $this->session->unset_userdata('role_id');
-            $this->session->set_flashdata('success', 'Anda telah logout');
+            $this->session->set_flashdata('success', 'Silahkan cek email anda untuk ganti password');
             redirect('home');
         } else {
             $this->session->set_flashdata('error', 'Email belum verifikasi atau tidak terdaftar');

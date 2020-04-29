@@ -26,16 +26,17 @@ class home extends CI_Controller
 
         if($data['user']){
             if($user['role_id'] == 3){
-                $this->load->view('User/header/header_home', $data);
-                $this->load->view('User/index');
-                $this->load->view('User/footer/footer');
+                $this->load->view('header/header_user', $data);
+                $this->load->view('user/index');
+                $this->load->view('footer/footer_user');
             } else{
+                $this->session->set_flashdata('error', 'Maaf anda adalah admin Amal Edukasi!');
                 redirect('admin');
             }
         } else{
-            $this->load->view('User/header/header_home', $data);
-            $this->load->view('User/index');
-            $this->load->view('User/footer/footer');
+            $this->load->view('header/header_user', $data);
+            $this->load->view('user/index');
+            $this->load->view('footer/footer_user');
         }
     }
 }

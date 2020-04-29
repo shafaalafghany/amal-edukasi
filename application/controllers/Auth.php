@@ -258,40 +258,6 @@ class auth extends CI_Controller
         }
     }
 
-    public function proses_ganti_password()
-    {
-        $sessionUser = $this->session->userdata('email');
-        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-        $user = $this->User_model->sessionUserMasuk($sessionUser);
-
-        //Cek apakah user aktif
-        if ($user['is_active'] == 1) {
-            $token = base64_encode(random_bytes(32));
-            $user_token = [
-                'email' => $sessionUser,
-                'token' => $token,
-                'date_created' => time()
-            ];
-
-            $this->db->insert('user_token', $user_token);
-            $this->_sendEmail($token, 'ganti');
-
-            $this->session->set_flashdata('success', 'Silahkan cek email anda untuk ganti password');
-            if ($user['role_id'] == 1) {
-                redirect('admin');
-            } elseif ($user['role_id'] == 3) {
-                redirect('home');
-            }
-        } else {
-            $this->session->set_flashdata('error', 'Email belum verifikasi atau tidak terdaftar');
-            if ($user['role_id'] == 1) {
-                redirect('admin');
-            } elseif ($user['role_id'] == 3) {
-                redirect('home');
-            }
-        }
-    }
-
     public function ganti_password()
     {
         //Ambil parameter dari link verifikasi

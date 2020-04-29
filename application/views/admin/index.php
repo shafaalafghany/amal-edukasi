@@ -21,12 +21,12 @@
             <div class="small-box bg-info">
               <div class="inner">
                 <h3>
-                  <!-- <?php 
+                  <?php 
                     $i = 0;
                     foreach ($modul as $loadModul) {
                       $i++;
                     }
-                    echo $i; ?> -->
+                    echo $i; ?>
                 </h3>
 
                 <p>Modul Terpublikasi</p>
@@ -34,7 +34,7 @@
               <div class="icon">
                 <i class="fas fa-book-open"></i>
               </div>
-              <a href="<?= base_url('Administrator/') ?>daftar_modul" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?= base_url('admin_modul/') ?>daftar_modul" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -43,12 +43,12 @@
             <div class="small-box bg-success">
               <div class="inner">
                 <h3>
-                  <!-- <?php 
+                  <?php 
                     $i = 0;
                     foreach ($event as $loadEvent) {
                       $i++;
                     }
-                    echo $i; ?> -->
+                    echo $i; ?>
                 </h3>
 
                 <p>Event Dibuat</p>
@@ -65,12 +65,12 @@
             <div class="small-box bg-danger">
               <div class="inner">
                 <h3>
-                  <!-- <?php 
+                  <?php 
                     $i = 0;
                     foreach ($admin as $loadAdmin) {
                       $i++;
                     }
-                    echo $i; ?> -->
+                    echo $i; ?>
                 </h3>
 
                 <p>Administrator</p>
@@ -78,11 +78,9 @@
               <div class="icon">
                 <i class="fas fa-users-cog"></i>
               </div>
-              <!-- <?php if ($user['role_id'] == 1) { ?>
-                <a href="<?= base_url('Administrator/') ?>daftar_admin" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
-              <?php } else { ?>
-                <a href="#" class="small-box-footer">Just Info <i class="fas fa-arrow-circle-right"></i></a>
-              <?php } ?> -->
+              <?php if ($user['role_id'] == 1) { ?>
+                <a href="<?= base_url('admin_data') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <?php } ?>
             </div>
           </div>
           <!-- ./col -->
@@ -91,12 +89,12 @@
             <div class="small-box bg-warning">
               <div class="inner">
                 <h3>
-                  <!-- <?php 
+                  <?php 
                     $i = 0;
                     foreach ($allUser as $loadAllUser) {
                       $i++;
                     }
-                    echo $i; ?> -->
+                    echo $i; ?>
                 </h3>
 
                 <p>Peserta Aktif</p>
@@ -104,7 +102,7 @@
               <div class="icon">
                 <i class="ion ion-person-add"></i>
               </div>
-              <a href="<?= base_url('Administrator/') ?>daftar_peserta" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?= base_url('admin_peserta') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->
@@ -120,18 +118,13 @@
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12">
-            <!-- <?php if ($user['role_id'] == 1) { ?> -->
-              <!-- <div class="callout callout-info">
-                <h5><i class="fas fa-info"></i> Note:</h5>
-                Anda adalah Super Admin yang memiliki kuasa paling tinggi, anda dapat menambah modul, menambah admin,
-                menambah event, backup data-data dan backup database.
-              </div>
-            <?php } else { ?> -->
+            <?php if ($user['role_id'] == 1) { ?>
               <div class="callout callout-info">
                 <h5><i class="fas fa-info"></i> Note:</h5>
-                Anda adalah Admin dalam sistem try out AORTASTAN ini, anda dapat menambah modul, menambah event, backup data-data dan backup database.
+                Anda adalah Administrator yang memiliki kuasa untuk mengatur sistem Try Out Amal Edukasi ini, anda dapat menambah modul, menambah admin,
+                menambah event, backup database, dan beberapa hal lainnya.
               </div>
-            <!-- <?php } ?> -->
+            <?php } ?>
           </div>
         </div>
       </div>
