@@ -118,12 +118,6 @@ class pages extends CI_Controller
     }
 
     //Area Kirim Email
-    public function tes()
-    {
-        $sessionUser = $this->session->userdata('email');
-        var_dump($sessionUser);
-    }
-
     public function lupa_password()
     {
         $emailUser = $this->session->userdata('email');
@@ -146,7 +140,6 @@ class pages extends CI_Controller
             $this->session->unset_userdata('role_id');
             $this->session->set_flashdata('success', 'Anda telah logout');
             redirect('home');
-            redirect('home');
         } else {
             $this->session->set_flashdata('error', 'Email belum verifikasi atau tidak terdaftar');
             redirect('home');
@@ -158,8 +151,8 @@ class pages extends CI_Controller
         //Import library email
         $this->load->library('email');
 
-        $emailLupa = $this->input->post('email');
-        $namaUserLupa = $this->db->select('name')->get_where('user', ['email' => $emailLupa])->row()->name;
+        $emailUser = $this->session->userdata('email');
+        $namaUserLupa = $this->db->select('name')->get_where('user', ['email' => $emailUser])->row()->name;
 
         //Menyiapkan settingan untuk email
         $config = array();
@@ -176,7 +169,7 @@ class pages extends CI_Controller
         $this->email->set_newline("\r\n");
 
         $this->email->from('admin@sobatkode.com', 'Sobatkode.com');
-        $this->email->to($this->input->post('email'));
+        $this->email->to($emailUser);
 
         $this->email->subject('Ganti Password Akun Amal Edukasi');
         $this->email->message('<h3>Halo ' . $namaUserLupa . '</h3> <br> Silahkan klik link dibawah ini untuk mengganti password akun anda: <br><a href="' . base_url() . 'pages/ganti_password?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Ganti Password</a>');
