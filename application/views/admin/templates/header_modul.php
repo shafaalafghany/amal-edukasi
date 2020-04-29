@@ -111,7 +111,7 @@
                     </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <?php if (base_url('admin_modul/daftar_modul')) { ?>
+                        <?php if (current_url() == base_url('admin_modul/daftar_modul')) { ?>
                             <li class="nav-item">
                                 <a href="<?= base_url('admin_modul/daftar_modul') ?>" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
@@ -124,7 +124,7 @@
                                 <p>Tambah Modul</p>
                                 </a>
                             </li>
-                        <?php } elseif (base_url('admin_modul/tambah_modul')) { ?>
+                        <?php } elseif (current_url() == base_url('admin_modul/tambah_modul')) { ?>
                             <li class="nav-item">
                                 <a href="<?= base_url('admin_modul/daftar_modul') ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>

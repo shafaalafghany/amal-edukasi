@@ -4,11 +4,11 @@
              <div class="row">
                  <div class="col-xl-6">
                      <div class="course_text">
-                            <h3>UI/UX design with <br> Adobe XD with</h3>
-                            <div class="prise">
+                            <h3>Tes Potensi Akademik <br> (TPA)</h3>
+                            <!-- <div class="prise">
                                 <span class="inactive">$89.00</span>
                                 <span class="active">$49</span>
-                            </div>
+                            </div> --><!-- 
                             <div class="rating">
                                 <i class="flaticon-mark-as-favorite-star"></i>
                                 <i class="flaticon-mark-as-favorite-star"></i>
@@ -16,14 +16,14 @@
                                 <i class="flaticon-mark-as-favorite-star"></i>
                                 <i class="flaticon-mark-as-favorite-star"></i>
                                 <span>(4.5)</span>
-                            </div>
+                            </div> -->
                             <div class="hours">
                                 <div class="video">
                                      <div class="single_video">
-                                            <i class="fa fa-clock-o"></i> <span>12 Videos</span>
+                                            <i class="fa fa-clock-o"></i> <span>1 Video</span>
                                      </div>
                                      <div class="single_video">
-                                            <i class="fa fa-play-circle-o"></i> <span>9 Hours</span>
+                                            <i class="fa fa-play-circle-o"></i> <span>2 Jam</span>
                                      </div>
                                    
                                 </div>
@@ -40,9 +40,12 @@
             <div class="row">
                 <div class="col-xl-7 col-lg-7">
                     <div class="single_courses">
-                        <h3>Objectives</h3>
-                        <p>Our set he for firmament morning sixth subdue darkness creeping gathered divide our let god moving. Moving in fourth air night bring upon you’re it beast let you dominion likeness open place day great wherein heaven sixth lesser subdue fowl male signs his day face waters itself and make be to our itself living. Fish in thing lights moveth. Over god spirit morning, greater had man years green multiply creature, form them in, likeness him behold two cattle for divided. Fourth darkness had. Living light there place moved divide under earth. Light face, fly dry us </p>
-                    <h3 class="second_title">Course Outline</h3>
+                        <h3>Deskripsi</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
+                            Quisquam quam cumque quae distinctio. At reiciendis fugiat eos, 
+                            consectetur ab velit laborum vitae architecto minus, 
+                            odit unde? Rem repudiandae beatae quas.</p>
+                    <h3 class="second_title">Garis Besar Video</h3>
                     </div>
                     <div class="outline_courses_info">
                             <div id="accordion">
@@ -50,7 +53,7 @@
                                         <div class="card-header" id="headingTwo">
                                             <h5 class="mb-0">
                                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    <i class="flaticon-question"></i> Is WordPress hosting worth it?
+                                                    <i class="flaticon-question"></i> Apa sih tes potensi akademik itu?
                                                 </button>
                                             </h5>
                                         </div>
@@ -175,11 +178,8 @@
         </div>
     </div>
 
-
-
-
     <!-- testimonial_area_start -->
-    <div class="testimonial_area testimonial_bg_1 overlay">
+    <!-- <div class="testimonial_area testimonial_bg_1 overlay">
         <div class="testmonial_active owl-carousel">
             <div class="single_testmoial">
                 <div class="container">
@@ -224,11 +224,11 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- testimonial_area_end -->
 
     <!-- our_courses_start -->
-    <div class="our_courses">
+    <!-- <div class="our_courses">
         <div class="container">
             <div class="row">
                 <div class="col-xl-12">
@@ -291,5 +291,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
     <!-- our_courses_end -->
