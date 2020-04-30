@@ -19,17 +19,17 @@ class User_model extends CI_model
     // Admin
     public function getAllAdmin()
     {
-        return $this->db->get_where('user', ['role_id' => 2])->result_array();
+        return $this->db->get_where('user', ['role_id' => 1])->result_array();
     }
 
     public function getAdminById($id)
     {
-        return $this->db->get_where('user', ['role_id' => 2, 'id' => $id])->row_array();
+        return $this->db->get_where('user', ['role_id' => 1, 'id' => $id])->row_array();
     }
 
     public function deleteAdminById($id)
     {
-        $this->db->where('role_id', 2);
+        $this->db->where('role_id', 1);
         $this->db->where('id', $id);
         $this->db->delete('user');
     }

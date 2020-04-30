@@ -116,9 +116,9 @@
             <?php if(current_url() == base_url('admin_modul/daftar_modul')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
-                  <i class="nav-icon fas fa-book"></i>
+                  <i class="nav-icon fas fa-play-circle"></i>
                   <p>
-                    Data Modul
+                    Modul Pembelajaran
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
@@ -140,9 +140,9 @@
             <?php } elseif(current_url() == base_url('admin_modul/tambah_modul')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
-                  <i class="nav-icon fas fa-book"></i>
+                  <i class="nav-icon fas fa-play-circle"></i>
                   <p>
-                    Data Modul
+                    Modul Pembelajaran
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
@@ -164,9 +164,9 @@
             <?php } else{ ?>
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-book"></i>
+                  <i class="nav-icon fas fa-play-circle"></i>
                   <p>
-                    Data Modul
+                    Modul Pembelajaran
                     <i class="fas fa-angle-left right"></i>
                   </p>
                 </a>
@@ -188,6 +188,29 @@
             <?php } ?>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-box-open"></i>
+                <p>
+                  Paket Try Out
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Daftar Paket</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tambah Paket</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-calendar-week"></i>
                 <p>
                   Event
@@ -196,39 +219,43 @@
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?= base_url('Administrator/') ?>daftar_event" class="nav-link">
+                  <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Daftar Event</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="<?= base_url('Administrator/') ?>daftar_soal" class="nav-link">
+                  <a href="#" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tambah Event</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item has-treeview">
+              <a href="#" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Soal
+                  <i class="fas fa-angle-left right"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Daftar Soal</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="<?= base_url('Administrator/') ?>tambah_event" class="nav-link">
+                  <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Tambah Event</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="<?= base_url('Administrator/') ?>tambah_soal" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p> Tambah Soal</p>
-                  </a>
-                </li>
-              </ul>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="<?= base_url('Administrator/') ?>leaderboard" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Leaderboard</p>
+                    <p>Tambah Soal</p>
                   </a>
                 </li>
               </ul>
             </li>
+            <li class="nav-header">Administrator</li>
             <?php if(current_url() == base_url('admin_data')){ ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
@@ -390,24 +417,24 @@
                   <i class="fas fa-angle-left right"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
+              <!-- <ul class="nav nav-treeview">
                 <li class="nav-item">
                   <a href="<?= base_url('Administrator/') ?>topup" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Setting Top Up</p>
                   </a>
                 </li>
-              </ul>
+              </ul> -->
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="<?= base_url('Administrator/') ?>backup" class="nav-link">
+                  <a href="#" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Back Up Database</p>
                   </a>
                 </li>
               </ul>
             </li>
-            <li class="nav-header">AKUN</li>
+            <!-- <li class="nav-header">AKUN</li>
             <li class="nav-item has-treeview">
               <a href="<?= base_url('pages/profil_saya') ?>" class="nav-link">
                 <i class="nav-icon far fa-edit"></i>
@@ -423,7 +450,7 @@
                   Log out
                 </p>
               </a>
-            </li>
+            </li> -->
           </ul>
         </nav>
       <!-- /.sidebar-menu -->

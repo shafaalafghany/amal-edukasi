@@ -91,15 +91,9 @@
                             <div class="row">
                                     <div class="col-xl-4 col-lg-4 col-md-6">
                                         <div class="single_courses">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/1.png" alt="">
-                                                </a>
-                                            </div>
                                             <div class="courses_info">
-                                                <span>Photoshop</span>
-                                                <h3><a href="#">Mobile App design step by step <br>
-                                                        from beginner</a></h3>
+                                                <h3><a href="#">Paket CPNS <br>
+                                                        (Calon Pegawai Negeri Sipil)</a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">
                                                         <i class="flaticon-mark-as-favorite-star"></i>
@@ -117,14 +111,9 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4 col-md-6">
                                         <div class="single_courses">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/2.png" alt="">
-                                                </a>
-                                            </div>
                                             <div class="courses_info">
-                                                <span>Adobe XD</span>
-                                                <h3><a href="#">UI/UX design with Adobe XD with Anderson</a></h3>
+                                                <h3><a href="#">Paket Regular <br>
+                                                        SPMB PKN STAN</a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">
                                                         <i class="flaticon-mark-as-favorite-star"></i>
@@ -142,15 +131,9 @@
                                     </div>
                                     <div class="col-xl-4 col-lg-4 col-md-6">
                                         <div class="single_courses">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/3.png" alt="">
-                                                </a>
-                                            </div>
                                             <div class="courses_info">
-                                                <span>Wordpress</span>
-                                                <h3><a href="#">Wordpress theme development <br>
-                                                        from scratch</a></h3>
+                                                <h3><a href="#">Paket D3K <br>
+                                                        PKN STAN</a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">
                                                         <i class="flaticon-mark-as-favorite-star"></i>
@@ -166,9 +149,24 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-12">
-                                        <div class="more_courses text-center">
-                                            <a href="#" class="boxed_btn_rev">More Courses</a>
+                                    <div class="col-xl-4 col-lg-4 col-md-6">
+                                        <div class="single_courses">
+                                            <div class="courses_info">
+                                                <h3><a href="#">Paket D4K <br>
+                                                        PKN STAN</a></h3>
+                                                <div class="star_prise d-flex justify-content-between">
+                                                    <div class="star">
+                                                        <i class="flaticon-mark-as-favorite-star"></i>
+                                                        <span>(4.5)</span>
+                                                    </div>
+                                                    <div class="prise">
+                                                        <span class="offer">$89.00</span>
+                                                        <span class="active_prise">
+                                                            $49
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -256,19 +254,13 @@
                                                 </a>
                                             </div>
                                             <div class="courses_info">
-                                                <span>Photoshop</span>
-                                                <h3><a href="#">Mobile App design step by step <br>
-                                                        from beginner</a></h3>
+                                                <span>Tes Potensi Akademik (TPA)</span>
+                                                <h3><a href="#">Mudah mengerjakan <br>
+                                                        soal tes potensi akademik</a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">
                                                         <i class="flaticon-mark-as-favorite-star"></i>
                                                         <span>(4.5)</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="offer">$89.00</span>
-                                                        <span class="active_prise">
-                                                            $49
-                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -282,18 +274,12 @@
                                                 </a>
                                             </div>
                                             <div class="courses_info">
-                                                <span>Adobe XD</span>
-                                                <h3><a href="#">UI/UX design with Adobe XD with Anderson</a></h3>
+                                                <span>Bahasa Inggris</span>
+                                                <h3><a href="#">Mudah berbahasa inggris dengan tenses</a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">
                                                         <i class="flaticon-mark-as-favorite-star"></i>
                                                         <span>(4.5)</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="offer">$89.00</span>
-                                                        <span class="active_prise">
-                                                            $49
-                                                        </span>
                                                     </div>
                                                 </div>
                                             </div>
@@ -303,29 +289,22 @@
                                         <div class="single_courses">
                                             <div class="thumb">
                                                 <a href="#">
-                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/3.png" alt="">
+                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/3.jpg" alt="">
                                                 </a>
                                             </div>
                                             <div class="courses_info">
-                                                <span>Wordpress</span>
-                                                <h3><a href="#">Wordpress theme development <br>
-                                                        from scratch</a></h3>
+                                                <span>Wawasan Kebangsaan</span>
+                                                <h3><a href="#">Belajar sejarah Negara Kesatuan Republik Indonesia </a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">
                                                         <i class="flaticon-mark-as-favorite-star"></i>
                                                         <span>(4.5)</span>
                                                     </div>
-                                                    <div class="prise">
-                                                        <span class="offer">$89.00</span>
-                                                        <span class="active_prise">
-                                                            $49
-                                                        </span>
-                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
+                                    <!-- <div class="col-xl-4 col-lg-4 col-md-6">
                                         <div class="single_courses">
                                             <div class="thumb">
                                                 <a href="#">
@@ -400,10 +379,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-xl-12">
                                         <div class="more_courses text-center">
-                                            <a href="#" class="boxed_btn_rev">More Courses</a>
+                                            <a href="#" class="boxed_btn_rev">Lebih Banyak Lagi</a>
                                         </div>
                                     </div>
                                 </div>

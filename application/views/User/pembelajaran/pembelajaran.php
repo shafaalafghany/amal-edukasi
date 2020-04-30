@@ -19,8 +19,66 @@
                                                 </a>
                                             </div>
                                             <div class="courses_info">
+                                                <span>Tes Potensi Akademik (TPA)</span>
+                                                <h3><a href="<?= base_url('pembelajaran_detail') ?>">Mudah mengerjakan <br>
+                                                        soal tes potensi akademik</a></h3>
+                                                <div class="star_prise d-flex justify-content-between">
+                                                    <div class="star">
+                                                        <i class="flaticon-mark-as-favorite-star"></i>
+                                                        <span>(4.5)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-6">
+                                        <div class="single_courses">
+                                            <div class="thumb">
+                                                <a href="#">
+                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/2.png" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="courses_info">
+                                                <span>Bahasa Inggris</span>
+                                                <h3><a href="#">Mudah berbahasa inggris dengan tenses</a></h3>
+                                                <div class="star_prise d-flex justify-content-between">
+                                                    <div class="star">
+                                                        <i class="flaticon-mark-as-favorite-star"></i>
+                                                        <span>(4.5)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-6">
+                                        <div class="single_courses">
+                                            <div class="thumb">
+                                                <a href="#">
+                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/3.jpg" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="courses_info">
+                                                <span>Wawasan Kebangsaan</span>
+                                                <h3><a href="#">Belajar sejarah Negara Kesatuan Republik Indonesia </a></h3>
+                                                <div class="star_prise d-flex justify-content-between">
+                                                    <div class="star">
+                                                        <i class="flaticon-mark-as-favorite-star"></i>
+                                                        <span>(4.5)</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="col-xl-4 col-lg-4 col-md-6">
+                                        <div class="single_courses">
+                                            <div class="thumb">
+                                                <a href="#">
+                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/4.png" alt="">
+                                                </a>
+                                            </div>
+                                            <div class="courses_info">
                                                 <span>Photoshop</span>
-                                                <h3><a href="<?= base_url('pembelajaran_detail'); ?>">Mobile App design step by step <br>
+                                                <h3><a href="#">Mobile App design step by step <br>
                                                         from beginner</a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">
@@ -40,13 +98,12 @@
                                     <div class="col-xl-4 col-lg-4 col-md-6">
                                         <div class="single_courses">
                                             <div class="thumb">
-                                                <a href="#">
-                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/2.png" alt="">
-                                                </a>
+                                                <img src="<?= base_url('assets/user/'); ?>img/courses/5.png" alt="">
                                             </div>
                                             <div class="courses_info">
-                                                <span>Adobe XD</span>
-                                                <h3><a href="#">UI/UX design with Adobe XD with Anderson</a></h3>
+                                                <span>UI/UX</span>
+                                                <h3><a href="#">How to complete user research <br>
+                                                        and make work flow</a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">
                                                         <i class="flaticon-mark-as-favorite-star"></i>
@@ -66,13 +123,13 @@
                                         <div class="single_courses">
                                             <div class="thumb">
                                                 <a href="#">
-                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/3.png" alt="">
+                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/6.png" alt="">
                                                 </a>
                                             </div>
                                             <div class="courses_info">
                                                 <span>Wordpress</span>
-                                                <h3><a href="#">Wordpress theme development <br>
-                                                        from scratch</a></h3>
+                                                <h3><a href="#">Commitment to dedicated <br>
+                                                        Support</a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">
                                                         <i class="flaticon-mark-as-favorite-star"></i>
@@ -87,10 +144,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-xl-12">
                                         <div class="more_courses text-center">
-                                            <a href="#" class="boxed_btn_rev">More Courses</a>
+                                            <a href="#" class="boxed_btn_rev">Lebih Banyak Lagi</a>
                                         </div>
                                     </div>
                                 </div>

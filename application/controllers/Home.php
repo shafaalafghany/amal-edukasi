@@ -30,7 +30,6 @@ class home extends CI_Controller
                 $this->load->view('user/index');
                 $this->load->view('footer/footer_user');
             } else{
-                $this->session->set_flashdata('error', 'Maaf anda adalah admin Amal Edukasi!');
                 redirect('admin');
             }
         } else{

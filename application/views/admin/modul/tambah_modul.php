@@ -31,11 +31,11 @@
             <div class="card-body">
               <?= form_open_multipart('Administrator/tambah_modul'); ?>
               <div class="form-group">
-                <label for="judul">Judul Modul Pembelajaran</label>
+                <label for="judul">Judul Modul Pembelajaran <span style="color: red">*</span></label>
                 <input type="text" id="judul" name="judul" class="form-control">
               </div>
               <div class="form-group">
-                <label for="jenisModul">Jenis Modul</label>
+                <label for="jenisModul">Jenis Modul <span style="color: red">*</span></label>
                 <select class="form-control" id="jenisModul" name="jenisModul">
                   <?php foreach ($topik as $loadTopik) { ?>
                     <option value="<?= $loadTopik['nama_topik_tes']; ?>"><?= $loadTopik['nama_topik_tes']; ?></option>
@@ -43,17 +43,54 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="deskripsi">Deskripsi</label>
+                <label for="deskripsi">Deskripsi Modul <span style="color: red">*</span></label>
                 <textarea id="deskripsi" name="deskripsi" class="form-control" rows="4"></textarea>
               </div>
               <div class="form-group">
-                <label for="exampleInputFile">File input</label>
+                <label for="exampleInputFile">Upload Video <span style="color: red">*</span></label>
                 <div class="input-group" style="margin-left: 20px;">
                   <div class="custom-file">
-                    <input type="file" id="file" name="file" accept="application/pdf">
+                    <input type="file" id="file" name="file" accept="video/*">
                   </div>
                 </div>
-                <span style="font-size: 14px; margin-left: 20px;">File berekstensi .pdf dan tidak lebih dari 50MB.</span>
+                <span style="font-size: 14px; margin-left: 20px;">File berekstensi .mp4 dan tidak lebih dari 500MB.</span>
+              </div>
+              <div class="form-group">
+                <label for="exampleInputFile">Upload Tumbnail <span style="color: red">*</span></label>
+                <div class="input-group" style="margin-left: 20px;">
+                  <div class="custom-file">
+                    <input type="file" id="file" name="file" accept="image/*">
+                  </div>
+                </div>
+                <span style="font-size: 14px; margin-left: 20px;">File berekstensi .png/.jpg/.jpeg dan tidak lebih dari 2MB.</span>
+              </div>
+              <label for="judul">Beri Sub Deskripsi Video</label>
+              <div class="form-group" style="margin-left: 2%;">
+                <label for="judul">Judul Sub Deskripsi Video (bagian 1) <span style="color: red">*</span></label>
+                <input type="text" id="judul" name="judul" class="form-control">
+              </div>
+              <div class="form-group" style="margin-left: 2%;">
+                <label for="deskripsi">Sub Deskripsi Video (bagian 1) <span style="color: red">*</span></label>
+                <textarea id="deskripsi" name="deskripsi" class="form-control" rows="4"></textarea>
+              </div>
+              <div class="form-group" style="margin-left: 2%;">
+                <label for="judul">Judul Sub Deskripsi Video (bagian 2)</label>
+                <input type="text" id="judul" name="judul" class="form-control">
+              </div>
+              <div class="form-group" style="margin-left: 2%;">
+                <label for="deskripsi">Sub Deskripsi Video (bagian 2)</label>
+                <textarea id="deskripsi" name="deskripsi" class="form-control" rows="4"></textarea>
+              </div>
+              <div class="form-group" style="margin-left: 2%;">
+                <label for="judul">Judul Sub Deskripsi Video (bagian 3)</label>
+                <input type="text" id="judul" name="judul" class="form-control">
+              </div>
+              <div class="form-group" style="margin-left: 2%;">
+                <label for="deskripsi">Sub Deskripsi Video (bagian 3)</label>
+                <textarea id="deskripsi" name="deskripsi" class="form-control" rows="4"></textarea>
+              </div>
+              <div class="form-group">
+                <label style="color: red">Catatan: Form yang bertanda bintang (*) berarti wajib diisi</label>
               </div>
               <div class="col-12">
                 <input type="submit" class="btn btn-primary float-right">
@@ -84,7 +121,7 @@
   <!-- Bootstrap 4 -->
   <script src="<?= base_url('assets/Admin/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- SweetAlert2 -->
-  <script src="<?= base_url('assets/Admin/') ?>plugins/sweetalert2/sweetalert2.min.js"></script>
+  <!-- <script src="<?= base_url('assets/Admin/') ?>plugins/sweetalert2/sweetalert2.min.js"></script> -->
   <!-- Toastr -->
   <script src="<?= base_url('assets/Admin/') ?>plugins/toastr/toastr.min.js"></script>
   <!-- AdminLTE App -->
@@ -92,7 +129,7 @@
   <!-- AdminLTE for demo purposes -->
   <script src="<?= base_url('assets/Admin/') ?>dist/js/demo.js"></script>
 
-  <script src="<?= base_url('assets/User/'); ?>js/logout.js"></script>
+  <script src="<?= base_url('assets/auth/'); ?>js/logout.js"></script>
 
   <script type="text/javascript">
     $(function() {

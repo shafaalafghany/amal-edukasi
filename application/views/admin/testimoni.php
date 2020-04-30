@@ -90,7 +90,7 @@
   <!-- AdminLTE for demo purposes -->
   <script src="<?= base_url('assets/Admin/') ?>dist/js/demo.js"></script>
 
-  <script src="<?= base_url('assets/User/'); ?>js/logout.js"></script>
+  <script src="<?= base_url('assets/auth/'); ?>js/logout.js"></script>
   <!-- page script -->
   <script>
     $(function () {
