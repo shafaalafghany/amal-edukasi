@@ -94,7 +94,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
-            <?php if(current_url() == base_url('admin')){ ?>
+            <?php if (current_url() == base_url('admin')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="<?= base_url('admin') ?>" class="nav-link active">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -103,7 +103,7 @@
                   </p>
                 </a>
               </li>
-            <?php } else{ ?>
+            <?php } else { ?>
               <li class="nav-item has-treeview">
                 <a href="<?= base_url('admin') ?>" class="nav-link">
                   <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -113,7 +113,7 @@
                 </a>
               </li>
             <?php } ?>
-            <?php if(current_url() == base_url('admin_modul/daftar_modul')) { ?>
+            <?php if (current_url() == base_url('admin_modul/daftar_modul')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-book"></i>
@@ -137,7 +137,7 @@
                   </li>
                 </ul>
               </li>
-            <?php } elseif(current_url() == base_url('admin_modul/tambah_modul')) { ?>
+            <?php } elseif (current_url() == base_url('admin_modul/tambah_modul')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-book"></i>
@@ -161,7 +161,7 @@
                   </li>
                 </ul>
               </li>
-            <?php } else{ ?>
+            <?php } else { ?>
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-book"></i>
@@ -229,7 +229,7 @@
                 </li>
               </ul>
             </li>
-            <?php if(current_url() == base_url('admin_data')){ ?>
+            <?php if (current_url() == base_url('admin_data')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-user-shield"></i>
@@ -253,7 +253,7 @@
                   </li>
                 </ul>
               </li>
-            <?php } elseif(current_url() == base_url('admin_data/tambah_admin')){ ?>
+            <?php } elseif (current_url() == base_url('admin_data/tambah_admin')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-user-shield"></i>
@@ -302,7 +302,7 @@
                 </ul>
               </li>
             <?php } ?>
-            <?php if(current_url() == base_url('admin_peserta')){ ?>
+            <?php if (current_url() == base_url('admin_peserta')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-users"></i>
@@ -328,7 +328,7 @@
                   </li>
                 </ul>
               </li>
-            <?php } elseif(current_url() == base_url('admin_peserta/testimoni')){ ?>
+            <?php } elseif (current_url() == base_url('admin_peserta/testimoni')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-users"></i>
@@ -354,7 +354,7 @@
                   </li>
                 </ul>
               </li>
-            <?php } else{ ?>
+            <?php } else { ?>
               <li class="nav-item has-treeview">
                 <a href="#" class="nav-link">
                   <i class="nav-icon fas fa-users"></i>
@@ -417,7 +417,7 @@
               </a>
             </li>
             <li class="nav-item has-treeview">
-              <a href="<?= base_url() ?>User/logout" class="nav-link logout">
+              <a href="<?= base_url('auth/logout') ?>" class="nav-link logout">
                 <i class="nav-icon fas fa-sign-out-alt"></i>
                 <p>
                   Log out
@@ -426,7 +426,7 @@
             </li>
           </ul>
         </nav>
-      <!-- /.sidebar-menu -->
+        <!-- /.sidebar-menu -->
       </div>
-    <!-- /.sidebar -->
+      <!-- /.sidebar -->
     </aside>
