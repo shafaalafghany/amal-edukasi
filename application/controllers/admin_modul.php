@@ -104,12 +104,12 @@ class admin_modul extends CI_Controller
 
             //Ambil data dari file Thumbnail
             if ($upload_thumbnail) {
-                $config['upload_path'] = './assets/modul/thumbnail/';
-                $config['allowed_types'] = 'jpg|png|jpeg';
-                $config['max_size'] = 2048;
-                $config['overwrite'] = true;
+                $konfig['upload_path'] = './assets/modul/thumbnail/';
+                $konfig['allowed_types'] = 'jpg|png|jpeg';
+                $konfig['max_size'] = 2048;
+                $konfig['overwrite'] = true;
 
-                $this->load->library('upload', $config);
+                $this->load->library('upload', $konfig);
                 if ($this->upload->do_upload('filethumbnail')) {
                     $new_thumbnail = $this->upload->data('file_name');
                     $this->db->set('thumbnail', $new_thumbnail);
