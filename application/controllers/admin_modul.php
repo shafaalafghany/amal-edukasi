@@ -86,8 +86,8 @@ class admin_modul extends CI_Controller
 
             //Ambil data file video
             if ($upload_video) {
-                $config['upload_path'] = './assets/file/video';
-                $config['allowed_types'] = 'mp4, mkv, avi';
+                $config['upload_path'] = './assets/modul/video/';
+                $config['allowed_types'] = 'mp4|mkv|avi';
                 $config['max_size'] = 512000;
                 $config['overwrite'] = true;
 
@@ -95,6 +95,7 @@ class admin_modul extends CI_Controller
 
                 if ($this->upload->do_upload('filevideo')) {
                     $new_video = $this->upload->data('file_name');
+                    $this->db->set('video', $new_video);
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file video gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                     redirect('admin_modul/daftar_modul');
@@ -103,14 +104,15 @@ class admin_modul extends CI_Controller
 
             //Ambil data dari file Thumbnail
             if ($upload_thumbnail) {
-                $config['upload_path'] = './assets/file/thumbnail';
-                $config['allowed_types'] = 'jpg, png';
+                $config['upload_path'] = './assets/modul/thumbnail/';
+                $config['allowed_types'] = 'jpg|png|jpeg';
                 $config['max_size'] = 2048;
                 $config['overwrite'] = true;
 
                 $this->load->library('upload', $config);
                 if ($this->upload->do_upload('filethumbnail')) {
                     $new_thumbnail = $this->upload->data('file_name');
+                    $this->db->set('thumbnail', $new_thumbnail);
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file thumbnail gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                     redirect('admin_modul/daftar_modul');
@@ -122,8 +124,6 @@ class admin_modul extends CI_Controller
                 'judul_modul' => $judul,
                 'jenis' => $jenisModul,
                 'deskripsi' => $deskripsi,
-                'video' => $new_video,
-                'thumbnail' => $new_thumbnail,
                 'subjudul1' => $subjudul1,
                 'subdesk1' => $subdesk1,
                 'subjudul2' => $subjudul2,
@@ -149,12 +149,12 @@ class admin_modul extends CI_Controller
 
         //hapus file video berdasarkan id
         $file_video = $this->db->select('file')->get_where('modul', ['id_modul' => $id])->row()->video;
-        $video = './assets/file/video' . $file_video;
+        $video = './assets/modul/video/' . $file_video;
         unlink($video);
 
         //hapus file thumbnail berdasarkan id
         $file_thumbnail = $this->db->select('file')->get_where('modul', ['id_modul' => $id])->row()->thumbnail;
-        $thumbnail = './assets/file/video' . $file_thumbnail;
+        $thumbnail = './assets/modul/thumbnail/' . $file_thumbnail;
         unlink($thumbnail);
 
         $this->Modul_model->deleteModul($id);

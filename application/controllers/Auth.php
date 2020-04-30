@@ -134,7 +134,7 @@ class auth extends CI_Controller
             $result = $this->_sendEmail($token, 'verify');
 
             if ($result) {
-                $this->session->set_flashdata('success', 'Akun berhasil dibuat! Silahkan cek email anda untuk verifikasi akun <b>dalam 24 jam</b>. Jika tidak ada pada inbox anda coba cek pada spam.');
+                $this->session->set_flashdata('success', 'Akun berhasil dibuat! Silahkan cek email anda untuk verifikasi akun dalam 24 jam. Jika tidak ada pada inbox anda coba cek pada spam.');
             } else {
                 $this->session->set_flashdata('success', 'Akun berhasil dibuat! Silahkan cek email anda untuk verifikasi akun. Jika tidak ada pada inbox anda coba cek pada spam. Jika dalam 1 jam tidak ada email verifikasi akun silahkan kontak admin dengan menyertakan email anda.');
             }
