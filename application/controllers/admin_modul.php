@@ -86,7 +86,7 @@ class admin_modul extends CI_Controller
 
             //Ambil data file video
             if ($upload_video) {
-                $config['upload_path'] = './assets/file/';
+                $config['upload_path'] = './assets/file/video';
                 $config['allowed_types'] = 'mp4, mkv, avi';
                 $config['max_size'] = 512000;
                 $config['overwrite'] = true;
@@ -96,8 +96,8 @@ class admin_modul extends CI_Controller
                 if ($this->upload->do_upload('filevideo')) {
                     $new_video = $this->upload->data('file_name');
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                    redirect('admin_modul');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file video gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    redirect('admin_modul/daftar_modul');
                 }
             }
 
@@ -112,8 +112,8 @@ class admin_modul extends CI_Controller
                 if ($this->upload->do_upload('filethumbnail')) {
                     $new_thumbnail = $this->upload->data('file_name');
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                    redirect('admin_modul');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file thumbnail gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    redirect('admin_modul/daftar_modul');
                 }
             }
 
@@ -135,7 +135,7 @@ class admin_modul extends CI_Controller
             // $this->db->insert('modul', $data);
             $this->Modul_model->insertModul($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu Modul berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect('admin_modul');
+            redirect('admin_modul/daftar_modul');
         }
     }
 
