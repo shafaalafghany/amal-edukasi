@@ -17,7 +17,7 @@
                                 <i class="flaticon-mark-as-favorite-star"></i>
                                 <span>(4.5)</span>
                             </div> -->
-                            <div class="hours">
+                            <!-- <div class="hours">
                                 <div class="video">
                                      <div class="single_video">
                                             <i class="fa fa-clock-o"></i> <span>1 Video</span>
@@ -27,7 +27,7 @@
                                      </div>
                                    
                                 </div>
-                            </div>
+                            </div> -->
                      </div>
                  </div>
              </div>
@@ -45,8 +45,10 @@
                             Quisquam quam cumque quae distinctio. At reiciendis fugiat eos, 
                             consectetur ab velit laborum vitae architecto minus, 
                             odit unde? Rem repudiandae beatae quas.</p>
-                    <h3 class="second_title">Garis Besar Video</h3>
+                        <!-- <h3 class="second_title">Garis Besar Video</h3> -->
                     </div>
+                    <br>
+                    <br>
                     <div class="outline_courses_info">
                             <div id="accordion">
                                     <div class="card">
@@ -64,7 +66,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="card">
+                                    <!-- <div class="card">
                                         <div class="card-header" id="headingOne">
                                             <h5 class="mb-0">
                                                 <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
@@ -124,7 +126,7 @@
                                                 let god moving. Moving in fourth air night bring upon
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                     </div>
                 </div>
@@ -132,11 +134,11 @@
                     <div class="courses_sidebar">
                         <div class="video_thumb">
                             <img src="<?= base_url('assets/user/'); ?>img/latest_blog/video.png" alt="">
-                            <a class="popup-video" href="https://www.youtube.com/watch?v=AjgD3CvWzS0">
+                            <a href="#">
                                 <i class="fa fa-play"></i>
                             </a>
                         </div>
-                        <div class="author_info">
+                        <!-- <div class="author_info">
                             <div class="auhor_header">
                                 <div class="thumb">
                                         <img src="<?= base_url('assets/user/'); ?>img/latest_blog/author.png" alt="">
@@ -156,19 +158,14 @@
                                 <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
                                 <li><a href="#"> <i class="ti-linkedin"></i> </a></li>
                             </ul>
-                        </div>
-                        <a href="#" class="boxed_btn">Buy Course</a>
+                        </div> -->
+                        <br>
+                        <a href="https://www.youtube.com/watch?v=AjgD3CvWzS0" class="boxed_btn popup-video">Lihat Video</a>
                         <div class="feedback_info">
-                            <h3>Write your feedback</h3>
-                            <p>Your rating</p>
-                            <i class="flaticon-mark-as-favorite-star"></i>
-                            <i class="flaticon-mark-as-favorite-star"></i>
-                            <i class="flaticon-mark-as-favorite-star"></i>
-                            <i class="flaticon-mark-as-favorite-star"></i>
-                            <i class="flaticon-mark-as-favorite-star"></i>
+                            <h3>Tulis Feedback Kamu</h3>
                             
-                        <form action="#">
-                                <textarea name="" id="" cols="30" rows="10" placeholder="Write your feedback"></textarea>
+                            <form action="#">
+                                <textarea name="" id="" cols="30" rows="10" placeholder="Tulis feedback kamu"></textarea>
                                 <button type="submit" class="boxed_btn">Submit</button>
                             </form>
                         </div>

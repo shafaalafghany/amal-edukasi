@@ -35,12 +35,8 @@
                 '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
               ); ?>
 
-              <form method="POST" action="<?= base_url('Administrator/tambah_admin'); ?>">
+              <form method="POST" action="<?= base_url('admin_data/tambah_admin'); ?>">
                 <div class="card-body">
-                  <div class="form-group">
-                    <label for="inputUsername">Username</label>
-                    <input type="text" id="username" class="form-control" name="username" value="<?= set_value('username'); ?>">
-                  </div>
                   <div class="form-group">
                     <label for="inputName">Nama</label>
                     <input type="text" id="name" class="form-control" name="name" value="<?= set_value('name'); ?>">
@@ -112,7 +108,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url('assets/Admin/') ?>dist/js/demo.js"></script>
 
-    <script src="<?= base_url('assets/User/'); ?>js/logout.js"></script>
+    <script src="<?= base_url('assets/auth/'); ?>js/logout.js"></script>
     </body>
 
     </html>

@@ -49,22 +49,22 @@
                             echo "Aktif";
                           } else { echo "Tidak Aktif"; }?></td>
                           <td class="project-actions text-center">
-                            <a class="btn btn-warning btn-sm" href="<?= base_url('Administrator/'); ?>tambah_point/<?= $loadMember['id']; ?>">
+                            <!-- <a class="btn btn-warning btn-sm" href="<?= base_url('Administrator/'); ?>tambah_point/<?= $loadMember['id']; ?>">
                               <i class="fas fa-star">
                               </i>
                               Atur Point
-                            </a>
-                            <a class="btn btn-primary btn-sm" href="<?= base_url('Administrator/'); ?>view_peserta/<?= $loadMember['id']; ?>">
+                            </a> -->
+                            <a class="btn btn-primary btn-sm" href="<?= base_url('admin_peserta/'); ?>lihat_peserta/<?= $loadMember['id']; ?>">
                               <i class="fas fa-folder">
                               </i>
                               View
                             </a>
-                            <a class="btn btn-info btn-sm" href="<?= base_url('Administrator/'); ?>reset_peserta/<?= $loadMember['id']; ?>">
+                            <!-- <a class="btn btn-info btn-sm" href="<?= base_url('Administrator/'); ?>reset_peserta/<?= $loadMember['id']; ?>">
                               <i class="fas fa-wrench">
                               </i>
                               Reset Peserta
-                            </a>
-                            <a class="btn btn-danger btn-sm delete_peserta" href="<?= base_url('Administrator/'); ?>delete_member/<?= $loadMember['id']; ?>">
+                            </a> -->
+                            <a class="btn btn-danger btn-sm delete_peserta" href="<?= base_url('admin_peserta/'); ?>hapus_peserta/<?= $loadMember['id']; ?>">
                               <i class="fas fa-trash">
                               </i>
                               Delete
@@ -109,7 +109,7 @@
   <!-- AdminLTE for demo purposes -->
   <script src="<?= base_url('assets/Admin/') ?>dist/js/demo.js"></script>
 
-  <script src="<?= base_url('assets/User/'); ?>js/logout.js"></script>
+  <script src="<?= base_url('assets/auth/'); ?>js/logout.js"></script>
   <!-- page script -->
   <script>
     $(function () {

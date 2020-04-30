@@ -49,12 +49,12 @@
                               echo "Tidak Aktif";
                             } ?></td>
                         <td class="project-actions text-center">
-                          <a class="btn btn-primary btn-sm" href="<?= base_url(); ?>Administrator/view_admin/<?= $loadAdmin['id']; ?>">
+                          <a class="btn btn-primary btn-sm" href="<?= base_url('admin_data/'); ?>lihat_admin/<?= $loadAdmin['id']; ?>">
                             <i class="fas fa-folder">
                             </i>
                             View
                           </a>
-                          <a class="btn btn-danger btn-sm delete_admin" href="<?= base_url(); ?>Administrator/hapus_admin/<?= $loadAdmin['id']; ?>">
+                          <a class="btn btn-danger btn-sm delete_admin" href="<?= base_url('admin_data/'); ?>hapus_admin/<?= $loadAdmin['id']; ?>">
                             <i class="fas fa-trash">
                             </i>
                             Delete
@@ -108,7 +108,7 @@
     <!-- AdminLTE for demo purposes -->
     <script src="<?= base_url('assets/Admin/') ?>dist/js/demo.js"></script>
 
-    <script src="<?= base_url('assets/User/'); ?>js/logout.js"></script>
+    <script src="<?= base_url('assets/auth/'); ?>js/logout.js"></script>
     <!-- page script -->
     <script>
       $(function() {

@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Daftar Modul</h1>
+            <h1>Daftar Modul Pembelajaran</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -20,7 +20,7 @@
             
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Daftar Modul</h3>
+              <h3 class="card-title">Daftar Modul Pembelajaran</h3>
           </div>
             
             <!-- /.card-body -->
@@ -96,7 +96,7 @@
   <!-- AdminLTE for demo purposes -->
   <script src="<?= base_url('assets/Admin/') ?>dist/js/demo.js"></script>
 
-  <script src="<?= base_url('assets/User/'); ?>js/logout.js"></script>
+  <script src="<?= base_url('assets/auth/'); ?>js/logout.js"></script>
   <!-- page script -->
   <script>
     $(function() {

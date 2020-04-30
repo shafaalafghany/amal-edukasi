@@ -47,7 +47,7 @@ class admin_peserta extends CI_Controller
     public function lihat_peserta($id)
     {
         $data['judul'] = 'Amal Edukasi | Daftar Peserta';
-        $sessionUser = $this->session->userdata('username');
+        $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $data['member'] = $this->User_model->getUserById($id);
         $user = $this->User_model->sessionUserMasuk($sessionUser);

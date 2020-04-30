@@ -12,7 +12,7 @@
                         <h2 class="contact-title">Kirim email ke kami</h2>
                     </div>
                     <div class="col-lg-8">
-                        <form class="form-contact contact_form" action="contact_process.php" method="post" id="contactForm" novalidate="novalidate">
+                        <form class="form-contact contact_form" action="<?= base_url('contact') ?>" method="post">
                             <div class="row">
                                 <div class="col-12">
                                     <div class="form-group">
@@ -21,12 +21,22 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input class="form-control valid" name="email1" id="email1" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukkan email anda'" placeholder="Masukkan email anda">
+                                        <?php if($user){ ?>
+                                            <label>Email Asal</label>
+                                            <input class="form-control valid" name="email1" id="email1" type="email" value="<?= $user['email'] ?>" readonly>
+                                        <?php } else { ?>
+                                            <input class="form-control valid" name="email1" id="email1" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukkan email anda'" placeholder="Masukkan email anda">
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="form-group">
-                                        <input class="form-control valid" name="email2" id="email2" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukkan email tujuan'" placeholder="Masukkan email tujuan">
+                                        <?php if($user){ ?>
+                                            <label>Email Tujuan</label>
+                                            <input class="form-control valid" name="email2" id="email2" type="email" value="sobatkode@gmail.com" readonly>
+                                        <?php } else { ?>
+                                            <input class="form-control valid" name="email2" id="email2" type="email" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Masukkan email tujuan'" placeholder="Masukkan email tujuan">
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -36,7 +46,11 @@
                                 </div>
                             </div>
                             <div class="form-group mt-3">
-                                <button type="submit" class="button button-contactForm boxed-btn">Send</button>
+                            <?php if($user){ ?>
+                                <button type="submit" class="boxed_btn_rev">Kirim</button>
+                            <?php } else { ?>
+                                <a href="<?= base_url() ?>" class="genric-btn warning circle e-large">Login Dulu</a>
+                            <?php } ?>
                             </div>
                         </form>
                     </div>

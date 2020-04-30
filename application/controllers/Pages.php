@@ -30,10 +30,66 @@ class pages extends CI_Controller
 
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
 
-        $this->load->view('header/header_user', $data);
-        $this->load->view('user/contact');
-        $this->load->view('footer/footer_user');
+        $this->form_validation->set_rules('email1', 'Email1', 'trim|required');
+        $this->form_validation->set_rules('email2', 'Email2', 'trim|required');
+        $this->form_validation->set_rules('subject', 'Subject', 'trim|required');
+        $this->form_validation->set_rules('message', 'Message', 'trim|required');
+
+        //run validation on form input
+        if ($this->form_validation->run() == FALSE)
+        {
+            //validation fails
+            $this->load->view('header/header_user', $data);
+            $this->load->view('user/contact');
+            $this->load->view('footer/footer_user');
+        }
+        else
+        {
+            //get the form data
+            $name = $user['name'];
+            $from_email = $this->input->post('email1');
+            $subject = $this->input->post('subject');
+            $message = $this->input->post('message');
+
+            //set to_email id to which you want to receive mails
+            $to_email = $this->input->post('email2');
+
+            //configure email settings
+            $config = array();
+            $config['protocol'] = 'smtp';
+            $config['smtp_crypto'] = 'ssl';
+            $config['smtp_host'] = 'mail.sobatkode.com';
+            $config['smtp_user'] = 'admin@sobatkode.com';
+            $config['smtp_pass'] = 'Iws161jy21';
+            $config['smtp_port'] = 465;
+            $config['mailtype'] = 'html';
+            $config['charset'] = 'utf-8';
+            $config['mailtype'] = 'html';
+            $config['wordwrap'] = TRUE;
+            $config['newline'] = "\r\n"; //use double quotes
+            //$this->load->library('email', $config);
+            $this->email->initialize($config);                        
+
+            //send mail
+            $this->email->from($from_email, $name);
+            $this->email->to($to_email);
+            $this->email->subject($subject);
+            $this->email->message($message);
+            if ($this->email->send())
+            {
+                // mail sent
+                $this->session->set_flashdata('success','Pengiriman email ke admin berhasil terkirim');
+                redirect('home');
+            }
+            else
+            {
+                //error
+                $this->session->set_flashdata('error','Pengiriman email ke admin gagal terkirim');
+                redirect('home');
+            }
+        }
     }
 
     public function profil_saya()
