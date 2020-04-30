@@ -15,9 +15,9 @@
     <section class="content">
       <div class="row">
         <div class="col-12">
-            
-            <?= $this->session->flashdata('message'); ?>
-            
+
+          <?= $this->session->flashdata('message'); ?>
+
           <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Formulir Modul Pembelajaran</h3>
@@ -27,9 +27,9 @@
                   <i class="fas fa-minus"></i></button>
               </div>
             </div>
-            
+
             <div class="card-body">
-              <?= form_open_multipart('Administrator/tambah_modul'); ?>
+              <?= form_open_multipart('admin_modul/tambah_modul'); ?>
               <div class="form-group">
                 <label for="judul">Judul Modul Pembelajaran <span style="color: red">*</span></label>
                 <input type="text" id="judul" name="judul" class="form-control">
@@ -50,16 +50,16 @@
                 <label for="exampleInputFile">Upload Video <span style="color: red">*</span></label>
                 <div class="input-group" style="margin-left: 20px;">
                   <div class="custom-file">
-                    <input type="file" id="file" name="file" accept="video/*">
+                    <input type="file" id="filevideo" name="filevideo" accept="video/*">
                   </div>
                 </div>
                 <span style="font-size: 14px; margin-left: 20px;">File berekstensi .mp4 dan tidak lebih dari 500MB.</span>
               </div>
               <div class="form-group">
-                <label for="exampleInputFile">Upload Tumbnail <span style="color: red">*</span></label>
+                <label for="exampleInputFile">Upload Thumbnail <span style="color: red">*</span></label>
                 <div class="input-group" style="margin-left: 20px;">
                   <div class="custom-file">
-                    <input type="file" id="file" name="file" accept="image/*">
+                    <input type="file" id="filethumbnail" name="filethumbnail" accept="image/*">
                   </div>
                 </div>
                 <span style="font-size: 14px; margin-left: 20px;">File berekstensi .png/.jpg/.jpeg dan tidak lebih dari 2MB.</span>
@@ -67,27 +67,27 @@
               <label for="judul">Beri Sub Deskripsi Video</label>
               <div class="form-group" style="margin-left: 2%;">
                 <label for="judul">Judul Sub Deskripsi Video (bagian 1) <span style="color: red">*</span></label>
-                <input type="text" id="judul" name="judul" class="form-control">
+                <input type="text" id="subjudul1" name="subjudul1" class="form-control">
               </div>
               <div class="form-group" style="margin-left: 2%;">
                 <label for="deskripsi">Sub Deskripsi Video (bagian 1) <span style="color: red">*</span></label>
-                <textarea id="deskripsi" name="deskripsi" class="form-control" rows="4"></textarea>
+                <textarea id="subdesk1" name="subdesk1" class="form-control" rows="4"></textarea>
               </div>
               <div class="form-group" style="margin-left: 2%;">
                 <label for="judul">Judul Sub Deskripsi Video (bagian 2)</label>
-                <input type="text" id="judul" name="judul" class="form-control">
+                <input type="text" id="subjudul2" name="subjudul2" class="form-control">
               </div>
               <div class="form-group" style="margin-left: 2%;">
                 <label for="deskripsi">Sub Deskripsi Video (bagian 2)</label>
-                <textarea id="deskripsi" name="deskripsi" class="form-control" rows="4"></textarea>
+                <textarea id="subdesk2" name="subdesk2" class="form-control" rows="4"></textarea>
               </div>
               <div class="form-group" style="margin-left: 2%;">
                 <label for="judul">Judul Sub Deskripsi Video (bagian 3)</label>
-                <input type="text" id="judul" name="judul" class="form-control">
+                <input type="text" id="subjudul3" name="subjudul3" class="form-control">
               </div>
               <div class="form-group" style="margin-left: 2%;">
                 <label for="deskripsi">Sub Deskripsi Video (bagian 3)</label>
-                <textarea id="deskripsi" name="deskripsi" class="form-control" rows="4"></textarea>
+                <textarea id="subdesk3" name="subdesk3" class="form-control" rows="4"></textarea>
               </div>
               <div class="form-group">
                 <label style="color: red">Catatan: Form yang bertanda bintang (*) berarti wajib diisi</label>

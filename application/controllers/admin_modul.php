@@ -25,15 +25,15 @@ class admin_modul extends CI_Controller
 
         $data['judul'] = 'Amal Edukasi | Daftar Modul';
 
-        if($data['user']){
-            if($user['role_id'] == 1){
+        if ($data['user']) {
+            if ($user['role_id'] == 1) {
                 $this->load->view('header/header_admin', $data);
                 $this->load->view('admin/modul/daftar_modul');
-            } else{
+            } else {
                 $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
                 redirect('home');
             }
-        } else{
+        } else {
             $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
             redirect('home');
         }
@@ -50,51 +50,90 @@ class admin_modul extends CI_Controller
         $this->form_validation->set_rules('judul', 'Judul', 'required|trim');
         $this->form_validation->set_rules('jenisModul', 'JenisModul', 'required|trim');
         $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
+        $this->form_validation->set_rules('subjudul1', 'Subjudul1', 'required|trim');
+        $this->form_validation->set_rules('subdesk1', 'Subdesk1', 'required|trim');
+        $this->form_validation->set_rules('subjudul2', 'Subjudul2', 'trim');
+        $this->form_validation->set_rules('subdesk2', 'Subdesk2', 'trim');
+        $this->form_validation->set_rules('subjudul3', 'Subjudul3', 'trim');
+        $this->form_validation->set_rules('subdesk3', 'Subdesk3', 'trim');
 
         if ($this->form_validation->run() == false) {
-            if($data['user']){
-                if($user['role_id'] == 1){
+            if ($data['user']) {
+                if ($user['role_id'] == 1) {
                     $this->load->view('header/header_admin', $data);
                     $this->load->view('admin/modul/tambah_modul', $data);
-                } else{
+                } else {
                     $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
                     redirect('home');
                 }
-            } else{
+            } else {
                 $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
                 redirect('home');
             }
         } else {
+            //Ambil data dari form
             $judul = $this->input->post('judul');
             $jenisModul = $this->input->post('jenisModul');
             $deskripsi = $this->input->post('deskripsi');
+            $upload_video = $_FILES['filevideo']['name'];
+            $upload_thumbnail = $_FILES['filethumbnail']['name'];
+            $subjudul1 = $this->input->post('subjudul1');
+            $subdesk1 = $this->input->post('subdesk1');
+            $subjudul2 = $this->input->post('subjudul2');
+            $subdesk2 = $this->input->post('subdesk2');
+            $subjudul3 = $this->input->post('subjudul3');
+            $subdesk3 = $this->input->post('subdesk3');
 
-            $upload_file = $_FILES['file']['name'];
-
-            if ($upload_file) {
+            //Ambil data file video
+            if ($upload_video) {
                 $config['upload_path'] = './assets/file/';
                 $config['allowed_types'] = 'mp4, mkv, avi';
-                $config['max_size'] = 51200;
+                $config['max_size'] = 512000;
                 $config['overwrite'] = true;
 
                 $this->load->library('upload', $config);
 
-                if ($this->upload->do_upload('file')) {
-                    $new_file = $this->upload->data('file_name');
+                if ($this->upload->do_upload('filevideo')) {
+                    $new_video = $this->upload->data('file_name');
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                     redirect('admin_modul');
                 }
             }
 
-            $tampungData = array(
+            //Ambil data dari file Thumbnail
+            if ($upload_thumbnail) {
+                $config['upload_path'] = './assets/file/thumbnail';
+                $config['allowed_types'] = 'jpg, png';
+                $config['max_size'] = 2048;
+                $config['overwrite'] = true;
+
+                $this->load->library('upload', $config);
+                if ($this->upload->do_upload('filethumbnail')) {
+                    $new_thumbnail = $this->upload->data('file_name');
+                } else {
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    redirect('admin_modul');
+                }
+            }
+
+            //data data tersebut dimasukkan ke dalam array
+            $data = array(
                 'judul_modul' => $judul,
-                'deskripsi' => $deskripsi,
                 'jenis' => $jenisModul,
-                'file' => $new_file
+                'deskripsi' => $deskripsi,
+                'video' => $new_video,
+                'thumbnail' => $new_thumbnail,
+                'subjudul1' => $subjudul1,
+                'subdesk1' => $subdesk1,
+                'subjudul2' => $subjudul2,
+                'subdesk2' => $subdesk2,
+                'subjudul3' => $subjudul3,
+                'subdesk3' => $subdesk3
             );
 
-            $this->db->insert('modul', $tampungData);
+            // $this->db->insert('modul', $data);
+            $this->Modul_model->insertModul($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu Modul berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('admin_modul');
         }
@@ -108,12 +147,19 @@ class admin_modul extends CI_Controller
 
         $this->load->helper('file');
 
-        $file_name = $this->db->select('file')->get_where('modul', ['id_modul' => $id])->row()->file;
-        $path = './assets/file/' . $file_name;
-        unlink($path);
+        //hapus file video berdasarkan id
+        $file_video = $this->db->select('file')->get_where('modul', ['id_modul' => $id])->row()->video;
+        $video = './assets/file/video' . $file_video;
+        unlink($video);
+
+        //hapus file thumbnail berdasarkan id
+        $file_thumbnail = $this->db->select('file')->get_where('modul', ['id_modul' => $id])->row()->thumbnail;
+        $thumbnail = './assets/file/video' . $file_thumbnail;
+        unlink($thumbnail);
 
         $this->Modul_model->deleteModul($id);
 
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu Modul berhasil dihapus!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
         redirect('admin_modul');
     }
 
