@@ -93,6 +93,33 @@ class pages extends CI_Controller
         }
     }
 
+    public function faq()
+    {
+        $data['judul'] = 'Amal Edukasi | FAQ';
+
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
+
+        $data['event'] = $this->Event_model->getAllEvent();
+        $data['modul'] = $this->Modul_model->getAllModul();
+        $data['testimoni'] = $this->Modul_model->getTestimoni();
+
+        if($data['user']){
+            if($user['role_id'] == 3){
+                $this->load->view('header/header_user', $data);
+                $this->load->view('user/faq');
+                $this->load->view('footer/footer_user');
+            } else{
+                redirect('admin');
+            }
+        } else{
+            $this->load->view('header/header_user', $data);
+            $this->load->view('user/faq');
+            $this->load->view('footer/footer_user');
+        }
+    }
+
     public function profil_saya()
     {
         $data['judul'] = 'Amal Edukasi | Profil Saya';

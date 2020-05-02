@@ -56,7 +56,7 @@
                                                 </button>
                                             </h5>
                                         </div>
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                             <div class="card-body">
                                                 <?= $modul['subdesk1'] ?>
                                             </div>
@@ -87,7 +87,7 @@
                                                     </button>
                                                 </h5>
                                             </div>
-                                            <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                                                 <div class="card-body">
                                                     <?= $modul['subdesk3'] ?>
                                                 </div>

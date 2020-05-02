@@ -74,9 +74,9 @@
                                             <li><a href="<?= base_url('contact'); ?>">Contact</a></li>
                                         <?php } ?>
                                         <?php if(current_url() == base_url('faq')){ ?>
-                                            <li><a class="active" href="#">FAQ</a></li>
+                                            <li><a class="active" href="<?= base_url('faq'); ?>">FAQ</a></li>
                                         <?php } else { ?>
-                                            <li><a href="#">FAQ</a></li>
+                                            <li><a href="<?= base_url('faq'); ?>">FAQ</a></li>
                                         <?php } ?>
                                         <li id="login_popup">
                                             <?php if(!empty($user)){ ?>
