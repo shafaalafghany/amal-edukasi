@@ -62,9 +62,9 @@
             <div class="dropdown-item dropdown-header">
               <img src="<?= base_url('assets/avatar/') . $user['image']; ?>" class="rounded-circle elevation-2 mb-2" alt="User Image" style="width: 100px; height: 100px;">
               <p>
-                <span><?= $user['name'] ?></span>
-                <br>
                 <span>Selamat Datang</span>
+                <br>
+                <span><?= $user['name'] ?></span>
               </p>
             </div>
             <div class="dropdown-divider"></div>
