@@ -17,6 +17,8 @@
         <div class="col-12">
 
           <?= $this->session->flashdata('message'); ?>
+          <?= $this->session->flashdata('message1'); ?>
+          <?= $this->session->flashdata('message2'); ?>
           <?= form_error('judul', '<div class="alert alert-danger" role="alert">', '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>') ?>
           <?= form_error('jenisModul', '<div class="alert alert-danger" role="alert">', '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>') ?>
           <?= form_error('deskripsi', '<div class="alert alert-danger" role="alert">', '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>') ?>
@@ -58,7 +60,7 @@
                     <input type="file" id="filevideo" name="filevideo" accept="video/*">
                   </div>
                 </div>
-                <span style="font-size: 14px; margin-left: 20px;">File berekstensi .mp4 dan tidak lebih dari 500MB.</span>
+                <span style="font-size: 14px; margin-left: 20px;">File berekstensi .mp4/.mkv/.avi dan tidak lebih dari 500MB.</span>
               </div>
               <div class="form-group">
                 <label for="exampleInputFile">Upload Thumbnail <span style="color: red">*</span></label>

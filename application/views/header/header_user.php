@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/owl.carousel.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/magnific-popup.css">
     <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?= base_url('assets/admin/') ?>plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/themify-icons.css">
     <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/nice-select.css">
     <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/flaticon.css">

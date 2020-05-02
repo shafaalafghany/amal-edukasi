@@ -18,6 +18,7 @@ class pages extends CI_Controller
 
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $data['modul'] = $this->Modul_model->getAllModul();
 
         $this->load->view('header/header_user', $data);
         $this->load->view('user/pembelajaran/pembelajaran');
