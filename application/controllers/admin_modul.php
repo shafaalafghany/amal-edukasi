@@ -94,7 +94,7 @@ class admin_modul extends CI_Controller
             $subjudul3 = $this->input->post('subjudul3');
             $subdesk3 = $this->input->post('subdesk3');
 
-            //Ambil data file video
+            //Ambil data file video dan thumbnail
             if ($upload_video && $upload_thumbnail) {
                 $result = $this->_uploadVideo();
 
@@ -102,7 +102,7 @@ class admin_modul extends CI_Controller
                     $new_video = $this->upload->data('file_name');
                     $this->db->set('video', $new_video);
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file video gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    $this->session->set_flashdata('message1', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file video gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                     redirect('admin_modul/daftar_modul');
                 }
 
@@ -112,29 +112,18 @@ class admin_modul extends CI_Controller
                     $new_thumbnail = $this->upload->data('file_name');
                     $this->db->set('thumbnail', $new_thumbnail);
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file thumbnail gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    $this->session->set_flashdata('message2', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file thumbnail gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                     redirect('admin_modul/daftar_modul');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>File video dan thumbnail harus diisi!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                if(!$upload_video) {
+                    $this->session->set_flashdata('message1', '<div class="alert alert-danger col-md-12" role="alert"><strong>File video harus diisi!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                }
+                if(!$upload_thumbnail) {
+                    $this->session->set_flashdata('message2', '<div class="alert alert-danger col-md-12" role="alert"><strong>File thumbnail harus diisi!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                }
                 redirect('admin_modul/tambah_modul');
             }
-
-            //Ambil data dari file Thumbnail
-            /* if ($upload_thumbnail) {
-                $hasil = $this->_uploadThumbnail();
-
-                if ($hasil) {
-                    $new_thumbnail = $this->upload->data('file_name');
-                    $this->db->set('thumbnail', $new_thumbnail);
-                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file thumbnail gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                    redirect('admin_modul/daftar_modul');
-                }
-            } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>File thumbnail harus diisi</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                redirect('admin_modul/daftar_modul');
-            } */
 
             //data data tersebut dimasukkan ke dalam array
             $data = array(
@@ -194,37 +183,50 @@ class admin_modul extends CI_Controller
 
     public function hapus_modul($id)
     {
-        $sessionUser = $this->session->userdata('username');
+        $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $data['event'] = $this->Modul_model->getAllModul();
 
         $this->load->helper('file');
 
         //hapus file video berdasarkan id
-        $file_video = $this->db->select('file')->get_where('modul', ['id_modul' => $id])->row()->video;
+        $file_video = $this->db->select('video')->get_where('modul', ['id_modul' => $id])->row()->video;
         $video = './assets/modul/video/' . $file_video;
         unlink($video);
 
         //hapus file thumbnail berdasarkan id
-        $file_thumbnail = $this->db->select('file')->get_where('modul', ['id_modul' => $id])->row()->thumbnail;
+        $file_thumbnail = $this->db->select('thumbnail')->get_where('modul', ['id_modul' => $id])->row()->thumbnail;
         $thumbnail = './assets/modul/thumbnail/' . $file_thumbnail;
         unlink($thumbnail);
 
         $this->Modul_model->deleteModul($id);
 
         $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu Modul berhasil dihapus!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-        redirect('admin_modul');
+        redirect('admin_modul/daftar_modul');
     }
 
     public function lihat_modul($id_modul)
     {
-        $data['judul'] = 'Amal Edukasi | Lihat Modul';
-        $sessionUser = $this->session->userdata('username');
+        $data['judul'] = 'Amal Edukasi | Detail Modul Pembelajaran';
+        $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-        $modul = $this->Modul_model->getModulById($id_modul);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
+        $data['modul'] = $this->Modul_model->getModulById($id_modul);
 
-        $tofile = realpath("assets/file/" . $modul);
+        if ($data['user']) {
+            if ($user['role_id'] == 1) {
+                $this->load->view('header/header_detail_admin', $data);
+                $this->load->view('admin/modul/view_modul');
+            } else {
+                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                redirect('home');
+            }
+        } else {
+            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+            redirect('home');
+        }
+        /* $tofile = realpath("assets/file/" . $modul);
         header('Content-Type: application/pdf');
-        readfile($tofile);
+        readfile($tofile); */
     }
 }

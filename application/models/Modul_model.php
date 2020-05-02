@@ -26,6 +26,6 @@ class Modul_model extends CI_model
 
     public function getModulById($id_modul)
     {
-        return $this->db->select('file')->get_where('modul', ['id_modul' => $id_modul])->row()->file;
+        return $this->db->get_where('modul', ['id_modul' => $id_modul])->row_array();
     }
 }

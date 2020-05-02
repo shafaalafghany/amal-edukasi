@@ -45,12 +45,12 @@
                       <td><?= $loadModul['deskripsi']; ?></td>
                       <td><?= $loadModul['jenis']; ?></td>
                       <td class="project-actions text-center">
-                        <a class="btn btn-primary btn-sm" href="<?= base_url(); ?>User/openModul/<?= $loadModul['id_modul']; ?>">
+                        <a class="btn btn-primary btn-sm" href="<?= base_url('admin_modul/'); ?>lihat_modul/<?= $loadModul['id_modul']; ?>">
                           <i class="fas fa-folder">
                           </i>
                           View
                         </a>
-                        <a class="btn btn-danger btn-sm delete_modul" href="<?= base_url(); ?>Administrator/hapus_modul/<?= $loadModul['id_modul']; ?>">
+                        <a class="btn btn-danger btn-sm delete_modul" href="<?= base_url('admin_modul/'); ?>hapus_modul/<?= $loadModul['id_modul']; ?>">
                           <i class="fas fa-trash">
                           </i>
                           Delete
@@ -125,13 +125,7 @@
           cancelButtonText: 'Batal'
         }).then((result) => {
           if (result.value) {
-            Swal.fire(
-              'Berhasil',
-              'Satu modul telah dihapus',
-              'success'
-            ).then((result) => {
-              document.location.href = href;
-            })
+            document.location.href = href;
           }
         })
       });

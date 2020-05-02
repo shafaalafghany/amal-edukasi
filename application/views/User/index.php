@@ -89,20 +89,19 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="row">
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
+                            <div class="col-xl-4 col-lg-4 col-md-6">
                                         <div class="single_courses">
                                             <div class="courses_info">
                                                 <h3><a href="#">Paket CPNS <br>
                                                         (Calon Pegawai Negeri Sipil)</a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
+                                                        <i class="far fa-calendar-plus"></i>
+                                                        <span>5 Event</span>
                                                     </div>
                                                     <div class="prise">
-                                                        <span class="offer">$89.00</span>
                                                         <span class="active_prise">
-                                                            $49
+                                                            Rp30.000 /event
                                                         </span>
                                                     </div>
                                                 </div>
@@ -116,13 +115,12 @@
                                                         SPMB PKN STAN</a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
+                                                        <i class="far fa-calendar-plus"></i>
+                                                        <span>3 Event</span>
                                                     </div>
                                                     <div class="prise">
-                                                        <span class="offer">$89.00</span>
                                                         <span class="active_prise">
-                                                            $49
+                                                            Rp40.000 /event
                                                         </span>
                                                     </div>
                                                 </div>
@@ -136,13 +134,12 @@
                                                         PKN STAN</a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
+                                                        <i class="far fa-calendar-plus"></i>
+                                                        <span>4 Event</span>
                                                     </div>
                                                     <div class="prise">
-                                                        <span class="offer">$89.00</span>
                                                         <span class="active_prise">
-                                                            $49
+                                                            Rp35.000 /event
                                                         </span>
                                                     </div>
                                                 </div>
@@ -156,13 +153,12 @@
                                                         PKN STAN</a></h3>
                                                 <div class="star_prise d-flex justify-content-between">
                                                     <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
+                                                        <i class="far fa-calendar-plus"></i>
+                                                        <span>3 Event</span>
                                                     </div>
                                                     <div class="prise">
-                                                        <span class="offer">$89.00</span>
                                                         <span class="active_prise">
-                                                            $49
+                                                            Rp50.000 /event
                                                         </span>
                                                     </div>
                                                 </div>
@@ -246,146 +242,31 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                             <div class="row">
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/1.png" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="courses_info">
-                                                <span>Tes Potensi Akademik (TPA)</span>
-                                                <h3><a href="#">Mudah mengerjakan <br>
-                                                        soal tes potensi akademik</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
-                                                    </div>
+                                <?php if($modul){ ?>
+                                    <?php foreach($modul as $load_modul){ ?>
+                                        <div class="col-xl-4 col-lg-4 col-md-6">
+                                            <div class="single_courses">
+                                                <div class="thumb">
+                                                    <a href="#">
+                                                        <img src="<?= base_url('assets/modul/thumbnail/' . $load_modul['thumbnail']); ?>" alt="" style="width: 362px; height: 250px;">
+                                                    </a>
+                                                </div>
+                                                <div class="courses_info">
+                                                    <span><?= $load_modul['jenis'] ?></span>
+                                                    <h3><a href="<?= base_url('detail/pembelajaran_detail/' . $load_modul['id_modul']) ?>"><?= $load_modul['judul_modul'] ?></a></h3>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/2.png" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="courses_info">
-                                                <span>Bahasa Inggris</span>
-                                                <h3><a href="#">Mudah berbahasa inggris dengan tenses</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
-                                                    </div>
-                                                </div>
+                                    <?php } ?>
+                                    <?php if(count($modul) > 6){ ?>
+                                        <div class="col-xl-12">
+                                            <div class="more_courses text-center">
+                                                <a href="#" class="boxed_btn_rev">Tampilkan Lebih Banyak</a>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/3.jpg" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="courses_info">
-                                                <span>Wawasan Kebangsaan</span>
-                                                <h3><a href="#">Belajar sejarah Negara Kesatuan Republik Indonesia </a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/4.png" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="courses_info">
-                                                <span>Photoshop</span>
-                                                <h3><a href="#">Mobile App design step by step <br>
-                                                        from beginner</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="offer">$89.00</span>
-                                                        <span class="active_prise">
-                                                            $49
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="thumb">
-                                                <img src="<?= base_url('assets/user/'); ?>img/courses/5.png" alt="">
-                                            </div>
-                                            <div class="courses_info">
-                                                <span>UI/UX</span>
-                                                <h3><a href="#">How to complete user research <br>
-                                                        and make work flow</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="offer">$89.00</span>
-                                                        <span class="active_prise">
-                                                            $49
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="thumb">
-                                                <a href="#">
-                                                    <img src="<?= base_url('assets/user/'); ?>img/courses/6.png" alt="">
-                                                </a>
-                                            </div>
-                                            <div class="courses_info">
-                                                <span>Wordpress</span>
-                                                <h3><a href="#">Commitment to dedicated <br>
-                                                        Support</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="flaticon-mark-as-favorite-star"></i>
-                                                        <span>(4.5)</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="offer">$89.00</span>
-                                                        <span class="active_prise">
-                                                            $49
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div> -->
-                                    <div class="col-xl-12">
-                                        <div class="more_courses text-center">
-                                            <a href="#" class="boxed_btn_rev">Lebih Banyak Lagi</a>
-                                        </div>
-                                    </div>
-                                </div>
+                                    <?php } ?>
+                                <?php } ?>
+                            </div>
                     </div>
                 </div>
             </div>
@@ -399,16 +280,17 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="section_title text-center mb-100">
-                        <h3>Kualitas Modul Kami</h3>
+                        <h3>Kualitas Kami</h3>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-xl-3 col-md-6 col-lg-6">
                     <div class="single_course text-center">
-                        <div class="icon">
-                            <i class="flaticon-art-and-design"></i>
+                        <div class="icon gradient">
+                            <i class="fas fa-book-reader"></i>
                         </div>
+                        <br>
                         <h3>Mudah Dipahami</h3>
                         <p>
                             Semua modul pembelajaran yang kami sampaikan <br> sangat mudah <br> 
@@ -418,37 +300,40 @@
                 </div>
                 <div class="col-xl-3 col-md-6 col-lg-6">
                     <div class="single_course text-center">
-                        <div class="icon blue">
-                            <i class="flaticon-business-and-finance"></i>
+                        <div class="icon gradient">
+                            <i class="fas fa-money-bill-wave"></i>
                         </div>
+                        <br>
                         <h3>Harga Ekonomis</h3>
                         <p>
                             Di amal edukasi, dengan <br> harga yang terjangkau <br>
-                            modul pembelajaran bisa didapatkan
-                        </p>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6 col-lg-6">
-                    <div class="single_course text-center">
-                        <div class="icon">
-                            <i class="flaticon-premium"></i>
-                        </div>
-                        <h3>Premium Quality</h3>
-                        <p>
-                            Your domain control panel is designed for ease-of-use <br> and <br>
-                            allows for all aspects of
+                            try out online bisa didapatkan
                         </p>
                     </div>
                 </div>
                 <div class="col-xl-3 col-md-6 col-lg-6">
                     <div class="single_course text-center">
                         <div class="icon gradient">
-                            <i class="flaticon-crown"></i>
+                            <i class="fas fa-users"></i>
                         </div>
-                        <h3>Premium Quality</h3>
+                        <br>
+                        <h3>Banyak Peserta</h3>
                         <p>
-                            Your domain control panel is designed for ease-of-use <br> and <br>
-                            allows for all aspects of
+                            Try Out di Amal Edukasi diikuti banyak peserta sehingga
+                            cocok sekali untuk uji latihanmu
+                        </p>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6 col-lg-6">
+                    <div class="single_course text-center">
+                        <div class="icon gradient">
+                            <i class="fab fa-teamspeak"></i>
+                        </div>
+                        <br>
+                        <h3>Pemateri Para Ahli</h3>
+                        <p>
+                            Modul pembelajaran di Amal Edukasi ini dibawakan oleh 
+                            pemateri yang benar-benar ahli dibidangnya
                         </p>
                     </div>
                 </div>

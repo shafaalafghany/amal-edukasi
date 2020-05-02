@@ -4,7 +4,7 @@
              <div class="row">
                  <div class="col-xl-6">
                      <div class="course_text">
-                            <h3>Tes Potensi Akademik <br> (TPA)</h3>
+                            <h3><?= $modul['judul_modul'] ?></h3>
                             <!-- <div class="prise">
                                 <span class="inactive">$89.00</span>
                                 <span class="active">$49</span>
@@ -41,10 +41,7 @@
                 <div class="col-xl-7 col-lg-7">
                     <div class="single_courses">
                         <h3>Deskripsi</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. 
-                            Quisquam quam cumque quae distinctio. At reiciendis fugiat eos, 
-                            consectetur ab velit laborum vitae architecto minus, 
-                            odit unde? Rem repudiandae beatae quas.</p>
+                        <p><?= $modul['deskripsi'] ?></p>
                         <!-- <h3 class="second_title">Garis Besar Video</h3> -->
                     </div>
                     <br>
@@ -52,20 +49,51 @@
                     <div class="outline_courses_info">
                             <div id="accordion">
                                     <div class="card">
-                                        <div class="card-header" id="headingTwo">
+                                        <div class="card-header" id="headingOne">
                                             <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                    <i class="flaticon-question"></i> Apa sih tes potensi akademik itu?
+                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseTwo">
+                                                    <i class="flaticon-question"></i> <?= $modul['subjudul1'] ?>
                                                 </button>
                                             </h5>
                                         </div>
-                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                        <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                                             <div class="card-body">
-                                                Our set he for firmament morning sixth subdue darkness creeping gathered divide our
-                                                let god moving. Moving in fourth air night bring upon
+                                                <?= $modul['subdesk1'] ?>
                                             </div>
                                         </div>
                                     </div>
+                                    <?php if($modul['subjudul2'] && $modul['subdesk2']){ ?>
+                                        <div class="card">
+                                            <div class="card-header" id="headingTwo">
+                                                <h5 class="mb-0">
+                                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                        <i class="flaticon-question"></i> <?= $modul['subjudul2'] ?>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <?= $modul['subdesk2'] ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+                                    <?php if($modul['subjudul3'] && $modul['subdesk3']){ ?>
+                                        <div class="card">
+                                            <div class="card-header" id="headingThree">
+                                                <h5 class="mb-0">
+                                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseTwo">
+                                                        <i class="flaticon-question"></i> <?= $modul['subjudul3'] ?>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="collapseThree" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <?= $modul['subdesk3'] ?>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <?php } ?>
                                     <!-- <div class="card">
                                         <div class="card-header" id="headingOne">
                                             <h5 class="mb-0">
@@ -133,7 +161,7 @@
                 <div class="col-xl-5 col-lg-5">
                     <div class="courses_sidebar">
                         <div class="video_thumb">
-                            <img src="<?= base_url('assets/user/'); ?>img/latest_blog/video.png" alt="">
+                            <img src="<?= base_url('assets/modul/thumbnail/' . $modul['thumbnail']); ?>" alt="" style="width: 450px; height: 400px;">
                             <a href="#">
                                 <i class="fa fa-play"></i>
                             </a>
@@ -160,7 +188,7 @@
                             </ul>
                         </div> -->
                         <br>
-                        <a href="https://www.youtube.com/watch?v=AjgD3CvWzS0" class="boxed_btn popup-video">Lihat Video</a>
+                        <a href="<?= base_url('assets/modul/video/' . $modul['video']) ?>" class="boxed_btn popup-video">Lihat Video</a>
                         <div class="feedback_info">
                             <h3>Tulis Feedback Kamu</h3>
                             
