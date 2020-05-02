@@ -30,10 +30,7 @@ class auth extends CI_Controller
         ]);
 
         if ($this->form_validation->run() == false) {
-            $data['judul'] = 'Amal Edukasi';
-
-            // $this->load->view('home', $data);
-            redirect('Home');
+            redirect('home');
         } else {
             $this->_login();
         }

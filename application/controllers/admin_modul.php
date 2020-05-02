@@ -47,11 +47,21 @@ class admin_modul extends CI_Controller
         $data['topik'] = $this->Topik_model->getAllTopik();
         $user = $this->User_model->sessionUserMasuk($sessionUser);
 
-        $this->form_validation->set_rules('judul', 'Judul', 'required|trim');
-        $this->form_validation->set_rules('jenisModul', 'JenisModul', 'required|trim');
-        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim');
-        $this->form_validation->set_rules('subjudul1', 'Subjudul1', 'required|trim');
-        $this->form_validation->set_rules('subdesk1', 'Subdesk1', 'required|trim');
+        $this->form_validation->set_rules('judul', 'Judul', 'required|trim', [
+            'required' => 'Judul tidak boleh kosong!'
+        ]);
+        $this->form_validation->set_rules('jenisModul', 'JenisModul', 'required|trim', [
+            'required' => 'Jenis modul tidak boleh kosong!'
+        ]);
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim', [
+            'required' => 'Deskripsi tidak boleh kosong!'
+        ]);
+        $this->form_validation->set_rules('subjudul1', 'Subjudul1', 'required|trim', [
+            'required' => 'Sub judul video (bagian 1) tidak boleh kosong!'
+        ]);
+        $this->form_validation->set_rules('subdesk1', 'Subdesk1', 'required|trim', [
+            'required' => 'Sub deskripsi video (bagian 1) tidak boleh kosong!'
+        ]);
         $this->form_validation->set_rules('subjudul2', 'Subjudul2', 'trim');
         $this->form_validation->set_rules('subdesk2', 'Subdesk2', 'trim');
         $this->form_validation->set_rules('subjudul3', 'Subjudul3', 'trim');
@@ -84,39 +94,30 @@ class admin_modul extends CI_Controller
             $subjudul3 = $this->input->post('subjudul3');
             $subdesk3 = $this->input->post('subdesk3');
 
-            //Ambil data file video
-            if ($upload_video) {
-                $config['upload_path'] = './assets/modul/video/';
-                $config['allowed_types'] = 'mp4|mkv|avi';
-                $config['max_size'] = 512000;
-                $config['overwrite'] = true;
+            //Ambil data file video dan thumbnail
+            if ($upload_video && $upload_thumbnail) {
+                $result = $this->_uploadVideo();
 
-                $this->load->library('upload', $config);
-
-                if ($this->upload->do_upload('filevideo')) {
+                if ($result) {
                     $new_video = $this->upload->data('file_name');
                     $this->db->set('video', $new_video);
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file video gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                     redirect('admin_modul/daftar_modul');
                 }
-            }
 
-            //Ambil data dari file Thumbnail
-            if ($upload_thumbnail) {
-                $konfig['upload_path'] = './assets/modul/thumbnail/';
-                $konfig['allowed_types'] = 'jpg|png|jpeg';
-                $konfig['max_size'] = 2048;
-                $konfig['overwrite'] = true;
+                $hasil = $this->_uploadThumbnail();
 
-                $this->load->library('upload', $konfig);
-                if ($this->upload->do_upload('filethumbnail')) {
+                if ($hasil) {
                     $new_thumbnail = $this->upload->data('file_name');
                     $this->db->set('thumbnail', $new_thumbnail);
                 } else {
                     $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file thumbnail gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                     redirect('admin_modul/daftar_modul');
                 }
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>File video dan thumbnail harus diisi!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                redirect('admin_modul/tambah_modul');
             }
 
             //data data tersebut dimasukkan ke dalam array
@@ -136,6 +137,42 @@ class admin_modul extends CI_Controller
             $this->Modul_model->insertModul($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu Modul berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('admin_modul/daftar_modul');
+        }
+    }
+
+    private function _uploadVideo()
+    {
+        $this->load->library('upload');
+
+        $config['upload_path'] = './assets/modul/video/';
+        $config['allowed_types'] = 'mp4|mkv|avi';
+        $config['max_size'] = 512000;
+        $config['overwrite'] = true;
+
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('filevideo')) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    private function _uploadThumbnail()
+    {
+        $this->load->library('upload');
+
+        $config['upload_path'] = './assets/modul/thumbnail/';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['max_size'] = 2048;
+        $config['overwrite'] = true;
+
+        $this->upload->initialize($config);
+
+        if ($this->upload->do_upload('filethumbnail')) {
+            return true;
+        } else {
+            return false;
         }
     }
 

@@ -24,15 +24,15 @@ class home extends CI_Controller
         $data['modul'] = $this->Modul_model->getAllModul();
         $data['testimoni'] = $this->Modul_model->getTestimoni();
 
-        if($data['user']){
-            if($user['role_id'] == 3){
+        if ($data['user']) {
+            if ($user['role_id'] == 2) {
                 $this->load->view('header/header_user', $data);
                 $this->load->view('user/index');
                 $this->load->view('footer/footer_user');
-            } else{
+            } else {
                 redirect('admin');
             }
-        } else{
+        } else {
             $this->load->view('header/header_user', $data);
             $this->load->view('user/index');
             $this->load->view('footer/footer_user');
