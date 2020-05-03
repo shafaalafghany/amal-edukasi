@@ -56,3 +56,4 @@ $route['translate_uri_dashes'] = TRUE;
 $route['pembelajaran'] = 'pages/pembelajaran';
 $route['pembelajaran_detail'] = 'detail/pembelajaran_detail';
 $route['contact'] = 'pages/contact';
+$route['faq'] = 'pages/faq';

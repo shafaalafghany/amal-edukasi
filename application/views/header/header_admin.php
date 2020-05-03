@@ -255,6 +255,79 @@
                 </li>
               </ul>
             </li>
+            <?php if (current_url() == base_url('admin_faq')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="fas fa-question-circle nav-icon"></i>
+                  <p>
+                    FAQ
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_faq') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar FAQ</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_faq/tambah_faq') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah FAQ</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } elseif(current_url() == base_url('admin_faq/tambah_faq')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="fas fa-question-circle nav-icon"></i>
+                  <p>
+                    FAQ
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_faq') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar FAQ</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_faq/tambah_faq') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah FAQ</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } else { ?>
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-question-circle nav-icon"></i>
+                  <p>
+                    FAQ
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_faq') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar FAQ</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_faq/tambah_faq') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah FAQ</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } ?>
             <li class="nav-header">Administrator</li>
             <?php if (current_url() == base_url('admin_data')) { ?>
               <li class="nav-item has-treeview menu-open">
