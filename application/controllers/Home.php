@@ -25,7 +25,7 @@ class home extends CI_Controller
         $data['testimoni'] = $this->Modul_model->getTestimoni();
 
         if ($data['user']) {
-            if ($user['role_id'] == 2) {
+            if ($user['role_id'] == 3) {
                 $this->load->view('header/header_user', $data);
                 $this->load->view('user/index');
                 $this->load->view('footer/footer_user');

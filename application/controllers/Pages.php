@@ -10,6 +10,7 @@ class pages extends CI_Controller
         $this->load->model('Event_model');
         $this->load->model('Modul_model');
         $this->load->model('User_model');
+        $this->load->model('Faq_model');
     }
 
     public function pembelajaran()
@@ -101,9 +102,7 @@ class pages extends CI_Controller
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
 
-        $data['event'] = $this->Event_model->getAllEvent();
-        $data['modul'] = $this->Modul_model->getAllModul();
-        $data['testimoni'] = $this->Modul_model->getTestimoni();
+        $data['faq'] = $this->Faq_model->getAllFaq();
 
         if($data['user']){
             if($user['role_id'] == 3){

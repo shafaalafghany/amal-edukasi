@@ -78,18 +78,20 @@ class admin_faq extends CI_Controller
             ];
 
             //Insert data ke database
-            $this->Modul_model->insertFaq($data);
+            $this->Faq_model->insertFaq($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu FAQ berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('admin_faq');
         }
     }
 
-    public function hapus_modul($id)
+    public function hapus_faq($id)
     {
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['faq'] = $this->faq_model->getAllFaq();
+        $data['faq'] = $this->Faq_model->getAllFaq();
 
         $this->Faq_model->deleteFaq($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu FAQ berhasil dihapus!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        redirect('admin_faq');
     }
 }

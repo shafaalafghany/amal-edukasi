@@ -40,10 +40,10 @@
                   foreach ($faq as $load_faq) { ?>
                     <tr>
                       <td><?= $i; ?></td>
-                      <td><?= $load_faq['judul_modul']; ?></td>
-                      <td><?= $load_faq['deskripsi']; ?></td>
+                      <td><?= $load_faq['judul_faq']; ?></td>
+                      <td><?= $load_faq['desk_faq']; ?></td>
                       <td class="project-actions text-center">
-                        <a class="btn btn-danger btn-sm delete_modul" href="<?= base_url('admin_modul/'); ?>hapus_modul/<?= $loadModul['id_modul']; ?>">
+                        <a class="btn btn-danger btn-sm delete_modul" href="<?= base_url('admin_faq/'); ?>hapus_faq/<?= $load_faq['id_faq']; ?>">
                           <i class="fas fa-trash">
                           </i>
                           Delete
