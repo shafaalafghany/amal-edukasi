@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/slicknav.css">
     <link rel="stylesheet" href="<?= base_url('assets/user/'); ?>css/style.css">
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
 
 <body>

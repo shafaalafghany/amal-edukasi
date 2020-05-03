@@ -12,22 +12,24 @@
                     <div class="outline_courses_info">
                         <div id="accordion">
                             <?php if($faq){ ?>
-                                <?php foreach($faq as $load_faq) { ?>
+                                <?php 
+                                    $i=1;
+                                    foreach($faq as $load_faq) { ?>
                                     <div class="card">
                                         <div class="card-header" id="headingOne">
                                             <h5 class="mb-0">
-                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapse<?= $i ?>" aria-expanded="false" aria-controls="collapseOne">
                                                     <i class="flaticon-question"></i> <?= $load_faq['judul_faq'] ?>
                                                 </button>
                                             </h5>
                                         </div>
-                                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                        <div id="collapse<?= $i ?>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
                                             <div class="card-body">
                                                 <?= $load_faq['desk_faq'] ?>
                                             </div>
                                         </div>
                                     </div>
-                                <?php } ?>
+                                <?php $i++; } ?>
                             <?php } ?>
                         </div>
                     </div>

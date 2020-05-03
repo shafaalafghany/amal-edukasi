@@ -9,7 +9,7 @@ class Faq_model extends CI_model
 
     public function insertFaq($dataInsert)
     {
-        $this->db->insert('faq', $dataInsert);
+        return $this->db->insert('faq', $dataInsert);
     }
 
     public function deleteFaq($id)
