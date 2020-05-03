@@ -78,9 +78,14 @@ class admin_faq extends CI_Controller
             ];
 
             //Insert data ke database
-            $this->Modul_model->insertFaq($data);
-            $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu FAQ berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect('admin_faq');
+            $res = $this->Faq_model->insertFaq($data);
+            if ($res) {
+                $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu FAQ berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                redirect('admin_faq');
+            } else {
+                $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Satu FAQ gagal ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                redirect('admin_faq');
+            }
         }
     }
 
@@ -88,7 +93,7 @@ class admin_faq extends CI_Controller
     {
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['faq'] = $this->faq_model->getAllFaq();
+        $data['faq'] = $this->Faq_model->getAllFaq();
 
         $this->Faq_model->deleteFaq($id);
     }
