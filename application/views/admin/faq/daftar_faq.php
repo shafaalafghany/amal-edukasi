@@ -25,7 +25,7 @@
             
             <!-- /.card-body -->
             <div class="card-body">
-              <table id="example1" class="table table-bordered table-striped">
+              <table id="example1" class="table table-bordered table-striped load-table">
                 <thead>
                   <tr>
                     <th>No</th>
@@ -43,7 +43,7 @@
                       <td><?= $load_faq['judul_faq']; ?></td>
                       <td><?= $load_faq['desk_faq']; ?></td>
                       <td class="project-actions text-center">
-                        <a class="btn btn-danger btn-sm delete_modul" href="<?= base_url('admin_faq/'); ?>hapus_faq/<?= $load_faq['id_faq']; ?>">
+                        <a class="badge badge-danger col-sm delete_modul" href="<?= base_url('admin_faq/'); ?>hapus_faq/<?= $load_faq['id_faq']; ?>">
                           <i class="fas fa-trash">
                           </i>
                           Delete
@@ -66,6 +66,13 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <footer class="main-footer">
+    <strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script> <a href="http://sobatkode.com">Sobatkode</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 1.0.0
+    </div>
+  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -76,18 +83,18 @@
   <!-- ./wrapper -->
 
   <!-- jQuery -->
-  <script src="<?= base_url('assets/Admin/') ?>plugins/jquery/jquery.min.js"></script>
+  <script src="<?= base_url('assets/admin/') ?>plugins/jquery/jquery.min.js"></script>
 
-  <script src="<?= base_url('assets/User/'); ?>js/sweetalert2.all.min.js"></script>
+  <script src="<?= base_url('assets/user/'); ?>js/sweetalert2.all.min.js"></script>
   <!-- Bootstrap 4 -->
-  <script src="<?= base_url('assets/Admin/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="<?= base_url('assets/admin/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- DataTables -->
-  <script src="<?= base_url('assets/Admin/') ?>plugins/datatables/jquery.dataTables.js"></script>
-  <script src="<?= base_url('assets/Admin/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+  <script src="<?= base_url('assets/admin/') ?>plugins/datatables/jquery.dataTables.js"></script>
+  <script src="<?= base_url('assets/admin/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
   <!-- AdminLTE App -->
-  <script src="<?= base_url('assets/Admin/') ?>dist/js/adminlte.min.js"></script>
+  <script src="<?= base_url('assets/admin/') ?>dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
-  <script src="<?= base_url('assets/Admin/') ?>dist/js/demo.js"></script>
+  <script src="<?= base_url('assets/admin/') ?>dist/js/demo.js"></script>
 
   <script src="<?= base_url('assets/auth/'); ?>js/logout.js"></script>
   <!-- page script -->
@@ -121,6 +128,14 @@
             document.location.href = href;
           }
         })
+      });
+
+      $(window).resize(function(){
+        if ($(window).width() <= 700){
+          $('.load-table').addClass('table-responsive');
+        } else {
+          $('.load-table').removeClass('table-responsive');  
+        }
       });
     });
   </script>
