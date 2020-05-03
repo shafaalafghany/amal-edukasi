@@ -6,12 +6,9 @@ class admin_faq extends CI_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('form_validation');
-        $this->load->model('Event_model');
+        $this->load->library('form_validation');;
         $this->load->model('User_model');
-        $this->load->model('Modul_model');
-        $this->load->model('Soal_model');
-        $this->load->model('Hasil_tes_model');
+        $this->load->model('Faq_model');
     }
 
     public function index()
@@ -20,20 +17,19 @@ class admin_faq extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
-        /* $data['modul'] = $this->Modul_model->getAllModul();
-        $data['event'] = $this->Event_model->getAllEvent();
-        $data['allUser'] = $this->User_model->getAllUser();
-        $data['admin'] = $this->User_model->getAllAdmin(); */
+        $data['faq'] = $this->Faq_model->getAllFaq();
 
-        if($data['user']){
-            if($user['role_id'] == 1){
+        //Cek apakah user sudah login
+        if ($data['user']) {
+            //Cek apakah user adalah admin
+            if ($user['role_id'] == 1) {
                 $this->load->view('header/header_admin', $data);
                 $this->load->view('admin/faq/daftar_faq');
-            } else{
+            } else {
                 $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
                 redirect('home');
             }
-        } else{
+        } else {
             $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
             redirect('home');
         }
@@ -45,22 +41,55 @@ class admin_faq extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
-        /* $data['modul'] = $this->Modul_model->getAllModul();
-        $data['event'] = $this->Event_model->getAllEvent();
-        $data['allUser'] = $this->User_model->getAllUser();
-        $data['admin'] = $this->User_model->getAllAdmin(); */
+        $data['faq'] = $this->Faq_model->getAllFaq();
 
-        if($data['user']){
-            if($user['role_id'] == 1){
-                $this->load->view('header/header_admin', $data);
-                $this->load->view('admin/faq/tambah_faq');
-            } else{
-                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+        $this->form_validation->set_rules('judul', 'Judul', 'required|trim', [
+            'required' => 'Judul tidak boleh kosong!'
+        ]);
+
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim', [
+            'required' => 'Deskripsi tidak boleh kosong!'
+        ]);
+
+        if ($this->form_validation->run() == false) {
+            //Cek apakah user sudah login
+            if ($data['user']) {
+                //Cek apakah user adalah admin
+                if ($user['role_id'] == 1) {
+                    $this->load->view('header/header_admin', $data);
+                    $this->load->view('admin/faq/tambah_faq');
+                } else {
+                    $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                    redirect('home');
+                }
+            } else {
+                $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
                 redirect('home');
             }
-        } else{
-            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
-            redirect('home');
+        } else {
+            //Ambil data dari form
+            $judul = $this->input->post('judul');
+            $deskripsi = $this->input->post('deskripsi');
+
+            //Masukkan data ke array
+            $data = [
+                'judul_faq' => $judul,
+                'desk_faq' => $deskripsi
+            ];
+
+            //Insert data ke database
+            $this->Modul_model->insertFaq($data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu FAQ berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect('admin_faq');
         }
+    }
+
+    public function hapus_modul($id)
+    {
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $data['faq'] = $this->faq_model->getAllFaq();
+
+        $this->Faq_model->deleteFaq($id);
     }
 }

@@ -30,21 +30,21 @@
             </div>
 
             <div class="card-body">
-              <?= form_open_multipart('#'); ?>
-              <div class="form-group">
-                <label for="judul">Judul FAQ <span style="color: red">*</span></label>
-                <input type="text" id="judul" name="judul" class="form-control">
-              </div>
-              <div class="form-group">
-                <label for="deskripsi">Deskripsi FAQ <span style="color: red">*</span></label>
-                <textarea id="deskripsi" name="deskripsi" class="form-control" rows="4"></textarea>
-              </div>
-              <div class="form-group">
-                <label style="color: red">Catatan: Form yang bertanda bintang (*) berarti wajib diisi</label>
-              </div>
-              <div class="col-12">
-                <input type="submit" class="btn btn-primary float-right">
-              </div>
+              <form method="POST" action="<?= base_url('admin_faq/tambah_faq'); ?>">
+                <div class="form-group">
+                  <label for="judul">Judul FAQ <span style="color: red">*</span></label>
+                  <input type="text" id="judul" name="judul" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label for="deskripsi">Deskripsi FAQ <span style="color: red">*</span></label>
+                  <textarea id="deskripsi" name="deskripsi" class="form-control" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                  <label style="color: red">Catatan: Form yang bertanda bintang (*) berarti wajib diisi</label>
+                </div>
+                <div class="col-12">
+                  <input type="submit" class="btn btn-primary float-right">
+                </div>
               </form>
             </div>
           </div>
