@@ -98,12 +98,13 @@ class admin_modul extends CI_Controller
             if ($upload_video && $upload_thumbnail) {
                 $result = $this->_uploadVideo();
 
-                if ($result) {
+                if ($result == true) {
                     $new_video = $this->upload->data('file_name');
                     $this->db->set('video', $new_video);
                 } else {
+                    //$this->session->set_flashdata('message1', $this->upload->display_errors());
                     $this->session->set_flashdata('message1', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file video gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                    redirect('admin_modul/daftar_modul');
+                    redirect('admin_modul/tambah_modul');
                 }
 
                 $hasil = $this->_uploadThumbnail();
@@ -113,7 +114,7 @@ class admin_modul extends CI_Controller
                     $this->db->set('thumbnail', $new_thumbnail);
                 } else {
                     $this->session->set_flashdata('message2', '<div class="alert alert-danger col-md-12" role="alert"><strong>Maaf file thumbnail gagal diupload! Pastikan ukuran dan format file sesuai.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                    redirect('admin_modul/daftar_modul');
+                    redirect('admin_modul/tambah_modul');
                 }
             } else {
                 if(!$upload_video) {
@@ -147,14 +148,12 @@ class admin_modul extends CI_Controller
 
     private function _uploadVideo()
     {
-        $this->load->library('upload');
+        $config_video['upload_path'] = './assets/modul/video/';
+        $config_video['allowed_types'] = 'avi|mp4|mov';
+        $config_video['max_size'] = 512000;
+        $config_video['overwrite'] = true;
 
-        $config['upload_path'] = './assets/modul/video/';
-        $config['allowed_types'] = 'mp4|mkv|avi';
-        $config['max_size'] = 512000;
-        $config['overwrite'] = true;
-
-        $this->upload->initialize($config);
+        $this->load->library('upload', $config_video);
 
         if ($this->upload->do_upload('filevideo')) {
             return true;
@@ -167,12 +166,12 @@ class admin_modul extends CI_Controller
     {
         $this->load->library('upload');
 
-        $config['upload_path'] = './assets/modul/thumbnail/';
-        $config['allowed_types'] = 'jpg|png|jpeg';
-        $config['max_size'] = 2048;
-        $config['overwrite'] = true;
+        $config_thumbnail['upload_path'] = './assets/modul/thumbnail/';
+        $config_thumbnail['allowed_types'] = 'jpg|png|jpeg';
+        $config_thumbnail['max_size'] = 2048;
+        $config_thumbnail['overwrite'] = true;
 
-        $this->upload->initialize($config);
+        $this->upload->initialize($config_thumbnail);
 
         if ($this->upload->do_upload('filethumbnail')) {
             return true;

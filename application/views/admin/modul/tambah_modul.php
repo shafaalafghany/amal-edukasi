@@ -60,7 +60,7 @@
                     <input type="file" id="filevideo" name="filevideo" accept="video/*">
                   </div>
                 </div>
-                <span style="font-size: 14px; margin-left: 20px;">File berekstensi .mp4/.mkv/.avi dan tidak lebih dari 500MB.</span>
+                <span style="font-size: 14px; margin-left: 20px;">File berekstensi .mp4/.avi/.mov dan tidak lebih dari 500MB.</span>
               </div>
               <div class="form-group">
                 <label for="exampleInputFile">Upload Thumbnail <span style="color: red">*</span></label>

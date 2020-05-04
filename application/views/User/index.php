@@ -247,7 +247,7 @@
                                         <div class="col-xl-4 col-lg-4 col-md-6">
                                             <div class="single_courses">
                                                 <div class="thumb">
-                                                    <a href="#">
+                                                    <a href="<?= base_url('detail/pembelajaran_detail/' . $load_modul['id_modul']) ?>">
                                                         <img src="<?= base_url('assets/modul/thumbnail/' . $load_modul['thumbnail']); ?>" alt="" style="width: 362px; height: 250px;">
                                                     </a>
                                                 </div>
