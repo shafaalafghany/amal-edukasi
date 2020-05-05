@@ -29,7 +29,7 @@
                       <th>No</th>
                       <th>Nama Peserta</th>
                       <th>Email Peserta</th>
-                      <th>Subjek</th>
+                      <th>Jenis Feedback</th>
                       <th>Pesan</th>
                       <th>Aksi</th>
                     </tr>
@@ -42,10 +42,10 @@
                           <td><?= $i; ?></td>
                           <td><?= $loadTestimoni['nama_user']; ?></td>
                           <td><?= $loadTestimoni['email_user']; ?></td>
-                          <td><?= $loadTestimoni['subjek']; ?></td>
+                          <td><?= $loadTestimoni['jenis']; ?></td>
                           <td><?= $loadTestimoni['pesan']; ?></td>
                           <td class="project-actions text-center">
-                            <a class="badge badge-danger col-sm delete_testimoni" href="<?= base_url('Administrator/'); ?>delete_testimoni/<?= $loadTestimoni['id_testimoni']; ?>">
+                            <a class="badge badge-danger col-sm delete_testimoni" href="<?= base_url('admin_peserta/'); ?>hapus_testimoni/<?= $loadTestimoni['id_testimoni']; ?>">
                               <i class="fas fa-trash">
                               </i>
                               Delete

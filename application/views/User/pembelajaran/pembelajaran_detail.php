@@ -162,7 +162,7 @@
                     <div class="courses_sidebar">
                         <div class="video_thumb">
                             <img src="<?= base_url('assets/modul/thumbnail/' . $modul['thumbnail']); ?>" alt="" style="width: 450px; height: 400px;">
-                            <a href="#">
+                            <a href="<?= base_url('assets/modul/video/' . $modul['video']) ?>">
                                 <i class="fa fa-play"></i>
                             </a>
                         </div>
@@ -192,8 +192,8 @@
                         <div class="feedback_info">
                             <h3>Tulis Feedback Kamu</h3>
                             
-                            <form action="#">
-                                <textarea name="" id="" cols="30" rows="10" placeholder="Tulis feedback kamu"></textarea>
+                            <form action="<?= base_url('detail/pembelajaran_detail/' . $modul['id_modul']) ?>" method="POST">
+                                <textarea name="testimoni" id="testimoni" cols="30" rows="10" placeholder="Tulis feedback kamu"></textarea>
                                 <button type="submit" class="boxed_btn">Submit</button>
                             </form>
                         </div>

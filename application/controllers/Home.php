@@ -10,6 +10,7 @@ class home extends CI_Controller
         $this->load->model('Event_model');
         $this->load->model('Modul_model');
         $this->load->model('User_model');
+        $this->load->model('Testimoni_model');
     }
 
     public function index()
@@ -22,7 +23,7 @@ class home extends CI_Controller
 
         $data['event'] = $this->Event_model->getAllEvent();
         $data['modul'] = $this->Modul_model->getAllModul();
-        $data['testimoni'] = $this->Modul_model->getTestimoni();
+        $data['testimoni'] = $this->Testimoni_model->getAllTestimoni();
 
         if ($data['user']) {
             if ($user['role_id'] == 3) {

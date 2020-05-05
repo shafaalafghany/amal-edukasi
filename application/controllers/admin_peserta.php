@@ -14,6 +14,7 @@ class admin_peserta extends CI_Controller
         $this->load->model('Soal_model');
         $this->load->model('Hasil_tes_model');
         $this->load->model('Jawaban_model');
+        $this->load->model('Testimoni_model');
     }
 
     public function index()
@@ -148,7 +149,7 @@ class admin_peserta extends CI_Controller
         $data['judul'] = 'Amal Edukasi | Daftar Peserta';
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['testimoni'] = $this->User_model->getAllTestimoni();
+        $data['testimoni'] = $this->Testimoni_model->getAllTestimoni();
         $user = $this->User_model->sessionUserMasuk($sessionUser);
 
         if($data['user']){
@@ -163,5 +164,11 @@ class admin_peserta extends CI_Controller
             $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
             redirect('home');
         }
+    }
+
+    public function hapus_testimoni($id)
+    {
+        $this->Testimoni_model->deleteTestimoni($id);
+        redirect('admin_peserta/testimoni');
     }
 }

@@ -42,9 +42,23 @@
                 <input type="text" id="judul" name="judul" class="form-control">
               </div>
               <div class="form-group">
-                <label for="deskripsi">Harga Paket<span style="color: red">*</span></label>
-                <input type="number" id="judul" name="judul" class="form-control">
+                <label for="harga">Harga Paket <span style="color: red">*</span></label>
+                <input type="number" id="harga" name="harga" class="form-control">
               </div>
+              <br>
+              <label>Pilih Topik Materi Pada Paket ini <span style="color: red">*</span></label>
+              
+                <?php 
+                $i = 1;
+                foreach($topik as $load_topik){ ?>
+                  <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                      <input class="custom-control-input" type="checkbox" id="cbTopik<?= $i; ?>" name="cbTopik<?= $i; ?>" value="option<?= $i; ?>">
+                      <label for="cbTopik<?= $i; ?>" class="custom-control-label" style="font-style: normal"><?= $load_topik['nama_topik_tes'] ?></label>
+                    </div>
+                  </div>
+                <?php $i++; } ?>
+              
               <div class="form-group">
                 <label style="color: red">Catatan: Form yang bertanda bintang (*) berarti wajib diisi</label>
               </div>

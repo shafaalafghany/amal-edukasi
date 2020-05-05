@@ -176,50 +176,26 @@
     <!-- testimonial_area_start -->
     <div class="testimonial_area breadcam_bg">
         <div class="testmonial_active owl-carousel">
-            <div class="single_testmoial">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="testmonial_text text-center">
-                                <div class="author_img">
-                                    <img src="<?= base_url('assets/user/'); ?>img/testmonial/author_img.png" alt="">
+            <?php foreach($testimoni as $load_testi){ ?>
+                <div class="single_testmoial">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="testmonial_text text-center">
+                                    <div class="author_img">
+                                        <img src="<?= base_url('assets/avatar/' . $load_testi['image']); ?>" alt="" style="width: 100px; height: 100px;">
+                                    </div>
+                                    <p style="color: yellow"><?= $load_testi['jenis'] ?></p>
+                                    <p>
+                                        "<?= $load_testi['pesan'] ?>"
+                                    </p>
+                                    <span>- <?= $load_testi['nama_user'] ?></span>
                                 </div>
-                                <p style="color: yellow">Try Out</p>
-                                <p>
-                                    "Working in conjunction with humanitarian aid <br> agencies we have supported
-                                    programmes to <br>
-                                    alleviate.
-                                    human suffering.
-
-                                </p>
-                                <span>- Jquileen</span>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="single_testmoial">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-12">
-                            <div class="testmonial_text text-center">
-                                <div class="author_img">
-                                    <img src="<?= base_url('assets/user/'); ?>img/testmonial/author_img.png" alt="">
-                                </div>
-                                <p style="color: yellow">Modul</p>
-                                <p>
-                                    "Working in conjunction with humanitarian aid <br> agencies we have supported
-                                    programmes to <br>
-                                    alleviate.
-                                    human suffering.
-
-                                </p>
-                                <span>- Jquileen</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
         </div>
     </div>
     <!-- testimonial_area_end -->

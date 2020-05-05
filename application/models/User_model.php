@@ -165,9 +165,4 @@ class User_model extends CI_model
         }
     }
     // End User
-
-    public function getAllTestimoni()
-    {
-        return $this->db->get('testimoni')->result_array();
-    }
 }

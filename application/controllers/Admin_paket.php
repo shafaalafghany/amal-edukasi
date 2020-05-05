@@ -9,6 +9,7 @@ class admin_paket extends CI_Controller
         $this->load->library('form_validation');;
         $this->load->model('User_model');
         $this->load->model('Faq_model');
+        $this->load->model('Topik_model');
     }
 
     public function daftar_paket()
@@ -41,7 +42,7 @@ class admin_paket extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['faq'] = $this->Faq_model->getAllFaq();
+        $data['topik'] = $this->Topik_model->getAllTopik();
 
         $this->form_validation->set_rules('judul', 'Judul', 'required|trim', [
             'required' => 'Judul tidak boleh kosong!'
