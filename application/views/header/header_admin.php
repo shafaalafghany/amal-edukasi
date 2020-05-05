@@ -259,7 +259,7 @@
                 </ul>
               </li>
             <?php } ?>
-            <?php if (current_url() == base_url('admin_event/pilih_paket')) { ?>
+            <?php if (current_url() == base_url('admin_event/pilih_paket') || current_url() == base_url('admin_event/daftar_event')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-calendar-week"></i>
@@ -332,29 +332,79 @@
                 </ul>
               </li>
             <?php } ?>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                  Soal
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Daftar Soal</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Tambah Soal</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
+            <?php if (current_url() == base_url('admin_soal/pilih_kategori_soal') || current_url() == base_url('admin_soal/daftar_soal')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-book"></i>
+                  <p>
+                    Soal
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_soal/pilih_kategori_soal') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Soal</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_soal/kategori_tambah_soal') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Soal</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } elseif (current_url() == base_url('admin_soal/kategori_tambah_soal') || current_url() == base_url('admin_soal/tambah_soal')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-book"></i>
+                  <p>
+                    Soal
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_soal/pilih_kategori_soal') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Soal</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_soal/kategori_tambah_soal') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Soal</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } else { ?>
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-book"></i>
+                  <p>
+                    Soal
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_soal/pilih_kategori_soal') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Soal</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_soal/kategori_tambah_soal') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Soal</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } ?>
             <?php if (current_url() == base_url('admin_faq')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">

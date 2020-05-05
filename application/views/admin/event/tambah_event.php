@@ -46,7 +46,7 @@
               '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
             ); ?>
 
-            <form method="POST" action="<?= base_url('Administrator/tambah_event'); ?>">
+            <form method="POST" action="<?= base_url('admin_event/tambah_event'); ?>">
               <div class="card-body">
                 <div class="form-group">
                   <label for="inputName">Nama Event</label>
@@ -68,9 +68,9 @@
                 <div class="form-group">
                   <label for="optionJurusan">Pilih Paket Tryout</label>
                   <select class="custom-select col-md-12 mb-3" id="optionPaket" name="optionPaket">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
+                    <?php foreach($paket as $loadPaket){ ?>
+                      <option value="<?= $loadPaket['id_paket'] ?>"><?= $loadPaket['nama_paket'] ?></option>
+                    <?php } ?>
                   </select>
                 </div>
                 <div class="form-group">

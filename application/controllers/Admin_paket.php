@@ -18,7 +18,7 @@ class admin_paket extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['faq'] = $this->Faq_model->getAllPaket();
+        $data['paket'] = $this->Paket_model->getAllPaket();
 
         //Cek apakah user sudah login
         if ($data['user']) {
@@ -82,7 +82,7 @@ class admin_paket extends CI_Controller
             //Masukkan data ke array
             $data = [
                 'nama_paket' => $judul,
-                'desk_paket' => $harga,
+                'harga_paket' => $harga,
                 'tpa' => $tpa,
                 'tbi' => $tbi,
                 'twk' => $twk,
@@ -108,9 +108,8 @@ class admin_paket extends CI_Controller
     {
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['faq'] = $this->Faq_model->getAllPaket();
 
-        $this->Faq_model->deletePaket($id);
+        $this->Paket_model->deletePaket($id);
         $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu Paket Try Out berhasil dihapus!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
         redirect('admin_paket/daftar_paket');
     }

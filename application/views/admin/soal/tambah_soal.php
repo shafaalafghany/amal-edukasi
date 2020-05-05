@@ -36,21 +36,12 @@
             </div>
             <div class="card-body">
               <div class="form-group">
-                <label for="inputName">Nama Event</label>
-                <input type="text" id="inputName" class="form-control" disabled="disabled" value="<?= $event['nama_event'] ?>">
+                <label for="inputName">Paket Tryout</label>
+                <input type="text" id="inputName" class="form-control" disabled="disabled" value="<?= $paket['nama_paket'] ?>">
               </div>
-              <!-- <div class="form-group">
-                  <label for="inputStatus">Jenis Modul</label>
-                  <select class="form-control custom-select">
-                    <option selected disabled>Pilih Salah Satu</option>
-                    <option>TKD</option>
-                    <option>Bhs. Inggris</option>
-                    <option>Matematika</option>
-                  </select>
-                </div> -->
               <div class="form-group">
-                <label for="inputProjectLeader">Deskripsi</label>
-                <textarea id="inputDescription" class="form-control" rows="4" disabled="disabled"><?= $event['deskripsi'] ?></textarea>
+                <label for="inputProjectLeader">Event</label>
+                <textarea id="inputDescription" class="form-control" rows="4" disabled="disabled"><?= $event['nama_event'] ?></textarea>
               </div>
               <div class="form-group">
                 <label for="inputMulai">Waktu Mulai Event</label>

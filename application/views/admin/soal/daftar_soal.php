@@ -23,6 +23,10 @@
             <!-- /.card-body -->
             <div class="card-body">
               <div class="form-group">
+                <label for="inputName">Paket Tryout</label>
+                <input type="text" id="inputEvent" class="form-control" disabled="disabled" value="<?= $paket['nama_paket'] ?>">
+              </div>
+              <div class="form-group">
                 <label for="inputName">Event</label>
                 <input type="text" id="inputEvent" class="form-control" disabled="disabled" value="<?= $event['nama_event'] ?>">
               </div>

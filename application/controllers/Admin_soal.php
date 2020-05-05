@@ -8,7 +8,36 @@ class admin_soal extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');;
         $this->load->model('User_model');
-        $this->load->model('Faq_model');
+        $this->load->model('Paket_model');
+        $this->load->model('Event_model');
+        $this->load->model('Topik_model');
+        $this->load->model('Soal_model');
+    }
+
+    public function pilih_kategori_soal()
+    {
+        $data['judul'] = 'Amal Edukasi | Daftar Paket Tryout';
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
+        $data['paket'] = $this->Paket_model->getAllPaket();
+        $data['event'] = $this->Event_model->getAllEvent();
+        $data['topik'] = $this->Topik_model->getAllTopik();
+
+        //Cek apakah user sudah login
+        if ($data['user']) {
+            //Cek apakah user adalah admin
+            if ($user['role_id'] == 1) {
+                $this->load->view('header/header_admin', $data);
+                $this->load->view('admin/soal/pilih_kategori_soal');
+            } else {
+                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                redirect('home');
+            }
+        } else {
+            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+            redirect('home');
+        }
     }
 
     public function daftar_soal()
@@ -17,14 +46,23 @@ class admin_soal extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['faq'] = $this->Faq_model->getAllFaq();
+
+        $id_paket = $this->input->post('optionPaket');
+        $id_event = $this->input->post('optionEvent');
+        $id_topik = $this->input->post('optionTopik');
+
+        $data['paket'] = $this->Paket_model->getPaketById($id_paket);
+        $data['event'] = $this->Event_model->getEventById($id_event);
+        $data['topik'] = $this->Topik_model->getTopikById($id_topik);
+
+        $data['soal'] = $this->Soal_model->getSoalByIdPaketEventTopik($id_paket, $id_event, $id_topik);
 
         //Cek apakah user sudah login
         if ($data['user']) {
             //Cek apakah user adalah admin
             if ($user['role_id'] == 1) {
                 $this->load->view('header/header_admin', $data);
-                $this->load->view('admin/paket/daftar_paket');
+                $this->load->view('admin/soal/daftar_soal');
             } else {
                 $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
                 redirect('home');
@@ -41,7 +79,14 @@ class admin_soal extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['faq'] = $this->Faq_model->getAllFaq();
+
+        $id_paket = $this->input->post('optionPaket');
+        $id_event = $this->input->post('optionEvent');
+        $id_topik = $this->input->post('optionTopik');
+
+        $data['paket'] = $this->Paket_model->getPaketById($id_paket);
+        $data['event'] = $this->Event_model->getEventById($id_event);
+        $data['topik'] = $this->Topik_model->getTopikById($id_topik);
 
         $this->form_validation->set_rules('judul', 'Judul', 'required|trim', [
             'required' => 'Judul tidak boleh kosong!'
@@ -57,7 +102,7 @@ class admin_soal extends CI_Controller
                 //Cek apakah user adalah admin
                 if ($user['role_id'] == 1) {
                     $this->load->view('header/header_admin', $data);
-                    $this->load->view('admin/paket/tambah_paket');
+                    $this->load->view('admin/soal/tambah_soal');
                 } else {
                     $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
                     redirect('home');
@@ -86,6 +131,32 @@ class admin_soal extends CI_Controller
                 $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Satu FAQ gagal ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                 redirect('admin_faq');
             }
+        }
+    }
+
+    public function kategori_tambah_soal()
+    {
+        $data['judul'] = 'Amal Edukasi | Daftar Paket Tryout';
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
+        $data['paket'] = $this->Paket_model->getAllPaket();
+        $data['event'] = $this->Event_model->getAllEvent();
+        $data['topik'] = $this->Topik_model->getAllTopik();
+
+        //Cek apakah user sudah login
+        if ($data['user']) {
+            //Cek apakah user adalah admin
+            if ($user['role_id'] == 1) {
+                $this->load->view('header/header_admin', $data);
+                $this->load->view('admin/soal/kategori_tambah_soal');
+            } else {
+                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                redirect('home');
+            }
+        } else {
+            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+            redirect('home');
         }
     }
 

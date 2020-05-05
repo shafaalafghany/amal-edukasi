@@ -13,6 +13,11 @@ class Event_model extends CI_model
         return $this->db->get_where('event', ['id_event' => $id_event])->row_array();
     }
 
+    public function getEventByIdPaket($id_paket)
+    {
+        return $this->db->get_where('event', ['id_paket' => $id_paket])->result_array();
+    }
+
     public function insertEvent($data)
     {
         return $this->db->insert('event', $data);

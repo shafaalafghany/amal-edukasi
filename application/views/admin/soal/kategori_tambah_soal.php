@@ -22,32 +22,32 @@
               </div>
                 <!-- /.card-body -->
               <div class="card-body">
-                <form method="post" action="<?= base_url('admin_soal/'); ?>soal_detail">
-                <div class="form-group">
-                  <label for="optionEvent">Pilih Paket Tryout</label>
-                  <select class="custom-select col-md-12 mb-3" id="optionEvent" name="optionEvent">
-                    <?php foreach ($event as $loadEvent) { ?>
-                      <option value="<?= $loadEvent['id_event']; ?>"><?= $loadEvent['nama_event']; ?></option>
-                    <?php } ?>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="optionEvent">Pilih Event</label>
-                  <select class="custom-select col-md-12 mb-3" id="optionTopik" name="optionTopik">
-                    <?php foreach ($topik as $loadTopik) { ?>
-                      <option value="<?= $loadTopik['id_topik_tes']; ?>"><?= $loadTopik['nama_topik_tes']; ?></option>
-                    <?php } ?>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="optionEvent">Pilih Topik</label>
-                  <select class="custom-select col-md-12 mb-3" id="optionTopik" name="optionTopik">
-                    <?php foreach ($topik as $loadTopik) { ?>
-                      <option value="<?= $loadTopik['id_topik_tes']; ?>"><?= $loadTopik['nama_topik_tes']; ?></option>
-                    <?php } ?>
-                  </select>
-                </div>
-                <button class="btn btn-primary float-right" type="submit">Submit</button>
+                <form method="post" action="<?= base_url('admin_soal/'); ?>tambah_soal">
+                  <div class="form-group">
+                    <label for="optionEvent">Pilih Paket Tryout</label>
+                    <select class="custom-select col-md-12 mb-3" id="optionPaket" name="optionPaket">
+                      <?php foreach ($paket as $loadPaket) { ?>
+                        <option value="<?= $loadPaket['id_paket']; ?>"><?= $loadPaket['nama_paket']; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="optionEvent">Pilih Event</label>
+                    <select class="custom-select col-md-12 mb-3" id="optionEvent" name="optionEvent">
+                      <?php foreach ($event as $loadEvent) { ?>
+                        <option value="<?= $loadEvent['id_event']; ?>"><?= $loadEvent['nama_event']; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="optionEvent">Pilih Topik</label>
+                    <select class="custom-select col-md-12 mb-3" id="optionTopik" name="optionTopik">
+                      <?php foreach ($topik as $loadTopik) { ?>
+                        <option value="<?= $loadTopik['id_topik_tes']; ?>"><?= $loadTopik['nama_topik_tes']; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                  <button class="btn btn-primary float-right" type="submit">Submit</button>
                 </form>
               </div>
               <!-- /.card-body -->

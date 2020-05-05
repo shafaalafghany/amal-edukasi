@@ -38,19 +38,20 @@
                 <tbody>
                   <?php
                   $i = 1;
-                  foreach ($modul as $loadModul) { ?>
+                  foreach ($paket as $loadPaket) { ?>
                     <tr>
                       <td><?= $i; ?></td>
-                      <td><?= $loadModul['judul_modul']; ?></td>
-                      <td><?= $loadModul['deskripsi']; ?></td>
-                      <td><?= $loadModul['jenis']; ?></td>
+                      <td><?= $loadPaket['nama_paket']; ?></td>
+                      <?php $event = $this->db->get_where('event', ['id_paket' => $loadPaket['id_paket']])->result_array() ?>
+                      <td><?= count($event) ?></td>
+                      <td><?= $loadPaket['harga_paket']; ?></td>
                       <td class="project-actions text-center">
-                        <a class="badge badge-primary col-sm" href="<?= base_url('admin_modul/'); ?>lihat_modul/<?= $loadModul['id_modul']; ?>">
+                        <a class="badge badge-primary col-sm" href="<?= base_url('admin_paket/'); ?>lihat_paket/<?= $loadPaket['id_paket']; ?>">
                           <i class="fas fa-folder">
                           </i>
                           View
                         </a>
-                        <a class="badge badge-danger col-sm delete_modul" href="<?= base_url('admin_modul/'); ?>hapus_modul/<?= $loadModul['id_modul']; ?>">
+                        <a class="badge badge-danger col-sm delete_modul" href="<?= base_url('admin_paket/'); ?>hapus_paket/<?= $loadPaket['id_paket']; ?>">
                           <i class="fas fa-trash">
                           </i>
                           Delete

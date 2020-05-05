@@ -26,7 +26,7 @@
             <div class="card-body">
               <div class="form-group">
                 <label for="inputName">Paket Tryout</label>
-                <input type="text" id="inputEvent" class="form-control" disabled="disabled" value="<?= $event['nama_event'] ?>">
+                <input type="text" id="inputEvent" class="form-control" disabled="disabled" value="<?= $paket['nama_paket'] ?>">
               </div>
               <br>
               <table id="example1" class="table table-bordered table-striped">
@@ -35,8 +35,6 @@
                     <th>No</th>
                     <th>Nama Event</th>
                     <th>Deskripsi</th>
-                    <th>Harga (point)</th>
-                    <th>Jumlah Jurusan</th>
                     <th>Tanggal Mulai</th>
                     <th>Tanggal Berakhir</th>
                     <th>Aksi</th>
@@ -50,17 +48,15 @@
                       <td><?= $i; ?></td>
                       <td><?= $loadEvent['nama_event']; ?></td>
                       <td><?= $loadEvent['deskripsi']; ?></td>
-                      <td><?= $loadEvent['harga']; ?></td>
-                      <td><?= $loadEvent['jurusan']; ?></td>
                       <td><?= $loadEvent['tgl_mulai']; ?></td>
                       <td><?= $loadEvent['tgl_akhir']; ?></td>
                       <td class="project-actions">
-                        <a class="badge badge-info col-sm" href="<?= base_url(); ?>Administrator/edit_event/<?= $loadEvent['id_event']; ?>">
+                        <a class="badge badge-info col-sm" href="<?= base_url(); ?>admin_event/edit_event/<?= $loadEvent['id_event']; ?>">
                           <i class="fas fa-pencil-alt">
                           </i>
                           Edit
                         </a>
-                        <a class="badge badge-danger col-sm delete-event" href="<?= base_url(); ?>Administrator/hapus_event/<?= $loadEvent['id_event']; ?>">
+                        <a class="badge badge-danger col-sm delete-event" href="<?= base_url(); ?>admin_event/hapus_event/<?= $loadEvent['id_event']; ?>">
                           <i class="fas fa-trash">
                           </i>
                           Delete

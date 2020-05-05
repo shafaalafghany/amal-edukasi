@@ -18,7 +18,7 @@ class admin_event extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['faq'] = $this->Faq_model->getAllFaq();
+        $data['paket'] = $this->Paket_model->getAllPaket();
 
         //Cek apakah user sudah login
         if ($data['user']) {
@@ -42,8 +42,10 @@ class admin_event extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['faq'] = $this->Faq_model->getAllFaq();
 
+        $id_paket = $this->input->post('optionPaket');
+        $data['event'] = $this->Event_model->getEventByIdPaket($id_paket);
+        $data['paket'] = $this->Paket_model->getPaketById($id_paket);
         //Cek apakah user sudah login
         if ($data['user']) {
             //Cek apakah user adalah admin
@@ -121,25 +123,24 @@ class admin_event extends CI_Controller
             ];
 
             //Insert data ke database
-            $res = $this->Faq_model->insertEvent($data);
+            $res = $this->Event_model->insertEvent($data);
             if ($res) {
-                $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu FAQ berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                redirect('admin_event/daftar_event');
+                $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu event berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                redirect('admin_event/pilih_paket');
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Satu FAQ gagal ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                redirect('admin_event/daftar_event');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Satu event gagal ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                redirect('admin_event/pilih_paket');
             }
         }
     }
 
-    public function hapus_paket($id)
+    public function hapus_event($id)
     {
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['event'] = $this->Faq_model->getAllEvent();
+        $data['event'] = $this->Event_model->getAllEvent();
 
         $this->Event_model->deleteEvent($id);
-        $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu FAQ berhasil dihapus!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-        redirect('admin_event/daftar_event');
+        redirect('admin_event/pilih_paket');
     }
 }

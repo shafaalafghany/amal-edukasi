@@ -12,7 +12,7 @@ class Paket_model extends CI_model
         return $this->db->insert('paket', $dataInsert);
     }
 
-    public function deleteFaq($id)
+    public function deletePaket($id)
     {
         $this->db->where('id_paket', $id);
         $this->db->delete('paket');

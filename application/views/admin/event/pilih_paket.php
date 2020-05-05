@@ -25,9 +25,9 @@
                 <form method="post" action="<?= base_url('admin_event/'); ?>daftar_event">
                     <div class="form-group">
                         <label for="optionEvent">Pilih Paket</label>
-                        <select class="custom-select col-md-12 mb-3" id="optionEvent" name="optionEvent">
-                            <?php foreach ($event as $loadEvent) { ?>
-                            <option value="<?= $loadEvent['id_event']; ?>"><?= $loadEvent['nama_event']; ?></option>
+                        <select class="custom-select col-md-12 mb-3" id="optionPaket" name="optionPaket">
+                            <?php foreach ($paket as $loadPaket) { ?>
+                            <option value="<?= $loadPaket['id_paket']; ?>"><?= $loadPaket['nama_paket']; ?></option>
                             <?php } ?>
                         </select>
                     </div>
