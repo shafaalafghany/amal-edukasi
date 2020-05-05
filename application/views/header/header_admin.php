@@ -186,52 +186,152 @@
                 </ul>
               </li>
             <?php } ?>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-box-open"></i>
-                <p>
-                  Paket Try Out
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Daftar Paket</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Tambah Paket</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-calendar-week"></i>
-                <p>
-                  Event
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Daftar Event</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Tambah Event</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
+            <?php if (current_url() == base_url('admin_paket/daftar_paket')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-box-open"></i>
+                  <p>
+                    Paket Try Out
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_paket/daftar_paket') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Paket</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_paket/tambah_paket') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Paket</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } elseif (current_url() == base_url('admin_paket/tambah_paket')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-box-open"></i>
+                  <p>
+                    Paket Try Out
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_paket/daftar_paket') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Paket</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_paket/tambah_paket') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Paket</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } else { ?>
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-box-open"></i>
+                  <p>
+                    Paket Try Out
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_paket/daftar_paket') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Paket</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_paket/tambah_paket') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Paket</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } ?>
+            <?php if (current_url() == base_url('admin_event/pilih_paket')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-calendar-week"></i>
+                  <p>
+                    Event
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_event/pilih_paket') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Event</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_event/tambah_event') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Event</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } elseif (current_url() == base_url('admin_event/tambah_event')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-calendar-week"></i>
+                  <p>
+                    Event
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_event/pilih_paket') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Event</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_event/tambah_event') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Event</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } else { ?>
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-calendar-week"></i>
+                  <p>
+                    Event
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_event/pilih_paket') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Event</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_event/tambah_event') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Event</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } ?>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>

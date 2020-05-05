@@ -27,81 +27,66 @@
 
               <form>
                 <div class="card-body">
-                  <table id="example1" class="table table-striped">
-                    <tbody>
-                      <tr>
-                        <td>
-                          <span class="subadge">Judul Modul</span>
-                          <h4 class="mr-3 text-black"><?= $modul['judul_modul'] ?></h4>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="subadge">Deskripsi Modul</span>
-                          <h4 class="mr-3 text-black"><?= $modul['deskripsi'] ?></h4>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="subadge">Jenis modul</span>
-                          <h4 class="mr-3 text-black"><?= $modul['jenis'] ?></h4>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="subadge">Nama File Video</span>
-                          <h4 class="mr-3 text-black"><?= $modul['video'] ?></h4>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="subadge">File Thumbnail</span>
-                          <h4 class="mr-3 text-black"><?= $modul['thumbnail'] ?></h4>
-                          <img src="<?= base_url('assets/modul/thumbnail/' . $modul['thumbnail']); ?>" alt="" style="width: 362px; height: 250px;">
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="subadge">Judul Sub Deskripsi Video (bagian 1)</span>
-                          <h4 class="mr-3 text-black"><?= $modul['subjudul1'] ?></h4>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td>
-                          <span class="subadge">Sub Deskripsi Video (bagian 1)</span>
-                          <h4 class="mr-3 text-black"><?= $modul['subdesk1'] ?></h4>
-                        </td>
-                      </tr>
-                      <?php if($modul['subjudul2'] && $modul['subdesk2']) { ?>
-                        <tr>
-                          <td>
-                            <span class="subadge">Judul Sub Deskripsi Video (bagian 2)</span>
-                            <h4 class="mr-3 text-black"><?= $modul['subjudul2'] ?></h4>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="subadge">Sub Deskripsi Video (bagian 2)</span>
-                            <h4 class="mr-3 text-black"><?= $modul['subdesk2'] ?></h4>
-                          </td>
-                        </tr>
-                      <?php } ?>
-                      <?php if($modul['subjudul3'] && $modul['subdesk3']) { ?>
-                        <tr>
-                          <td>
-                            <span class="subadge">Judul Sub Deskripsi Video (bagian 3)</span>
-                            <h4 class="mr-3 text-black"><?= $modul['subjudul3'] ?></h4>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <span class="subadge">Sub Deskripsi Video (bagian 3)</span>
-                            <h4 class="mr-3 text-black"><?= $modul['subdesk3'] ?></h4>
-                          </td>
-                        </tr>
-                      <?php } ?>
-                    </tbody>
-                  </table>
+                  <div class="col-12">
+                    <label>Judul Modul</label>
+                    <h5 class="mr-3 text-black" style="margin-left: 1%;"><?= $modul['judul_modul'] ?></h5>
+                  </div>
+                  <br>
+                  <div class="col-12">
+                    <label>Deskripsi Modul</label>
+                    <h5 class="mr-3 text-black" style="margin-left: 1%;"><?= $modul['deskripsi'] ?></h5>
+                  </div>
+                  <br>
+                  <div class="col-12">
+                    <label>Jenis modul</label>
+                    <h5 class="mr-3 text-black" style="margin-left: 1%;"><?= $modul['jenis'] ?></h5>
+                  </div>
+                  <br>
+                  <div class="col-12">
+                    <label>Nama File Video</label>
+                    <h5 class="mr-3 text-black" style="margin-left: 1%;"><?= $modul['video'] ?></h5>
+                  </div>
+                  <br>
+                  <div class="col-12">
+                    <label>File Thumbnail</label>
+                    <h5 class="mr-3 text-black" style="margin-left: 1%;"><?= $modul['thumbnail'] ?></h5>
+                    <img style="margin-left: 1%;" src="<?= base_url('assets/modul/thumbnail/' . $modul['thumbnail']); ?>" alt="" style="width: 362px; height: 250px;">
+                  </div>
+                  <br>
+                  <div class="col-12">
+                    <label>Judul Sub Deskripsi Video (bagian 1)</label>
+                    <h5 class="mr-3 text-black" style="margin-left: 1%;"><?= $modul['subjudul1'] ?></h5>
+                  </div>
+                  <br>
+                  <div class="col-12">
+                    <label>Sub Deskripsi Video (bagian 1)</label>
+                    <h5 class="mr-3 text-black" style="margin-left: 1%;"><?= $modul['subdesk1'] ?></h5>
+                  </div>
+                  <br>
+                  <?php if($modul['subjudul2'] && $modul['subdesk2']) { ?>
+                    <div class="col-12">
+                      <label>Judul Sub Deskripsi Video (bagian 2)</label>
+                      <h5 class="mr-3 text-black" style="margin-left: 1%;"><?= $modul['subjudul2'] ?></h5>
+                    </div>
+                    <br>
+                    <div class="col-12">
+                      <label>Sub Deskripsi Video (bagian 2)</label>
+                      <h5 class="mr-3 text-black" style="margin-left: 1%;"><?= $modul['subdesk2'] ?></h5>
+                    </div>
+                    <br>
+                  <?php } ?>
+                  <?php if($modul['subjudul3'] && $modul['subdesk3']) { ?>
+                    <div class="col-12">
+                      <label>Judul Sub Deskripsi Video (bagian 3)</label>
+                      <h5 class="mr-3 text-black" style="margin-left: 1%;"><?= $modul['subjudul3'] ?></h5>
+                    </div>
+                    <br>
+                    <div class="col-12">
+                      <label>Sub Deskripsi Video (bagian 3)</label>
+                      <h5 class="mr-3 text-black" style="margin-left: 1%;"><?= $modul['subdesk3'] ?></h5>
+                    </div>
+                    <br>
+                  <?php } ?>
                   <br>
                   <div class="d-flex">
                     <div class="col-6">
