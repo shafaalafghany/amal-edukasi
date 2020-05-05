@@ -96,10 +96,10 @@ class admin_paket extends CI_Controller
             $res = $this->Paket_model->insertPaket($data);
             if ($res) {
                 $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu Paket Try Out berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                redirect('admin_faq');
+                redirect('admin_paket/daftar_paket');
             } else {
                 $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Satu Paket Try Out gagal ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                redirect('admin_faq');
+                redirect('admin_paket/daftar_paket');
             }
         }
     }
@@ -112,6 +112,6 @@ class admin_paket extends CI_Controller
 
         $this->Faq_model->deletePaket($id);
         $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu Paket Try Out berhasil dihapus!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-        redirect('admin_faq');
+        redirect('admin_paket/daftar_paket');
     }
 }

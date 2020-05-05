@@ -67,10 +67,10 @@
                 </div>
                 <div class="form-group">
                   <label for="optionJurusan">Pilih Paket Tryout</label>
-                  <select class="custom-select col-md-12 mb-3" id="optionJurusan" name="optionJurusan">
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
+                  <select class="custom-select col-md-12 mb-3" id="optionPaket" name="optionPaket">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -105,7 +105,9 @@
 
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script> <a href="http://sobatkode.com">Sobatkode</a>.</strong>
+    <strong>Copyright &copy;<script>
+        document.write(new Date().getFullYear());
+      </script> <a href="http://sobatkode.com">Sobatkode</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0.0

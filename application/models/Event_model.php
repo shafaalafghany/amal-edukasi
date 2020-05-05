@@ -13,9 +13,9 @@ class Event_model extends CI_model
         return $this->db->get_where('event', ['id_event' => $id_event])->row_array();
     }
 
-    public function insertEvent($tampung)
+    public function insertEvent($data)
     {
-        return $this->db->insert('event', $tampung);
+        return $this->db->insert('event', $data);
     }
 
     public function getHargaEvent($id_event)
