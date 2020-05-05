@@ -36,7 +36,7 @@
             </div>
 
             <div class="card-body">
-              <?= form_open_multipart('admin_modul/tambah_modul'); ?>
+              <?= form_open_multipart('admin_paket/tambah_paket'); ?>
               <div class="form-group">
                 <label for="judul">Nama Paket Tryout <span style="color: red">*</span></label>
                 <input type="text" id="judul" name="judul" class="form-control">
@@ -47,18 +47,19 @@
               </div>
               <br>
               <label>Pilih Topik Materi Pada Paket ini <span style="color: red">*</span></label>
-              
-                <?php 
-                $i = 1;
-                foreach($topik as $load_topik){ ?>
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input class="custom-control-input" type="checkbox" id="cbTopik<?= $i; ?>" name="cbTopik<?= $i; ?>" value="option<?= $i; ?>">
-                      <label for="cbTopik<?= $i; ?>" class="custom-control-label" style="font-style: normal"><?= $load_topik['nama_topik_tes'] ?></label>
-                    </div>
+
+              <?php
+              $i = 1;
+              foreach ($topik as $load_topik) { ?>
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input class="custom-control-input" type="checkbox" id="cbTopik<?= $i; ?>" name="cbTopik<?= $i; ?>" value="1">
+                    <label for="cbTopik<?= $i; ?>" class="custom-control-label" style="font-style: normal"><?= $load_topik['nama_topik_tes'] ?></label>
                   </div>
-                <?php $i++; } ?>
-              
+                </div>
+              <?php $i++;
+              } ?>
+
               <div class="form-group">
                 <label style="color: red">Catatan: Form yang bertanda bintang (*) berarti wajib diisi</label>
               </div>
@@ -76,7 +77,9 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script> <a href="http://sobatkode.com">Sobatkode</a>.</strong>
+    <strong>Copyright &copy;<script>
+        document.write(new Date().getFullYear());
+      </script> <a href="http://sobatkode.com">Sobatkode</a>.</strong>
     All rights reserved.
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 1.0.0

@@ -8,7 +8,7 @@ class admin_paket extends CI_Controller
         parent::__construct();
         $this->load->library('form_validation');;
         $this->load->model('User_model');
-        $this->load->model('Faq_model');
+        $this->load->model('Paket_model');
         $this->load->model('Topik_model');
     }
 
@@ -18,7 +18,7 @@ class admin_paket extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['faq'] = $this->Faq_model->getAllFaq();
+        $data['faq'] = $this->Faq_model->getAllPaket();
 
         //Cek apakah user sudah login
         if ($data['user']) {
@@ -48,8 +48,8 @@ class admin_paket extends CI_Controller
             'required' => 'Judul tidak boleh kosong!'
         ]);
 
-        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim', [
-            'required' => 'Deskripsi tidak boleh kosong!'
+        $this->form_validation->set_rules('harga', 'Harga', 'required|trim', [
+            'required' => 'Harga tidak boleh kosong!'
         ]);
 
         if ($this->form_validation->run() == false) {
@@ -70,21 +70,35 @@ class admin_paket extends CI_Controller
         } else {
             //Ambil data dari form
             $judul = $this->input->post('judul');
-            $deskripsi = $this->input->post('deskripsi');
+            $harga = $this->input->post('harga');
+            $tpa = $this->input->post('cbTopik1');
+            $tbi = $this->input->post('cbTopik2');
+            $twk = $this->input->post('cbTopik3');
+            $tiu = $this->input->post('cbTopik4');
+            $tkp = $this->input->post('cbTopik5');
+            $tsa = $this->input->post('cbTopik6');
+            $psiko = $this->input->post('cbTopik7');
 
             //Masukkan data ke array
             $data = [
-                'judul_faq' => $judul,
-                'desk_faq' => $deskripsi
+                'nama_paket' => $judul,
+                'desk_paket' => $harga,
+                'tpa' => $tpa,
+                'tbi' => $tbi,
+                'twk' => $twk,
+                'tiu' => $tiu,
+                'tkp' => $tkp,
+                'tsa' => $tsa,
+                'psiko' => $psiko
             ];
 
             //Insert data ke database
-            $res = $this->Faq_model->insertFaq($data);
+            $res = $this->Paket_model->insertPaket($data);
             if ($res) {
-                $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu FAQ berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu Paket Try Out berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                 redirect('admin_faq');
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Satu FAQ gagal ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Satu Paket Try Out gagal ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
                 redirect('admin_faq');
             }
         }
@@ -94,10 +108,10 @@ class admin_paket extends CI_Controller
     {
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['faq'] = $this->Faq_model->getAllFaq();
+        $data['faq'] = $this->Faq_model->getAllPaket();
 
-        $this->Faq_model->deleteFaq($id);
-        $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu FAQ berhasil dihapus!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        $this->Faq_model->deletePaket($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu Paket Try Out berhasil dihapus!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
         redirect('admin_faq');
     }
 }
