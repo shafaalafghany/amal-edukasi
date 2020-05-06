@@ -47,6 +47,11 @@ class Soal_model extends CI_model
         }*/
     }
 
+    public function insertSoal($data)
+    {
+        return $this->db->insert('soal', $data);
+    }
+
     public function getSoalByIdEventAndIdTopik($id_event, $id_topik)
     {
         return $this->db->query("SELECT * from soal where id_event = $id_event and id_topik_tes = $id_topik")->result_array();
