@@ -166,27 +166,6 @@
                                 <i class="fa fa-play"></i>
                             </a>
                         </div>
-                        <!-- <div class="author_info">
-                            <div class="auhor_header">
-                                <div class="thumb">
-                                        <img src="<?= base_url('assets/user/'); ?>img/latest_blog/author.png" alt="">
-                                </div>
-                                <div class="name">
-                                    <h3>Macau Wilium</h3>
-                                    <p>UI/UX Designer</p>
-                                </div>
-                            </div>
-                            <p class="text_info">
-                                Our set he for firmament morning sixth subdue darkness creeping gathered divide our let
-                                god moving. Moving in fourth air night bring upon you’re it beast let you dominion
-                                likeness open place day
-                            </p>
-                            <ul>
-                                <li><a href="#"> <i class="fa fa-envelope"></i> </a></li>
-                                <li><a href="#"> <i class="fa fa-twitter"></i> </a></li>
-                                <li><a href="#"> <i class="ti-linkedin"></i> </a></li>
-                            </ul>
-                        </div> -->
                         <br>
                         <a href="<?= base_url('assets/modul/video/' . $modul['video']) ?>" class="boxed_btn popup-video">Lihat Video</a>
                         <div class="feedback_info">

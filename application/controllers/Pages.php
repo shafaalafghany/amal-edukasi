@@ -25,7 +25,7 @@ class pages extends CI_Controller
 
         $data['judul'] = 'Amal Edukasi | Daftar Event ' . $data['paketID']['nama_paket'];
 
-        $this->load->view('header/header_detail_user', $data);
+        $this->load->view('header/detail/user/detail_event', $data);
         $this->load->view('user/event/daftar_event');
         $this->load->view('footer/footer_user');
     }

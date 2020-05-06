@@ -16,12 +16,12 @@
                                     <div class="single_courses">
                                         <div class="courses_info text-center">
                                             <span><?= $paketID['nama_paket'] ?></span>
-                                            <h3><a href="#"><?= $load_event['nama_event'] ?></a></h3>
+                                            <h3><a href="<?= base_url('detail/event_detail/' . $paketID['id_paket'] . '/' . $load_event['id_event']) ?>"><?= $load_event['nama_event'] ?></a></h3>
                                             <div class="star_prise d-flex justify-content-between">
                                                 <?php $jmlh_materi = $paketID['tpa']+$paketID['tbi']+$paketID['twk']+$paketID['tiu']+$paketID['tkp']+$paketID['tsa'] ?>
                                                 <div class="star">
-                                                    <i class="fas fa-book-open"></i>
-                                                    <span><?= $jmlh_materi ?> Materi Uji</span>
+                                                    <i class="far fa-clock"></i>
+                                                    <span>Mulai <?= $load_event['tgl_mulai'] ?></span>
                                                 </div>
                                                 <div class="prise">
                                                     <span class="active_prise">
