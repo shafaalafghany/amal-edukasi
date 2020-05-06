@@ -10,7 +10,24 @@ class pages extends CI_Controller
         $this->load->model('Event_model');
         $this->load->model('Modul_model');
         $this->load->model('User_model');
+        $this->load->model('Paket_model');
         $this->load->model('Faq_model');
+    }
+
+    public function event($id_paket)
+    {
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $data['modul'] = $this->Modul_model->getAllModul();
+        $data['paket'] = $this->Paket_model->getAllPaket();
+        $data['paketID'] = $this->Paket_model->getPaketById($id_paket);
+        $data['event'] = $this->Event_model->getEventByIdPaket($id_paket);
+
+        $data['judul'] = 'Amal Edukasi | Daftar Event ' . $data['paketID']['nama_paket'];
+
+        $this->load->view('header/header_detail_user', $data);
+        $this->load->view('user/event/daftar_event');
+        $this->load->view('footer/footer_user');
     }
 
     public function pembelajaran()
@@ -20,6 +37,7 @@ class pages extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $data['modul'] = $this->Modul_model->getAllModul();
+        $data['paket'] = $this->Paket_model->getAllPaket();
 
         $this->load->view('header/header_user', $data);
         $this->load->view('user/pembelajaran/pembelajaran');
@@ -33,6 +51,7 @@ class pages extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
+        $data['paket'] = $this->Paket_model->getAllPaket();
 
         $this->form_validation->set_rules('email1', 'Email1', 'trim|required');
         $this->form_validation->set_rules('email2', 'Email2', 'trim|required');
@@ -101,6 +120,7 @@ class pages extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
+        $data['paket'] = $this->Paket_model->getAllPaket();
 
         $data['faq'] = $this->Faq_model->getAllFaq();
 

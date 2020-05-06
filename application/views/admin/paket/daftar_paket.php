@@ -42,14 +42,14 @@
                     <tr>
                       <td><?= $i; ?></td>
                       <td><?= $loadPaket['nama_paket']; ?></td>
-                      <?php $event = $this->db->get_where('event', ['id_paket' => $loadPaket['id_paket']])->result_array() ?>
+                      <?php $event = $this->db->get_where('event', ['id_paket' => $loadPaket['id_paket']])->result_array(); ?>
                       <td><?= count($event) ?></td>
                       <td><?= $loadPaket['harga_paket']; ?></td>
                       <td class="project-actions text-center">
-                        <a class="badge badge-primary col-sm" href="<?= base_url('admin_paket/'); ?>lihat_paket/<?= $loadPaket['id_paket']; ?>">
-                          <i class="fas fa-folder">
+                        <a class="badge badge-info col-sm" href="<?= base_url('admin_paket/'); ?>edit_paket/<?= $loadPaket['id_paket']; ?>">
+                          <i class="fas fa-pencil-alt">
                           </i>
-                          View
+                          Edit
                         </a>
                         <a class="badge badge-danger col-sm delete_modul" href="<?= base_url('admin_paket/'); ?>hapus_paket/<?= $loadPaket['id_paket']; ?>">
                           <i class="fas fa-trash">
@@ -124,7 +124,7 @@
 
         Swal.fire({
           title: 'Anda Yakin',
-          text: "Ingin menghapus modul ini?",
+          text: "Ingin menghapus Paket ini? Dengan klik yakin, maka semua yang berkaitan dengan paket ini akan terhapus (event, soal, dan jawaban).",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',

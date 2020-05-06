@@ -88,84 +88,29 @@
             <div class="container">
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <div class="row">
-                            <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="courses_info">
-                                                <h3><a href="#">Paket CPNS <br>
-                                                        (Calon Pegawai Negeri Sipil)</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="far fa-calendar-plus"></i>
-                                                        <span>5 Event</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="active_prise">
-                                                            Rp30.000 /event
-                                                        </span>
-                                                    </div>
+                        <div class="row">
+                            <?php foreach($paket as $load_paket){ ?>
+                                <div class="col-xl-4 col-lg-4 col-md-6">
+                                    <div class="single_courses">
+                                        <div class="courses_info">
+                                            <h3><a href="<?= base_url('pages/event/' . $load_paket['id_paket']) ?>"><?= $load_paket['nama_paket'] ?></a></h3>
+                                            <div class="star_prise d-flex justify-content-between">
+                                                <?php $event = $this->db->get_where('event', ['id_paket' => $load_paket['id_paket']])->result_array() ?>
+                                                <div class="star">
+                                                    <i class="far fa-calendar-plus"></i>
+                                                    <span><?= count($event) ?> Event</span>
                                                 </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="courses_info">
-                                                <h3><a href="#">Paket Regular <br>
-                                                        SPMB PKN STAN</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="far fa-calendar-plus"></i>
-                                                        <span>3 Event</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="active_prise">
-                                                            Rp40.000 /event
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="courses_info">
-                                                <h3><a href="#">Paket D3K <br>
-                                                        PKN STAN</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="far fa-calendar-plus"></i>
-                                                        <span>4 Event</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="active_prise">
-                                                            Rp35.000 /event
-                                                        </span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-4 col-lg-4 col-md-6">
-                                        <div class="single_courses">
-                                            <div class="courses_info">
-                                                <h3><a href="#">Paket D4K <br>
-                                                        PKN STAN</a></h3>
-                                                <div class="star_prise d-flex justify-content-between">
-                                                    <div class="star">
-                                                        <i class="far fa-calendar-plus"></i>
-                                                        <span>3 Event</span>
-                                                    </div>
-                                                    <div class="prise">
-                                                        <span class="active_prise">
-                                                            Rp50.000 /event
-                                                        </span>
-                                                    </div>
+                                                <div class="prise">
+                                                    <span class="active_prise">
+                                                        Rp<?= $load_paket['harga_paket'] ?> /event
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                            <?php } ?>
+                        </div>
                     </div>
                 </div>
             </div>

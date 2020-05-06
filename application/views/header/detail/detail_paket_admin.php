@@ -113,7 +113,7 @@
                 </a>
               </li>
             <?php } ?>
-            <?php if (current_url() == base_url('admin_modul/daftar_modul') || current_url() == base_url('admin_modul/lihat_modul/' . $modul['id_modul'])) { ?>
+            <?php if (current_url() == base_url('admin_modul/daftar_modul')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-play-circle"></i>
@@ -186,75 +186,298 @@
                 </ul>
               </li>
             <?php } ?>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-box-open"></i>
-                <p>
-                  Paket Try Out
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Daftar Paket</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Tambah Paket</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-calendar-week"></i>
-                <p>
-                  Event
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Daftar Event</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Tambah Event</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item has-treeview">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fas fa-book"></i>
-                <p>
-                  Soal
-                  <i class="fas fa-angle-left right"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Daftar Soal</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Tambah Soal</p>
-                  </a>
-                </li>
-              </ul>
-            </li>
+            <?php if (current_url() == base_url('admin_paket/daftar_paket') || current_url() == base_url('admin_paket/edit_paket/' . $paket['id_paket'])) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-box-open"></i>
+                  <p>
+                    Paket Try Out
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_paket/daftar_paket') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Paket</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_paket/tambah_paket') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Paket</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } elseif (current_url() == base_url('admin_paket/tambah_paket')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-box-open"></i>
+                  <p>
+                    Paket Try Out
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_paket/daftar_paket') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Paket</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_paket/tambah_paket') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Paket</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } else { ?>
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-box-open"></i>
+                  <p>
+                    Paket Try Out
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_paket/daftar_paket') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Paket</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_paket/tambah_paket') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Paket</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } ?>
+            <?php if (current_url() == base_url('admin_event/pilih_paket') || current_url() == base_url('admin_event/daftar_event')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-calendar-week"></i>
+                  <p>
+                    Event
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_event/pilih_paket') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Event</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_event/tambah_event') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Event</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } elseif (current_url() == base_url('admin_event/tambah_event')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-calendar-week"></i>
+                  <p>
+                    Event
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_event/pilih_paket') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Event</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_event/tambah_event') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Event</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } else { ?>
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-calendar-week"></i>
+                  <p>
+                    Event
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_event/pilih_paket') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Event</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_event/tambah_event') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Event</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } ?>
+            <?php if (current_url() == base_url('admin_soal/pilih_kategori_soal') || current_url() == base_url('admin_soal/daftar_soal')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-book"></i>
+                  <p>
+                    Soal
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_soal/pilih_kategori_soal') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Soal</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_soal/kategori_tambah_soal') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Soal</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } elseif (current_url() == base_url('admin_soal/kategori_tambah_soal') || current_url() == base_url('admin_soal/tambah_soal')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="nav-icon fas fa-book"></i>
+                  <p>
+                    Soal
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_soal/pilih_kategori_soal') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Soal</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_soal/kategori_tambah_soal') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Soal</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } else { ?>
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="nav-icon fas fa-book"></i>
+                  <p>
+                    Soal
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_soal/pilih_kategori_soal') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar Soal</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_soal/kategori_tambah_soal') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah Soal</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } ?>
+            <?php if (current_url() == base_url('admin_faq')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="fas fa-question-circle nav-icon"></i>
+                  <p>
+                    FAQ
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_faq') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar FAQ</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_faq/tambah_faq') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah FAQ</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } elseif(current_url() == base_url('admin_faq/tambah_faq')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="#" class="nav-link active">
+                  <i class="fas fa-question-circle nav-icon"></i>
+                  <p>
+                    FAQ
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_faq') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar FAQ</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_faq/tambah_faq') ?>" class="nav-link active">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah FAQ</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } else { ?>
+              <li class="nav-item has-treeview">
+                <a href="#" class="nav-link">
+                  <i class="fas fa-question-circle nav-icon"></i>
+                  <p>
+                    FAQ
+                    <i class="fas fa-angle-left right"></i>
+                  </p>
+                </a>
+                <ul class="nav nav-treeview">
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_faq') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Daftar FAQ</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="<?= base_url('admin_faq/tambah_faq') ?>" class="nav-link">
+                      <i class="far fa-circle nav-icon"></i>
+                      <p>Tambah FAQ</p>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+            <?php } ?>
             <li class="nav-header">Administrator</li>
             <?php if (current_url() == base_url('admin_data')) { ?>
               <li class="nav-item has-treeview menu-open">

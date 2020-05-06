@@ -56,13 +56,23 @@
                                         <?php } else { ?>
                                             <li><a href="<?= base_url(); ?>">home</a></li>
                                         <?php } ?>
-                                        <li><a href="#">Try Out <i class="ti-angle-down"></i></a>
-                                            <ul class="submenu">
-                                                <?php foreach($paket as $load_paket){ ?>
-                                                    <li><a href="<?= base_url('pages/event/' . $load_paket['id_paket']) ?>"><?= $load_paket['nama_paket'] ?></a></li>
-                                                <?php } ?>
-                                            </ul>
-                                        </li>
+                                        <?php if(current_url() == base_url('pages/event/' . $paketID['id_paket'])){ ?>
+                                            <li><a class="active" href="#">Try Out <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <?php foreach($paket as $load_paket){ ?>
+                                                        <li><a href="<?= base_url('pages/event/' . $load_paket['id_paket']) ?>"><?= $load_paket['nama_paket'] ?></a></li>
+                                                    <?php } ?>
+                                                </ul>
+                                            </li>
+                                        <?php } else { ?>
+                                            <li><a href="#">Try Out <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <?php foreach($paket as $load_paket){ ?>
+                                                        <li><a href="<?= base_url('pages/event/' . $load_paket['id_paket']) ?>"><?= $load_paket['nama_paket'] ?></a></li>
+                                                    <?php } ?>
+                                                </ul>
+                                            </li>
+                                        <?php } ?>
                                         <?php if(current_url() == base_url('pembelajaran')){ ?>
                                             <li><a class="active" href="<?= base_url('pembelajaran'); ?>">Modul</a></li>
                                         <?php } else { ?>

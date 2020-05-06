@@ -50,8 +50,12 @@
               '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>'
             ); ?>
             
-            <?= form_open_multipart('Administrator/edit_event/' . $event['id_event']); ?>
+            <?= form_open_multipart('admin_event/edit_event/' . $paket['id_paket'] . '/' . $event['id_event']); ?>
               <div class="card-body">
+                <div class="form-group">
+                  <label for="inputName">Paket Tryout</label>
+                  <input type="text" id="paket" name="paket" class="form-control" value="<?= $paket['nama_paket'] ?>" disabled="disabled">
+                </div>
                 <div class="form-group">
                   <label for="inputName">Nama Event</label>
                   <input type="text" id="event" name="event" class="form-control" value="<?= $event['nama_event'] ?>">
@@ -70,25 +74,12 @@
                   <textarea id="deskripsi" class="form-control" name="deskripsi" rows="4"><?= $event['deskripsi'] ?></textarea>
                 </div>
                 <div class="form-group">
-                  <label for="inputName">Harga</label>
-                  <input type="number" id="harga" name="harga" class="form-control" value="<?= $event['harga'] ?>">
-                </div>
-                <div class="form-group">
                   <label for="inputMulai">Waktu Mulai Event</label>
                   <input type="date" id="mulai" name="mulai" class="form-control" value="<?= $event['tgl_mulai'] ?>">
                 </div>
                 <div class="form-group">
                   <label for="inputBerakhir">Waktu Berakhir Event</label>
                   <input type="date" id="akhir" name="akhir" class="form-control" value="<?= $event['tgl_akhir'] ?>">
-                </div>
-                <div class="form-group">
-                  <label for="optionJurusan">Ubah Jumlah Pilihan Jurusan</label>
-                  <select class="custom-select col-md-12 mb-3" id="optionJurusan" name="optionJurusan">
-                      <option value="0">Silahkan Dipilih....</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                  </select>
                 </div>
                 <?php if($event['pembahasan']){ ?>
                     <div class="form-group">
@@ -117,7 +108,7 @@
                 <?php } ?>
                 
                 <div class="col-12">
-                  <a class="btn btn-secondary float-left" href="<?= base_url('Administrator/'); ?>daftar_event">Kembali</a>
+                  <a class="btn btn-secondary float-left" href="<?= base_url('admin_event/'); ?>pilih_paket">Kembali</a>
                   <button type="submit" class="btn btn-primary float-right">Simpan</button>
                 </div>
               </div>

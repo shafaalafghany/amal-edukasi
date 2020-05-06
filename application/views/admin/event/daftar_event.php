@@ -51,7 +51,7 @@
                       <td><?= $loadEvent['tgl_mulai']; ?></td>
                       <td><?= $loadEvent['tgl_akhir']; ?></td>
                       <td class="project-actions">
-                        <a class="badge badge-info col-sm" href="<?= base_url(); ?>admin_event/edit_event/<?= $loadEvent['id_event']; ?>">
+                        <a class="badge badge-info col-sm" href="<?= base_url(); ?>admin_event/edit_event/<?= $paket['id_paket'] ?>/<?= $loadEvent['id_event']; ?>">
                           <i class="fas fa-pencil-alt">
                           </i>
                           Edit

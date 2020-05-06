@@ -106,7 +106,7 @@
 							<div class="col-sm-6 col-md-6 col-lg-4">
 								<div class="counter margin-b-30">
 									<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="10">0</span></b></h1>
-									<h5 class="desc"><b>Kode Didapat</b></h5>
+									<h5 class="desc"><b>Tiket Tryout Didapat</b></h5>
 								</div><!-- counter -->
 							</div><!-- col-md-3-->
 

@@ -10,6 +10,8 @@ class home extends CI_Controller
         $this->load->model('Event_model');
         $this->load->model('Modul_model');
         $this->load->model('User_model');
+        $this->load->model('Paket_model');
+        $this->load->model('Event_model');
         $this->load->model('Testimoni_model');
     }
 
@@ -24,6 +26,7 @@ class home extends CI_Controller
         $data['event'] = $this->Event_model->getAllEvent();
         $data['modul'] = $this->Modul_model->getAllModul();
         $data['testimoni'] = $this->Testimoni_model->getAllTestimoni();
+        $data['paket'] = $this->Paket_model->getAllPaket();
 
         if ($data['user']) {
             if ($user['role_id'] == 3) {

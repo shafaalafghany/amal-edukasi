@@ -42,16 +42,15 @@
 
                     </div>
                 </div>
-                <div class="col-xl-2 offset-xl-1 col-md-6 col-lg-3">
+                <div class="col-xl-3 offset-xl-2 col-md-6 col-lg-3">
                     <div class="footer_widget">
                         <h3 class="footer_title">
-                            Try Out
+                            Paket Try Out
                         </h3>
                         <ul>
-                            <li><a href="#">Paket CPNS</a></li>
-                            <li><a href="#">Paket Regular STAN</a></li>
-                            <li><a href="#">Paket D3K STAN</a></li>
-                            <li><a href="#">Paket D4K STAN</a></li>
+                            <?php foreach($paket as $load_paket){ ?>
+                                <li><a href="<?= base_url('pages/event/' . $load_paket['id_paket']) ?>"><?= $load_paket['nama_paket'] ?></a></li>
+                            <?php } ?>
                         </ul>
 
                     </div>
