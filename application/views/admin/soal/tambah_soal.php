@@ -75,7 +75,7 @@
           </div>
           <div class="card-body">
             <?= $this->session->flashdata('message'); ?>
-            <form action="<?= base_url('admin_soal/insert_soal'); ?>insert_soal/<?= $paket['id_paket']; ?>/<?= $event['id_event'] ?>/<?= $topik['id_topik_tes'] ?>" method="POST">
+            <form action="<?= base_url('admin_soal/'); ?>insert_soal/<?= $paket['id_paket']; ?>/<?= $event['id_event'] ?>/<?= $topik['id_topik_tes'] ?>" method="POST">
               <div class="form-group">
                 <div class="form-group">
                   <label for="inputBerakhir">Topik Soal</label>
