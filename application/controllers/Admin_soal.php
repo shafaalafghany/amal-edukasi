@@ -243,7 +243,7 @@ class admin_soal extends CI_Controller
         $data['soal'] = $this->Soal_model->getAllSoal();
 
         $this->Soal_model->deleteSoal($id);
-        $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu FAQ berhasil dihapus!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-        redirect('admin_soal/daftar_soal');
+        $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu soal berhasil dihapus!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        redirect('admin_soal/pilih_kategori_soal');
     }
 }
