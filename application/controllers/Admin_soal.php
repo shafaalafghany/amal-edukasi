@@ -240,10 +240,10 @@ class admin_soal extends CI_Controller
     {
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['faq'] = $this->Faq_model->getAllFaq();
+        $data['soal'] = $this->Soal_model->getAllSoal();
 
-        $this->Faq_model->deleteFaq($id);
+        $this->Soal_model->deleteSoal($id);
         $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu FAQ berhasil dihapus!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-        redirect('admin_faq');
+        redirect('admin_soal/daftar_soal');
     }
 }
