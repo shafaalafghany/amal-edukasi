@@ -30,18 +30,9 @@ class detail extends CI_Controller
         ]);
 
         if ($this->form_validation->run() == false) {
-            if($data['user']){
-                if($user['role_id'] == 3){
-                    $this->load->view('header/detail/user/detail_pembelajaran', $data);
-                    $this->load->view('user/pembelajaran/pembelajaran_detail');
-                    $this->load->view('footer/footer_user');
-                } else{
-                    redirect('admin');
-                }
-            } else {
-                $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
-                redirect('home');
-            }
+            $this->load->view('header/detail/user/detail_pembelajaran', $data);
+            $this->load->view('user/pembelajaran/pembelajaran_detail');
+            $this->load->view('footer/footer_user');
         } else {
             $testimoni = $this->input->post('testimoni');
 
@@ -76,18 +67,9 @@ class detail extends CI_Controller
         ]);
 
         if ($this->form_validation->run() == false) {
-            if($data['user']){
-                if($user['role_id'] == 3){
-                    $this->load->view('header/detail/user/detail_event', $data);
-                    $this->load->view('user/event/event_detail');
-                    $this->load->view('footer/footer_user');
-                } else{
-                    redirect('admin');
-                }
-            } else {
-                $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
-                redirect('home');
-            }
+            $this->load->view('header/detail/user/detail_event', $data);
+            $this->load->view('user/event/event_detail');
+            $this->load->view('footer/footer_user');
         } else {
             $testimoni = $this->input->post('testimoni');
 

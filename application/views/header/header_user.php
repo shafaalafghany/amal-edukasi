@@ -68,6 +68,25 @@
                                         <?php } else { ?>
                                             <li><a href="<?= base_url('pembelajaran'); ?>">Modul</a></li>
                                         <?php } ?>
+                                        <?php if(current_url() == base_url('cara_daftar') || current_url() == base_url('upload_bukti')){ ?>
+                                            <li><a class="active" href="#">Ikut Try Out  <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="<?= base_url('cara_daftar') ?>">Cara Ikut Try Out</a></li>
+                                                    <?php if($user) { ?>
+                                                        <li><a href="<?= base_url('upload_bukti') ?>">Upload Bukti Pembayaran</a></li>
+                                                    <?php } ?>
+                                                </ul>
+                                            </li>
+                                        <?php } else { ?>
+                                            <li><a href="#">Ikut Try Out <i class="ti-angle-down"></i></a>
+                                                <ul class="submenu">
+                                                    <li><a href="<?= base_url('cara_daftar') ?>">Cara Ikut Try Out</a></li>
+                                                    <?php if($user) { ?>
+                                                        <li><a href="<?= base_url('upload_bukti') ?>">Upload Bukti Pembayaran</a></li>
+                                                    <?php } ?>
+                                                </ul>
+                                            </li>
+                                        <?php } ?>
                                         <?php if(current_url() == base_url('contact')){ ?>
                                             <li><a class="active" href="<?= base_url('contact'); ?>">Contact</a></li>
                                         <?php } else { ?>

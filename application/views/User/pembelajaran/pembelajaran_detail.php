@@ -162,12 +162,25 @@
                     <div class="courses_sidebar">
                         <div class="video_thumb">
                             <img src="<?= base_url('assets/modul/thumbnail/' . $modul['thumbnail']); ?>" alt="" style="width: 450px; height: 400px;">
-                            <a href="<?= base_url('assets/modul/video/' . $modul['video']) ?>">
-                                <i class="fa fa-play"></i>
-                            </a>
+                            <?php if($user){ ?>
+                                <a href="<?= base_url('assets/modul/video/' . $modul['video']) ?>" class="popup-video">
+                                    <i class="fa fa-play"></i>
+                                </a>
+                            <?php } else { ?>
+                                <a href="#test-form" class="login popup-with-form">
+                                    <i class="fa fa-play"></i>
+                                </a>
+                            <?php } ?>
                         </div>
                         <br>
-                        <a href="<?= base_url('assets/modul/video/' . $modul['video']) ?>" class="boxed_btn popup-video">Lihat Video</a>
+                        <?php ?>
+                        <?php if($user){ ?>
+                            <a href="<?= base_url('assets/modul/video/' . $modul['video']) ?>" class="boxed_btn popup-video">Lihat Video</a>
+                        <?php } else { ?>
+                            <a href="#test-form" class="login popup-with-form genric-btn warning circle arrow" style="width: 100%; padding-left: 42%; padding-right: 42%">
+                                Login Dulu
+                            </a>
+                        <?php } ?>
                         <div class="feedback_info">
                             <h3>Tulis Feedback Kamu</h3>
                             

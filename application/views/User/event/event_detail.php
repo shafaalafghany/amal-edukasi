@@ -23,22 +23,23 @@
                     <br>
                     <div class="single_courses">
                         <h4>Waktu Pengerjaan</h4>
-                        <?php if($paketID['tpa'] == 1){
-                            $tpa = $this->db->get_where('topik_tes', ['id_topik_tes' => 1])->row_array(); ?>
-                            <h6 style="margin-left: 3%"><?= $tpa['nama_topik_tes'] ?></h6>
-                            <h5 style="margin-left: 5%"><?= $tpa['waktu'] ?> Menit</h5>
-                        <?php } ?>
-                        <?php if($paketID['tbi'] == 1){
-                            $tbi = $this->db->get_where('topik_tes', ['id_topik_tes' => 2])->row_array(); ?>
-                            <h6 style="margin-left: 3%"><?= $tbi['nama_topik_tes'] ?></h6>
-                            <h5 style="margin-left: 5%"><?= $tbi['waktu'] ?> Menit</h5>
-                        <?php } ?>
                         <?php 
+                            $tpa = $this->db->get_where('topik_tes', ['id_topik_tes' => 1])->row_array();
+                            $tbi = $this->db->get_where('topik_tes', ['id_topik_tes' => 2])->row_array();
                             $tkp = $this->db->get_where('topik_tes', ['id_topik_tes' => 6])->row_array();
                             $twk = $this->db->get_where('topik_tes', ['id_topik_tes' => 3])->row_array();
                             $tiu = $this->db->get_where('topik_tes', ['id_topik_tes' => 4])->row_array();
                             $skd = $this->db->get_where('kel_skd', ['id_skd' => 3])->row_array();
+                            $tsa = $this->db->get_where('topik_tes', ['id_topik_tes' => 6])->row_array();
                         ?>
+                        <?php if($paketID['tpa'] == 1){ ?>
+                            <h6 style="margin-left: 3%"><?= $tpa['nama_topik_tes'] ?></h6>
+                            <h5 style="margin-left: 5%"><?= $tpa['waktu'] ?> Menit</h5>
+                        <?php } ?>
+                        <?php if($paketID['tbi'] == 1){ ?>
+                            <h6 style="margin-left: 3%"><?= $tbi['nama_topik_tes'] ?></h6>
+                            <h5 style="margin-left: 5%"><?= $tbi['waktu'] ?> Menit</h5>
+                        <?php } ?>
                         <?php if($paketID['twk'] == 1){
                                 if($paketID['tiu'] == 1){
                                     if($paketID['tkp'] == 1){ ?>
@@ -79,8 +80,7 @@
                                     <?php }
                                 } ?>
                         <?php } ?>
-                        <?php if($paketID['tsa'] == 1) {
-                            $tsa = $this->db->get_where('topik_tes', ['id_topik_tes' => 6])->row_array(); ?>
+                        <?php if($paketID['tsa'] == 1) { ?>
                             <h6 style="margin-left: 3%"><?= $tsa['nama_topik_tes'] ?></h6>
                             <h5 style="margin-left: 5%"><?= $tsa['waktu'] ?> Menit</h5>
                         <?php } ?>
@@ -100,7 +100,11 @@
                     <br>
                 </div>
                 <div class="col-xl-12 col-lg-12">
-                    <a href="#" class="genric-btn info circle arrow">Ikuti Event</a>
+                    <?php if($user){ ?>
+                        <a href="<?= base_url('tryout/cek_tiket/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Ikuti Event</a>
+                    <?php } else { ?>
+                        <a href="#test-form" class="login popup-with-form genric-btn warning circle arrow">Login Dulu</a>
+                    <?php } ?>
                 </div>
             </div>
         </div>

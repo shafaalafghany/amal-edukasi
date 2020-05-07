@@ -17,46 +17,12 @@ class tryout extends CI_Controller
         $this->load->model('Hasil_tes_model', 'hasil');
     }
 
-    public function index()
+    public function cek_tiket($id, $id_paket)
     {
-        $data['judul'] = 'Try Out Online | Tryout';
-
-        $sessionUser = $this->session->userdata('username');
-        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-
-        $data['event'] = $this->Event_model->getAllEvent();
-
-        $this->load->view('User/templates/header_tryout', $data);
-        $this->load->view('User/tryout', $data);
-        $this->load->view('User/templates/footer');
+        
     }
 
-    public function event($id_event)
-    {
-        $data['judul'] = 'Try Out Online | Event Detail';
-
-        $sessionUser = $this->session->userdata('username');
-        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-
-        $data['event'] = $this->Event_model->getEventById($id_event);
-        $data['topik_tpa'] = $this->Topik_model->getTopikTPA();
-        $data['topik_tbi'] = $this->Topik_model->getTopikTBI();
-        $data['topik_skd'] = $this->Topik_model->getTopikSKD();
-        $data['topik_psiko'] = $this->Topik_model->getTopikPsiko();
-        $data['soalPsiko'] = $this->Soal_model->getSoalPsikoByEvent($id_event);
-
-        if ($data['user']) {
-            $id_user = $this->db->select('id')->get_where('user', ['username' => $sessionUser])->row()->id;
-
-            $data['leader'] = $this->hasil->getLeaderboardByIdAndEvent($id_user, $id_event);
-        }
-
-        $this->load->view('User/templates/header_tryout', $data);
-        $this->load->view('User/event_detail', $data);
-        $this->load->view('User/templates/footer');
-    }
-
-    public function tes_tpa($id, $id_event)
+    public function tes_tpa($id, $id_paket, $id_event)
     {
         $data['judul'] = 'AORTASTAN Try Out Online | Tes TPA';
 
@@ -93,82 +59,6 @@ class tryout extends CI_Controller
         $this->db->insert('transaksi_user', $dataTransaksiUser);
 
         redirect('User/pilih_jurusan/' . $id . '/' . $id_event);
-    }
-
-    public function pilih_jurusan($id, $id_event)
-    {
-        $data['judul'] = 'AORTASTAN Try Out Online | Pilih Jurusan';
-
-        $sessionUser = $this->session->userdata('username');
-        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-
-        $data['event'] = $this->Event_model->getEventById($id_event);
-        $data['topik_tpa'] = $this->Topik_model->getTopikTPA();
-        $data['topik_rule_tpa'] = $this->Topik_model->getRuleTopikTPA();
-        $data['transaksiUser'] = $this->db->get_where('transaksi_user', [
-            'id_user' => $id,
-            'id_event' => $id_event
-        ])->row_array();
-
-        $id_topik = $this->Topik_model->getIdTopikTPA();
-        $topik_rule = $this->Topik_model->getRuleTopikTPA();
-
-        $this->load->view('User/templates/header_tryout', $data);
-        $this->load->view('User/pilih_jurusan', $data);
-        $this->load->view('User/templates/footer');
-    }
-
-    public function proses_jurusan($id, $id_event)
-    {
-        $data['judul'] = 'AORTASTAN Try Out Online | Tes TPA';
-
-        $sessionUser = $this->session->userdata('username');
-        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-
-        $id_topik = $this->Topik_model->getIdTopikTPA();
-
-        $id_transaksi = $this->db->select('id_transaksi')->get_where('transaksi_user', [
-            'id_user' => $id,
-            'id_event' => $id_event
-        ])->row()->id_transaksi;
-
-        $jurusan1 = $this->input->post('optionJurusan1');
-        $jurusan2 = $this->input->post('optionJurusan2');
-        $jurusan3 = $this->input->post('optionJurusan3');
-
-        if ($jurusan1 != "0") {
-            if ($jurusan2 != "0") {
-                if ($jurusan3 != "0") {
-                    $dataJurusan = [
-                        'jurusan1' => $jurusan1,
-                        'jurusan2' => $jurusan2,
-                        'jurusan3' => $jurusan3
-                    ];
-                } else {
-                    $dataJurusan = [
-                        'jurusan1' => $jurusan1,
-                        'jurusan2' => $jurusan2
-                    ];
-                }
-            } else {
-                if ($jurusan3 != "0") {
-                    $dataJurusan = [
-                        'jurusan1' => $jurusan1,
-                        'jurusan3' => $jurusan3
-                    ];
-                } else {
-                    $dataJurusan = [
-                        'jurusan1' => $jurusan1
-                    ];
-                }
-            }
-        } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12 text-center" role="alert"><strong>Pilihan pertama tidak boleh kosong!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect('User/pilih_jurusan/' . $id . '/' . $id_event);
-        }
-
-        $this->db->where('id_transaksi', $id_transaksi)->update('transaksi_user', $dataJurusan);
-        redirect('User/tes_detail/' . $id . '/' . $id_event . '/' . $id_topik);
     }
 
     public function tes_tbi($id, $id_event)
@@ -728,5 +618,81 @@ class tryout extends CI_Controller
             $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12 text-center" role="alert"><strong>Silahkan login dulu!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('User/login');
         }
+    }
+
+    public function pilih_jurusan($id, $id_event)
+    {
+        $data['judul'] = 'AORTASTAN Try Out Online | Pilih Jurusan';
+
+        $sessionUser = $this->session->userdata('username');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+
+        $data['event'] = $this->Event_model->getEventById($id_event);
+        $data['topik_tpa'] = $this->Topik_model->getTopikTPA();
+        $data['topik_rule_tpa'] = $this->Topik_model->getRuleTopikTPA();
+        $data['transaksiUser'] = $this->db->get_where('transaksi_user', [
+            'id_user' => $id,
+            'id_event' => $id_event
+        ])->row_array();
+
+        $id_topik = $this->Topik_model->getIdTopikTPA();
+        $topik_rule = $this->Topik_model->getRuleTopikTPA();
+
+        $this->load->view('User/templates/header_tryout', $data);
+        $this->load->view('User/pilih_jurusan', $data);
+        $this->load->view('User/templates/footer');
+    }
+
+    public function proses_jurusan($id, $id_event)
+    {
+        $data['judul'] = 'AORTASTAN Try Out Online | Tes TPA';
+
+        $sessionUser = $this->session->userdata('username');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+
+        $id_topik = $this->Topik_model->getIdTopikTPA();
+
+        $id_transaksi = $this->db->select('id_transaksi')->get_where('transaksi_user', [
+            'id_user' => $id,
+            'id_event' => $id_event
+        ])->row()->id_transaksi;
+
+        $jurusan1 = $this->input->post('optionJurusan1');
+        $jurusan2 = $this->input->post('optionJurusan2');
+        $jurusan3 = $this->input->post('optionJurusan3');
+
+        if ($jurusan1 != "0") {
+            if ($jurusan2 != "0") {
+                if ($jurusan3 != "0") {
+                    $dataJurusan = [
+                        'jurusan1' => $jurusan1,
+                        'jurusan2' => $jurusan2,
+                        'jurusan3' => $jurusan3
+                    ];
+                } else {
+                    $dataJurusan = [
+                        'jurusan1' => $jurusan1,
+                        'jurusan2' => $jurusan2
+                    ];
+                }
+            } else {
+                if ($jurusan3 != "0") {
+                    $dataJurusan = [
+                        'jurusan1' => $jurusan1,
+                        'jurusan3' => $jurusan3
+                    ];
+                } else {
+                    $dataJurusan = [
+                        'jurusan1' => $jurusan1
+                    ];
+                }
+            }
+        } else {
+            $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12 text-center" role="alert"><strong>Pilihan pertama tidak boleh kosong!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect('User/pilih_jurusan/' . $id . '/' . $id_event);
+        }
+
+        $this->db->where('id_transaksi', $id_transaksi)->update('transaksi_user', $dataJurusan);
+        redirect('User/tes_detail/' . $id . '/' . $id_event . '/' . $id_topik);
     }
 }

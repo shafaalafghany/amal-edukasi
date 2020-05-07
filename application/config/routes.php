@@ -55,5 +55,7 @@ $route['translate_uri_dashes'] = TRUE;
 
 $route['pembelajaran'] = 'pages/pembelajaran';
 $route['pembelajaran_detail'] = 'detail/pembelajaran_detail';
+$route['cara_daftar'] = 'pages/cara_daftar';
+$route['upload_bukti'] = 'pages/upload_bukti';
 $route['contact'] = 'pages/contact';
 $route['faq'] = 'pages/faq';

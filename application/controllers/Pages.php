@@ -44,6 +44,43 @@ class pages extends CI_Controller
         $this->load->view('footer/footer_user');
     }
 
+    public function cara_daftar()
+    {
+        $data['judul'] = 'Amal Edukasi | Cara Ikut Try Out';
+
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $data['modul'] = $this->Modul_model->getAllModul();
+        $data['paket'] = $this->Paket_model->getAllPaket();
+
+        $this->load->view('header/header_user', $data);
+        $this->load->view('user/pembayaran/cara_daftar');
+        $this->load->view('footer/footer_user');
+    }
+
+    public function upload_bukti()
+    {
+        $data['judul'] = 'Amal Edukasi | Upload Bukti Pembayaran';
+
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $data['modul'] = $this->Modul_model->getAllModul();
+        $data['paket'] = $this->Paket_model->getAllPaket();
+
+        if($data['user']){
+            if($data['user']['role_id'] == 3){
+                $this->load->view('header/header_user', $data);
+                $this->load->view('user/pembayaran/upload_bayar');
+                $this->load->view('footer/footer_user');
+            } else {
+                redirect('admin');
+            }
+        } else {
+            $this->session->set_flashdata('error','Silahkan login dulu!');
+            redirect('home');
+        }
+    }
+
     public function contact()
     {
         $data['judul'] = 'Amal Edukasi | Contact';
