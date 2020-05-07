@@ -89,13 +89,6 @@ class admin_soal extends CI_Controller
         $data['event'] = $this->Event_model->getEventById($id_event);
         $data['topik'] = $this->Topik_model->getTopikById($id_topik);
 
-        $this->form_validation->set_rules('inputSoal', 'soal', 'required|trim');
-        $this->form_validation->set_rules('jawaban1', 'jawaban1', 'trim');
-        $this->form_validation->set_rules('jawaban2', 'jawaban2', 'trim');
-        $this->form_validation->set_rules('jawaban3', 'jawaban3', 'trim');
-        $this->form_validation->set_rules('jawaban4', 'jawaban4', 'trim');
-        $this->form_validation->set_rules('jawaban5', 'jawaban5', 'trim');
-
         //Cek apakah user sudah login
         if ($data['user']) {
             //Cek apakah user adalah admin
@@ -116,6 +109,11 @@ class admin_soal extends CI_Controller
     {
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
+
+        $data['paket'] = $this->Paket_model->getPaketById($id_paket);
+        $data['event'] = $this->Event_model->getEventById($id_event);
+        $data['topik'] = $this->Topik_model->getTopikById($id_topik);
 
         $this->form_validation->set_rules('inputSoal', 'soal', 'required|trim');
         $this->form_validation->set_rules('jawaban1', 'jawaban1', 'trim');
@@ -203,11 +201,11 @@ class admin_soal extends CI_Controller
 
             //Cek apakah insert data sukses
             if ($res_soal && $res_jawaban) {
-                $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu FAQ berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                redirect('admin_soal/daftar_soal');
+                $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu soal berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                redirect('admin_soal/kategori_tambah_soal');
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Satu FAQ gagal ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                redirect('admin_soal/daftar_soal');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Satu soal gagal ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                redirect('admin_soal/kategori_tambah_soal');
             }
         }
     }
