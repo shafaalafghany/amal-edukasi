@@ -53,9 +53,19 @@ class pages extends CI_Controller
         $data['modul'] = $this->Modul_model->getAllModul();
         $data['paket'] = $this->Paket_model->getAllPaket();
 
-        $this->load->view('header/header_user', $data);
-        $this->load->view('user/pembayaran/cara_daftar');
-        $this->load->view('footer/footer_user');
+        if($data['user']){
+            if($data['user']['role_id'] == 3){
+                $this->load->view('header/header_user', $data);
+                $this->load->view('user/pembayaran/cara_daftar');
+                $this->load->view('footer/footer_user');
+            } else {
+                redirect('admin');
+            }
+        } else {
+            $this->load->view('header/header_user', $data);
+            $this->load->view('user/pembayaran/cara_daftar');
+            $this->load->view('footer/footer_user');
+        }
     }
 
     public function upload_bukti()
@@ -67,17 +77,82 @@ class pages extends CI_Controller
         $data['modul'] = $this->Modul_model->getAllModul();
         $data['paket'] = $this->Paket_model->getAllPaket();
 
-        if($data['user']){
-            if($data['user']['role_id'] == 3){
-                $this->load->view('header/header_user', $data);
-                $this->load->view('user/pembayaran/upload_bayar');
-                $this->load->view('footer/footer_user');
+        $this->form_validation->set_rules('name', 'Name', 'required|trim');
+        $this->form_validation->set_rules('email', 'Email', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            if($data['user']){
+                if($data['user']['role_id'] == 3){
+                    $this->load->view('header/header_user', $data);
+                    $this->load->view('user/pembayaran/upload_bayar');
+                    $this->load->view('footer/footer_user');
+                } else {
+                    redirect('admin');
+                }
             } else {
-                redirect('admin');
+                $this->session->set_flashdata('error','Silahkan login dulu!');
+                redirect('home');
             }
         } else {
-            $this->session->set_flashdata('error','Silahkan login dulu!');
-            redirect('home');
+            $this->load->helper('file');
+
+            $upload_image = $_FILES['image']['name'];
+
+            if ($upload_image) {
+                if($this->input->post('optionPaket1') != "0"){
+                    $paket1 = $this->input->post('optionPaket1');
+
+                    $config['upload_path'] = './assets/pembayaran/';
+                    $config['allowed_types'] = 'jpg|png|jpeg';
+                    $config['max_size'] = 2048;
+                    $config['overwrite'] = true;
+
+                    $this->load->library('upload', $config);
+
+                    if ($this->upload->do_upload('image')) {
+                        $new_image = $this->upload->data('file_name');
+                    } else {
+                        $this->session->set_flashdata('error', 'File bukti transfer tidak sesuai ketentuan');
+                        redirect('pages/upload_bukti');
+                    }
+                } else {
+                    $this->session->set_flashdata('error', 'Pilihan paket 1 tidak boleh kosong');
+                    redirect('pages/upload_bukti');
+                }
+            } else{
+                $this->session->set_flashdata('error', 'File bukti transfer tidak boleh kosong');
+                redirect('pages/upload_bukti');
+            }
+
+            $paket2 = null;
+            if($this->input->post('optionPaket2') != "0"){
+                $paket2 = $this->input->post('optionPaket2');
+            }
+
+            $paket3 = null;
+            if($this->input->post('optionPaket3') != "0"){
+                $paket3 = $this->input->post('optionPaket3');
+            }
+
+            $paket4 = null;
+            if($this->input->post('optionPaket4') != "0"){
+                $paket4 = $this->input->post('optionPaket4');
+            }
+
+            $tampung = array(
+                'id_user' => $data['user']['id'],
+                'request1_id_paket' => $paket1,
+                'request2_id_paket' => $paket2,
+                'request3_id_paket' => $paket3,
+                'request4_id_paket' => $paket4,
+                'bukti_bayar' => $new_image,
+                'is_active' => 0,
+                'tgl_upload' => date_create('now')->format('Y-m-d')
+            );
+
+            $this->db->insert('pembayaran_tiket', $tampung);
+            $this->session->set_flashdata('success', 'Bukti Pembayaran berhasil terkirim! Silahkan menunggu konfirmasi kami');
+            redirect($this->uri->uri_string());
         }
     }
 

@@ -12,7 +12,7 @@
                         <h4>Silahkan isi form dibawah ini!</h4>
                     </div>
                     <br>
-                    <form action="#" method="POST">
+                    <?= form_open_multipart('upload_bukti'); ?>
                         <div class="form-group">
                             <label>Nama <span style="color: red">*</span></label>
                             <input type="text" class="form-control" id="name" name="name" value="<?= $user['name']; ?>" readonly>
@@ -32,7 +32,8 @@
                         </div>
                         <div class="form-group">
                             <label>Mau Ikut Paket Mana? (bagian 1) <span style="color: red">*</span></label>
-                            <select class="custom-select col-md-12 mb-3" id="optionPaket" name="optionPaket">
+                            <select class="custom-select col-md-12 mb-3" id="optionPaket1" name="optionPaket1">
+                                <option value="0">Silahkan Pilih...</option>
                                 <?php foreach ($paket as $loadPaket) { ?>
                                     <option value="<?= $loadPaket['id_paket']; ?>"><?= $loadPaket['nama_paket']; ?></option>
                                 <?php } ?>
@@ -41,7 +42,8 @@
                         <label>*Bila ingin mengikuti lebih dari 1 event atau 1 paket</label>
                         <div class="form-group">
                             <label>Mau Ikut Paket Mana Lagi? (bagian 2)</label>
-                            <select class="custom-select col-md-12 mb-3" id="optionPaket" name="optionPaket">
+                            <select class="custom-select col-md-12 mb-3" id="optionPaket2" name="optionPaket2">
+                                <option value="0">Silahkan Pilih...</option>
                                 <?php foreach ($paket as $loadPaket) { ?>
                                     <option value="<?= $loadPaket['id_paket']; ?>"><?= $loadPaket['nama_paket']; ?></option>
                                 <?php } ?>
@@ -49,7 +51,8 @@
                         </div>
                         <div class="form-group">
                             <label>Mau Ikut Paket Mana Lagi? (bagian 3)</label>
-                            <select class="custom-select col-md-12 mb-3" id="optionPaket" name="optionPaket">
+                            <select class="custom-select col-md-12 mb-3" id="optionPaket3" name="optionPaket3">
+                                <option value="0">Silahkan Pilih...</option>
                                 <?php foreach ($paket as $loadPaket) { ?>
                                     <option value="<?= $loadPaket['id_paket']; ?>"><?= $loadPaket['nama_paket']; ?></option>
                                 <?php } ?>
@@ -57,7 +60,8 @@
                         </div>
                         <div class="form-group">
                             <label>Mau Ikut Paket Mana Lagi? (bagian 4)</label>
-                            <select class="custom-select col-md-12 mb-3" id="optionPaket" name="optionPaket">
+                            <select class="custom-select col-md-12 mb-3" id="optionPaket4" name="optionPaket4">
+                                <option value="0">Silahkan Pilih...</option>
                                 <?php foreach ($paket as $loadPaket) { ?>
                                     <option value="<?= $loadPaket['id_paket']; ?>"><?= $loadPaket['nama_paket']; ?></option>
                                 <?php } ?>
@@ -68,7 +72,7 @@
                             <br>
                             <label style="color: red">- Form yang bertanda bintang (*) berarti wajib diisi</label>
                             <br>
-                            <label style="color: red">- Jika ingin mengikuti lebih dari 1 event pada paket yang sama, silahkan isi form bagian 2, bagian 3, atau bagian 4 dengan paket yang sama dengan bagian 1</label>
+                            <label style="color: red">- Jika ingin mengikuti lebih dari 1 event pada paket yang sama, silahkan isi form bagian 2, bagian 3, atau bagian 4 dengan paket yang sama dengan bagian sebelumnya</label>
                         </div>
                         <div class="form-group">
                             <button type="submit" class="btn btn-primary py-2 px-4">Kirim Bukti Pembayaran</button>
