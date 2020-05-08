@@ -92,7 +92,7 @@
 
 
                     <td class="project-actions">
-                      <a class="badge badge-primary col-sm" href="<?= base_url(); ?>admin_soal/edit_soal/<?= $event['id_event'] ?>/<?= $topik['id_topik_tes'] ?>/<?= $loadSoal['id_soal']; ?>">
+                      <a class="badge badge-primary col-sm" href="<?= base_url(); ?>admin_soal/lihat_soal/<?= $paket['id_paket'] ?>/<?= $event['id_event'] ?>/<?= $topik['id_topik_tes'] ?>/<?= $loadSoal['id_soal']; ?>">
                         <i class="fas fa-folder">
                         </i>
                         View
