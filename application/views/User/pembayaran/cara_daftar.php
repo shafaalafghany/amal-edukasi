@@ -29,6 +29,7 @@
                         <div class="single_courses">
                             <h4 style="font-size: 28px">3. Upload Bukti Transfer</h4>
                             <p style="margin-left: 3%">Upload bukti transfer kamu di menu "Upload Bukti Pembayaran" dan isi form yang ada di menu tersebut.</p>
+                            <p style="margin-left: 3%; color: red;">*catatan: Dalam 1 kali transaksi hanya bisa melakukan maksimal 4 pembelian paket atau event</p>
                             <!-- <h3 class="second_title">Garis Besar Video</h3> -->
                         </div>
                     <?php } else { ?>

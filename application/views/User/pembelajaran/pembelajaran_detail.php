@@ -181,14 +181,15 @@
                                 Login Dulu
                             </a>
                         <?php } ?>
-                        <div class="feedback_info">
-                            <h3>Tulis Feedback Kamu</h3>
-                            
-                            <form action="<?= base_url('detail/pembelajaran_detail/' . $modul['id_modul']) ?>" method="POST">
-                                <textarea name="testimoni" id="testimoni" cols="30" rows="10" placeholder="Tulis feedback kamu"></textarea>
-                                <button type="submit" class="boxed_btn">Submit</button>
-                            </form>
-                        </div>
+                        <?php if($user) { ?>
+                            <div class="feedback_info">
+                                <h3>Tulis Feedback Kamu</h3>
+                                <form action="<?= base_url('detail/pembelajaran_detail/' . $modul['id_modul']) ?>" method="POST">
+                                    <textarea name="testimoni" id="testimoni" cols="30" rows="10" placeholder="Tulis feedback kamu"></textarea>
+                                    <button type="submit" class="boxed_btn">Submit Feedback</button>
+                                </form>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

@@ -94,6 +94,7 @@
           <ul class="nav nav-pills nav-sidebar flex-column nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
+
             <?php if (current_url() == base_url('admin')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="<?= base_url('admin') ?>" class="nav-link active">
@@ -113,6 +114,7 @@
                 </a>
               </li>
             <?php } ?>
+
             <?php if (current_url() == base_url('admin_modul/daftar_modul')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
@@ -186,6 +188,7 @@
                 </ul>
               </li>
             <?php } ?>
+
             <?php if (current_url() == base_url('admin_paket/daftar_paket')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
@@ -259,6 +262,7 @@
                 </ul>
               </li>
             <?php } ?>
+
             <?php if (current_url() == base_url('admin_event/pilih_paket') || current_url() == base_url('admin_event/daftar_event')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
@@ -332,6 +336,7 @@
                 </ul>
               </li>
             <?php } ?>
+
             <?php if (current_url() == base_url('admin_soal/pilih_kategori_soal') || current_url() == base_url('admin_soal/daftar_soal')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
@@ -405,6 +410,7 @@
                 </ul>
               </li>
             <?php } ?>
+
             <?php if (current_url() == base_url('admin_faq')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
@@ -478,6 +484,27 @@
                 </ul>
               </li>
             <?php } ?>
+
+            <?php if (current_url() == base_url('admin_pembayaran')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="<?= base_url('admin_pembayaran') ?>" class="nav-link active">
+                  <i class="fas fa-money-check-alt"></i>
+                  <p>
+                    Pembayaran Peserta
+                  </p>
+                </a>
+              </li>
+            <?php } else { ?>
+              <li class="nav-item has-treeview">
+                <a href="<?= base_url('admin_pembayaran') ?>" class="nav-link">
+                  <i class="fas fa-money-check-alt"></i>
+                  <p>
+                    Pembayaran Peserta
+                  </p>
+                </a>
+              </li>
+            <?php } ?>
+
             <li class="nav-header">Administrator</li>
             <?php if (current_url() == base_url('admin_data')) { ?>
               <li class="nav-item has-treeview menu-open">
@@ -631,6 +658,7 @@
                 </ul>
               </li>
             <?php } ?>
+
             <li class="nav-header">PENGATURAN</li>
             <li class="nav-item has-treeview">
               <a href="#" class="nav-link">
@@ -657,6 +685,7 @@
                 </li>
               </ul>
             </li>
+
             <!-- <li class="nav-header">AKUN</li>
             <li class="nav-item has-treeview">
               <a href="<?= base_url('pages/profil_saya') ?>" class="nav-link">
