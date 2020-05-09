@@ -128,7 +128,7 @@
 
         Swal.fire({
           title: 'Anda Yakin',
-          text: "Ingin menghapus modul ini?",
+          text: "Ingin menghapus pembayaran peserta ini?",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',

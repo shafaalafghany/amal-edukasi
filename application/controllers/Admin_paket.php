@@ -127,7 +127,7 @@ class admin_paket extends CI_Controller
             if ($data['user']) {
                 //Cek apakah user adalah admin
                 if ($user['role_id'] == 1) {
-                    $this->load->view('header/detail/detail_paket_admin', $data);
+                    $this->load->view('header/detail/admin/detail_paket_admin', $data);
                     $this->load->view('admin/paket/edit_paket');
                 } else {
                     $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');

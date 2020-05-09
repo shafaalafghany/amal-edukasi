@@ -12,6 +12,7 @@ class pages extends CI_Controller
         $this->load->model('User_model');
         $this->load->model('Paket_model');
         $this->load->model('Faq_model');
+        $this->load->model('Tiket_model');
     }
 
     public function event($id_paket)
@@ -257,6 +258,7 @@ class pages extends CI_Controller
 
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $data['tiket'] = $this->Tiket_model->getAllTiketByIdUser($data['user']['id']);
         /* $id_user = $this->User_model->getIdUserByUsername($sessionUser);
         $data['transaksi'] = $this->db->get_where('transaksi_user', ['id_user' => $id_user])->result_array();
         $data['modul'] = $this->Modul_model->getAllModul(); */

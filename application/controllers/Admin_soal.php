@@ -192,11 +192,11 @@ class admin_soal extends CI_Controller
 
             //Insert data Jawaban ke database
             if ($id_topik == 5) {
-                $res_jawaban = $this->Jawaban_model->insertJawabanTkp($id_event, $id_topik, $getIdSoal, $jawabanTkp1, $jawabanTkp2, $jawabanTkp3, $jawabanTkp4, $jawabanTkp5, $pointTkp1, $pointTkp2, $pointTkp3, $pointTkp4, $pointTkp5);
+                $this->Jawaban_model->insertJawabanTkp($id_event, $id_topik, $getIdSoal, $jawabanTkp1, $jawabanTkp2, $jawabanTkp3, $jawabanTkp4, $jawabanTkp5, $pointTkp1, $pointTkp2, $pointTkp3, $pointTkp4, $pointTkp5);
             } else if ($id_topik == 1) {
-                $res_jawaban = $this->Jawaban_model->insertJawabanTpa($id_event, $id_topik, $getIdSoal, $jawabanBenar, $jawaban1, $jawaban2, $jawaban3, $jawaban4, $jawaban5);
+                $this->Jawaban_model->insertJawabanTpa($id_event, $id_topik, $getIdSoal, $jawabanBenar, $jawaban1, $jawaban2, $jawaban3, $jawaban4, $jawaban5);
             } else {
-                $res_jawaban = $this->Jawaban_model->insertJawabanSelainTpaTkpPsiko($id_event, $id_topik, $getIdSoal, $jawabanBenar, $jawaban1, $jawaban2, $jawaban3, $jawaban4, $jawaban5);
+                $this->Jawaban_model->insertJawabanSelainTpaTkpPsiko($id_event, $id_topik, $getIdSoal, $jawabanBenar, $jawaban1, $jawaban2, $jawaban3, $jawaban4, $jawaban5);
             }
 
             //Cek apakah insert data sukses
@@ -265,7 +265,7 @@ class admin_soal extends CI_Controller
             if ($data['user']) {
                 //Cek apakah user adalah admin
                 if ($user['role_id'] == 1) {
-                    $this->load->view('header/detail/detail_soal_admin', $data);
+                    $this->load->view('header/detail/admin/detail_soal_admin', $data);
                     $this->load->view('admin/soal/edit_soal', $data);
                 } else {
                     $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
