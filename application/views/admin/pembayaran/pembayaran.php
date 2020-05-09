@@ -25,6 +25,17 @@
             
             <!-- /.card-body -->
             <div class="card-body">
+              <div class="mb-3">
+                <h6>Keterangan : </h6>
+                <div class="d-md-flex">
+                  <div class="table-success mr-3" style="height: 30px; width: 30px;"></div>
+                  <p> : Sudah Dikonfirmasi</p>
+                </div>
+                <div class="d-md-flex">
+                  <div class="table-danger mr-3" style="height: 30px; width: 30px;"></div>
+                  <p> : Belum Dikonfirmasi</p>
+                </div>
+              </div>
               <table id="example1" class="table table-bordered table-striped load-table">
                 <thead>
                   <tr>
@@ -40,7 +51,15 @@
                   $i = 1;
                   foreach ($bayar as $load_bayar) { ?>
                     <?php $member = $this->db->get_where('user', ['id' => $load_bayar['id_user']])->row_array(); ?>
-                    <tr>
+                    <?php 
+                      $class='';
+                      if($load_bayar['is_active'] == 1){
+                        $class = 'class="table-success"';
+                      } else{
+                        $class = 'class="table-danger"';
+                      }
+                    ?>
+                    <tr <?= $class; ?>>
                       <td><?= $i; ?></td>
                       <td><?= $member['name']; ?></td>
                       <?php if($load_bayar['is_active'] == 0){ ?>

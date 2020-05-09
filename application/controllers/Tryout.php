@@ -9,56 +9,232 @@ class tryout extends CI_Controller
         $this->load->library('form_validation');
         $this->load->model('Event_model');
         $this->load->model('Modul_model');
+        $this->load->model('Paket_model');
         $this->load->model('Topik_model');
+        $this->load->model('Tiket_model');
         $this->load->model('User_model');
+        $this->load->model('Transaksi_model');
         $this->load->model('Rule_topik_model');
         $this->load->model('Soal_model');
         $this->load->model('Kerjakan_model');
         $this->load->model('Hasil_tes_model', 'hasil');
     }
 
-    public function cek_tiket($id, $id_paket)
+    public function cek_tiket($id, $id_paket, $id_event)
     {
-        
+        $data['judul'] = 'Amal Edukasi | Cek Tiket';
+
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $paket = $this->Paket_model->getPaketById($id_paket);
+        $tiket = $this->Tiket_model->getAllTiketByIdUserPaket($id, $id_paket);
+
+        if($data['user']){
+            if($data['user']['role_id'] == 3){
+                if($data['user']['id'] == $id){
+                    if($tiket['jmlh_tiket'] > 0){
+                        $hasil = $this->Transaksi_model->insertTransaksiTryout($id, $id_paket, $id_event);
+                        if($hasil){
+                            $this->Tiket_model->updateTiketSekarang($id, $id_paket, $tiket);
+                            
+                            if($paket['tpa'] == 1){
+                                redirect('tryout/tes_tpa/' . $id . '/' . $id_paket . '/' . $id_event);
+                            } else{
+                                if($paket['tbi'] == 1){
+                                    redirect('tryout/tes_tbi/' . $id . '/' . $id_paket . '/' . $id_event);
+                                } else{
+                                    if($paket['twk'] == 1 && $paket['tiu'] == 1 && $paket['tkp'] == 1){
+                                        redirect('tryout/tes_skd/' . $id . '/' . $id_paket . '/' . $id_event);
+                                    } else{
+                                        if($paket['tsa'] == 1){
+                                            redirect('tryout/tes_tsa/' . $id . '/' . $id_paket . '/' . $id_event);
+                                        }
+                                    }
+                                }
+                            }
+                        } else{
+                            if($paket['tpa'] == 1){
+                                redirect('tryout/tes_tpa/' . $id . '/' . $id_paket . '/' . $id_event);
+                            } else{
+                                if($paket['tbi'] == 1){
+                                    redirect('tryout/tes_tbi/' . $id . '/' . $id_paket . '/' . $id_event);
+                                } else{
+                                    if($paket['twk'] == 1 && $paket['tiu'] == 1 && $paket['tkp'] == 1){
+                                        redirect('tryout/tes_skd/' . $id . '/' . $id_paket . '/' . $id_event);
+                                    } else{
+                                        if($paket['tsa'] == 1){
+                                            redirect('tryout/tes_tsa/' . $id . '/' . $id_paket . '/' . $id_event);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } else{
+                        $this->session->set_flashdata('error', 'Kamu tidak memilki tiket di paket ' . $paket['nama_paket'] . '!');
+                        redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
+                    }
+                } else{
+                    $this->session->set_flashdata('error', 'Kamu tidak memiliki akses ke halaman tersebut!');
+                    redirect('home');
+                }
+            } elseif($data['user']['role_id'] == 1){
+                redirect('admin');
+            }
+        } else{
+            $this->session->set_flashdata('error', 'Silahkan login dulu!');
+            redirect('home');
+        }
     }
 
+    // function tryout tpa
     public function tes_tpa($id, $id_paket, $id_event)
     {
-        $data['judul'] = 'AORTASTAN Try Out Online | Tes TPA';
+        $data['judul'] = 'Amal Edukasi | Tes Potensi Akademik';
 
-        $sessionUser = $this->session->userdata('username');
+        $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
 
         $data['event'] = $this->Event_model->getEventById($id_event);
-        $data['topik_tpa'] = $this->Topik_model->getTopikTPA();
-        $data['topik_rule_tpa'] = $this->Topik_model->getRuleTopikTPA();
-
-        $id_topik = $this->Topik_model->getIdTopikTPA();
-        $topik_rule = $this->Topik_model->getRuleTopikTPA();
-
-        $harga = $this->Event_model->getHargaEvent($id_event);
-        $point = $this->db->select('point')->get_where('user', ['role_id' => 3, 'username' => $sessionUser])->row()->point;
-
-        if ($point < $harga) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12 text-center" role="alert"><strong>Maaf point anda tidak mencukupi untuk ikut dalam event! Silahkan top up point dulu.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect('User/tryout');
-        } else {
-            $bayar = $point - $harga;
-
-            $tampungBayar = array('point' => $bayar);
-            $this->User_model->updatePointUserByUsername($sessionUser, $tampungBayar);
+        $data['topik'] = $this->Topik_model->getTopikTPA();
+        $data['aturan_topik'] = $this->Topik_model->getRuleTopikTPA();
+        $data['transaksi'] = $this->Transaksi_model->getTransaksiBySomeId($id, $id_paket, $id_event);
+        $data['paket'] = $this->Paket_model->getPaketById($id_paket);
+        $hasil_tes_topik = $this->hasil->getHasilByIdEventTopik($id, $id_event, $data['topik']['id_topik_tes']);
+        
+        if($data['user']){
+            if($data['user']['role_id'] == 3){
+                if($data['user']['id'] == $id) {
+                    if($data['transaksi']){
+                        if($hasil_tes_topik){
+                            $this->session->set_flashdata('error', 'Kamu sudah melakukan tes tersebut!');
+                            redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
+                        } else{
+                            $this->load->view('header/header_tes', $data);
+                            $this->load->view('user/tes/tes_detail');
+                            $this->load->view('footer/footer_tes');
+                        }
+                    } else{
+                        $this->session->set_flashdata('error', 'Kamu belum terdaftar di event ini!');
+                        redirect('home');
+                    }
+                } else{
+                    $this->session->set_flashdata('error', 'Kamu tidak memiliki akses ke halaman tersebut!');
+                    redirect('home');
+                }
+            } else{
+                redirect('admin');
+            }
+        } else{
+            $this->session->set_flashdata('error', 'Silahkan login dulu!');
+            redirect('home');
         }
+    }
 
-        $tgl_transaksi = date_create('now')->format('Y-m-d H:i:s');
+    public function kerjakan_tpa($id, $id_paket, $id_event)
+    {
+        $data['judul'] = 'Amal Edukasi | Tes Potensi Akademik';
 
-        $dataTransaksiUser = [
-            'id_user' => $id,
-            'id_event' => $id_event,
-            'tgl_transaksi' => $tgl_transaksi
-        ];
-        $this->db->insert('transaksi_user', $dataTransaksiUser);
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
 
-        redirect('User/pilih_jurusan/' . $id . '/' . $id_event);
+        $data['event'] = $this->Event_model->getEventById($id_event);
+        $data['topik'] = $this->Topik_model->getTopikTPA();
+        $data['aturan_topik'] = $this->Topik_model->getRuleTopikTPA();
+        $data['transaksi_user'] = $this->Transaksi_model->getTransaksiBySomeId($id, $id_paket, $id_event);
+        $data['paket'] = $this->Paket_model->getPaketById($id_paket);
+        $data['soal'] = $this->Soal_model->getSoalByIdEventAndIdTopik($id_event, $data['topik']['id_topik_tes']);
+        $data['soal1'] = $this->Soal_model->getSoalByIdLimit1($id_event, $data['topik']['id_topik_tes']);
+        $data['soal2'] = $this->Soal_model->getSoalByIdLimit2($id_event, $data['topik']['id_topik_tes']);
+        $data['soal3'] = $this->Soal_model->getSoalByIdLimit3($id_event, $data['topik']['id_topik_tes']);
+        $hasil_tes_topik = $this->hasil->getHasilByIdEventTopik($id, $id_event, $data['topik']['id_topik_tes']);
+        
+        if($data['user']){
+            if($data['user']['role_id'] == 3){
+                if($data['user']['id'] == $id) {
+                    if($data['transaksi_user']){
+                        if($hasil_tes_topik){
+                            $this->session->set_flashdata('error', 'Kamu sudah melakukan tes tersebut!');
+                            redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
+                        } else{
+                            $waktudaftar = time();
+
+                            $dataTransaksi = [
+                                'id_topik' => $data['topik']['id_topik_tes'],
+                                'id_event' => $id_event,
+                                'id_user' => $id,
+                                'waktu_daftar' => $waktudaftar
+                            ];
+                            $this->Kerjakan_model->sessionKerjakan($dataTransaksi);
+
+                            $this->session->unset_userdata('id_event');
+                            $this->session->unset_userdata('id_topik');
+                            $this->session->unset_userdata('id_user');
+                            $this->session->unset_userdata('waktu_daftar');
+
+                            $data['transaksi'] = $this->Kerjakan_model->getKerjakan($id_event, $data['topik']['id_topik_tes'], $id);
+
+                            $this->load->view('header/header_tes', $data);
+                            $this->load->view('user/tes/kerjakan_tes');
+                            $this->load->view('footer/footer_tes');
+                        }
+                    } else{
+                        $this->session->set_flashdata('error', 'Kamu belum terdaftar di event ini!');
+                        redirect('home');
+                    }
+                } else{
+                    $this->session->set_flashdata('error', 'Kamu tidak memiliki akses ke halaman tersebut!');
+                    redirect('home');
+                }
+            } else{
+                redirect('admin');
+            }
+        } else{
+            $this->session->set_flashdata('error', 'Silahkan login dulu!');
+            redirect('home');
+        }
+    }
+
+    public function hasil_tpa($id, $id_paket, $id_event)
+    {
+        $data['judul'] = 'Amal Edukasi | Hasil Tes Potensi Akademik';
+
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+
+        $data['event'] = $this->Event_model->getEventById($id_event);
+        $data['topik'] = $this->Topik_model->getTopikTPA();
+        $data['aturan_topik'] = $this->Topik_model->getRuleTopikTPA();
+        $data['transaksi_user'] = $this->Transaksi_model->getTransaksiBySomeId($id, $id_paket, $id_event);
+        $data['paket'] = $this->Paket_model->getPaketById($id_paket);
+        $hasil_tes_topik = $this->hasil->getHasilByIdEventTopik($id, $id_event, $data['topik']['id_topik_tes']);
+        
+        if($data['user']){
+            if($data['user']['role_id'] == 3){
+                if($data['user']['id'] == $id) {
+                    if($data['transaksi_user']){
+                        if($hasil_tes_topik){
+                            $this->load->view('header/header_tes', $data);
+                            $this->load->view('user/tes/hasil_tes');
+                            $this->load->view('footer/footer_tes');
+                        } else{
+                            $this->session->set_flashdata('error', 'Belum ada hasil untuk tes ini! Pastikan kamu sudah mengerjakan tes.');
+                            redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
+                        }
+                    } else{
+                        $this->session->set_flashdata('error', 'Kamu belum terdaftar di event ini!');
+                        redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
+                    }
+                } else{
+                    $this->session->set_flashdata('error', 'Kamu tidak memiliki akses ke halaman tersebut!');
+                    redirect('home');
+                }
+            } else{
+                redirect('admin');
+            }
+        } else{
+            $this->session->set_flashdata('error', 'Silahkan login dulu!');
+            redirect('home');
+        }
     }
 
     public function tes_tbi($id, $id_event)
@@ -388,8 +564,8 @@ class tryout extends CI_Controller
         $hasil_tes_topik = $this->hasil->getHasilByIdEventTopik($jawaban['idp'], $jawaban['eve'], $jawaban['topik']);
 
         if ($hasil_tes_topik) {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12 text-center" role="alert"><strong>Anda sudah melakukan tes tersebut!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect('User/event/' . $jawaban['eve']);
+            $this->session->set_flashdata('error', 'Anda sudah melakukan tes tersebut!');
+            redirect('home');
         } else {
             $dataJawaban = [
                 'id_user' => $jawaban['idp'],
@@ -449,10 +625,12 @@ class tryout extends CI_Controller
 
             $this->Kerjakan_model->hapuscache($id, $id_topik, $id_event);
 
-            if ($id_topik == 6) {
-                redirect('User/hasil_tes_psiko/' . $id . '/' . $id_event . '/' . $id_topik);
-            } else {
-                redirect('User/hasil_tes/' . $id . '/' . $id_event . '/' . $id_topik);
+            $this->Kerjakan_model->hapusSessionKerjakan($id, $id_topik, $id_event);
+
+            if ($id_topik == 1) {
+                redirect('tryout/hasil_tpa/' . $id . '/' . $id_event);
+            } elseif($id_topik == 2) {
+                redirect('tryout/hasil_tbi/' . $id . '/' . $id_event);
             }
         }
     }

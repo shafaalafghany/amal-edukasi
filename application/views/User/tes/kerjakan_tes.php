@@ -23,13 +23,15 @@ if ($temp_menit < 60) {
     </style>
 
     <!-- END nav -->
-    <div class="hero-wrap hero-wrap-2" style="background-image: url('<?= base_url('assets/User/'); ?>images/bg_1.jpg'); height: 300px;" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap hero-wrap-2" style="background-image: url('<?= base_url('assets/user/img/'); ?>banner/bradcam.png');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-start">
           <div class="col-md-12 ftco-animate text-center mb-5">
-            <p class="breadcrumbs mb-0"><span class="mr-3">Home <i class="ion-ios-arrow-forward"></i></span><span class="mr-3">Try Out <i class="ion-ios-arrow-forward"></i></span> <span>Event</span></p>
-            <h1 class="mb-3 bread"><?= $topik['nama_topik_tes']; ?></h1>
+            <br>
+            <br>
+            <br>
+            <h1 class="mb-3 bread" style="color: white"><?= $topik['nama_topik_tes']; ?></h1>
           </div>
         </div>
       </div>
@@ -37,6 +39,9 @@ if ($temp_menit < 60) {
 
     <section class="ftco-section bg-light" id="tes">
         <div class="container">
+          <br>
+          <br>
+          <br>
           <h4 class="text-center" id="timer"></h4>
             <div class="row">
                 <div class="col-lg-8 pr-lg-4">
@@ -74,7 +79,11 @@ if ($temp_menit < 60) {
                                           }
                                         ?>
                                         <label class="btn btn-default d-flex">
-                                          <input onchange="klikJwbn(<?= $i; ?>)" id="jwbnSoal<?= $i; ?>" name="jwbnSoal<?= $i; ?>" class="jawab mr-2" data-eve="<?= $event['id_event']; ?>" data-soal="<?= $loadSoal['id_soal']; ?>" data-idp="<?= $user['id']; ?>" data-jawaban="<?= $jwb['id_jawaban']; ?>" data-topik="<?= $loadSoal['id_topik_tes']; ?>" type="radio" value="<?= $jwb['id_jawaban']; ?>" <?= $checked; ?>> <?= $jwb['jawaban']; ?>
+                                          <input onchange="klikJwbn(<?= $i; ?>)" id="jwbnSoal<?= $i; ?>" name="jwbnSoal<?= $i; ?>" 
+                                          class="jawab mr-2" data-eve="<?= $event['id_event']; ?>" data-soal="<?= $loadSoal['id_soal']; ?>" 
+                                          data-idp="<?= $user['id']; ?>" data-jawaban="<?= $jwb['id_jawaban']; ?>" 
+                                          data-topik="<?= $loadSoal['id_topik_tes']; ?>" type="radio" value="<?= $jwb['id_jawaban']; ?>" 
+                                          <?= $checked; ?>> <?= $jwb['jawaban']; ?>
                                         </label>
                                         <br>
                                     <?php endforeach; ?>
@@ -314,7 +323,7 @@ if ($temp_menit < 60) {
                       </div>
                     </form>
                     <hr>
-                    <a href="<?= base_url('User/'); ?>koreksi/<?= $user['id']; ?>/<?= $event['id_event']; ?>/<?= $topik['id_topik_tes'] ?>" class="btn btn-success col-md-12 selesai">Submit Jawaban</a>
+                    <a href="<?= base_url('tryout/koreksi/'); ?><?= $user['id']; ?>/<?= $event['id_event']; ?>/<?= $topik['id_topik_tes'] ?>" class="btn btn-success col-md-12 selesai">Submit Jawaban</a>
                   </div>
                 </div>
             </div>
@@ -324,12 +333,13 @@ if ($temp_menit < 60) {
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
-    <script src="<?= base_url('assets/User/'); ?>js/jquery.min.js"></script>
-    <script src="<?= base_url('assets/User/'); ?>js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="<?= base_url('assets/User/'); ?>js/jquery.easing.1.3.js"></script>
-    <script src="<?= base_url('assets/User/'); ?>js/jquery.waypoints.min.js"></script>
-    <script src="<?= base_url('assets/User/'); ?>js/jquery.stellar.min.js"></script>
-    <script src="<?= base_url('assets/User/'); ?>js/jquery.magnific-popup.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="<?= base_url('assets/user/'); ?>js/jquery.min.js"></script>
+    <script src="<?= base_url('assets/user/'); ?>js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="<?= base_url('assets/user/'); ?>js/jquery.easing.1.3.js"></script>
+    <script src="<?= base_url('assets/user/'); ?>js/jquery.waypoints.min.js"></script>
+    <script src="<?= base_url('assets/user/'); ?>js/jquery.stellar.min.js"></script>
+    <script src="<?= base_url('assets/user/'); ?>js/jquery.magnific-popup.min.js"></script>
 
     <script>
 
@@ -501,7 +511,7 @@ if ($temp_menit < 60) {
         }
 
         $.ajax({
-            url: "<?= base_url('User/'); ?>ragu",
+            url: "<?= base_url('tryout/ragu'); ?>",
             data: {
                 eve: eve,
                 idp: idp,
@@ -531,7 +541,7 @@ if ($temp_menit < 60) {
         var topik = $(this).data('topik');
 
         $.ajax({
-            url: "<?= base_url('User/'); ?>jawab",
+            url: "<?= base_url('tryout/jawab'); ?>",
             data: {
                 eve: eve,
                 idp: idp,
@@ -557,5 +567,3 @@ if ($temp_menit < 60) {
         $('#nomor'+e).addClass('active');
       }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>

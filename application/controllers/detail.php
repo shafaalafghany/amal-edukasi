@@ -13,6 +13,7 @@ class detail extends CI_Controller
         $this->load->model('Testimoni_model');
         $this->load->model('Paket_model');
         $this->load->model('Soal_model');
+        $this->load->model('Transaksi_model');
     }
 
     public function pembelajaran_detail($id_modul)
@@ -59,6 +60,7 @@ class detail extends CI_Controller
         $data['event'] = $this->Event_model->getEventById($id_event);
         $data['paket'] = $this->Paket_model->getAllPaket();
         $data['paketID'] = $this->Paket_model->getPaketById($id_paket);
+        $data['transaksi'] = $this->Transaksi_model->getTransaksiBySomeId($user['id'], $id_paket, $id_event);
 
         $data['judul'] = 'Amal Edukasi | Detail ' . $data['event']['nama_event'];
 

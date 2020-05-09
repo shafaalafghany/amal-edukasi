@@ -1,5 +1,7 @@
 <!-- JS here -->
 <script src="<?= base_url('assets/user/'); ?>js/sweetalert2.all.min.js"></script>
+<script type="text/javascript" src="http://cloud.github.com/downloads/malsup/cycle/jquery.cycle.all.latest.js"></script>
+<script src="<?= base_url('assets/user/'); ?>js/jquery.min.js"></script>
 <script src="<?= base_url('assets/user/'); ?>js/vendor/modernizr-3.5.0.min.js"></script>
 <script src="<?= base_url('assets/user/'); ?>js/vendor/jquery-1.12.4.min.js"></script>
 <script src="<?= base_url('assets/user/'); ?>js/popper.min.js"></script>
@@ -28,27 +30,6 @@
 
 <script src="<?= base_url('assets/user/'); ?>js/main.js"></script>
 <script src="<?= base_url('assets/auth/'); ?>js/logout.js"></script>
-<?php if($this->session->flashdata('success')){ ?>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            Swal.fire({
-                icon: 'success',
-                title: 'Berhasil!!',
-                text: '<?= $this->session->flashdata('success') ?>'
-            })
-        });
-    </script>
-<?php } elseif($this->session->flashdata('error')) { ?>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: '<?= $this->session->flashdata('error') ?>'
-            })
-        });
-    </script>
-<?php } ?>
 </body>
 
 </html>

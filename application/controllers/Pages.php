@@ -148,7 +148,7 @@ class pages extends CI_Controller
                 'request4_id_paket' => $paket4,
                 'bukti_bayar' => $new_image,
                 'is_active' => 0,
-                'tgl_upload' => date_create('now')->format('Y-m-d')
+                'tgl_upload' => date_create('now')->format('Y-m-d H:i:s')
             );
 
             $this->db->insert('pembayaran_tiket', $tampung);

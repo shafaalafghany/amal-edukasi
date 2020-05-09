@@ -101,7 +101,11 @@
                 </div>
                 <div class="col-xl-12 col-lg-12">
                     <?php if($user){ ?>
-                        <a href="<?= base_url('tryout/cek_tiket/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Ikuti Event</a>
+                        <?php if($transaksi){ ?>
+                            <a href="<?= base_url('tryout/cek_tiket/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes</a>
+                        <?php } else { ?>
+                            <a href="<?= base_url('tryout/cek_tiket/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Ikuti Event</a>
+                        <?php } ?>
                     <?php } else { ?>
                         <a href="#test-form" class="login popup-with-form genric-btn warning circle arrow">Login Dulu</a>
                     <?php } ?>
