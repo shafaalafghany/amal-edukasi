@@ -32,6 +32,14 @@
                             <p style="margin-left: 3%; color: red;">*catatan: Dalam 1 kali transaksi hanya bisa melakukan maksimal 4 pembelian paket atau event</p>
                             <!-- <h3 class="second_title">Garis Besar Video</h3> -->
                         </div>
+                        <br>
+                        <br>
+                        <div class="single_courses">
+                            <h4 style="font-size: 28px">4. Tunggu Konfirmasi Kami</h4>
+                            <p style="margin-left: 3%">Setelah upload bukti transfer, silahkan tunggu konfirmasi pembayaran dari kami.</p>
+                            <p style="margin-left: 3%;">Tanda bukti transfer kamu telah dikonfirmasi adalah jumlah tiket kamu telah bertambah di menu profil saya</p>
+                            <!-- <h3 class="second_title">Garis Besar Video</h3> -->
+                        </div>
                     <?php } else { ?>
                         <div class="single_courses">
                             <h4 style="font-size: 28px">3. Login Terlebih Dahulu</h4>

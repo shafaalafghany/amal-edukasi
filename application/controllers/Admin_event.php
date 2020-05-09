@@ -164,7 +164,7 @@ class admin_event extends CI_Controller
             if ($data['user']) {
                 //Cek apakah user adalah admin
                 if ($user['role_id'] == 1) {
-                    $this->load->view('header/detail/detail_event_admin', $data);
+                    $this->load->view('header/detail/admin/detail_event_admin', $data);
                     $this->load->view('admin/event/edit_event');
                 } else {
                     $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');

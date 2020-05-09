@@ -90,14 +90,13 @@
                       <?php } ?>
                     <?php } ?>
 
-
                     <td class="project-actions">
-                      <a class="badge badge-primary col-sm" href="<?= base_url(); ?>admin_soal/lihat_soal/<?= $paket['id_paket'] ?>/<?= $event['id_event'] ?>/<?= $topik['id_topik_tes'] ?>/<?= $loadSoal['id_soal']; ?>">
-                        <i class="fas fa-folder">
+                      <a class="badge badge-info col-sm" href="<?= base_url('admin_soal/edit_soal/' . $paket['id_paket'] . '/' . $event['id_event'] . '/' . $topik['id_topik_tes'] . '/' . $loadSoal['id_soal']) ?>">
+                        <i class="fas fa-pencil-alt">
                         </i>
-                        View
+                        Edit
                       </a>
-                      <a class="badge badge-danger col-sm delete-soal" href="<?= base_url(); ?>admin_soal/hapus_soal/<?= $loadSoal['id_soal']; ?>">
+                      <a class="badge badge-danger col-sm delete-soal" href="<?= base_url('admin_soal/'); ?>hapus_soal/<?= $loadSoal['id_soal']; ?>">
                         <i class="fas fa-trash">
                         </i>
                         Delete

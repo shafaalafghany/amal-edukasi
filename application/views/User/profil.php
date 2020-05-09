@@ -32,9 +32,9 @@
 	<header>
 		<div class="container">
 			<?php if ($user['role_id'] == 3) { ?>
-				<a class="downlad-btn" href="<?= base_url(); ?>">Kembali ke home</a>
+				<a class="downlad-btn" href="<?= base_url(); ?>" style="border-radius: 30px">Kembali ke home</a>
 			<?php } else { ?>
-				<a class="downlad-btn" href="<?= base_url('admin'); ?>">Kembali ke admin</a>
+				<a class="downlad-btn" href="<?= base_url('admin'); ?>" style="border-radius: 30px">Kembali ke admin</a>
 			<?php } ?>
 		</div><!-- container -->
 	</header>
@@ -98,21 +98,14 @@
 						<?php if ($user['role_id'] == 3) { ?>
 							<div class="col-sm-6 col-md-6 col-lg-4">
 								<div class="counter margin-b-30">
-									<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="3">0</span></b></h1>
-									<h5 class="desc"><b>Modul Dipelajari</b></h5>
-								</div><!-- counter -->
-							</div><!-- col-md-3-->
-
-							<div class="col-sm-6 col-md-6 col-lg-4">
-								<div class="counter margin-b-30">
-									<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="10">0</span></b></h1>
+									<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="<?= count($tiket) ?>">0</span></b></h1>
 									<h5 class="desc"><b>Tiket Tryout Didapat</b></h5>
 								</div><!-- counter -->
 							</div><!-- col-md-3-->
 
 							<div class="col-sm-6 col-md-6 col-lg-4">
 								<div class="counter margin-b-30">
-									<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="5">0</span></b></h1>
+									<h1 class="title"><b><span class="counter-value" data-duration="1000" data-count="0">0</span></b></h1>
 									<h5 class="desc"><b>Try Out Diikuti</b></h5>
 								</div><!-- counter -->
 							</div><!-- col-md-3-->

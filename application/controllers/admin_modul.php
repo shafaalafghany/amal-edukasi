@@ -214,7 +214,7 @@ class admin_modul extends CI_Controller
 
         if ($data['user']) {
             if ($user['role_id'] == 1) {
-                $this->load->view('header/detail/detail_modul_admin', $data);
+                $this->load->view('header/detail/admin/detail_modul_admin', $data);
                 $this->load->view('admin/modul/view_modul');
             } else {
                 $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');

@@ -20,8 +20,16 @@ class Pembayaran_model extends CI_model
         //return $this->db->get_where('mahasiswa', ['id' => $id]);
     }
 
-    public function getModulById($id_modul)
+    public function updateBayar($id, $data)
     {
-        return $this->db->get_where('modul', ['id_modul' => $id_modul])->row_array();
+        $this->db->where('id_bayar', $id);
+        $this->db->set($data);
+        $this->db->update('pembayaran_tiket');
+        //return $this->db->get_where('mahasiswa', ['id' => $id]);
+    }
+
+    public function getBayarById($id_bukti)
+    {
+        return $this->db->get_where('pembayaran_tiket', ['id_bayar' => $id_bukti])->row_array();
     }
 }

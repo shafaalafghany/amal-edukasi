@@ -111,11 +111,6 @@ class User_model extends CI_model
         return $this->db->select('image')->get_where('user', ['email' => $email])->row()->image;
     }
 
-    public function getIdUserByUsername($sessionUser)
-    {
-        return $this->db->select('id')->get_where('user', ['username' => $sessionUser])->row()->id;
-    }
-
     public function resetUser($idUser, $idEvent)
     {
         $hasilUser = $this->db->get_where('hasil_tes', ['id_user' => $idUser, 'id_event' => $idEvent])->result_array();

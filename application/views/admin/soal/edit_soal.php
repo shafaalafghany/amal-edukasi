@@ -30,7 +30,7 @@
               <div class="form-group">
                 <div class="form-group">
                   <label for="inputName">Nama Paket</label>
-                  <input type="text" id="inputName" class="form-control" disabled="disabled" value="<?= $paket['id_paket'] ?>">
+                  <input type="text" id="inputName" class="form-control" disabled="disabled" value="<?= $paket['nama_paket'] ?>">
                 </div>
                 <div class="form-group">
                   <label for="inputName">Nama Event</label>
