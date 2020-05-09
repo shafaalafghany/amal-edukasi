@@ -200,13 +200,8 @@ class admin_soal extends CI_Controller
             }
 
             //Cek apakah insert data sukses
-            if ($res_soal && $res_jawaban) {
-                $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu soal berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                redirect('admin_soal/kategori_tambah_soal');
-            } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Satu soal gagal ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                redirect('admin_soal/kategori_tambah_soal');
-            }
+            $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu soal berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect('admin_soal/kategori_tambah_soal');
         }
     }
 
@@ -247,10 +242,10 @@ class admin_soal extends CI_Controller
         redirect('admin_soal/pilih_kategori_soal');
     }
 
-    public function lihat_soal($id_paket, $id_event, $id_topik, $id_soal)
+    public function edit_soal($id_paket, $id_event, $id_topik, $id_soal)
     {
         $data['judul'] = 'Amal Edukasi | View Soal';
-        $sessionUser = $this->session->userdata('username');
+        $sessionUser = $this->session->userdata('email');
         $user = $this->User_model->sessionUserMasuk($sessionUser);
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
 
@@ -270,7 +265,7 @@ class admin_soal extends CI_Controller
             if ($data['user']) {
                 //Cek apakah user adalah admin
                 if ($user['role_id'] == 1) {
-                    $this->load->view('header/header_admin', $data);
+                    $this->load->view('header/detail/detail_soal_admin', $data);
                     $this->load->view('admin/soal/edit_soal', $data);
                 } else {
                     $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
