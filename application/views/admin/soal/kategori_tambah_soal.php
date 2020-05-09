@@ -5,7 +5,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Daftar Soal</h1>
+              <h1>Tambah Soal</h1>
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -18,7 +18,7 @@
             <?= $this->session->flashdata('message'); ?>
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">List Soal</h3>
+                <h3 class="card-title">Pilih Kategori Tambah Soal</h3>
               </div>
                 <!-- /.card-body -->
               <div class="card-body">
