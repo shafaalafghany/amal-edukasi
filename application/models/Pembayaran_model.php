@@ -4,7 +4,7 @@ class Pembayaran_model extends CI_model
 {
     public function getAllBuktiBayar()
     {
-        $query = $this->db->query("SELECT * from pembayaran_tiket p order by p.is_active ASC");
+        $query = $this->db->query("SELECT * from pembayaran_tiket p order by p.is_active ASC, p.tgl_upload DESC");
         return $query->result_array();
     }
 

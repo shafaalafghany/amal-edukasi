@@ -101,22 +101,31 @@
                 </div>
                 <div class="col-xl-12 col-lg-12">
                     <?php if($user){ ?>
-                        <?php if($transaksi){ ?>
-                            <?php if($hasil_tpa){ ?>
-                                <?php if($hasil_tbi){ ?>
-                                    <?php if($hasil_twk || $hasil_tiu || $hasil_tkp){ ?>
-                                        <a href="<?= base_url('tryout/leaderboard/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lihat Leaderboard</a>
+                        <?php 
+                        $waktu = date("Y-m-d");
+                        if($waktu >= $event['tgl_mulai'] && $waktu < $event['tgl_akhir']){ ?>
+                            <?php if($transaksi){ ?>
+                                <?php if($hasil_tpa){ ?>
+                                    <?php if($hasil_tbi){ ?>
+                                        <?php if($hasil_twk || $hasil_tiu || $hasil_tkp){ ?>
+                                            <a href="<?= base_url('detail/proses_leader/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lihat Leaderboard</a>
+                                        <?php } else{ ?>
+                                            <a href="<?= base_url('tryout/tes_skd/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes Skd</a>
+                                        <?php } ?>
                                     <?php } else{ ?>
-                                        <a href="<?= base_url('tryout/tes_skd/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes Skd</a>
+                                        <a href="<?= base_url('tryout/tes_tbi/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes Tbi</a>
                                     <?php } ?>
                                 <?php } else{ ?>
-                                    <a href="<?= base_url('tryout/tes_tbi/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes Tbi</a>
+                                    <a href="<?= base_url('tryout/cek_tiket/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes</a>
                                 <?php } ?>
-                            <?php } else{ ?>
-                                <a href="<?= base_url('tryout/cek_tiket/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes</a>
+                            <?php } else { ?>
+                                <a href="<?= base_url('tryout/cek_tiket/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Ikuti Event</a>
                             <?php } ?>
-                        <?php } else { ?>
-                            <a href="<?= base_url('tryout/cek_tiket/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Ikuti Event</a>
+                        <?php } elseif($waktu < $event['tgl_mulai']){ ?>
+                            <a href="#" class="genric-btn primary circle arrow">Event Belum Dimulai</a>
+                        <?php } elseif($waktu >= $event['tgl_akhir']){ ?>
+                            <a href="#" class="genric-btn danger circle arrow">Event Sudah Selesai</a>
+                            <a href="<?= base_url('detail/proses_leader/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lihat Leaderboard</a>
                         <?php } ?>
                     <?php } else { ?>
                         <a href="#test-form" class="login popup-with-form genric-btn warning circle arrow">Login Dulu</a>

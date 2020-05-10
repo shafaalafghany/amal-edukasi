@@ -32,4 +32,12 @@ class Transaksi_model extends CI_model
         ]);
         return $query->row_array();
     }
+
+    public function getTransaksiUser($id_user)
+    {
+        $query = $this->db->get_where('transaksi_user', [
+            'id_user' => $id_user
+        ]);
+        return $query->result_array();
+    }
 }

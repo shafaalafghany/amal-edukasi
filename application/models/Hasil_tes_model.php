@@ -81,12 +81,12 @@ class Hasil_tes_model extends CI_Model
     // Leaderboard
     public function insertLeader($data)
     {
-        $this->db->select('*'); //skip ini jika mau select spesifik
-        $this->db->from('leaderboard');
-        $this->db->where('id_user', $data['id_user']);
-        $this->db->where('id_event', $data['id_event']);
-        $query = $this->db->get();
-        $cek = $query->row_array();
+        $cek = $this->db->get_where('leaderboard', [
+            'id_user' => $data['id_user'],
+            'id_paket' => $data['id_paket'],
+            'id_event' => $data['id_event']
+        ])->row_array();
+
         if ($cek == null) {
             $this->db->insert('leaderboard', $data);
         }

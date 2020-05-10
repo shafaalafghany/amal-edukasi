@@ -13,6 +13,7 @@ class pages extends CI_Controller
         $this->load->model('Paket_model');
         $this->load->model('Faq_model');
         $this->load->model('Tiket_model');
+        $this->load->model('Transaksi_model');
     }
 
     public function event($id_paket)
@@ -259,9 +260,12 @@ class pages extends CI_Controller
         $sessionUser = $this->session->userdata('email');
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $data['tiket'] = $this->Tiket_model->getAllTiketByIdUser($data['user']['id']);
-        /* $id_user = $this->User_model->getIdUserByUsername($sessionUser);
-        $data['transaksi'] = $this->db->get_where('transaksi_user', ['id_user' => $id_user])->result_array();
-        $data['modul'] = $this->Modul_model->getAllModul(); */
+        $data['transaksi'] = $this->Transaksi_model->getTransaksiUser($data['user']['id']);
+        $data['modul'] = $this->Modul_model->getAllModul();
+        $data['total'] = 0;
+        foreach($data['tiket'] as $tiket){
+            $data['total'] = $data['total'] + $tiket['jmlh_tiket'];
+        }
 
         $this->form_validation->set_rules('name', 'Name', 'required|trim');
 

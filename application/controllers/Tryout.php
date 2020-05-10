@@ -115,7 +115,7 @@ class tryout extends CI_Controller
                         }
                     } else{
                         $this->session->set_flashdata('error', 'Kamu belum terdaftar di event ini!');
-                        redirect('home');
+                        redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
                     }
                 } else{
                     $this->session->set_flashdata('error', 'Kamu tidak memiliki akses ke halaman tersebut!');
@@ -179,7 +179,7 @@ class tryout extends CI_Controller
                         }
                     } else{
                         $this->session->set_flashdata('error', 'Kamu belum terdaftar di event ini!');
-                        redirect('home');
+                        redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
                     }
                 } else{
                     $this->session->set_flashdata('error', 'Kamu tidak memiliki akses ke halaman tersebut!');
@@ -268,7 +268,7 @@ class tryout extends CI_Controller
                         }
                     } else{
                         $this->session->set_flashdata('error', 'Kamu belum terdaftar di event ini!');
-                        redirect('home');
+                        redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
                     }
                 } else{
                     $this->session->set_flashdata('error', 'Kamu tidak memiliki akses ke halaman tersebut!');
@@ -332,7 +332,7 @@ class tryout extends CI_Controller
                         }
                     } else{
                         $this->session->set_flashdata('error', 'Kamu belum terdaftar di event ini!');
-                        redirect('home');
+                        redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
                     }
                 } else{
                     $this->session->set_flashdata('error', 'Kamu tidak memiliki akses ke halaman tersebut!');
@@ -424,7 +424,7 @@ class tryout extends CI_Controller
                         }
                     } else{
                         $this->session->set_flashdata('error', 'Kamu belum terdaftar di event ini!');
-                        redirect('home');
+                        redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
                     }
                 } else{
                     $this->session->set_flashdata('error', 'Kamu tidak memiliki akses ke halaman tersebut!');
@@ -492,7 +492,7 @@ class tryout extends CI_Controller
                         }
                     } else{
                         $this->session->set_flashdata('error', 'Kamu belum terdaftar di event ini!');
-                        redirect('home');
+                        redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
                     }
                 } else{
                     $this->session->set_flashdata('error', 'Kamu tidak memiliki akses ke halaman tersebut!');
@@ -660,6 +660,7 @@ class tryout extends CI_Controller
             }
             $dataHasilTwk = [
                 'id_topik' => 3,
+                'id_paket' => $id_paket,
                 'id_event' => $id_event,
                 'id_user' => $id,
                 'hasil' => $total_benar_twk
@@ -675,6 +676,7 @@ class tryout extends CI_Controller
             }
             $dataHasilTiu = [
                 'id_topik' => 4,
+                'id_paket' => $id_paket,
                 'id_event' => $id_event,
                 'id_user' => $id,
                 'hasil' => $total_benar_tiu
@@ -691,6 +693,7 @@ class tryout extends CI_Controller
             }
             $dataHasilTiu = [
                 'id_topik' => 5,
+                'id_paket' => $id_paket,
                 'id_event' => $id_event,
                 'id_user' => $id,
                 'hasil' => $total_benar_tkp
@@ -704,54 +707,7 @@ class tryout extends CI_Controller
         }
     }
 
-    public function hasil_tes($id, $id_event, $id_topik)
-    {
-        $data['judul'] = 'AORTASTAN Try Out Online | Tes TPA';
-        $sessionUser = $this->session->userdata('username');
-        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-        $hasil_tes = $this->hasil->getHasilByIdAndEvent($id, $id_event);
-        $transaksi = $this->db->get_where('transaksi_user', [
-            'id_user' => $id,
-            'id_event' => $id_event
-        ])->row_array();
-        $userID = $this->User_model->getIdUserByUsername($sessionUser);
-        if ($sessionUser) {
-            if ($id == $userID) {
-                if ($transaksi) {
-                    if ($hasil_tes > 0) {
-                        if ($id_topik == 1 || $id_topik == 2) {
-                            $data['event'] = $this->Event_model->getEventById($id_event);
-                            $data['topik'] = $this->Topik_model->getTopikById($id_topik);
-                            $data['topik_rule'] = $this->Topik_model->getRuleTopikById($id_topik);
-                            $data['hasil'] = $this->hasil->getHasil($id, $id_event, $id_topik);
-                            $data['hasilSemuaTes'] = $this->hasil->getHasilByIdAndEvent($id, $id_event);
-
-                            $this->load->view('User/templates/header_tes', $data);
-                            $this->load->view('User/hasil_tes', $data);
-                            $this->load->view('User/templates/footer_tes');
-                        } else {
-                            $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12 text-center" role="alert"><strong>Halaman tidak ditemukan</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                            redirect('User/tryout');
-                        }
-                    } else {
-                        $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12 text-center" role="alert"><strong>Anda belum memiliki hasil pada tes tersebut</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                        redirect('User/tryout');
-                    }
-                } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12 text-center" role="alert"><strong>Anda belum terdaftar di event ini!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                    redirect('User/tryout');
-                }
-            } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12 text-center" role="alert"><strong>Anda tidak memiliki akses untuk kesana!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-                redirect('User/tryout');
-            }
-        } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12 text-center" role="alert"><strong>Silahkan login dulu!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-            redirect('User/login');
-        }
-    }
-
-    public function pilih_jurusan($id, $id_event)
+    /* public function pilih_jurusan($id, $id_event)
     {
         $data['judul'] = 'AORTASTAN Try Out Online | Pilih Jurusan';
 
@@ -825,5 +781,5 @@ class tryout extends CI_Controller
 
         $this->db->where('id_transaksi', $id_transaksi)->update('transaksi_user', $dataJurusan);
         redirect('User/tes_detail/' . $id . '/' . $id_event . '/' . $id_topik);
-    }
+    } */
 }
