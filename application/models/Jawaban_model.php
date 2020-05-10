@@ -5,6 +5,199 @@
  */
 class Jawaban_model extends CI_model
 {
+    public function updateJawabanTpa($id_event, $id_topik, $id_soal, $getJawaban, $jawaban1, $jawaban2, $jawaban3, $jawaban4, $jawaban5, $jawabanBenar)
+    {
+        if ($jawabanBenar == "jawaban1") {
+            $score1 = 4;
+            $score2 = -1;
+            $score3 = -1;
+            $score4 = -1;
+            $score5 = -1;
+        } elseif ($jawabanBenar == "jawaban2") {
+            $score1 = -1;
+            $score2 = 4;
+            $score3 = -1;
+            $score4 = -1;
+            $score5 = -1;
+        } elseif ($jawabanBenar == "jawaban3") {
+            $score1 = -1;
+            $score2 = -1;
+            $score3 = 4;
+            $score4 = -1;
+            $score5 = -1;
+        } elseif ($jawabanBenar == "jawaban4") {
+            $score1 = -1;
+            $score2 = -1;
+            $score3 = -1;
+            $score4 = 4;
+            $score5 = -1;
+        } elseif ($jawabanBenar == "jawaban5") {
+            $score1 = -1;
+            $score2 = -1;
+            $score3 = -1;
+            $score4 = -1;
+            $score5 = 4;
+        }
+
+        if ($getJawaban) {
+            $i = 1;
+            foreach ($getJawaban as $jawab) {
+                if ($jawabanBenar != "0") {
+                    $dataJawaban = [
+                        'jawaban' => ${"jawaban" . $i},
+                        'score' => ${"score" . $i}
+                    ];
+                } else {
+                    $dataJawaban = [
+                        'jawaban' => ${"jawaban" . $i}
+                    ];
+                }
+
+                $this->db->set($dataJawaban);
+                $this->db->where('id_jawaban', $jawab['id_jawaban']);
+                $this->db->update('jawaban');
+                $i++;
+            }
+        }
+    }
+
+    public function updateJawabanTkp($id_event, $id_topik, $id_soal, $getJawaban, $jawabanTkp1, $jawabanTkp2, $jawabanTkp3, $jawabanTkp4, $jawabanTkp5, $pointTkp1, $pointTkp2, $pointTkp3, $pointTkp4, $pointTkp5)
+    {
+        if ($getJawaban) {
+            $i = 1;
+            foreach ($getJawaban as $jawab) {
+                $dataJawaban = [
+                    'jawaban' => ${"jawabanTkp" . $i},
+                    'score' => ${"pointTkp" . $i}
+                ];
+
+                $this->db->set($dataJawaban);
+                $this->db->where('id_jawaban', $jawab['id_jawaban']);
+                $this->db->update('jawaban');
+                $i++;
+            }
+        }
+    }
+
+    public function updateJawabanPsiko($id_event, $id_topik, $id_soal, $getJawaban, $jawaban1, $jawaban2, $jawaban3, $jawaban4, $jawaban5, $jawabanBenar)
+    {
+        if ($jawabanBenar == "jawaban1") {
+            $score1 = 1;
+            $score2 = 0;
+            $score3 = 0;
+            $score4 = 0;
+            $score5 = 0;
+        } elseif ($jawabanBenar == "jawaban2") {
+            $score1 = 0;
+            $score2 = 1;
+            $score3 = 0;
+            $score4 = 0;
+            $score5 = 0;
+        } elseif ($jawabanBenar == "jawaban3") {
+            $score1 = 0;
+            $score2 = 0;
+            $score3 = 1;
+            $score4 = 0;
+            $score5 = 0;
+        } elseif ($jawabanBenar == "jawaban4") {
+            $score1 = 0;
+            $score2 = 0;
+            $score3 = 0;
+            $score4 = 1;
+            $score5 = 0;
+        } elseif ($jawabanBenar == "jawaban5") {
+            $score1 = 0;
+            $score2 = 0;
+            $score3 = 0;
+            $score4 = 0;
+            $score5 = 1;
+        }
+
+        if ($getJawaban) {
+            $i = 1;
+            foreach ($getJawaban as $jawab) {
+                if ($jawabanBenar != "0") {
+                    $dataJawaban = [
+                        'jawaban' => ${"jawaban" . $i},
+                        'score' => ${"score" . $i}
+                    ];
+                } else {
+                    $dataJawaban = [
+                        'jawaban' => ${"jawaban" . $i}
+                    ];
+                }
+
+                $this->db->set($dataJawaban);
+                $this->db->where('id_jawaban', $jawab['id_jawaban']);
+                $this->db->update('jawaban');
+                $i++;
+            }
+        }
+    }
+
+    public function updateJawabanSelainTpaDanPsiko($id_event, $id_topik, $id_soal, $getJawaban, $jawaban1, $jawaban2, $jawaban3, $jawaban4, $jawaban5, $jawabanBenar)
+    {
+        if ($jawabanBenar == "jawaban1") {
+            $score1 = 5;
+            $score2 = 0;
+            $score3 = 0;
+            $score4 = 0;
+            if ($jawaban5 != null) {
+                $score5 = 0;
+            }
+        } elseif ($jawabanBenar == "jawaban2") {
+            $score1 = 0;
+            $score2 = 5;
+            $score3 = 0;
+            $score4 = 0;
+            if ($jawaban5 != null) {
+                $score5 = 0;
+            }
+        } elseif ($jawabanBenar == "jawaban3") {
+            $score1 = 0;
+            $score2 = 0;
+            $score3 = 5;
+            $score4 = 0;
+            if ($jawaban5 != null) {
+                $score5 = 0;
+            }
+        } elseif ($jawabanBenar == "jawaban4") {
+            $score1 = 0;
+            $score2 = 0;
+            $score3 = 0;
+            $score4 = 5;
+            if ($jawaban5 != null) {
+                $score5 = 0;
+            }
+        } elseif ($jawabanBenar == "jawaban5") {
+            $score1 = 0;
+            $score2 = 0;
+            $score3 = 0;
+            $score4 = 0;
+            $score5 = 5;
+        }
+
+        if ($getJawaban) {
+            $i = 1;
+            foreach ($getJawaban as $jawab) {
+                if ($jawabanBenar != "0") {
+                    $dataJawaban = [
+                        'jawaban' => ${"jawaban" . $i},
+                        'score' => ${"score" . $i}
+                    ];
+                } else {
+                    $dataJawaban = [
+                        'jawaban' => ${"jawaban" . $i}
+                    ];
+                }
+
+                $this->db->set($dataJawaban);
+                $this->db->where('id_jawaban', $jawab['id_jawaban']);
+                $this->db->update('jawaban');
+                $i++;
+            }
+        }
+    }
 
     public function insertJawabanTpa($id_event, $id_topik, $getIdSoal, $jawabanBenar, $jawaban1, $jawaban2, $jawaban3, $jawaban4, $jawaban5)
     {

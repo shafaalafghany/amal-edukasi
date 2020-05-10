@@ -277,14 +277,50 @@ class admin_soal extends CI_Controller
             }
         } else {
             //Ambil input data dari form
-            $data = [
+            $datasoal = [
                 'soal' => $this->input->post('inputSoal')
             ];
 
-            //Update data ke database
-            $this->db->set($data);
+            //Update data Soal ke database
+            $this->db->set($datasoal);
             $this->db->where('id_soal', $id_soal);
             $this->db->update('soal');
+
+            $getJawaban = $this->db->get_where('jawaban', [
+                'id_paket' => $id_paket,
+                'id_event' => $id_event,
+                'id_topik_tes' => $id_topik,
+                'id_soal' => $id_soal
+            ])->result_array();
+
+            $jawabanBenar = $this->input->post('jawabanBenar');
+            $jawaban1 = $this->input->post('jawaban1');
+            $jawaban2 = $this->input->post('jawaban2');
+            $jawaban3 = $this->input->post('jawaban3');
+            $jawaban4 = $this->input->post('jawaban4');
+            $jawaban5 = $this->input->post('jawaban5');
+
+            $jawabanTkp1 = $this->input->post('jawabanTkp1');
+            $jawabanTkp2 = $this->input->post('jawabanTkp2');
+            $jawabanTkp3 = $this->input->post('jawabanTkp3');
+            $jawabanTkp4 = $this->input->post('jawabanTkp4');
+            $jawabanTkp5 = $this->input->post('jawabanTkp5');
+
+            $pointTkp1 = $this->input->post('pointTkp1');
+            $pointTkp2 = $this->input->post('pointTkp2');
+            $pointTkp3 = $this->input->post('pointTkp3');
+            $pointTkp4 = $this->input->post('pointTkp4');
+            $pointTkp5 = $this->input->post('pointTkp5');
+
+            if ($id_topik == 1) {
+                $this->Jawaban_model->updateJawabanTpa($id_event, $id_topik, $id_soal, $getJawaban, $jawaban1, $jawaban2, $jawaban3, $jawaban4, $jawaban5, $jawabanBenar);
+            } elseif ($id_topik == 5) {
+                $this->Jawaban_model->updateJawabanTkp($id_event, $id_topik, $id_soal, $getJawaban, $jawabanTkp1, $jawabanTkp2, $jawabanTkp3, $jawabanTkp4, $jawabanTkp5, $pointTkp1, $pointTkp2, $pointTkp3, $pointTkp4, $pointTkp5);
+            } elseif ($id_topik == 6) {
+                $this->Jawaban_model->updateJawabanPsiko($id_event, $id_topik, $id_soal, $getJawaban, $jawaban1, $jawaban2, $jawaban3, $jawaban4, $jawaban5, $jawabanBenar);
+            } else {
+                $this->Jawaban_model->updateJawabanSelainTpaDanPsiko($id_event, $id_topik, $id_soal, $getJawaban, $jawaban1, $jawaban2, $jawaban3, $jawaban4, $jawaban5, $jawabanBenar);
+            }
 
             $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu soal berhasil diperbarui</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('admin_soal/pilih_kategori_soal');
