@@ -102,7 +102,19 @@
                 <div class="col-xl-12 col-lg-12">
                     <?php if($user){ ?>
                         <?php if($transaksi){ ?>
-                            <a href="<?= base_url('tryout/cek_tiket/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes</a>
+                            <?php if($hasil_tpa){ ?>
+                                <?php if($hasil_tbi){ ?>
+                                    <?php if($hasil_twk || $hasil_tiu || $hasil_tkp){ ?>
+                                        <a href="<?= base_url('tryout/leaderboard/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lihat Leaderboard</a>
+                                    <?php } else{ ?>
+                                        <a href="<?= base_url('tryout/tes_skd/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes Skd</a>
+                                    <?php } ?>
+                                <?php } else{ ?>
+                                    <a href="<?= base_url('tryout/tes_tbi/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes Tbi</a>
+                                <?php } ?>
+                            <?php } else{ ?>
+                                <a href="<?= base_url('tryout/cek_tiket/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes</a>
+                            <?php } ?>
                         <?php } else { ?>
                             <a href="<?= base_url('tryout/cek_tiket/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Ikuti Event</a>
                         <?php } ?>

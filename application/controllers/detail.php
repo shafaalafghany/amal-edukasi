@@ -14,6 +14,7 @@ class detail extends CI_Controller
         $this->load->model('Paket_model');
         $this->load->model('Soal_model');
         $this->load->model('Transaksi_model');
+        $this->load->model('Hasil_tes_model', 'hasil');
     }
 
     public function pembelajaran_detail($id_modul)
@@ -60,7 +61,15 @@ class detail extends CI_Controller
         $data['event'] = $this->Event_model->getEventById($id_event);
         $data['paket'] = $this->Paket_model->getAllPaket();
         $data['paketID'] = $this->Paket_model->getPaketById($id_paket);
-        $data['transaksi'] = $this->Transaksi_model->getTransaksiBySomeId($user['id'], $id_paket, $id_event);
+        
+        if($user){
+            $data['transaksi'] = $this->Transaksi_model->getTransaksiBySomeId($user['id'], $id_paket, $id_event);
+            $data['hasil_tpa'] = $this->hasil->getHasilTpaByIdAndEvent($user['id'], $id_event);
+            $data['hasil_tbi'] = $this->hasil->getHasilTbiByIdAndEvent($user['id'], $id_event);
+            $data['hasil_twk'] = $this->hasil->getHasilTwkByIdAndEvent($user['id'], $id_event);
+            $data['hasil_tiu'] = $this->hasil->getHasilTiuByIdAndEvent($user['id'], $id_event);
+            $data['hasil_tkp'] = $this->hasil->getHasilTkpByIdAndEvent($user['id'], $id_event);
+        }
 
         $data['judul'] = 'Amal Edukasi | Detail ' . $data['event']['nama_event'];
 

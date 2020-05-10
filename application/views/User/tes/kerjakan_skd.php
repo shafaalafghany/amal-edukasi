@@ -31,7 +31,7 @@ if ($temp_menit < 60) {
             <br>
             <br>
             <br>
-            <h1 class="mb-3 bread" style="color: white"><?= $topik['nama_topik_tes']; ?></h1>
+            <h1 class="mb-3 bread" style="color: white"><?= $topik['nama_skd']; ?></h1>
           </div>
         </div>
       </div>
@@ -47,7 +47,6 @@ if ($temp_menit < 60) {
                 <div class="col-lg-8 pr-lg-4">
                     <div class="row ftco-animate">
                         <div class="col-md-12">
-
                           <?php 
                             $i = 1;
                             foreach ($soal as $loadSoal) { ?>
@@ -79,11 +78,7 @@ if ($temp_menit < 60) {
                                           }
                                         ?>
                                         <label class="btn btn-default d-flex">
-                                          <input onchange="klikJwbn(<?= $i; ?>)" id="jwbnSoal<?= $i; ?>" name="jwbnSoal<?= $i; ?>" 
-                                          class="jawab mr-2" data-eve="<?= $event['id_event']; ?>" data-soal="<?= $loadSoal['id_soal']; ?>" 
-                                          data-idp="<?= $user['id']; ?>" data-jawaban="<?= $jwb['id_jawaban']; ?>" 
-                                          data-topik="<?= $loadSoal['id_topik_tes']; ?>" type="radio" value="<?= $jwb['id_jawaban']; ?>" 
-                                          <?= $checked; ?>> <?= $jwb['jawaban']; ?>
+                                          <input onchange="klikJwbn(<?= $i; ?>)" id="jwbnSoal<?= $i; ?>" name="jwbnSoal<?= $i; ?>" class="jawab mr-2" data-eve="<?= $event['id_event']; ?>" data-soal="<?= $loadSoal['id_soal']; ?>" data-idp="<?= $user['id']; ?>" data-jawaban="<?= $jwb['id_jawaban']; ?>" data-topik="<?= $loadSoal['id_topik_tes']; ?>" type="radio" value="<?= $jwb['id_jawaban']; ?>" <?= $checked; ?>> <?= $jwb['jawaban']; ?>
                                         </label>
                                         <br>
                                     <?php endforeach; ?>
@@ -137,193 +132,230 @@ if ($temp_menit < 60) {
                     <h4 class="heading-sidebar mb-4">Daftar Soal</h4>
                     <form>
                       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
-                        <?php if (count($soal) == 45) { ?>
-                          <div class="carousel-inner" style="margin-left: 32px;">
-                            <div class="carousel-item list1 active">
-                              <?php $i=1;
-                                foreach ($soal1 as $loadSoal1) {
-                                  $query = $this->db->get_where('event_jawaban', [
+                        <div class="carousel-inner" style="margin-left: 32px;">
+                          <div class="carousel-item list1 active">
+                            <?php $i=1;
+                              foreach ($soal1 as $loadSoal1) {
+                                $query = $this->db->get_where('event_jawaban', [
+                                  'id_user' => $user['id'],
+                                  'id_topik' => $loadSoal1['id_topik_tes'],
+                                  'id_event' => $event['id_event'],
+                                  'id_soal' => $loadSoal1['id_soal']
+                                ]);
+                                $cek = $query->row_array();
+
+                                if ($cek > 0) {
+                                  $query = $this->db->select('btn_ragu')->get_where('event_jawaban', [
                                     'id_user' => $user['id'],
                                     'id_topik' => $loadSoal1['id_topik_tes'],
                                     'id_event' => $event['id_event'],
                                     'id_soal' => $loadSoal1['id_soal']
                                   ]);
-                                  $cek = $query->row_array();
-
-                                  if ($cek > 0) {
-                                    $query = $this->db->select('btn_ragu')->get_where('event_jawaban', [
+                                  $check = $query->row()->btn_ragu;
+                                  if ($check == 1) {
+                                    $cek = 'btn-warning';
+                                  } elseif ($check == 0) {
+                                    $query = $this->db->select('id_jawaban')->get_where('event_jawaban', [
                                       'id_user' => $user['id'],
                                       'id_topik' => $loadSoal1['id_topik_tes'],
                                       'id_event' => $event['id_event'],
                                       'id_soal' => $loadSoal1['id_soal']
                                     ]);
-                                    $check = $query->row()->btn_ragu;
-                                    if ($check == 1) {
-                                      $cek = 'btn-warning';
-                                    } elseif ($check == 0) {
-                                      $query = $this->db->select('id_jawaban')->get_where('event_jawaban', [
-                                        'id_user' => $user['id'],
-                                        'id_topik' => $loadSoal1['id_topik_tes'],
-                                        'id_event' => $event['id_event'],
-                                        'id_soal' => $loadSoal1['id_soal']
-                                      ]);
-                                      $cekJwbn = $query->row()->id_jawaban;
-                                      if ($cekJwbn > 0) {
-                                        $cek = 'btn-success';
-                                      } else{
-                                        $cek = 'btn-outline-primary';
-                                      }
+                                    $cekJwbn = $query->row()->id_jawaban;
+                                    if ($cekJwbn > 0) {
+                                      $cek = 'btn-success';
+                                    } else{
+                                      $cek = 'btn-outline-primary';
                                     }
-                                  } else {
-                                    $cek = 'btn-outline-primary';
                                   }
-                                ?>
-                                <button type="button" class="btn <?= $cek; ?> mr-4 mb-3 daftar-soal" id="nomor<?= $i; ?>" name="nomor<?= $i; ?>" style="width: 40px; height: 40px;" onclick="klikNomor(<?= $i; ?>)"><?= $i; ?></button>
-                              <?php $i++; } ?>
-                            </div>
-                            <div class="carousel-item list2">
-                              <?php $i=21;
-                                foreach ($soal2 as $loadSoal2) {
-                                  $query = $this->db->get_where('event_jawaban', [
+                                } else {
+                                  $cek = 'btn-outline-primary';
+                                }
+                              ?>
+                              <button type="button" class="btn <?= $cek; ?> mr-4 mb-3 daftar-soal" id="nomor<?= $i; ?>" name="nomor<?= $i; ?>" style="width: 40px; height: 40px;" onclick="klikNomor(<?= $i; ?>)"><?= $i; ?></button>
+                            <?php $i++; } ?>
+                          </div>
+                          <div class="carousel-item list2">
+                            <?php $i=21;
+                              foreach ($soal2 as $loadSoal2) {
+                                $query = $this->db->get_where('event_jawaban', [
+                                  'id_user' => $user['id'],
+                                  'id_topik' => $loadSoal2['id_topik_tes'],
+                                  'id_event' => $event['id_event'],
+                                  'id_soal' => $loadSoal2['id_soal']
+                                ]);
+                                $cek = $query->row_array();
+
+                                if ($cek > 0) {
+                                  $query = $this->db->select('btn_ragu')->get_where('event_jawaban', [
                                     'id_user' => $user['id'],
                                     'id_topik' => $loadSoal2['id_topik_tes'],
                                     'id_event' => $event['id_event'],
                                     'id_soal' => $loadSoal2['id_soal']
                                   ]);
-                                  $cek = $query->row_array();
-
-                                  if ($cek > 0) {
-                                    $query = $this->db->select('btn_ragu')->get_where('event_jawaban', [
+                                  $check = $query->row()->btn_ragu;
+                                  if ($check == 1) {
+                                    $cek = 'btn-warning';
+                                  } elseif ($check == 0) {
+                                    $query = $this->db->select('id_jawaban')->get_where('event_jawaban', [
                                       'id_user' => $user['id'],
                                       'id_topik' => $loadSoal2['id_topik_tes'],
                                       'id_event' => $event['id_event'],
                                       'id_soal' => $loadSoal2['id_soal']
                                     ]);
-                                    $check = $query->row()->btn_ragu;
-                                    if ($check == 1) {
-                                      $cek = 'btn-warning';
-                                    } elseif ($check == 0) {
-                                      $query = $this->db->select('id_jawaban')->get_where('event_jawaban', [
-                                        'id_user' => $user['id'],
-                                        'id_topik' => $loadSoal2['id_topik_tes'],
-                                        'id_event' => $event['id_event'],
-                                        'id_soal' => $loadSoal2['id_soal']
-                                      ]);
-                                      $cekJwbn = $query->row()->id_jawaban;
-                                      if ($cekJwbn > 0) {
-                                        $cek = 'btn-success';
-                                      } else{
-                                        $cek = 'btn-outline-primary';
-                                      }
+                                    $cekJwbn = $query->row()->id_jawaban;
+                                    if ($cekJwbn > 0) {
+                                      $cek = 'btn-success';
+                                    } else{
+                                      $cek = 'btn-outline-primary';
                                     }
-                                  } else {
-                                    $cek = 'btn-outline-primary';
                                   }
-                                ?>
-                                <button type="button" class="btn <?= $cek; ?> mr-4 mb-3 daftar-soal" id="nomor<?= $i; ?>" name="nomor<?= $i; ?>" style="width: 40px; height: 40px;" onclick="klikNomor(<?= $i; ?>)"><?= $i; ?></button>
-                              <?php $i++; } ?>
-                            </div>
-                            <div class="carousel-item list3">
-                              <?php $i=41;
-                                foreach ($soal3 as $loadSoal3) {
-                                  $query = $this->db->get_where('event_jawaban', [
+                                } else {
+                                  $cek = 'btn-outline-primary';
+                                }
+                              ?>
+                              <button type="button" class="btn <?= $cek; ?> mr-4 mb-3 daftar-soal" id="nomor<?= $i; ?>" name="nomor<?= $i; ?>" style="width: 40px; height: 40px;" onclick="klikNomor(<?= $i; ?>)"><?= $i; ?></button>
+                            <?php $i++; } ?>
+                          </div>
+                          <div class="carousel-item list3">
+                            <?php $i=41;
+                              foreach ($soal3 as $loadSoal3) {
+                                $query = $this->db->get_where('event_jawaban', [
+                                  'id_user' => $user['id'],
+                                  'id_topik' => $loadSoal3['id_topik_tes'],
+                                  'id_event' => $event['id_event'],
+                                  'id_soal' => $loadSoal3['id_soal']
+                                ]);
+                                $cek = $query->row_array();
+
+                                if ($cek > 0) {
+                                  $query = $this->db->select('btn_ragu')->get_where('event_jawaban', [
                                     'id_user' => $user['id'],
                                     'id_topik' => $loadSoal3['id_topik_tes'],
                                     'id_event' => $event['id_event'],
                                     'id_soal' => $loadSoal3['id_soal']
                                   ]);
-                                  $cek = $query->row_array();
-
-                                  if ($cek > 0) {
-                                    $query = $this->db->select('btn_ragu')->get_where('event_jawaban', [
+                                  $check = $query->row()->btn_ragu;
+                                  if ($check == 1) {
+                                    $cek = 'btn-warning';
+                                  } elseif ($check == 0) {
+                                    $query = $this->db->select('id_jawaban')->get_where('event_jawaban', [
                                       'id_user' => $user['id'],
                                       'id_topik' => $loadSoal3['id_topik_tes'],
                                       'id_event' => $event['id_event'],
                                       'id_soal' => $loadSoal3['id_soal']
                                     ]);
-                                    $check = $query->row()->btn_ragu;
-                                    if ($check == 1) {
-                                      $cek = 'btn-warning';
-                                    } elseif ($check == 0) {
-                                      $query = $this->db->select('id_jawaban')->get_where('event_jawaban', [
-                                        'id_user' => $user['id'],
-                                        'id_topik' => $loadSoal3['id_topik_tes'],
-                                        'id_event' => $event['id_event'],
-                                        'id_soal' => $loadSoal3['id_soal']
-                                      ]);
-                                      $cekJwbn = $query->row()->id_jawaban;
-                                      if ($cekJwbn > 0) {
-                                        $cek = 'btn-success';
-                                      } else{
-                                        $cek = 'btn-outline-primary';
-                                      }
+                                    $cekJwbn = $query->row()->id_jawaban;
+                                    if ($cekJwbn > 0) {
+                                      $cek = 'btn-success';
+                                    } else{
+                                      $cek = 'btn-outline-primary';
                                     }
-                                  } else {
-                                    $cek = 'btn-outline-primary';
                                   }
-                                ?>
-                                <button type="button" class="btn <?= $cek; ?> mr-4 mb-3 daftar-soal" id="nomor<?= $i; ?>" name="nomor<?= $i; ?>" style="width: 40px; height: 40px;" onclick="klikNomor(<?= $i; ?>)"><?= $i; ?></button>
-                              <?php $i++; } ?>
-                            </div>
+                                } else {
+                                  $cek = 'btn-outline-primary';
+                                }
+                              ?>
+                              <button type="button" class="btn <?= $cek; ?> mr-4 mb-3 daftar-soal" id="nomor<?= $i; ?>" name="nomor<?= $i; ?>" style="width: 40px; height: 40px;" onclick="klikNomor(<?= $i; ?>)"><?= $i; ?></button>
+                            <?php $i++; } ?>
                           </div>
-                          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="margin-left: -30px; color: black; width: 50px;">
-                            <span class="fas fa-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                          </a>
-                          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="margin-right: -30px; color: black; width: 50px;">
-                            <span class="fas fa-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                          </a>
-                        <?php } elseif (count($soal) == 20) { ?>
-                          <div class="carousel-inner" style="margin-left: 32px;">
-                            <div class="carousel-item active">
-                              <?php $i=1;
-                                foreach ($soal1 as $loadSoal1) {
-                                  $query = $this->db->get_where('event_jawaban', [
-                                    'id_user' => $user['id'],
-                                    'id_topik' => $loadSoal1['id_topik_tes'],
-                                    'id_event' => $event['id_event'],
-                                    'id_soal' => $loadSoal1['id_soal']
-                                  ]);
-                                  $cek = $query->row_array();
+                          <div class="carousel-item list4">
+                            <?php $i=61;
+                              foreach ($soal4 as $loadSoal4) {
+                                $query = $this->db->get_where('event_jawaban', [
+                                  'id_user' => $user['id'],
+                                  'id_topik' => $loadSoal4['id_topik_tes'],
+                                  'id_event' => $event['id_event'],
+                                  'id_soal' => $loadSoal4['id_soal']
+                                ]);
+                                $cek = $query->row_array();
 
-                                  if ($cek > 0) {
-                                    $query = $this->db->select('btn_ragu')->get_where('event_jawaban', [
+                                if ($cek > 0) {
+                                  $query = $this->db->select('btn_ragu')->get_where('event_jawaban', [
+                                    'id_user' => $user['id'],
+                                    'id_topik' => $loadSoal4['id_topik_tes'],
+                                    'id_event' => $event['id_event'],
+                                    'id_soal' => $loadSoal4['id_soal']
+                                  ]);
+                                  $check = $query->row()->btn_ragu;
+                                  if ($check == 1) {
+                                    $cek = 'btn-warning';
+                                  } elseif ($check == 0) {
+                                    $query = $this->db->select('id_jawaban')->get_where('event_jawaban', [
                                       'id_user' => $user['id'],
-                                      'id_topik' => $loadSoal1['id_topik_tes'],
+                                      'id_topik' => $loadSoal4['id_topik_tes'],
                                       'id_event' => $event['id_event'],
-                                      'id_soal' => $loadSoal1['id_soal']
+                                      'id_soal' => $loadSoal4['id_soal']
                                     ]);
-                                    $check = $query->row()->btn_ragu;
-                                    if ($check == 1) {
-                                      $cek = 'btn-warning';
-                                    } elseif ($check == 0) {
-                                      $query = $this->db->select('id_jawaban')->get_where('event_jawaban', [
-                                        'id_user' => $user['id'],
-                                        'id_topik' => $loadSoal1['id_topik_tes'],
-                                        'id_event' => $event['id_event'],
-                                        'id_soal' => $loadSoal1['id_soal']
-                                      ]);
-                                      $cekJwbn = $query->row()->id_jawaban;
-                                      if ($cekJwbn > 0) {
-                                        $cek = 'btn-success';
-                                      } else{
-                                        $cek = 'btn-outline-primary';
-                                      }
+                                    $cekJwbn = $query->row()->id_jawaban;
+                                    if ($cekJwbn > 0) {
+                                      $cek = 'btn-success';
+                                    } else{
+                                      $cek = 'btn-outline-primary';
                                     }
-                                  } else {
-                                    $cek = 'btn-outline-primary';
                                   }
-                                ?>
-                                <button type="button" class="btn <?= $cek; ?> mr-4 mb-3 daftar-soal" id="nomor<?= $i; ?>" name="nomor<?= $i; ?>" style="width: 40px; height: 40px;" onclick="klikNomor(<?= $i; ?>)"><?= $i; ?></button>
-                              <?php $i++; } ?>
-                            </div>
+                                } else {
+                                  $cek = 'btn-outline-primary';
+                                }
+                              ?>
+                              <button type="button" class="btn <?= $cek; ?> mr-4 mb-3 daftar-soal" id="nomor<?= $i; ?>" name="nomor<?= $i; ?>" style="width: 40px; height: 40px;" onclick="klikNomor(<?= $i; ?>)"><?= $i; ?></button>
+                            <?php $i++; } ?>
                           </div>
-                        <?php } ?>
+                          <div class="carousel-item list5">
+                            <?php $i=81;
+                              foreach ($soal5 as $loadSoal5) {
+                                $query = $this->db->get_where('event_jawaban', [
+                                  'id_user' => $user['id'],
+                                  'id_topik' => $loadSoal5['id_topik_tes'],
+                                  'id_event' => $event['id_event'],
+                                  'id_soal' => $loadSoal5['id_soal']
+                                ]);
+                                $cek = $query->row_array();
+
+                                if ($cek > 0) {
+                                  $query = $this->db->select('btn_ragu')->get_where('event_jawaban', [
+                                    'id_user' => $user['id'],
+                                    'id_topik' => $loadSoal5['id_topik_tes'],
+                                    'id_event' => $event['id_event'],
+                                    'id_soal' => $loadSoal5['id_soal']
+                                  ]);
+                                  $check = $query->row()->btn_ragu;
+                                  if ($check == 1) {
+                                    $cek = 'btn-warning';
+                                  } elseif ($check == 0) {
+                                    $query = $this->db->select('id_jawaban')->get_where('event_jawaban', [
+                                      'id_user' => $user['id'],
+                                      'id_topik' => $loadSoal5['id_topik_tes'],
+                                      'id_event' => $event['id_event'],
+                                      'id_soal' => $loadSoal5['id_soal']
+                                    ]);
+                                    $cekJwbn = $query->row()->id_jawaban;
+                                    if ($cekJwbn > 0) {
+                                      $cek = 'btn-success';
+                                    } else{
+                                      $cek = 'btn-outline-primary';
+                                    }
+                                  }
+                                } else {
+                                  $cek = 'btn-outline-primary';
+                                }
+                              ?>
+                              <button type="button" class="btn <?= $cek; ?> mr-4 mb-3 daftar-soal" id="nomor<?= $i; ?>" name="nomor<?= $i; ?>" style="width: 40px; height: 40px;" onclick="klikNomor(<?= $i; ?>)"><?= $i; ?></button>
+                            <?php $i++; } ?>
+                          </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="margin-left: -30px; color: black; width: 50px;">
+                          <span class="fas fa-chevron-left" aria-hidden="true"></span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="margin-right: -30px; color: black; width: 50px;">
+                          <span class="fas fa-chevron-right" aria-hidden="true"></span>
+                          <span class="sr-only">Next</span>
+                        </a>
                       </div>
                     </form>
                     <hr>
-                    <a href="<?= base_url('tryout/koreksi/'); ?><?= $user['id']; ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>/<?= $topik['id_topik_tes'] ?>" class="btn btn-success col-md-12 selesai">Submit Jawaban</a>
+                    <a href="<?= base_url('tryout/'); ?>koreksi_skd/<?= $user['id']; ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>/<?= $topik['id_skd'] ?>" class="btn btn-success col-md-12 selesai">Submit Jawaban</a>
                   </div>
                 </div>
             </div>
@@ -511,7 +543,7 @@ if ($temp_menit < 60) {
         }
 
         $.ajax({
-            url: "<?= base_url('tryout/ragu'); ?>",
+            url: "<?= base_url('tryout/'); ?>ragu",
             data: {
                 eve: eve,
                 idp: idp,
@@ -541,7 +573,7 @@ if ($temp_menit < 60) {
         var topik = $(this).data('topik');
 
         $.ajax({
-            url: "<?= base_url('tryout/jawab'); ?>",
+            url: "<?= base_url('tryout/'); ?>jawab",
             data: {
                 eve: eve,
                 idp: idp,

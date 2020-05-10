@@ -62,7 +62,11 @@
                 </tbody>
               </table>
               <div class="col-md-12 text-center">
-                  <a href="<?= base_url('tryout/'); ?>kerjakan_tpa/<?= $user['id']; ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Kerjakan</a>
+                <?php if($topik['id_topik_tes'] == 1){ ?>
+                  <a href="<?= base_url('tryout/'); ?>kerjakan_tpa/<?= $user['id']; ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Kerjakan Tes TPA</a>
+                <?php } elseif($topik['id_topik_tes'] == 2){ ?>
+                  <a href="<?= base_url('tryout/'); ?>kerjakan_tbi/<?= $user['id']; ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Kerjakan Tes TBI</a>
+                <?php } ?>
               </div>
             </div>
           </div><!-- end -->

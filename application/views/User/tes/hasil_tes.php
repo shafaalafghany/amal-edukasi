@@ -1,11 +1,13 @@
 <!-- END nav -->
-<div class="hero-wrap hero-wrap-2" style="background-image: url('<?= base_url('assets/User/'); ?>images/bg_1.jpg');" data-stellar-background-ratio="0.5">
+    <div class="hero-wrap hero-wrap-2" style="background-image: url('<?= base_url('assets/user/img/'); ?>banner/bradcam.png');" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-start">
           <div class="col-md-12 ftco-animate text-center mb-5">
-            <p class="breadcrumbs mb-0"><span class="mr-3">Home <i class="ion-ios-arrow-forward"></i></span><span class="mr-3">Try Out <i class="ion-ios-arrow-forward"></i></span> <span>Event</span></p>
-            <h1 class="mb-3 bread">Hasil Tes</h1>
+            <br>
+            <br>
+            <br>
+            <h1 class="mb-3 bread" style="color: white"><?= $topik['nama_topik_tes']; ?></h1>
           </div>
         </div>
       </div>
@@ -13,6 +15,9 @@
 
     <section class="ftco-section bg-light" id="deskripsiTPA">
       <div class="container">
+        <br>
+        <br>
+        <br>
         <div class="row">
           <div class="col-lg">
           <div class="col-md-12 ftco-animate">
@@ -60,9 +65,9 @@
               <div class="col-md-12 text-center">
 
                 <?php if ($topik['id_topik_tes'] == 1) { ?>
-                    <a href="<?= base_url('User/'); ?>tes_tbi/<?= $user['id'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lanjutkan Ke Tes TBI</a>
+                    <a href="<?= base_url('tryout/'); ?>tes_tbi/<?= $user['id'] ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lanjutkan Ke Tes TBI</a>
                 <?php } elseif ($topik['id_topik_tes'] == 2){ ?>
-                    <a href="<?= base_url('User/'); ?>tes_skd/<?= $user['id'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lanjutkan Ke Tes SKD</a>
+                    <a href="<?= base_url('tryout/'); ?>tes_skd/<?= $user['id'] ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lanjutkan Ke Tes SKD</a>
                 <?php } ?>
               </div>
             </div>
