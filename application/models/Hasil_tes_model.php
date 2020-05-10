@@ -16,6 +16,15 @@ class Hasil_tes_model extends CI_Model
         ])->row_array();
     }
 
+    public function getHasilByIdEventTopik($id, $id_event, $id_topik)
+    {
+        return $this->db->get_where('hasil_tes', [
+            'id_user' => $id,
+            'id_event' => $id_event,
+            'id_topik' => $id_topik
+        ])->row_array();
+    }
+
     public function getHasilByIdAndEvent($id, $id_event)
     {
         return $this->db->get_where('hasil_tes', [
@@ -26,47 +35,47 @@ class Hasil_tes_model extends CI_Model
 
     public function getHasilTpaByIdAndEvent($id, $id_event)
     {
-        return $this->db->select('hasil')->get_where('hasil_tes', [
+        return $this->db->get_where('hasil_tes', [
             'id_user' => $id,
             'id_event' => $id_event,
             'id_topik' => 1
-        ])->row()->hasil;
+        ])->row_array();
     }
 
     public function getHasilTbiByIdAndEvent($id, $id_event)
     {
-        return $this->db->select('hasil')->get_where('hasil_tes', [
+        return $this->db->get_where('hasil_tes', [
             'id_user' => $id,
             'id_event' => $id_event,
             'id_topik' => 2
-        ])->row()->hasil;
+        ])->row_array();
     }
 
     public function getHasilTwkByIdAndEvent($id, $id_event)
     {
-        return $this->db->select('hasil')->get_where('hasil_tes', [
+        return $this->db->get_where('hasil_tes', [
             'id_user' => $id,
             'id_event' => $id_event,
             'id_topik' => 3
-        ])->row()->hasil;
+        ])->row_array();
     }
 
     public function getHasilTiuByIdAndEvent($id, $id_event)
     {
-        return $this->db->select('hasil')->get_where('hasil_tes', [
+        return $this->db->get_where('hasil_tes', [
             'id_user' => $id,
             'id_event' => $id_event,
             'id_topik' => 4
-        ])->row()->hasil;
+        ])->row_array();
     }
 
     public function getHasilTkpByIdAndEvent($id, $id_event)
     {
-        return $this->db->select('hasil')->get_where('hasil_tes', [
+        return $this->db->get_where('hasil_tes', [
             'id_user' => $id,
             'id_event' => $id_event,
             'id_topik' => 5
-        ])->row()->hasil;
+        ])->row_array();
     }
 
     // Leaderboard

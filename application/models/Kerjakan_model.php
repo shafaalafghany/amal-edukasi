@@ -74,6 +74,14 @@ class Kerjakan_model extends CI_Model
         ])->row_array();
     }
 
+    public function hapusSessionKerjakan($id, $id_topik, $id_event)
+    {
+        $this->db->where('id_event', $id_event);
+        $this->db->where('id_user', $id);
+        $this->db->where('id_topik', $id_topik);
+        $this->db->delete('transaksi_event');
+    }
+
     public function koreksiTwk($id, $id_event)
     {
         $query = $this->db->query("SELECT j.score, ej.id_soal, ej.id_jawaban from event_jawaban ej left join jawaban j on ej.id_jawaban = j.id_jawaban where ej.id_user = $id and ej.id_event = $id_event and ej.id_topik = 3");

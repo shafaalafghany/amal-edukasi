@@ -94,6 +94,10 @@
                                     <div class="single_courses">
                                         <div class="courses_info">
                                             <h3><a href="<?= base_url('pages/event/' . $load_paket['id_paket']) ?>"><?= $load_paket['nama_paket'] ?></a></h3>
+                                            <?php if($user){ ?>
+                                                <?php $tiket = $this->db->get_where('tiket_user', ['id_user'=>$user['id'], 'id_paket'=>$load_paket['id_paket']])->row_array(); ?>
+                                                <h6>Kamu memiliki <span style="color: blue"><?= $tiket['jmlh_tiket'] ?> tiket</span> pada paket ini</h6>
+                                            <?php } ?>
                                             <div class="star_prise d-flex justify-content-between">
                                                 <?php $event = $this->db->get_where('event', ['id_paket' => $load_paket['id_paket']])->result_array() ?>
                                                 <div class="star">
