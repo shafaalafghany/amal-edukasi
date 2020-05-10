@@ -121,9 +121,9 @@
                                                                 </p>
                                                             </div>
                                                             <div class="dropdown-divider"></div>
-                                                            <div class="dropdown-item dropdown-footer d-flex" style="margin-left: 10%;">
-                                                                <a href="<?= base_url('pages/profil_saya') ?>" class="btn btn-primary" style="color: white;">Profile Saya</a>
-                                                                <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger right logout" style="color: white;">Log out</a>
+                                                            <div class="dropdown-item dropdown-footer d-flex" style="margin-left: 15%">
+                                                                    <a href="<?= base_url('pages/profil_saya') ?>" class="btn btn-primary" style="color: white; border-radius: 9px;">Profile Saya</a>
+                                                                    <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger right logout" style="color: white; border-radius: 9px;">Log out</a>
                                                             </div>
                                                         </div>
                                                     </li>
@@ -160,15 +160,15 @@
                                                 </div>
                                                 <br>
                                                 <p style="text-align: center;">
-                                                <span style="font-family: 'Poppins', sans-serif;">Selamat Datang</span>
+                                                <span>Selamat Datang</span>
                                                 <br>
-                                                <span style="font-family: 'Poppins', sans-serif; font-size: 20px; color: black;"><strong><?= $user['name']; ?></strong></span>
+                                                <span style="font-size: 20px; color: black;"><strong><?= $user['name']; ?></strong></span>
                                                 </p>
                                             </div>
                                             <div class="dropdown-divider"></div>
                                             <div class="dropdown-item dropdown-footer" style="text-align: center;">
-                                                <a href="<?= base_url('pages/profil_saya') ?>" class="btn btn-primary" style="font-family: 'Poppins', sans-serif; border-radius: 10px;">Profile Saya</a>
-                                                <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger right logout" style="font-family: 'Poppins', sans-serif; border-radius: 10px;">Log out</a>
+                                                <a href="<?= base_url('pages/profil_saya') ?>" class="btn btn-primary" style="border-radius: 10px;">Profile Saya</a>
+                                                <a href="<?= base_url('auth/logout') ?>" class="btn btn-danger right logout" style="border-radius: 10px;">Log out</a>
                                             </div>
                                         </div>
                                     </li>
