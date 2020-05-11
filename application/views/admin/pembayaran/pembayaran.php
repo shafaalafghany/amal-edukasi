@@ -41,8 +41,9 @@
                   <tr>
                     <th>No</th>
                     <th>Nama Peserta</th>
-                    <th>Status</th>
+                    <th>Email Peserta</th>
                     <th>Tanggal Upload</th>
+                    <th>Status</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -62,12 +63,13 @@
                     <tr <?= $class; ?>>
                       <td><?= $i; ?></td>
                       <td><?= $member['name']; ?></td>
+                      <td><?= $member['email']; ?></td>
+                      <td><?= $load_bayar['tgl_upload']; ?></td>
                       <?php if($load_bayar['is_active'] == 0){ ?>
                         <td>Belum Dikonfirmasi</td>
                       <?php } else { ?>
                         <td>Sudah Dikonfirmasi</td>
                       <?php } ?>
-                      <td><?= $load_bayar['tgl_upload']; ?></td>
                       <td class="project-actions text-center">
                         <a class="badge badge-primary col-sm" href="<?= base_url('admin_pembayaran/'); ?>lihat_bukti/<?= $load_bayar['id_bayar']; ?>">
                           <i class="fas fa-folder">

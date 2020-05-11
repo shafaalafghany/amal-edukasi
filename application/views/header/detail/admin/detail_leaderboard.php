@@ -115,7 +115,7 @@
               </li>
             <?php } ?>
 
-            <?php if (current_url() == base_url('admin_modul/daftar_modul') || current_url() == base_url('admin_modul/lihat_modul/' . $modul['id_modul'])) { ?>
+            <?php if (current_url() == base_url('admin_modul/daftar_modul')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-play-circle"></i>
@@ -505,25 +505,14 @@
               </li>
             <?php } ?>
 
-            <?php if (current_url() == base_url('admin_leaderboard/pilih_event') || current_url() == base_url('admin_leaderboard/leaderboard_list')) { ?>
-              <li class="nav-item has-treeview menu-open">
-                <a href="<?= base_url('admin_leaderboard/pilih_event') ?>" class="nav-link active">
-                  <i class="fas fa-medal nav-icon"></i>
-                  <p>
-                    Leaderboard
-                  </p>
-                </a>
-              </li>
-            <?php } else { ?>
-              <li class="nav-item has-treeview">
-                <a href="<?= base_url('admin_leaderboard/pilih_event') ?>" class="nav-link">
-                  <i class="fas fa-medal nav-icon"></i>
-                  <p>
-                    Leaderboard
-                  </p>
-                </a>
-              </li>
-            <?php } ?>
+            <li class="nav-item has-treeview menu-open">
+            <a href="<?= base_url('admin_leaderboard/pilih_event') ?>" class="nav-link active">
+                <i class="fas fa-medal nav-icon"></i>
+                <p>
+                Leaderboard
+                </p>
+            </a>
+            </li>
 
             <li class="nav-header">Administrator</li>
             <?php if (current_url() == base_url('admin_data')) { ?>

@@ -5,7 +5,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Daftar Event</h1>
+            <h1>Leaderboard</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -15,58 +15,26 @@
     <section class="content">
       <div class="row">
         <div class="col-12">
-
-          <?= $this->session->flashdata('message'); ?>
+            <?= $this->session->flashdata('message'); ?>
 
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">List Event</h3>
+              <h3 class="card-title">Pilih Event Dulu</h3>
             </div>
+
             <!-- /.card-body -->
             <div class="card-body">
-              <div class="form-group">
-                <label for="inputName">Paket Tryout</label>
-                <input type="text" id="inputEvent" class="form-control" disabled="disabled" value="<?= $paket['nama_paket'] ?>">
-              </div>
-              <br>
-              <table id="example1" class="table table-bordered table-striped">
-                <thead>
-                  <tr>
-                    <th>No</th>
-                    <th>Nama Event</th>
-                    <th>Deskripsi</th>
-                    <th>Tanggal Mulai</th>
-                    <th>Tanggal Berakhir</th>
-                    <th>Aksi</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <?php
-                  $i = 1;
-                  foreach ($event as $loadEvent) { ?>
-                    <tr>
-                      <td><?= $i; ?></td>
-                      <td><?= $loadEvent['nama_event']; ?></td>
-                      <td><?= $loadEvent['deskripsi']; ?></td>
-                      <td><?= $loadEvent['tgl_mulai']; ?></td>
-                      <td><?= $loadEvent['tgl_akhir']; ?></td>
-                      <td class="project-actions">
-                        <a class="badge badge-info col-sm" href="<?= base_url(); ?>admin_event/edit_event/<?= $paket['id_paket'] ?>/<?= $loadEvent['id_event']; ?>">
-                          <i class="fas fa-pencil-alt">
-                          </i>
-                          Edit
-                        </a>
-                        <a class="badge badge-danger col-sm delete-event" href="<?= base_url(); ?>admin_event/hapus_event/<?= $loadEvent['id_event']; ?>">
-                          <i class="fas fa-trash">
-                          </i>
-                          Delete
-                        </a>
-                      </td>
-                    </tr>
-                  <?php $i++;
-                  } ?>
-                </tbody>
-              </table>
+              <form method="post" action="<?= base_url('admin_leaderboard/') ?>leaderboard_list">
+                <div class="form-group">
+                  <label for="optionEvent">Pilih Event</label>
+                  <select class="custom-select col-md-12 mb-3" id="optionEvent" name="optionEvent">
+                    <?php foreach ($event as $loadEvent) { ?>
+                      <option value="<?= $loadEvent['id_event']; ?>"><?= $loadEvent['nama_event']; ?></option>
+                    <?php } ?>
+                  </select>
+                </div>
+                <button class="btn btn-primary float-right" type="submit">Submit</button>
+              </form>
             </div>
             <!-- /.card-body -->
           </div>
@@ -79,13 +47,6 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-  <footer class="main-footer">
-    <strong>Copyright &copy;<script>document.write(new Date().getFullYear());</script> <a href="http://sobatkode.com">Sobatkode</a>.</strong>
-    All rights reserved.
-    <div class="float-right d-none d-sm-inline-block">
-      <b>Version</b> 1.0.0
-    </div>
-  </footer>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -97,8 +58,8 @@
 
   <!-- jQuery -->
   <script src="<?= base_url('assets/admin/') ?>plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="<?= base_url('assets/aser/'); ?>js/sweetalert2.all.min.js"></script>
+
+  <script src="<?= base_url('assets/user/'); ?>js/sweetalert2.all.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="<?= base_url('assets/admin/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- DataTables -->
@@ -113,6 +74,7 @@
   <!-- page script -->
   <script>
     $(function() {
+
       $("#example1").DataTable();
       $('#example2').DataTable({
         "paging": true,
@@ -122,15 +84,14 @@
         "info": true,
         "autoWidth": false,
       });
-    });
 
-    $('.delete-event').on('click', function(e){
+      $('.delete_peserta').on('click', function(e) {
         e.preventDefault();
         const href = $(this).attr('href');
 
         Swal.fire({
           title: 'Anda Yakin',
-          text: "Ingin menghapus event ini? Dengan klik Yakin maka yang berkaitan dengan event ini akan terhapus semua",
+          text: "Ingin menghapus member ini?",
           icon: 'warning',
           showCancelButton: true,
           confirmButtonColor: '#3085d6',
@@ -141,7 +102,7 @@
           if (result.value) {
             Swal.fire(
               'Berhasil',
-              'Satu event telah dihapus',
+              'Akun telah dihapus',
               'success'
             ).then((result) => {
               document.location.href = href;
@@ -149,6 +110,7 @@
           }
         })
       });
+    });
   </script>
   </body>
 

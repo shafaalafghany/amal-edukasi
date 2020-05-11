@@ -31,7 +31,7 @@
                       <th>No</th>
                       <th>Nama Peserta</th>
                       <th>Email</th>
-                      <th>Point</th>
+                      <th>Tiket</th>
                       <th>Status</th>
                       <th>Aksi</th>
                     </tr>
@@ -44,7 +44,14 @@
                           <td><?= $i; ?></td>
                           <td><?= $loadMember['name']; ?></td>
                           <td><?= $loadMember['email']; ?></td>
-                          <td><?= $loadMember['point']; ?></td>
+                          <?php 
+                            $tiket_user = $this->db->get_where('tiket_user', ['id_user' => $loadMember['id']])->result_array();
+                            $jmlh_tiket = 0;
+                            foreach($tiket_user as $tiket){
+                              $jmlh_tiket = $jmlh_tiket + $tiket['jmlh_tiket'];
+                            }
+                          ?>
+                          <td><?= $jmlh_tiket; ?></td>
                           <td><?php if ($loadMember['is_active'] = 1) {
                             echo "Aktif";
                           } else { echo "Tidak Aktif"; }?></td>

@@ -337,7 +337,7 @@
               </li>
             <?php } ?>
 
-            <?php if (current_url() == base_url('admin_soal/pilih_kategori_soal') || current_url() == base_url('admin_soal/daftar_soal')) { ?>
+            <?php if (current_url() == base_url('admin_soal/kategori_event') || current_url() == base_url('admin_soal/pilih_kategori_soal') || current_url() == base_url('admin_soal/daftar_soal')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-book"></i>
@@ -361,7 +361,7 @@
                   </li>
                 </ul>
               </li>
-            <?php } elseif (current_url() == base_url('admin_soal/kategori_tambah_soal') || current_url() == base_url('admin_soal/tambah_soal')) { ?>
+            <?php } elseif (current_url() == base_url('admin_soal/kategori_event_tambahsoal') || current_url() == base_url('admin_soal/kategori_tambah_soal') || current_url() == base_url('admin_soal/tambah_soal')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-book"></i>
@@ -488,7 +488,7 @@
             <?php if (current_url() == base_url('admin_pembayaran')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="<?= base_url('admin_pembayaran') ?>" class="nav-link active">
-                  <i class="fas fa-money-check-alt"></i>
+                  <i class="fas fa-money-check-alt nav-icon"></i>
                   <p>
                     Pembayaran Peserta
                   </p>
@@ -497,9 +497,29 @@
             <?php } else { ?>
               <li class="nav-item has-treeview">
                 <a href="<?= base_url('admin_pembayaran') ?>" class="nav-link">
-                  <i class="fas fa-money-check-alt"></i>
+                  <i class="fas fa-money-check-alt nav-icon"></i>
                   <p>
                     Pembayaran Peserta
+                  </p>
+                </a>
+              </li>
+            <?php } ?>
+
+            <?php if (current_url() == base_url('admin_leaderboard/pilih_event') || current_url() == base_url('admin_leaderboard/leaderboard_list')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="<?= base_url('admin_leaderboard/pilih_event') ?>" class="nav-link active">
+                  <i class="fas fa-medal nav-icon"></i>
+                  <p>
+                    Leaderboard
+                  </p>
+                </a>
+              </li>
+            <?php } else { ?>
+              <li class="nav-item has-treeview">
+                <a href="<?= base_url('admin_leaderboard/pilih_event') ?>" class="nav-link">
+                  <i class="fas fa-medal nav-icon"></i>
+                  <p>
+                    Leaderboard
                   </p>
                 </a>
               </li>

@@ -163,39 +163,39 @@
 <!-- ./wrapper -->
 
 <!-- jQuery -->
-<script src="<?= base_url('assets/Admin/') ?>plugins/jquery/jquery.min.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="<?= base_url('assets/User/'); ?>js/sweetalert2.all.min.js"></script>
+<script src="<?= base_url('assets/user/'); ?>js/sweetalert2.all.min.js"></script>
 
-<script src="<?= base_url('assets/Admin/') ?>plugins/summernote/summernote-bs4.min.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/summernote/summernote-bs4.min.js"></script>
 
-<script src="<?= base_url('assets/Admin/') ?>plugins/select2/js/select2.full.min.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/select2/js/select2.full.min.js"></script>
 <!-- Bootstrap4 Duallistbox -->
-<script src="<?= base_url('assets/Admin/') ?>plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
 <!-- InputMask -->
-<script src="<?= base_url('assets/Admin/') ?>plugins/moment/moment.min.js"></script>
-<script src="<?= base_url('assets/Admin/') ?>plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/moment/moment.min.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
 <!-- date-range-picker -->
-<script src="<?= base_url('assets/Admin/') ?>plugins/daterangepicker/daterangepicker.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/daterangepicker/daterangepicker.js"></script>
 <!-- bootstrap color picker -->
-<script src="<?= base_url('assets/Admin/') ?>plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <!-- Tempusdominus Bootstrap 4 -->
-<script src="<?= base_url('assets/Admin/') ?>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
 <!-- Bootstrap Switch -->
-<script src="<?= base_url('assets/Admin/') ?>plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
 <!-- Bootstrap 4 -->
-<script src="<?= base_url('assets/Admin/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<script src="<?= base_url('assets/Admin/') ?>plugins/datatables/jquery.dataTables.js"></script>
-<script src="<?= base_url('assets/Admin/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <!-- Toastr -->
-<script src="<?= base_url('assets/Admin/') ?>plugins/toastr/toastr.min.js"></script>
+<script src="<?= base_url('assets/admin/') ?>plugins/toastr/toastr.min.js"></script>
 <!-- AdminLTE App -->
-<script src="<?= base_url('assets/Admin/') ?>dist/js/adminlte.min.js"></script>
+<script src="<?= base_url('assets/admin/') ?>dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="<?= base_url('assets/Admin/') ?>dist/js/demo.js"></script>
+<script src="<?= base_url('assets/admin/') ?>dist/js/demo.js"></script>
 
-<script src="<?= base_url('assets/User/'); ?>js/logout.js"></script>
+<script src="<?= base_url('assets/auth/'); ?>js/logout.js"></script>
 
 <script type="text/javascript">
   $(function() {

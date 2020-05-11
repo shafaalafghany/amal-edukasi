@@ -42,6 +42,14 @@
                   <input type="text" id="nama" name="nama" class="form-control" value="<?= $peserta['name'] ?>" readonly>
                 </div>
                 <div class="form-group">
+                  <label for="inputName">Email Peserta</label>
+                  <input type="email" id="email" name="email" class="form-control" value="<?= $peserta['email'] ?>" readonly>
+                </div>
+                <div class="form-group">
+                  <label for="inputName">No. Telepon Peserta</label>
+                  <input type="number" id="telepon" name="telepon" class="form-control" value="<?= $peserta['telepon'] ?>" readonly>
+                </div>
+                <div class="form-group">
                   <label for="inputName">Bukti Transfer</label>
                   <br>
                   <a href="<?= base_url('assets/pembayaran/' . $bayar['bukti_bayar']); ?>" target="_blank">

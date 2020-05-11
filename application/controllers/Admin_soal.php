@@ -30,7 +30,66 @@ class admin_soal extends CI_Controller
             //Cek apakah user adalah admin
             if ($user['role_id'] == 1) {
                 $this->load->view('header/header_admin', $data);
-                $this->load->view('admin/soal/pilih_kategori_soal');
+                $this->load->view('admin/soal/kategori_paket');
+            } else {
+                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                redirect('home');
+            }
+        } else {
+            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+            redirect('home');
+        }
+    }
+
+    public function kategori_event()
+    {
+        $data['judul'] = 'Amal Edukasi | Daftar Paket Tryout';
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
+
+        $id_paket = $this->input->post('optionPaket');
+
+        $data['paket'] = $this->Paket_model->getPaketById($id_paket);
+        $data['event'] = $this->Event_model->getEventByIdPaket($id_paket);
+
+        $data['tpa'] = null;
+        $data['tbi'] = null;
+        $data['twk'] = null;
+        $data['tiu'] = null;
+        $data['tkp'] = null;
+        $data['tsa'] = null;
+
+        if($data['paket']['tpa'] == 1){
+            $data['tpa'] = $this->Topik_model->getTopikTPA();
+        }
+
+        if($data['paket']['tbi'] == 1){
+            $data['tbi'] = $this->Topik_model->getTopikTBI();
+        }
+
+        if($data['paket']['twk'] == 1){
+            $data['twk'] = $this->Topik_model->getTwk();
+        }
+
+        if($data['paket']['tiu'] == 1){
+            $data['tiu'] = $this->Topik_model->getTiu();
+        }
+
+        if($data['paket']['tkp'] == 1){
+            $data['tkp'] = $this->Topik_model->getTkp();
+        }
+
+        if($data['paket']['tsa'] == 1){
+            $data['tsa'] = $this->Topik_model->getTopikTsa();
+        }
+
+        //Cek apakah user sudah login
+        if ($data['user']) {
+            //Cek apakah user adalah admin
+            if ($user['role_id'] == 1) {
+                $this->load->view('header/header_admin', $data);
+                $this->load->view('admin/soal/kategori_event');
             } else {
                 $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
                 redirect('home');
@@ -48,15 +107,19 @@ class admin_soal extends CI_Controller
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
 
-        $id_paket = $this->input->post('optionPaket');
         $id_event = $this->input->post('optionEvent');
         $id_topik = $this->input->post('optionTopik');
 
-        $data['paket'] = $this->Paket_model->getPaketById($id_paket);
+        if(!$id_event){
+            $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Tidak ada event dalam paket ini! Silahkan buat event terlebih dahulu.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect('admin_soal/pilih_kategori_soal');
+        }
+
         $data['event'] = $this->Event_model->getEventById($id_event);
         $data['topik'] = $this->Topik_model->getTopikById($id_topik);
+        $data['paket'] = $this->Paket_model->getPaketById($data['event']['id_paket']);
 
-        $data['soal'] = $this->Soal_model->getSoalByIdPaketEventTopik($id_paket, $id_event, $id_topik);
+        $data['soal'] = $this->Soal_model->getSoalByIdEventAndIdTopik($id_event, $id_topik);
 
         //Cek apakah user sudah login
         if ($data['user']) {
@@ -74,6 +137,91 @@ class admin_soal extends CI_Controller
         }
     }
 
+    public function kategori_tambah_soal()
+    {
+        $data['judul'] = 'Amal Edukasi | Daftar Paket Tryout';
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
+        $data['paket'] = $this->Paket_model->getAllPaket();
+        $data['event'] = $this->Event_model->getAllEvent();
+        $data['topik'] = $this->Topik_model->getAllTopik();
+
+        //Cek apakah user sudah login
+        if ($data['user']) {
+            //Cek apakah user adalah admin
+            if ($user['role_id'] == 1) {
+                $this->load->view('header/header_admin', $data);
+                $this->load->view('admin/soal/kategori_paket');
+            } else {
+                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                redirect('home');
+            }
+        } else {
+            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+            redirect('home');
+        }
+    }
+
+    public function kategori_event_tambahsoal()
+    {
+        $data['judul'] = 'Amal Edukasi | Daftar Paket Tryout';
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+        $user = $this->User_model->sessionUserMasuk($sessionUser);
+
+        $id_paket = $this->input->post('optionPaket');
+
+        $data['paket'] = $this->Paket_model->getPaketById($id_paket);
+        $data['event'] = $this->Event_model->getEventByIdPaket($id_paket);
+
+        $data['tpa'] = null;
+        $data['tbi'] = null;
+        $data['twk'] = null;
+        $data['tiu'] = null;
+        $data['tkp'] = null;
+        $data['tsa'] = null;
+
+        if($data['paket']['tpa'] == 1){
+            $data['tpa'] = $this->Topik_model->getTopikTPA();
+        }
+
+        if($data['paket']['tbi'] == 1){
+            $data['tbi'] = $this->Topik_model->getTopikTBI();
+        }
+
+        if($data['paket']['twk'] == 1){
+            $data['twk'] = $this->Topik_model->getTwk();
+        }
+
+        if($data['paket']['tiu'] == 1){
+            $data['tiu'] = $this->Topik_model->getTiu();
+        }
+
+        if($data['paket']['tkp'] == 1){
+            $data['tkp'] = $this->Topik_model->getTkp();
+        }
+
+        if($data['paket']['tsa'] == 1){
+            $data['tsa'] = $this->Topik_model->getTopikTsa();
+        }
+
+        //Cek apakah user sudah login
+        if ($data['user']) {
+            //Cek apakah user adalah admin
+            if ($user['role_id'] == 1) {
+                $this->load->view('header/header_admin', $data);
+                $this->load->view('admin/soal/kategori_event');
+            } else {
+                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
+                redirect('home');
+            }
+        } else {
+            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
+            redirect('home');
+        }
+    }
+
     public function tambah_soal()
     {
         $data['judul'] = 'Amal Edukasi | Tambah Paket Tryout';
@@ -81,13 +229,17 @@ class admin_soal extends CI_Controller
         $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
         $user = $this->User_model->sessionUserMasuk($sessionUser);
 
-        $id_paket = $this->input->post('optionPaket');
         $id_event = $this->input->post('optionEvent');
         $id_topik = $this->input->post('optionTopik');
 
-        $data['paket'] = $this->Paket_model->getPaketById($id_paket);
+        if(!$id_event){
+            $this->session->set_flashdata('message', '<div class="alert alert-danger col-md-12" role="alert"><strong>Tidak ada event dalam paket ini! Silahkan buat event terlebih dahulu.</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+            redirect('admin_soal/kategori_tambah_soal');
+        }
+
         $data['event'] = $this->Event_model->getEventById($id_event);
         $data['topik'] = $this->Topik_model->getTopikById($id_topik);
+        $data['paket'] = $this->Paket_model->getPaketById($data['event']['id_paket']);
 
         //Cek apakah user sudah login
         if ($data['user']) {
@@ -202,32 +354,6 @@ class admin_soal extends CI_Controller
             //Cek apakah insert data sukses
             $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu soal berhasil ditambahkan!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             redirect('admin_soal/kategori_tambah_soal');
-        }
-    }
-
-    public function kategori_tambah_soal()
-    {
-        $data['judul'] = 'Amal Edukasi | Daftar Paket Tryout';
-        $sessionUser = $this->session->userdata('email');
-        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
-        $user = $this->User_model->sessionUserMasuk($sessionUser);
-        $data['paket'] = $this->Paket_model->getAllPaket();
-        $data['event'] = $this->Event_model->getAllEvent();
-        $data['topik'] = $this->Topik_model->getAllTopik();
-
-        //Cek apakah user sudah login
-        if ($data['user']) {
-            //Cek apakah user adalah admin
-            if ($user['role_id'] == 1) {
-                $this->load->view('header/header_admin', $data);
-                $this->load->view('admin/soal/kategori_tambah_soal');
-            } else {
-                $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');
-                redirect('home');
-            }
-        } else {
-            $this->session->set_flashdata('error', 'Maaf anda belum login! Silahkan login dulu.');
-            redirect('home');
         }
     }
 

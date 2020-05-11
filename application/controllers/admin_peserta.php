@@ -54,7 +54,7 @@ class admin_peserta extends CI_Controller
         $user = $this->User_model->sessionUserMasuk($sessionUser);
         if($data['user']){
             if($user['role_id'] == 1){
-                $this->load->view('header/header_admin', $data);
+                $this->load->view('header/detail/admin/detail_peserta', $data);
                 $this->load->view('admin/peserta/view_peserta', $data);
             } else{
                 $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');

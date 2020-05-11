@@ -48,7 +48,7 @@ class admin_data extends CI_Controller
 
         if($data['user']){
             if($user['role_id'] == 1){
-                $this->load->view('header/header_admin', $data);
+                $this->load->view('header/detail/admin/detail_admin', $data);
                 $this->load->view('admin/admin/view_admin', $data);
             } else{
                 $this->session->set_flashdata('error', 'Maaf anda bukan admin Amal Edukasi!');

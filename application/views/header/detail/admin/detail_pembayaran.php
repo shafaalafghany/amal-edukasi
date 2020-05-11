@@ -488,7 +488,7 @@
             <?php if (current_url() == base_url('admin_pembayaran/lihat_bukti/' . $bayar['id_bayar'])) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="<?= base_url('admin_pembayaran') ?>" class="nav-link active">
-                  <i class="fas fa-money-check-alt"></i>
+                  <i class="fas fa-money-check-alt nav-icon"></i>
                   <p>
                     Pembayaran Peserta
                   </p>
@@ -497,9 +497,29 @@
             <?php } else { ?>
               <li class="nav-item has-treeview">
                 <a href="<?= base_url('admin_pembayaran') ?>" class="nav-link">
-                  <i class="fas fa-money-check-alt"></i>
+                  <i class="fas fa-money-check-alt nav-icon"></i>
                   <p>
                     Pembayaran Peserta
+                  </p>
+                </a>
+              </li>
+            <?php } ?>
+
+            <?php if (current_url() == base_url('admin_leaderboard/pilih_event') || current_url() == base_url('admin_leaderboard/leaderboard_list')) { ?>
+              <li class="nav-item has-treeview menu-open">
+                <a href="<?= base_url('admin_leaderboard/pilih_event') ?>" class="nav-link active">
+                  <i class="fas fa-medal nav-icon"></i>
+                  <p>
+                    Leaderboard
+                  </p>
+                </a>
+              </li>
+            <?php } else { ?>
+              <li class="nav-item has-treeview">
+                <a href="<?= base_url('admin_leaderboard/pilih_event') ?>" class="nav-link">
+                  <i class="fas fa-medal nav-icon"></i>
+                  <p>
+                    Leaderboard
                   </p>
                 </a>
               </li>

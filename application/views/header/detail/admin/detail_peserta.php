@@ -62,9 +62,9 @@
             <div class="dropdown-item dropdown-header">
               <img src="<?= base_url('assets/avatar/') . $user['image']; ?>" class="rounded-circle elevation-2 mb-2" alt="User Image" style="width: 100px; height: 100px;">
               <p>
-                <span><?= $user['name'] ?></span>
-                <br>
                 <span>Selamat Datang</span>
+                <br>
+                <span><?= $user['name'] ?></span>
               </p>
             </div>
             <div class="dropdown-divider"></div>
@@ -115,7 +115,7 @@
               </li>
             <?php } ?>
 
-            <?php if (current_url() == base_url('admin_modul/daftar_modul') || current_url() == base_url('admin_modul/lihat_modul/' . $modul['id_modul'])) { ?>
+            <?php if (current_url() == base_url('admin_modul/daftar_modul')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-play-circle"></i>
@@ -337,7 +337,7 @@
               </li>
             <?php } ?>
 
-            <?php if (current_url() == base_url('admin_soal/pilih_kategori_soal') || current_url() == base_url('admin_soal/daftar_soal')) { ?>
+            <?php if (current_url() == base_url('admin_soal/kategori_event') || current_url() == base_url('admin_soal/pilih_kategori_soal') || current_url() == base_url('admin_soal/daftar_soal')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-book"></i>
@@ -361,7 +361,7 @@
                   </li>
                 </ul>
               </li>
-            <?php } elseif (current_url() == base_url('admin_soal/kategori_tambah_soal') || current_url() == base_url('admin_soal/tambah_soal')) { ?>
+            <?php } elseif (current_url() == base_url('admin_soal/kategori_event_tambahsoal') || current_url() == base_url('admin_soal/kategori_tambah_soal') || current_url() == base_url('admin_soal/tambah_soal')) { ?>
               <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
                   <i class="nav-icon fas fa-book"></i>
@@ -600,85 +600,31 @@
               </li>
             <?php } ?>
 
-            <?php if (current_url() == base_url('admin_peserta')) { ?>
-              <li class="nav-item has-treeview menu-open">
+            <li class="nav-item has-treeview menu-open">
                 <a href="#" class="nav-link active">
-                  <i class="nav-icon fas fa-users"></i>
-                  <p>
+                    <i class="nav-icon fas fa-users"></i>
+                    <p>
                     Data Peserta
                     <i class="fas fa-angle-left right"></i>
-                  </p>
+                    </p>
                 </a>
                 <ul class="nav nav-treeview">
-                  <li class="nav-item">
+                    <li class="nav-item">
                     <a href="<?= base_url('admin_peserta') ?>" class="nav-link active">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Daftar Peserta</p>
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Daftar Peserta</p>
                     </a>
-                  </li>
+                    </li>
                 </ul>
                 <ul class="nav nav-treeview">
-                  <li class="nav-item">
+                    <li class="nav-item">
                     <a href="<?= base_url('admin_peserta/') ?>testimoni" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Testimoni</p>
+                        <i class="far fa-circle nav-icon"></i>
+                        <p>Testimoni</p>
                     </a>
-                  </li>
+                    </li>
                 </ul>
-              </li>
-            <?php } elseif (current_url() == base_url('admin_peserta/testimoni')) { ?>
-              <li class="nav-item has-treeview menu-open">
-                <a href="#" class="nav-link active">
-                  <i class="nav-icon fas fa-users"></i>
-                  <p>
-                    Data Peserta
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="<?= base_url('admin_peserta') ?>" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Daftar Peserta</p>
-                    </a>
-                  </li>
-                </ul>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="<?= base_url('admin_peserta/') ?>testimoni" class="nav-link active">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Testimoni</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            <?php } else { ?>
-              <li class="nav-item has-treeview">
-                <a href="#" class="nav-link">
-                  <i class="nav-icon fas fa-users"></i>
-                  <p>
-                    Data Peserta
-                    <i class="fas fa-angle-left right"></i>
-                  </p>
-                </a>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="<?= base_url('admin_peserta') ?>" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Daftar Peserta</p>
-                    </a>
-                  </li>
-                </ul>
-                <ul class="nav nav-treeview">
-                  <li class="nav-item">
-                    <a href="<?= base_url('admin_peserta/') ?>testimoni" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Testimoni</p>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-            <?php } ?>
+            </li>
 
             <li class="nav-header">PENGATURAN</li>
             <li class="nav-item has-treeview">
@@ -706,6 +652,7 @@
                 </li>
               </ul>
             </li>
+
             <!-- <li class="nav-header">AKUN</li>
             <li class="nav-item has-treeview">
               <a href="<?= base_url('pages/profil_saya') ?>" class="nav-link">

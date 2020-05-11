@@ -5,7 +5,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Daftar Event</h1>
+              <h1>Pilih Kategori</h1>
             </div>
           </div>
         </div><!-- /.container-fluid -->
@@ -18,20 +18,47 @@
             <?= $this->session->flashdata('message'); ?>
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Mau Lihat Event Paket Apa?</h3>
+                <h3 class="card-title">Pilih Kateogri Event dan Topik</h3>
               </div>
                 <!-- /.card-body -->
               <div class="card-body">
-                <form method="post" action="<?= base_url('admin_event/'); ?>daftar_event">
-                    <div class="form-group">
-                        <label for="optionEvent">Pilih Paket</label>
-                        <select class="custom-select col-md-12 mb-3" id="optionPaket" name="optionPaket">
-                            <?php foreach ($paket as $loadPaket) { ?>
-                            <option value="<?= $loadPaket['id_paket']; ?>"><?= $loadPaket['nama_paket']; ?></option>
-                            <?php } ?>
-                        </select>
-                    </div>
-                    <button class="btn btn-primary float-right" type="submit">Submit</button>
+                <?php if(current_url() == base_url('admin_soal/kategori_event')) { ?>
+                  <form method="post" action="<?= base_url('admin_soal/'); ?>daftar_soal">
+                <?php } elseif(current_url() == base_url('admin_soal/kategori_event_tambahsoal')) { ?>
+                    <form method="post" action="<?= base_url('admin_soal/'); ?>tambah_soal">
+                <?php } ?>
+                  <div class="form-group">
+                    <label for="optionEvent">Pilih Event</label>
+                    <select class="custom-select col-md-12 mb-3" id="optionEvent" name="optionEvent">
+                      <?php foreach ($event as $loadEvent) { ?>
+                        <option value="<?= $loadEvent['id_event']; ?>"><?= $loadEvent['nama_event']; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="optionEvent">Pilih Topik</label>
+                    <select class="custom-select col-md-12 mb-3" id="optionTopik" name="optionTopik">
+                      <?php if($tpa != null){ ?>
+                          <option value="<?= $tpa['id_topik_tes']; ?>"><?= $tpa['nama_topik_tes']; ?></option>
+                      <?php } ?>
+                      <?php if($tbi != null){ ?>
+                          <option value="<?= $tbi['id_topik_tes']; ?>"><?= $tbi['nama_topik_tes']; ?></option>
+                      <?php } ?>
+                      <?php if($twk != null){ ?>
+                          <option value="<?= $twk['id_topik_tes']; ?>"><?= $twk['nama_topik_tes']; ?></option>
+                      <?php } ?>
+                      <?php if($tiu != null){ ?>
+                          <option value="<?= $tiu['id_topik_tes']; ?>"><?= $tiu['nama_topik_tes']; ?></option>
+                      <?php } ?>
+                      <?php if($tkp != null){ ?>
+                          <option value="<?= $tkp['id_topik_tes']; ?>"><?= $tkp['nama_topik_tes']; ?></option>
+                      <?php } ?>
+                      <?php if($tsa != null){ ?>
+                          <option value="<?= $tsa['id_topik_tes']; ?>"><?= $tsa['nama_topik_tes']; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                  <button class="btn btn-primary float-right" type="submit">Submit</button>
                 </form>
               </div>
               <!-- /.card-body -->
