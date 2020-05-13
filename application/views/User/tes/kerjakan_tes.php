@@ -78,12 +78,13 @@ if ($temp_menit < 60) {
                                               $checked = '';
                                           }
                                         ?>
-                                        <label class="btn btn-default d-flex">
-                                          <input onchange="klikJwbn(<?= $i; ?>)" id="jwbnSoal<?= $i; ?>" name="jwbnSoal<?= $i; ?>" 
+                                        <label class="d-flex">
+                                          <input for="jawaban" onchange="klikJwbn(<?= $i; ?>)" id="jwbnSoal<?= $i; ?>" name="jwbnSoal<?= $i; ?>" 
                                           class="jawab mr-2" data-eve="<?= $event['id_event']; ?>" data-soal="<?= $loadSoal['id_soal']; ?>" 
                                           data-idp="<?= $user['id']; ?>" data-jawaban="<?= $jwb['id_jawaban']; ?>" 
                                           data-topik="<?= $loadSoal['id_topik_tes']; ?>" type="radio" value="<?= $jwb['id_jawaban']; ?>" 
-                                          <?= $checked; ?>> <?= $jwb['jawaban']; ?>
+                                          <?= $checked; ?>>
+                                          <div id="jawaban" name="jawaban"> <?= $jwb['jawaban']; ?></div>
                                         </label>
                                         <br>
                                     <?php endforeach; ?>
@@ -323,7 +324,7 @@ if ($temp_menit < 60) {
                       </div>
                     </form>
                     <hr>
-                    <a href="<?= base_url('tryout/koreksi/'); ?><?= $user['id']; ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>/<?= $topik['id_topik_tes'] ?>" class="btn btn-success col-md-12 selesai">Submit Jawaban</a>
+                    <a href="<?= base_url('tryout/koreksi/'); ?><?= $user['id']; ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>/<?= $topik['id_topik_tes'] ?>" class="btn btn-success col-md-12 selesai sb-jwb">Submit Jawaban</a>
                   </div>
                 </div>
             </div>
@@ -421,6 +422,21 @@ if ($temp_menit < 60) {
       var slideIndex = 1;
       showMaxDivs(maxIndex);
       showDivs(slideIndex);
+      var frmSelesai = $(".sb-jwb").attr('href');
+      
+      $('.sb-jwb').on('click', function() {
+        Swal.fire({
+          title: 'Apa kamu yakin?',
+          text: "Dengan klik yakin maka tes ini akan berakhir, teliti terlebih dahulu jawaban kamu.",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yakin'
+        }).then((result) => {
+            document.location.href = frmSelesai;
+        })
+      })
 
       function showMaxDivs(n) {
         var i;

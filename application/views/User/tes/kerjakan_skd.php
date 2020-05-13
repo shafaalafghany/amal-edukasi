@@ -77,8 +77,13 @@ if ($temp_menit < 60) {
                                               $checked = '';
                                           }
                                         ?>
-                                        <label class="btn btn-default d-flex">
-                                          <input onchange="klikJwbn(<?= $i; ?>)" id="jwbnSoal<?= $i; ?>" name="jwbnSoal<?= $i; ?>" class="jawab mr-2" data-eve="<?= $event['id_event']; ?>" data-soal="<?= $loadSoal['id_soal']; ?>" data-idp="<?= $user['id']; ?>" data-jawaban="<?= $jwb['id_jawaban']; ?>" data-topik="<?= $loadSoal['id_topik_tes']; ?>" type="radio" value="<?= $jwb['id_jawaban']; ?>" <?= $checked; ?>> <?= $jwb['jawaban']; ?>
+                                        <label class="d-flex">
+                                          <input for="jawaban" onchange="klikJwbn(<?= $i; ?>)" id="jwbnSoal<?= $i; ?>" name="jwbnSoal<?= $i; ?>" 
+                                          class="jawab mr-2" data-eve="<?= $event['id_event']; ?>" data-soal="<?= $loadSoal['id_soal']; ?>" 
+                                          data-idp="<?= $user['id']; ?>" data-jawaban="<?= $jwb['id_jawaban']; ?>" 
+                                          data-topik="<?= $loadSoal['id_topik_tes']; ?>" type="radio" value="<?= $jwb['id_jawaban']; ?>" 
+                                          <?= $checked; ?>>
+                                          <div id="jawaban" name="jawaban"> <?= $jwb['jawaban']; ?></div>
                                         </label>
                                         <br>
                                     <?php endforeach; ?>

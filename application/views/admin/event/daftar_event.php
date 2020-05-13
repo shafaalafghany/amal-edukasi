@@ -98,7 +98,7 @@
   <!-- jQuery -->
   <script src="<?= base_url('assets/admin/') ?>plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
-  <script src="<?= base_url('assets/aser/'); ?>js/sweetalert2.all.min.js"></script>
+  <script src="<?= base_url('assets/user/'); ?>js/sweetalert2.all.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="<?= base_url('assets/admin/') ?>plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- DataTables -->

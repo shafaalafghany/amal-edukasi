@@ -34,33 +34,39 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td scope="row">TPA</td>
-                              <td><?= $hasilUser['nilai_tpa']; ?></td>
-                              <td><?php if ($hasilUser['nilai_tpa'] >= 67) {
-                                    echo "LULUS";
-                                  } else {
-                                    echo "TIDAK LULUS";
-                                  } ?></td>
-                            </tr>
-                            <tr>
-                              <td scope="row">TBI</td>
-                              <td><?= $hasilUser['nilai_tbi']; ?></td>
-                              <td><?php if ($hasilUser['nilai_tbi'] >= 30) {
-                                    echo "LULUS";
-                                  } else {
-                                    echo "TIDAK LULUS";
-                                  } ?></td>
-                            </tr>
-                            <tr>
-                              <td scope="row">SKD</td>
-                              <td><?= $hasilUser['nilai_skd']; ?></td>
-                              <td><?php if ($hasilUser['nilai_skd'] >= 271 && $hasilUser['nilai_twk'] >= 65 && $hasilUser['nilai_tiu'] >= 80 && $hasilUser['nilai_tkp'] >= 126) {
-                                    echo "LULUS";
-                                  } else {
-                                    echo "TIDAK LULUS";
-                                  } ?></td>
-                            </tr>
+                            <?php if($paket_id['tpa'] == 1){ ?>
+                              <tr>
+                                <td scope="row">TPA</td>
+                                <td><?= $hasilUser['nilai_tpa']; ?></td>
+                                <td><?php if ($hasilUser['nilai_tpa'] >= 67) {
+                                      echo "LULUS";
+                                    } else {
+                                      echo "TIDAK LULUS";
+                                    } ?></td>
+                              </tr>
+                            <?php } ?>
+                            <?php if($paket_id['tbi'] == 1){ ?>
+                              <tr>
+                                <td scope="row">TBI</td>
+                                <td><?= $hasilUser['nilai_tbi']; ?></td>
+                                <td><?php if ($hasilUser['nilai_tbi'] >= 30) {
+                                      echo "LULUS";
+                                    } else {
+                                      echo "TIDAK LULUS";
+                                    } ?></td>
+                              </tr>
+                            <?php } ?>
+                            <?php if($paket_id['twk'] == 1 && $paket_id['tiu'] == 1 && $paket_id['tkp'] == 1){ ?>
+                              <tr>
+                                <td scope="row">SKD</td>
+                                <td><?= $hasilUser['nilai_skd']; ?></td>
+                                <td><?php if ($hasilUser['nilai_skd'] >= 271 && $hasilUser['nilai_twk'] >= 65 && $hasilUser['nilai_tiu'] >= 80 && $hasilUser['nilai_tkp'] >= 126) {
+                                      echo "LULUS";
+                                    } else {
+                                      echo "TIDAK LULUS";
+                                    } ?></td>
+                              </tr>
+                            <?php } ?>
                             <!-- <tr>
                                 <td scope="row">TWK</td>
                                 <td><?= $hasilUser['nilai_twk']; ?></td>
@@ -144,12 +150,21 @@
                           <tr>
                             <th scope="col">No</th>
                             <th scope="col">Nama</th>
-                            <th scope="col">Nilai TPA</th>
-                            <th scope="col">Nilai TBI</th>
-                            <th scope="col">Nilai SKD</th>
-                            <th id="twk" scope="col">Nilai TWK</th>
-                            <th id="tiu" scope="col">Nilai TIU</th>
-                            <th id="tkp" scope="col">Nilai TKP</th>
+                            <?php if($paket_id['tpa'] == 1){ ?>
+                              <th scope="col">Nilai TPA</th>
+                            <?php } ?>
+                            <?php if($paket_id['tbi'] == 1){ ?>
+                              <th scope="col">Nilai TBI</th>
+                            <?php } ?>
+                            <?php if($paket_id['twk'] == 1 && $paket_id['tiu'] == 1 && $paket_id['tkp'] == 1){ ?>
+                              <th scope="col">Nilai SKD</th>
+                              <th id="twk" scope="col">Nilai TWK</th>
+                              <th id="tiu" scope="col">Nilai TIU</th>
+                              <th id="tkp" scope="col">Nilai TKP</th>
+                            <?php } ?>
+                            <?php if($paket_id['tsa'] == 1){ ?>
+                              <th scope="col">Nilai TSA</th>
+                            <?php } ?>
                             <th scope="col">Nilai Total</th>
                           </tr>
                         </thead>
@@ -170,12 +185,21 @@
                             <tr <?= $class; ?>>
                               <td scope="row"><?= $i; ?></td>
                               <td><?= $nama; ?></td>
-                              <td><?= $loadLeader['nilai_tpa']; ?></td>
-                              <td><?= $loadLeader['nilai_tbi']; ?></td>
-                              <td><?= $loadLeader['nilai_skd']; ?></td>
-                              <td id="twk"><?= $loadLeader['nilai_twk']; ?></td>
-                              <td id="tiu"><?= $loadLeader['nilai_tiu']; ?></td>
-                              <td id="tkp"><?= $loadLeader['nilai_tkp']; ?></td>
+                              <?php if($paket_id['tpa'] == 1){ ?>
+                                <td><?= $loadLeader['nilai_tpa']; ?></td>
+                              <?php } ?>
+                              <?php if($paket_id['tbi'] == 1){ ?>
+                                <td><?= $loadLeader['nilai_tbi']; ?></td>
+                              <?php } ?>
+                              <?php if($paket_id['twk'] == 1 && $paket_id['tiu'] == 1 && $paket_id['tkp'] == 1){ ?>
+                                <td><?= $loadLeader['nilai_skd']; ?></td>
+                                <td id="twk"><?= $loadLeader['nilai_twk']; ?></td>
+                                <td id="tiu"><?= $loadLeader['nilai_tiu']; ?></td>
+                                <td id="tkp"><?= $loadLeader['nilai_tkp']; ?></td>
+                              <?php } ?>
+                              <?php if($paket_id['tsa'] == 1){ ?>
+                                <td><?= $loadLeader['nilai_tsa']; ?></td>
+                              <?php } ?>
                               <td><?= $loadLeader['nilai_total']; ?></td>
                             </tr>
                           <?php $i++;

@@ -56,7 +56,7 @@
               <div class="icon">
                 <i class="far fa-calendar"></i>
               </div>
-              <a href="<?= base_url('Administrator/') ?>daftar_event" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+              <a href="<?= base_url('admin_event/') ?>pilih_paket" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
           </div>
           <!-- ./col -->

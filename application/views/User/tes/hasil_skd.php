@@ -108,7 +108,7 @@
                 </tbody>
               </table>
               <div class="col-md-12 text-center">
-                <a href="#" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lihat Leaderboard</a>
+                <a href="<?= base_url('detail/proses_leader/' . $user['id'] . '/' . $paket['id_paket'] . '/' . $event['id_event']) ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lihat Leaderboard</a>
               </div>
             </div>
           </div><!-- end -->

@@ -65,9 +65,25 @@
               <div class="col-md-12 text-center">
 
                 <?php if ($topik['id_topik_tes'] == 1) { ?>
+                  <?php if($paket['tbi'] == 1){ ?>
                     <a href="<?= base_url('tryout/'); ?>tes_tbi/<?= $user['id'] ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lanjutkan Ke Tes TBI</a>
+                  <?php } else { ?>
+                    <?php if($paket['twk'] == 1 && $paket['tiu'] == 1 && $paket['tkp'] == 1){ ?>
+                      <a href="<?= base_url('tryout/'); ?>tes_skd/<?= $user['id'] ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lanjutkan Ke Tes SKD</a>
+                    <?php } else { ?>
+                      <?php if($paket['tsa'] == 1){ ?>
+                        <a href="<?= base_url('tryout/'); ?>tes_tsa/<?= $user['id'] ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lanjutkan Ke Tes TSA</a>
+                      <?php } ?>  
+                    <?php } ?>
+                  <?php } ?>
                 <?php } elseif ($topik['id_topik_tes'] == 2){ ?>
+                  <?php if($paket['twk'] == 1 && $paket['tiu'] == 1 && $paket['tkp'] == 1){ ?>
                     <a href="<?= base_url('tryout/'); ?>tes_skd/<?= $user['id'] ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lanjutkan Ke Tes SKD</a>
+                  <?php } else { ?>
+                    <?php if($paket['tsa'] == 1){ ?>
+                      <a href="<?= base_url('tryout/'); ?>tes_tsa/<?= $user['id'] ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lanjutkan Ke Tes TSA</a>
+                    <?php } ?>
+                  <?php } ?>
                 <?php } ?>
               </div>
             </div>

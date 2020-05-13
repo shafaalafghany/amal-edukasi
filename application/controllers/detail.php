@@ -214,6 +214,7 @@ class detail extends CI_Controller
         $waktuSekarang = date("Y-m-d");
         $leaderEvent = $this->hasil->getLeaderboardByIdAndEvent($id, $id_event);
         $data['paket'] = $this->Paket_model->getAllPaket();
+        $data['paket_id'] = $this->Paket_model->getPaketById($id_paket);
         if ($data['user']) {
             if($data['user']['role_id'] == 3){
                 if ($data['user']['id'] == $id) {

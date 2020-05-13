@@ -131,7 +131,7 @@
                   <?php } ?>
 
                   <div class="col-12">
-                    <a class="btn btn-secondary float-left" href="<?= base_url('Administrator/'); ?>daftar_soal">Kembali</a>
+                    <a class="btn btn-secondary float-left" href="<?= base_url('admin_soal/'); ?>pilih_kategori_soal">Kembali</a>
                     <button type="submit" class="btn btn-primary float-right">Simpan Perubahan</button>
                   </div>
             </form>
