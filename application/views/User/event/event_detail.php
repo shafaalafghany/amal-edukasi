@@ -108,7 +108,7 @@
                                 <?php if($paketID['tpa'] == 1 && $paketID['tbi'] == 1 && $paketID['twk'] == null && $paketID['tiu'] == null && $paketID['tkp'] == null && $paketID['tsa'] == null){ ?>
                                     <?php if($hasil_tpa && $hasil_tbi){ ?>
                                         <a href="<?= base_url('detail/proses_leader/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lihat Leaderboard</a>
-                                    <?php } elseif($hasil){ ?>
+                                    <?php } elseif($hasil_tpa){ ?>
                                         <a href="<?= base_url('tryout/tes_tbi/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lihat Leaderboard</a>
                                     <?php } else{ ?>
                                         <a href="<?= base_url('tryout/tes_tpa/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes</a>
@@ -129,15 +129,11 @@
                                     <?php } else{ ?>
                                         <a href="<?= base_url('tryout/tes_skd/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes</a>
                                     <?php } ?>
-                                <?php } elseif($paketID['tpa'] == 1 && $paketID['tbi'] == 1 && $paketID['twk'] == null && $paketID['tiu'] == null && $paketID['tkp'] == null && $paketID['tsa'] == 1){ ?>
-                                    <?php if($hasil_tpa && $hasil_tbi && $hasil_tsa){ ?>
+                                <?php } elseif($paketID['tpa'] == null && $paketID['tbi'] == null && $paketID['twk'] == null && $paketID['tiu'] == null && $paketID['tkp'] == null && $paketID['tsa'] == 1){ ?>
+                                    <?php if($hasil_tsa){ ?>
                                         <a href="<?= base_url('detail/proses_leader/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lihat Leaderboard</a>
-                                    <?php } elseif($hasil_tpa && $hasil_tbi){ ?>
-                                        <a href="<?= base_url('tryout/tes_tsa/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjut Tes TSA</a>
-                                    <?php } elseif($hasil_tpa){ ?>
-                                        <a href="<?= base_url('tryout/tes_tbi/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjut Tes TBI</a>
                                     <?php } else{ ?>
-                                        <a href="<?= base_url('tryout/tes_skd/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes</a>
+                                        <a href="<?= base_url('tryout/tes_tsa/' . $user['id'] . '/' . $paketID['id_paket'] . '/' . $event['id_event']) ?>" class="genric-btn info circle arrow">Lanjutkan Tes</a>
                                     <?php } ?>
                                 <?php } ?>
                             <?php } else { ?>

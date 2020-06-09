@@ -226,4 +226,10 @@ class admin_leaderboard extends CI_Controller
         $this->session->set_flashdata('message', '<div class="alert alert-success col-md-12" role="alert"><strong>Satu soal berhasil dihapus!</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
         redirect('admin_soal/pilih_kategori_soal');
     }
+
+    public function reset_data_event($id_event)
+    {
+        $this->Event_model->resetDataEvent($id_event);
+        redirect('admin_leaderboard/pilih_event');
+    }
 }

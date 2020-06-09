@@ -70,6 +70,7 @@ class detail extends CI_Controller
             $data['hasil_twk'] = $this->hasil->getHasilTwkByIdAndEvent($user['id'], $id_event);
             $data['hasil_tiu'] = $this->hasil->getHasilTiuByIdAndEvent($user['id'], $id_event);
             $data['hasil_tkp'] = $this->hasil->getHasilTkpByIdAndEvent($user['id'], $id_event);
+            $data['hasil_tsa'] = $this->hasil->getHasilTsaByIdAndEvent($user['id'], $id_event);
         }
 
         $data['judul'] = 'Amal Edukasi | Detail ' . $data['event']['nama_event'];

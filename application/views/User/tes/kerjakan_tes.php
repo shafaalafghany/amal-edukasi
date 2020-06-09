@@ -320,7 +320,10 @@ if ($temp_menit < 60) {
                               <?php $i++; } ?>
                             </div>
                           </div>
-                        <?php } ?>
+                        <?php } else {
+                          $this->session->set_flashdata('error', 'Soal belum 100% siap! silahkan hubungi pihak amal edukasi.');
+                          redirect('detail/event_detail/' . $paket['id_paket'] . '/' . $event['id_event']);
+                        } ?>
                       </div>
                     </form>
                     <hr>
@@ -424,7 +427,8 @@ if ($temp_menit < 60) {
       showDivs(slideIndex);
       var frmSelesai = $(".sb-jwb").attr('href');
       
-      $('.sb-jwb').on('click', function() {
+      $('.sb-jwb').on('click', function(e) {
+        e.preventDefault();
         Swal.fire({
           title: 'Apa kamu yakin?',
           text: "Dengan klik yakin maka tes ini akan berakhir, teliti terlebih dahulu jawaban kamu.",
@@ -434,7 +438,9 @@ if ($temp_menit < 60) {
           cancelButtonColor: '#d33',
           confirmButtonText: 'Yakin'
         }).then((result) => {
+          if (result.value){
             document.location.href = frmSelesai;
+          }
         })
       })
 

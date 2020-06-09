@@ -78,6 +78,15 @@ class Hasil_tes_model extends CI_Model
         ])->row_array();
     }
 
+    public function getHasilTsaByIdAndEvent($id, $id_event)
+    {
+        return $this->db->get_where('hasil_tes', [
+            'id_user' => $id,
+            'id_event' => $id_event,
+            'id_topik' => 6
+        ])->row_array();
+    }
+
     // Leaderboard
     public function insertLeader($data)
     {

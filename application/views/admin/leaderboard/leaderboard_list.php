@@ -29,7 +29,7 @@
               </div>
               
               <?php if ($leader) { ?>
-                <a class="btn btn-danger btn-sm float-right reset-ulang-event" href="<?= base_url('Administrator/'); ?>reset_data_event/<?= $event['id_event']; ?>">
+                <a class="btn btn-danger btn-sm float-right reset-ulang-event" href="<?= base_url('admin_leaderboard/'); ?>reset_data_event/<?= $event['id_event']; ?>">
                   <i class="fas fa-trash">
                   </i>
                   Reset Ulang Semua Peserta

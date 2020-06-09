@@ -73,6 +73,8 @@
                     <?php } else { ?>
                       <?php if($paket['tsa'] == 1){ ?>
                         <a href="<?= base_url('tryout/'); ?>tes_tsa/<?= $user['id'] ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lanjutkan Ke Tes TSA</a>
+                      <?php } else{ ?>
+                        <a href="<?= base_url('detail/proses_leader/' . $user['id'] . '/' . $paket['id_paket'] . '/' . $event['id_event']) ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lihat Leaderboard</a>
                       <?php } ?>  
                     <?php } ?>
                   <?php } ?>
@@ -82,6 +84,8 @@
                   <?php } else { ?>
                     <?php if($paket['tsa'] == 1){ ?>
                       <a href="<?= base_url('tryout/'); ?>tes_tsa/<?= $user['id'] ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lanjutkan Ke Tes TSA</a>
+                    <?php } else { ?>
+                      <a href="<?= base_url('detail/proses_leader/' . $user['id'] . '/' . $paket['id_paket'] . '/' . $event['id_event']) ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Lihat Leaderboard</a>
                     <?php } ?>
                   <?php } ?>
                 <?php } ?>

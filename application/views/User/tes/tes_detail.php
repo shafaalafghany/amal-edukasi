@@ -26,11 +26,7 @@
                   <tr>
                     <td>
                       <span class="subadge">
-                        <?php if ($topik['id_topik_tes'] == 1) {
-                          echo "Tes 1";
-                        } elseif ($topik['id_topik_tes'] == 2) {
-                          echo "Tes 2";
-                        } ?>
+                        Nama Tes
                       </span>
                       <h4 class="mr-3 text-black"><?= $topik['nama_topik_tes'] ?></h4>
                     </td>
@@ -66,6 +62,8 @@
                   <a href="<?= base_url('tryout/'); ?>kerjakan_tpa/<?= $user['id']; ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Kerjakan Tes TPA</a>
                 <?php } elseif($topik['id_topik_tes'] == 2){ ?>
                   <a href="<?= base_url('tryout/'); ?>kerjakan_tbi/<?= $user['id']; ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Kerjakan Tes TBI</a>
+                <?php } elseif($topik['id_topik_tes'] == 6){ ?>
+                  <a href="<?= base_url('tryout/'); ?>kerjakan_tsa/<?= $user['id']; ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>" class="btn btn-success" style="width: 100%; height: 100%;" id="mulai_tes">Kerjakan Tes TSA</a>
                 <?php } ?>
               </div>
             </div>

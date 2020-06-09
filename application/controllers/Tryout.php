@@ -392,6 +392,159 @@ class tryout extends CI_Controller
     }
     // End TBI
 
+    //Function Tryout TSA
+    public function tes_tsa($id, $id_paket, $id_event)
+    {
+        $data['judul'] = 'Amal Edukasi | Tes Substansi Akademik';
+
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+
+        $data['event'] = $this->Event_model->getEventById($id_event);
+        $data['topik'] = $this->Topik_model->getTopikTSA();
+        $data['aturan_topik'] = $this->Topik_model->getRuleTopikTSA();
+        $data['transaksi'] = $this->Transaksi_model->getTransaksiBySomeId($id, $id_paket, $id_event);
+        $data['paket'] = $this->Paket_model->getPaketById($id_paket);
+        $hasil_tes_topik = $this->hasil->getHasilByIdEventTopik($id, $id_event, $data['topik']['id_topik_tes']);
+        
+        if($data['user']){
+            if($data['user']['role_id'] == 3){
+                if($data['user']['id'] == $id) {
+                    if($data['transaksi']){
+                        if($hasil_tes_topik){
+                            $this->session->set_flashdata('error', 'Kamu sudah melakukan tes tersebut!');
+                            redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
+                        } else{
+                            $this->load->view('header/header_tes', $data);
+                            $this->load->view('user/tes/tes_detail');
+                            $this->load->view('footer/footer_tes');
+                        }
+                    } else{
+                        $this->session->set_flashdata('error', 'Kamu belum terdaftar di event ini!');
+                        redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
+                    }
+                } else{
+                    $this->session->set_flashdata('error', 'Kamu tidak memiliki akses ke halaman tersebut!');
+                    redirect('home');
+                }
+            } else{
+                redirect('admin');
+            }
+        } else{
+            $this->session->set_flashdata('error', 'Silahkan login dulu!');
+            redirect('home');
+        }
+    }
+
+    public function kerjakan_tsa($id, $id_paket, $id_event)
+    {
+        $data['judul'] = 'Amal Edukasi | Tes Substansi Akademik';
+
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+
+        $data['event'] = $this->Event_model->getEventById($id_event);
+        $data['topik'] = $this->Topik_model->getTopikTSA();
+        $data['aturan_topik'] = $this->Topik_model->getRuleTopikTSA();
+        $data['transaksi_user'] = $this->Transaksi_model->getTransaksiBySomeId($id, $id_paket, $id_event);
+        $data['paket'] = $this->Paket_model->getPaketById($id_paket);
+        $data['soal'] = $this->Soal_model->getSoalByIdEventAndIdTopik($id_event, $data['topik']['id_topik_tes']);
+        $data['soal1'] = $this->Soal_model->getSoalByIdLimit1($id_event, $data['topik']['id_topik_tes']);
+        $data['soal2'] = $this->Soal_model->getSoalByIdLimit2($id_event, $data['topik']['id_topik_tes']);
+        $data['soal3'] = $this->Soal_model->getSoalByIdLimit3($id_event, $data['topik']['id_topik_tes']);
+        $hasil_tes_topik = $this->hasil->getHasilByIdEventTopik($id, $id_event, $data['topik']['id_topik_tes']);
+        
+        if($data['user']){
+            if($data['user']['role_id'] == 3){
+                if($data['user']['id'] == $id) {
+                    if($data['transaksi_user']){
+                        if($hasil_tes_topik){
+                            $this->session->set_flashdata('error', 'Kamu sudah melakukan tes tersebut!');
+                            redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
+                        } else{
+                            $waktudaftar = time();
+
+                            $dataTransaksi = [
+                                'id_topik' => $data['topik']['id_topik_tes'],
+                                'id_event' => $id_event,
+                                'id_user' => $id,
+                                'waktu_daftar' => $waktudaftar
+                            ];
+                            $this->Kerjakan_model->sessionKerjakan($dataTransaksi);
+
+                            $this->session->unset_userdata('id_event');
+                            $this->session->unset_userdata('id_topik');
+                            $this->session->unset_userdata('id_user');
+                            $this->session->unset_userdata('waktu_daftar');
+
+                            $data['transaksi'] = $this->Kerjakan_model->getKerjakan($id_event, $data['topik']['id_topik_tes'], $id);
+
+                            $this->load->view('header/header_tes', $data);
+                            $this->load->view('user/tes/kerjakan_tes');
+                            $this->load->view('footer/footer_tes');
+                        }
+                    } else{
+                        $this->session->set_flashdata('error', 'Kamu belum terdaftar di event ini!');
+                        redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
+                    }
+                } else{
+                    $this->session->set_flashdata('error', 'Kamu tidak memiliki akses ke halaman tersebut!');
+                    redirect('home');
+                }
+            } else{
+                redirect('admin');
+            }
+        } else{
+            $this->session->set_flashdata('error', 'Silahkan login dulu!');
+            redirect('home');
+        }
+    }
+
+    public function hasil_tsa($id, $id_paket, $id_event)
+    {
+        $data['judul'] = 'Amal Edukasi | Hasil Tes Substansi Akademik';
+
+        $sessionUser = $this->session->userdata('email');
+        $data['user'] = $this->User_model->sessionUserMasuk($sessionUser);
+
+        $data['event'] = $this->Event_model->getEventById($id_event);
+        $data['topik'] = $this->Topik_model->getTopikTSA();
+        $data['aturan_topik'] = $this->Topik_model->getRuleTopikTSA();
+        $data['transaksi_user'] = $this->Transaksi_model->getTransaksiBySomeId($id, $id_paket, $id_event);
+        $data['paket'] = $this->Paket_model->getPaketById($id_paket);
+        $hasil_tes_topik = $this->hasil->getHasilByIdEventTopik($id, $id_event, $data['topik']['id_topik_tes']);
+        $data['hasil'] = $this->hasil->getHasilByIdEventTopik($id, $id_event, $data['topik']['id_topik_tes']);
+        
+        if($data['user']){
+            if($data['user']['role_id'] == 3){
+                if($data['user']['id'] == $id) {
+                    if($data['transaksi_user']){
+                        if($hasil_tes_topik){
+                            $this->load->view('header/header_tes', $data);
+                            $this->load->view('user/tes/hasil_tes');
+                            $this->load->view('footer/footer_tes');
+                        } else{
+                            $this->session->set_flashdata('error', 'Belum ada hasil untuk tes ini! Pastikan kamu sudah mengerjakan tes.');
+                            redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
+                        }
+                    } else{
+                        $this->session->set_flashdata('error', 'Kamu belum terdaftar di event ini!');
+                        redirect('detail/event_detail/' . $id_paket . '/' . $id_event);
+                    }
+                } else{
+                    $this->session->set_flashdata('error', 'Kamu tidak memiliki akses ke halaman tersebut!');
+                    redirect('home');
+                }
+            } else{
+                redirect('admin');
+            }
+        } else{
+            $this->session->set_flashdata('error', 'Silahkan login dulu!');
+            redirect('home');
+        }
+    }
+    // End TSA
+
     // Function Tryout SKD
     public function tes_skd($id, $id_paket, $id_event)
     {

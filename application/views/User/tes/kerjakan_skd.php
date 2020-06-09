@@ -360,7 +360,7 @@ if ($temp_menit < 60) {
                       </div>
                     </form>
                     <hr>
-                    <a href="<?= base_url('tryout/'); ?>koreksi_skd/<?= $user['id']; ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>/<?= $topik['id_skd'] ?>" class="btn btn-success col-md-12 selesai">Submit Jawaban</a>
+                    <a href="<?= base_url('tryout/'); ?>koreksi_skd/<?= $user['id']; ?>/<?= $paket['id_paket'] ?>/<?= $event['id_event']; ?>/<?= $topik['id_skd'] ?>" class="btn btn-success col-md-12 selesai sb-jwb">Submit Jawaban</a>
                   </div>
                 </div>
             </div>
@@ -458,6 +458,24 @@ if ($temp_menit < 60) {
       var slideIndex = 1;
       showMaxDivs(maxIndex);
       showDivs(slideIndex);
+      var frmSelesai = $(".sb-jwb").attr('href');
+      
+      $('.sb-jwb').on('click', function(e) {
+        e.preventDefault();
+        Swal.fire({
+          title: 'Apa kamu yakin?',
+          text: "Dengan klik yakin maka tes ini akan berakhir, teliti terlebih dahulu jawaban kamu.",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yakin'
+        }).then((result) => {
+          if (result.value){
+            document.location.href = frmSelesai;
+          }
+        })
+      })
 
       function showMaxDivs(n) {
         var i;

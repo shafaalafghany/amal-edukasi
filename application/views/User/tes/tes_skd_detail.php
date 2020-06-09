@@ -26,7 +26,7 @@
                               <tr>
                                 <td>
                                   <span class="subadge">
-                                    Tes 3
+                                    Nama Tes
                                   </span>
                                   <h4 class="mr-3 text-black"><?= $topik_skd['nama_skd']; ?></h4>
                                 </td>
