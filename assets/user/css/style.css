@@ -37,7 +37,7 @@
 /* 1. Theme default css */
 /* line 4, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_reset.scss */
 body {
-  font-family: "Crimson Text", serif;
+  font-family: "Poppins", sans-serif;
   font-weight: normal;
   font-style: normal;
 }
@@ -718,18 +718,14 @@ h3 {
 
 /* line 13, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_slick-nav.scss */
 .slicknav_menu .slicknav_nav {
-  background: #fff;
-  float: right;
+  background: rgba(255, 255, 255, 0.9);
   margin-top: 0;
   padding: 0;
-  width: 95%;
+  width: 100%;
   padding: 0;
-  border-radius: 0px;
+  border-radius: 12px;
   margin-top: 5px;
   position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
   top: 11px;
 }
 
@@ -773,8 +769,6 @@ h3 {
   position: relative;
   z-index: 99;
   border: 1px solid #ddd;
-  top: 3px;
-  right: 5px;
   top: -32px;
 }
 
@@ -785,7 +779,6 @@ h3 {
   position: relative;
   padding-bottom: 3px;
   top: -11px;
-  right: -5px;
 }
 
 @media (max-width: 767px) {
@@ -839,8 +832,6 @@ h3 {
 /* line 1, C:/Users/SPN Graphics/Desktop/CL September/Edu mark/207 Education/HTML/scss/_header.scss */
 .header-area {
   position: absolute;
-  left: 0;
-  right: 0;
   width: 100%;
   top: 0;
   z-index: 99;

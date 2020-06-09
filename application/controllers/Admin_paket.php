@@ -141,25 +141,18 @@ class admin_paket extends CI_Controller
             //Ambil data dari form
             $judul = $this->input->post('judul');
             $harga = $this->input->post('harga');
-            $tpa = $this->input->post('cbTopik1');
+            /* $tpa = $this->input->post('cbTopik1');
             $tbi = $this->input->post('cbTopik2');
             $twk = $this->input->post('cbTopik3');
             $tiu = $this->input->post('cbTopik4');
             $tkp = $this->input->post('cbTopik5');
             $tsa = $this->input->post('cbTopik6');
-            $psiko = $this->input->post('cbTopik7');
+            $psiko = $this->input->post('cbTopik7'); */
 
             //Masukkan data ke array
             $data_paket = [
                 'nama_paket' => $judul,
-                'harga_paket' => $harga,
-                'tpa' => $tpa,
-                'tbi' => $tbi,
-                'twk' => $twk,
-                'tiu' => $tiu,
-                'tkp' => $tkp,
-                'tsa' => $tsa,
-                'psiko' => $psiko
+                'harga_paket' => $harga
             ];
 
             //Insert data ke database

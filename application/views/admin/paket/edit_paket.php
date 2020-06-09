@@ -60,14 +60,14 @@
                 <?php if($paket['tpa'] == 1){ ?>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="cbTopik1" name="cbTopik1" value="1" checked="checked">
+                            <input class="custom-control-input" type="checkbox" id="cbTopik1" name="cbTopik1" value="1" checked="checked" disabled="disabled">
                             <label for="cbTopik1" class="custom-control-label" style="font-style: normal"><?= $tpa['nama_topik_tes'] ?></label>
                         </div>
                     </div>
                 <?php } else { ?>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="cbTopik1" name="cbTopik1" value="1">
+                            <input class="custom-control-input" type="checkbox" id="cbTopik1" name="cbTopik1" value="1" disabled="disabled">
                             <label for="cbTopik1" class="custom-control-label" style="font-style: normal"><?= $tpa['nama_topik_tes'] ?></label>
                         </div>
                     </div>
@@ -76,14 +76,14 @@
                 <?php if($paket['tbi'] == 1){ ?>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="cbTopik2" name="cbTopik2" value="1" checked="checked">
+                            <input class="custom-control-input" type="checkbox" id="cbTopik2" name="cbTopik2" value="1" checked="checked" disabled="disabled">
                             <label for="cbTopik2" class="custom-control-label" style="font-style: normal"><?= $tbi['nama_topik_tes'] ?></label>
                         </div>
                     </div>
                 <?php } else { ?>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="cbTopik2" name="cbTopik2" value="1">
+                            <input class="custom-control-input" type="checkbox" id="cbTopik2" name="cbTopik2" value="1" disabled="disabled">
                             <label for="cbTopik2" class="custom-control-label" style="font-style: normal"><?= $tbi['nama_topik_tes'] ?></label>
                         </div>
                     </div>
@@ -92,14 +92,14 @@
                 <?php if($paket['twk'] == 1){ ?>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="cbTopik3" name="cbTopik3" value="1" checked="checked">
+                            <input class="custom-control-input" type="checkbox" id="cbTopik3" name="cbTopik3" value="1" checked="checked" disabled="disabled">
                             <label for="cbTopik3" class="custom-control-label" style="font-style: normal"><?= $twk['nama_topik_tes'] ?></label>
                         </div>
                     </div>
                 <?php } else { ?>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="cbTopik3" name="cbTopik3" value="1">
+                            <input class="custom-control-input" type="checkbox" id="cbTopik3" name="cbTopik3" value="1" disabled="disabled">
                             <label for="cbTopik3" class="custom-control-label" style="font-style: normal"><?= $twk['nama_topik_tes'] ?></label>
                         </div>
                     </div>
@@ -108,14 +108,14 @@
                 <?php if($paket['tiu'] == 1){ ?>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="cbTopik4" name="cbTopik4" value="1" checked="checked">
+                            <input class="custom-control-input" type="checkbox" id="cbTopik4" name="cbTopik4" value="1" checked="checked" disabled="disabled">
                             <label for="cbTopik4" class="custom-control-label" style="font-style: normal"><?= $tiu['nama_topik_tes'] ?></label>
                         </div>
                     </div>
                 <?php } else { ?>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="cbTopik4" name="cbTopik4" value="1">
+                            <input class="custom-control-input" type="checkbox" id="cbTopik4" name="cbTopik4" value="1" disabled="disabled">
                             <label for="cbTopik4" class="custom-control-label" style="font-style: normal"><?= $tiu['nama_topik_tes'] ?></label>
                         </div>
                     </div>
@@ -124,14 +124,14 @@
                 <?php if($paket['tkp'] == 1){ ?>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="cbTopik5" name="cbTopik5" value="1" checked="checked">
+                            <input class="custom-control-input" type="checkbox" id="cbTopik5" name="cbTopik5" value="1" checked="checked" disabled="disabled">
                             <label for="cbTopik5" class="custom-control-label" style="font-style: normal"><?= $tkp['nama_topik_tes'] ?></label>
                         </div>
                     </div>
                 <?php } else { ?>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="cbTopik5" name="cbTopik5" value="1">
+                            <input class="custom-control-input" type="checkbox" id="cbTopik5" name="cbTopik5" value="1" disabled="disabled">
                             <label for="cbTopik5" class="custom-control-label" style="font-style: normal"><?= $tkp['nama_topik_tes'] ?></label>
                         </div>
                     </div>
@@ -140,14 +140,14 @@
                 <?php if($paket['tsa'] == 1){ ?>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="cbTopik6" name="cbTopik6" value="1" checked="checked">
+                            <input class="custom-control-input" type="checkbox" id="cbTopik6" name="cbTopik6" value="1" checked="checked" disabled="disabled">
                             <label for="cbTopik6" class="custom-control-label" style="font-style: normal"><?= $tsa['nama_topik_tes'] ?></label>
                         </div>
                     </div>
                 <?php } else { ?>
                     <div class="form-group">
                         <div class="custom-control custom-checkbox">
-                            <input class="custom-control-input" type="checkbox" id="cbTopik6" name="cbTopik6" value="1">
+                            <input class="custom-control-input" type="checkbox" id="cbTopik6" name="cbTopik6" value="1" disabled="disabled">
                             <label for="cbTopik6" class="custom-control-label" style="font-style: normal"><?= $tsa['nama_topik_tes'] ?></label>
                         </div>
                     </div>

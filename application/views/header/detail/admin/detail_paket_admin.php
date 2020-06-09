@@ -84,8 +84,8 @@
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3">
-          <div class="image">
-            <img src="<?= base_url('assets/user/') ?>img/logo.png" class="elevation-2" alt="User Image" style="height: 50%; width: 100%;">
+          <div class="image justify-content-center">
+            <img src="<?= base_url('assets/user/') ?>img/logo.png" alt="User Image" style="height: 50%; width: 100%;">
           </div>
         </div>
 
@@ -205,12 +205,6 @@
                       <p>Daftar Paket</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="<?= base_url('admin_paket/tambah_paket') ?>" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Tambah Paket</p>
-                    </a>
-                  </li>
                 </ul>
               </li>
             <?php } elseif (current_url() == base_url('admin_paket/tambah_paket')) { ?>
@@ -229,12 +223,6 @@
                       <p>Daftar Paket</p>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a href="<?= base_url('admin_paket/tambah_paket') ?>" class="nav-link active">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Tambah Paket</p>
-                    </a>
-                  </li>
                 </ul>
               </li>
             <?php } else { ?>
@@ -251,12 +239,6 @@
                     <a href="<?= base_url('admin_paket/daftar_paket') ?>" class="nav-link">
                       <i class="far fa-circle nav-icon"></i>
                       <p>Daftar Paket</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="<?= base_url('admin_paket/tambah_paket') ?>" class="nav-link">
-                      <i class="far fa-circle nav-icon"></i>
-                      <p>Tambah Paket</p>
                     </a>
                   </li>
                 </ul>
