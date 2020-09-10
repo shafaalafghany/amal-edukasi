@@ -153,9 +153,9 @@ class auth extends CI_Controller
         $config = array();
         $config['protocol'] = 'smtp';
         $config['smtp_crypto'] = 'ssl';
-        $config['smtp_host'] = 'mail.sobatkode.com';
-        $config['smtp_user'] = 'admin@sobatkode.com';
-        $config['smtp_pass'] = 'Iws161jy21';
+        $config['smtp_host'] = 'mail.domainmu.com';
+        $config['smtp_user'] = 'admin@domainmu.com';
+        $config['smtp_pass'] = 'Pakepasswordmu';
         $config['smtp_port'] = 465;
         $config['mailtype'] = 'html';
         $config['charset'] = 'utf-8';
